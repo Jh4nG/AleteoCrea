@@ -17,7 +17,7 @@ const routes: Routes = [
     component: AleteoHomeComponent
   },
   {
-    path: 'three-page',
+    path: 'tree-page',
     component: ThreePagesComponent
   },
   {
@@ -29,7 +29,7 @@ const routes: Routes = [
     component: VirtualStoreComponent
   },
   {
-    path: 'additional',
+    path: 'contents',
     component: AdditionalContentsComponent
   }
 ];
