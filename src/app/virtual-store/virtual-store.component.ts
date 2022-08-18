@@ -15,43 +15,35 @@ export class VirtualStoreComponent implements OnInit {
     this.viewer = new Viewer({
       container: document.querySelector('#viewer') as HTMLCanvasElement ,
       panorama: 'https://photo-sphere-viewer-data.netlify.app/assets/sphere.jpg',
-      defaultLat: -Math.PI / 2,
-      defaultLong: Math.PI,
-      defaultZoomLvl: 0,
-      fisheye: 4,
-      navbar: [
-        'zoom',
-        {
-          content: 'Rerun&nbsp;animation',
-          onClick: this.intro,
-        },
-        'caption',
-        'fullscreen'
+      loadingImg: 'https://photo-sphere-viewer.js.org/assets/photosphere-logo.gif',
+      plugins: [
+        [Viewer.MarkersPlugin, {
+          // list of markers
+          markers: [{
+            id       : 'custom-tooltip',
+            tooltip  : {
+              content  : `
+    <img src="https://photo-sphere-viewer-data.netlify.app/assets/sphere-small.jpg">
+    <article>
+      <h2>Lorem ipsum</h2>
+      <p>
+        Vivamus magna. Cras in mi at felis aliquet
+        congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis,
+        tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.
+      </p>
+    </article>`,
+              className: 'custom-tooltip',
+              trigger  : 'click',
+            },
+            latitude : 0.11,
+            longitude: -0.35,
+            image    : 'https://photo-sphere-viewer.js.org/assets/pin-blue.png',
+            width    : 32,
+            height   : 32,
+            anchor   : 'bottom center',
+          }]
+        }]
       ]
     });
-    this.intro();
-  }
-
-  intro(){
-    debugger
-    // default far plane is too close to render fisheye=4
-    // you can also skip this line and start with fisheye=2
-    // this.viewer.renderer.camera.far *= 2;
-
-    // new Viewer.utils.Animation({
-    //   properties: {
-    //     lat: { start: -Math.PI / 2, end: 0.2 },
-    //     long: { start: Math.PI, end: 0 },
-    //     zoom: { start: 0, end: 50 },
-    //     fisheye: { start: 4, end: 0 },
-    //   },
-    //   duration: 2000,
-    //   easing: 'inOutQuad',
-    //   onTick: (properties) => {
-    //     this.viewer.setOption('fisheye', properties.fisheye);
-    //     this.viewer.rotate({ longitude: properties.long, latitude: properties.lat });
-    //     this.viewer.zoom(properties.zoom);
-    //   }
-    // });
   }
 }

@@ -5,11 +5,7 @@ module.exports = {
         path: path.join(__dirname, 'public'), filename: 'bundle.js'
     }, module: { 
         rules: [
-            { 
-                loader: 'babel-loader', 
-                test: '/\.(js|jsx)$/', 
-                exclude: /node_modules/ 
-            },{
+            {
                 test: /\.woff2?$|\.ttf$|\.eot$|\.svg$/,
                 loader: "file"
             }
