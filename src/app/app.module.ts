@@ -8,6 +8,7 @@ import { PodcastComponent } from './podcast/podcast.component';
 import { AleteoHomeComponent } from './aleteo-home/aleteo-home.component';
 import { VirtualStoreComponent } from './virtual-store/virtual-store.component';
 import { AdditionalContentsComponent } from './additional-contents/additional-contents.component';
+import { NgParticlesModule } from 'ng-particles';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AdditionalContentsComponent } from './additional-contents/additional-co
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgParticlesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
