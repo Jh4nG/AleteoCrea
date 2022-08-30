@@ -8,7 +8,9 @@ import { PodcastComponent } from './podcast/podcast.component';
 import { AleteoHomeComponent } from './aleteo-home/aleteo-home.component';
 import { VirtualStoreComponent } from './virtual-store/virtual-store.component';
 import { AdditionalContentsComponent } from './additional-contents/additional-contents.component';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgParticlesModule } from 'ng-particles';
+import  { NgxSpinnerModule  } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -21,8 +23,10 @@ import { NgParticlesModule } from 'ng-particles';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
-    NgParticlesModule
+    NgParticlesModule,
+    NgxSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -29,6 +29,7 @@
             ],
             "styles": [
               "src/styles.scss",
+              "node_modules/ngx-spinner/animations/ball-scale-multiple.css",
               "node_modules/photo-sphere-viewer/dist/photo-sphere-viewer.css",
               "node_modules/photo-sphere-viewer/dist/plugins/markers.css",
               "node_modules/bootstrap/scss/bootstrap.scss"

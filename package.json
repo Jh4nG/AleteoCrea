@@ -20,6 +20,7 @@
     "@angular/router": "^14.1.0",
     "bootstrap": "^5.2.0",
     "ng-particles": "^3.2.2",
+    "ngx-spinner": "^14.0.0",
     "photo-sphere-viewer": "^4.7.0",
     "rxjs": "~7.5.0",
     "three": "^0.143.0",
