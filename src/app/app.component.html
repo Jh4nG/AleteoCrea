@@ -1,17 +1,33 @@
-<a href="#" class="btn-flotante">Llamada a la acción</a>
-<router-outlet></router-outlet>
+<!-- Flotante BIA-->
+<a href="#" class="bia-flotante"><img class="imgBia" src="../assets/img/home/BIA.png"></a>
+<!-- Flotante BIA END -->
 
-<!-- <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner> -->
-<!-- <ngx-spinner
-  bdColor="rgba(51,51,51,0.8)"
-  size="medium"
-  color="#fff"
-  type="ball-scale-multiple"
->
-  <p style="font-size: 20px; color: white">Loading...</p>
-</ngx-spinner> -->
+<!-- Flotante Redes -->
+<div class="share" (click)="shareFunction()">
+  <i class="fa fa-plus"></i>
+</div>
+<div class="one">
+  <i class="fab fa-facebook"></i>
+</div>
+<div class="two">
+  <i class="fab fa-twitter"></i>
+</div>
+<div class="three">
+  <i class="fab fa-instagram"></i>
+</div>
+<a class="four" href="https://wa.link/v2d8dq" target="_blank">
+<i class="fab fa-whatsapp"></i>
+</a>
+<!-- Flotante Redes END -->
+
+<!-- Roting -->
+<router-outlet></router-outlet>
+<!-- Roting END -->
+
+<!-- Spinner  -->
 <ngx-spinner
   bdColor="rgba(0, 0, 0, 1)"
   template="<img src='assets/img/mariposa.gif' />"
 >
 </ngx-spinner>
+<!-- Spinner END -->
