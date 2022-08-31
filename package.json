@@ -19,6 +19,7 @@
     "@angular/platform-browser-dynamic": "^14.1.0",
     "@angular/router": "^14.1.0",
     "bootstrap": "^5.2.0",
+    "bootstrap-icons": "^1.9.1",
     "ng-particles": "^3.2.2",
     "ngx-spinner": "^14.0.0",
     "photo-sphere-viewer": "^4.7.0",

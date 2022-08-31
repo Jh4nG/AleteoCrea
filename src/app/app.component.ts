@@ -7,14 +7,16 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  flag=0;
+  public flat_open_side:boolean = false;
+  public flag=0;
+
   constructor(private spinner: NgxSpinnerService) {}
 
   ngOnInit(): void {
     this.spinner.show();
     setTimeout(()=>{
       this.spinner.hide();
-    },8500);
+    },1000);
   }
 
   
@@ -99,6 +101,10 @@ export class AppComponent implements OnInit {
       },205);
       this.flag = 0;
     }
+  }
+
+  showSideBar(action: boolean) {    
+    
   }
   
 }
