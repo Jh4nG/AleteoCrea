@@ -1,0 +1,17 @@
+<div class="modal fade" id="{{idTarget}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <ng-template [ngTemplateOutlet]="this.header" ></ng-template>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <ng-template [ngTemplateOutlet]="this.content" ></ng-template>
+            </div>
+            <div class="modal-footer">
+                <ng-template [ngTemplateOutlet]="this.footer"></ng-template>
+            </div>
+        </div>
+    </div>
+</div>

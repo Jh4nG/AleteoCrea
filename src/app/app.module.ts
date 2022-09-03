@@ -11,6 +11,7 @@ import { AdditionalContentsComponent } from './additional-contents/additional-co
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgParticlesModule } from 'ng-particles';
 import  { NgxSpinnerModule  } from 'ngx-spinner';
+import { ModalComponentComponent } from './components/modal-component/modal-component.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import  { NgxSpinnerModule  } from 'ngx-spinner';
     PodcastComponent,
     ThreePagesComponent,
     VirtualStoreComponent,
-    AdditionalContentsComponent
+    AdditionalContentsComponent,
+    ModalComponentComponent
   ],
   imports: [
     BrowserModule,
