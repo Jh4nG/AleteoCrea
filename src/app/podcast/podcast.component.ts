@@ -18,17 +18,15 @@ export class PodcastComponent implements OnInit {
   /* or the classic JavaScript object */
   particlesOptions = {
     background: {
-      color: {
-        value: "#0d47a1"
-      }
+      color: "#000"
     },
     fpsLimit: 120,
     interactivity: {
       events: {
-        onClick: {
-          enable: true,
-          mode: ClickMode.push
-        },
+        // onClick: {
+        //   enable: true,
+        //   mode: ClickMode.push
+        // },
         onHover: {
           enable: true,
           mode: HoverMode.repulse
@@ -37,11 +35,11 @@ export class PodcastComponent implements OnInit {
       },
       modes: {
         push: {
-          quantity: 4
+          // quantity: 4
         },
         repulse: {
           distance: 200,
-          duration: 0.4
+          // duration: 0.4
         }
       }
     },
@@ -57,16 +55,16 @@ export class PodcastComponent implements OnInit {
         width: 1
       },
       collisions: {
-        enable: true
+        enable: false
       },
       move: {
         direction: MoveDirection.none,
         enable: true,
         outModes: {
-          default: OutMode.bounce
+          default: OutMode.out
         },
         random: false,
-        speed: 6,
+        speed: 4,
         straight: false
       },
       number: {
@@ -74,7 +72,7 @@ export class PodcastComponent implements OnInit {
           enable: true,
           area: 800
         },
-        value: 10
+        value: 50
       },
       opacity: {
         value: 0.5
@@ -86,7 +84,7 @@ export class PodcastComponent implements OnInit {
         value: { min: 1, max: 5 },
       }
     },
-    detectRetina: true
+    detectRetina: false
   };
 
   particlesLoaded(container: Container): void {

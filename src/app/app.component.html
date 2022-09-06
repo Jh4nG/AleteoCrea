@@ -11,7 +11,7 @@
 <div
   class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark " 
 	[ngClass]="[!this.flat_open_side? 'fix-nav' : ' fix-nav--close fix-nav']"
-  style="width: 280px"
+  style="width: 280px;"
 >
   <div class="row">
     <div class="col-12">
@@ -105,14 +105,14 @@
 </div>
 
 <!-- Flotante BIA-->
-<a href="#" class="bia-flotante"
-  ><img class="imgBia" src="../assets/img/home/BIA.png"
-/></a>
+<a href="#" class="bia-flotante">
+  <img class="imgBia" src="../assets/img/home/BIA.png" data-bs-toggle="tooltip" data-bs-placement="top" title="¿Necesitas Ayuda?"/>
+</a>
 <!-- Flotante BIA END -->
 
 <!-- Flotante Redes -->
 <div class="share" (click)="shareFunction()">
-  <i class="fa fa-plus"></i>
+  <img src="../assets/img/btnFlotanteA.png">
 </div>
 <div class="one">
   <i class="fab fa-facebook"></i>
