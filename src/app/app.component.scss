@@ -31,25 +31,10 @@
 }
 
 .bia-flotante {
-	font-size: 16px;
-	/* Cambiar el tamaño de la tipografia */
-	text-transform: uppercase;
-	/* Texto en mayusculas */
-	font-weight: bold;
-	/* Fuente en negrita o bold */
-	color: #ffffff;
-	/* Color del texto */
-	border-radius: 5px;
-	/* Borde del boton */
-	letter-spacing: 2px;
-	/* Espacio entre letras */
-	padding: 18px 30px;
-	/* Relleno del boton */
 	position: fixed;
-	bottom: 15%;
-	right: -24%;
-	transition: all 300ms ease 0ms;
-	z-index: 99;
+	bottom: 23%;
+	left : 90%;
+	z-index: 999;
 }
 
 .bia-flotante:hover {
@@ -66,16 +51,16 @@
 }
 
 .imgBia {
-	width: 40%;
+	width: 100%;
 }
 
 .share {
 	display: block;
 	width: 60px;
 	height: 60px;
-	background: #ff9100;
+	background: #000;
 	position: fixed;
-	top: 90%;
+	top: 91%;
 	left: 96%;
 	z-index: 999;
 	text-align: center;
@@ -89,6 +74,11 @@
 	border-radius: 50px;
 	-webkit-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
+}
+
+.share > img{
+	width: 100%;
+    margin-bottom: 11px;
 }
 
 .share:hover {
@@ -107,13 +97,14 @@
 	text-align: center;
 	line-height: 49px;
 	font-size: 1.5em;
-	top: 90%;
+	top: 91%;
 	left: 96%;
 	-webkit-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
 	-webkit-box-shadow: 0px 3px 9px rgba(0, 0, 0, 0.2);
 	box-shadow: 0px 3px 9px rgba(0, 0, 0, 0.2);
 	-webkit-transition: transform 0.3s ease-in-out;
+	z-index: 998;
 	transition: transform 0.3s ease-in-out;
 }
 
@@ -273,6 +264,7 @@ main {
 	margin-left: 1.5%;
 	bottom: 2%;
 	position: fixed;
+	z-index: 999;
 
 	&--fixed-top {
 		position: fixed;
@@ -280,6 +272,10 @@ main {
 		background-color: transparent;
 		border: none;
 	}
+}
+
+.sonido-botton{
+	z-index: 999;
 }
 
 .img-sound {

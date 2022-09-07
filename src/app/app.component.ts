@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { Tooltip } from 'node_modules/bootstrap/dist/js/bootstrap.esm.min.js'
 
 @Component({
   selector: 'app-root',
@@ -9,14 +10,16 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class AppComponent implements OnInit {
   public flat_open_side:boolean = false;
   public flag=0;
-
+  
   constructor(private spinner: NgxSpinnerService) {}
-
+  
   ngOnInit(): void {
     this.spinner.show();
     setTimeout(()=>{
       this.spinner.hide();
-    },1000);
+    },8500);
+    Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    .forEach(tooltipNode => new Tooltip(tooltipNode))
   }
 
   
@@ -90,15 +93,15 @@ export class AppComponent implements OnInit {
       }, 200);
 
       setTimeout(() => {
-        one.style.top = `${position}%`;
+        one.style.top = `${position+1}%`;
         one.style.left = `${left}%`;
-        two.style.top = `${position}%`;
+        two.style.top = `${position+1}%`;
         two.style.left = `${left}%`;
-        three.style.top = `${position}%`;
+        three.style.top = `${position+1}%`;
         three.style.left = `${left}%`;
-        four.style.top = `${position}%`;
+        four.style.top = `${position+1}%`;
         four.style.left = `${left}%`;
-      },205);
+      },200);
       this.flag = 0;
     }
   }
