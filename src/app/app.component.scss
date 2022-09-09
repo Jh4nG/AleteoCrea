@@ -118,14 +118,33 @@
 
 .one:hover,
 .two:hover,
-.three:hover {
+.three:hover,
+.four:hover {
 	cursor: pointer;
 }
 
-.one i,
-.two i,
+.one i{
+	position: absolute;
+    margin: 7px 0px 0px -6px;
+    font-size: 20px;
+}
+
+.two i {
+	position: absolute;
+    margin: 7px 0px 0px -9px;
+    font-size: 20px;
+}
+
 .three i {
-	display: none;
+	position: absolute;
+    margin: 7px 0px 0px -9px;
+    font-size: 20px;
+}
+
+.four i {
+	position: absolute;
+    margin: 9px 0px 0px -10px;
+    font-size: 18px;
 }
 
 .one {
