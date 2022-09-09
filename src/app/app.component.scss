@@ -30,17 +30,6 @@
 	transform: translateY(-7px);
 }
 
-.bia-flotante {
-	position: fixed;
-	bottom: 23%;
-	left : 90%;
-	z-index: 999;
-}
-
-.bia-flotante:hover {
-	transform: translateY(-7px);
-}
-
 @media only screen and (max-width: 600px) {
 	.btn-flotante {
 		font-size: 14px;
@@ -50,8 +39,20 @@
 	}
 }
 
+.bia-flotante {
+	position: fixed;
+	bottom: 25%;
+	left : 94%;
+	z-index: 999;
+}
+
+.bia-flotante:hover {
+	transform: translateY(-7px);
+}
+
+
 .imgBia {
-	width: 100%;
+	width: 55%;
 }
 
 .share {
@@ -76,9 +77,16 @@
 	transform: translate(-50%, -50%);
 }
 
+/** Aleteo */
+// .share > img{
+// 	width: 100%;
+//     margin-bottom: 11px;
+// }
+
+/** Mariposa */
 .share > img{
-	width: 100%;
-    margin-bottom: 11px;
+	width: 85%;
+    margin-bottom: 3px;
 }
 
 .share:hover {
@@ -90,8 +98,8 @@
 .three,
 .four {
 	position: fixed;
-	width: 50px;
-	height: 50px;
+	width: 35px;
+	height: 35px;
 	color: #fff;
 	border-radius: 50px;
 	text-align: center;

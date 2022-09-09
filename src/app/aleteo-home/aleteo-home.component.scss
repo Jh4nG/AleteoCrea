@@ -1,3 +1,16 @@
+.img-agua{
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    background-size: cover;
+}
+.position-front {
+    position: absolute;
+    z-index: 100;
+}
+
 .imgMariposa{
-    width: 78%;
+    width: 63.5%;
+    transform-style: preserve-3d;
+    transform: translateZ(20px);
 }

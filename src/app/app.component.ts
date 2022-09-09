@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
     this.spinner.show();
     setTimeout(()=>{
       this.spinner.hide();
-    },8500);
+    },1000);
     Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
     .forEach(tooltipNode => new Tooltip(tooltipNode))
   }
