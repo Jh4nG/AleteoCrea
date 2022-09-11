@@ -95,7 +95,8 @@ export class ThreePagesComponent implements OnInit {
 
       for ( let i = 0; i < children.length; i ++ ) {
 
-        children[ i ].material.clipIntersection = value;
+        //children[ i ].material.clipIntersection = value;
+        children[i].customDepthMaterial.clipIntersection = value;
 
       }
 

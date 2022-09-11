@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MoveDirection, ClickMode, HoverMode, OutMode, Container, Engine } from "tsparticles-engine";
 import { loadFull } from "tsparticles";
 declare var $;
+import { PodcastService } from '../services/podcast.service';
 
 @Component({
   selector: 'app-podcast',
@@ -52,7 +53,11 @@ export class PodcastComponent implements OnInit {
   /* Starting from 1.19.0 you can use a remote url (AJAX request) to a JSON with the configuration */
   public particlesUrl = "http://foo.bar/particles.json";
 
-  constructor() { }
+  constructor( private podcastService: PodcastService) { 
+    this.podcastService.getAllPodcast().subscribe({
+      next: (resp) => { console.log(resp)}
+    })
+  }
 
 
   /* or the classic JavaScript object */

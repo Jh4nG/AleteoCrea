@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgParticlesModule } from 'ng-particles';
 import  { NgxSpinnerModule  } from 'ngx-spinner';
 import { ModalComponentComponent } from './components/modal-component/modal-component.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ModalComponentComponent } from './components/modal-component/modal-comp
     AppRoutingModule,
     NgParticlesModule,
     NgxSpinnerModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
