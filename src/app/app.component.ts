@@ -106,8 +106,16 @@ export class AppComponent implements OnInit {
     }
   }
 
-  showSideBar(action: boolean) {    
+  showSideBar(action: boolean) {
+    let imgSound = document.getElementById('sonido-botton') as HTMLElement;
     
+    if(action){
+      imgSound.style.left = '3%';
+      this.flat_open_side = true
+    }else{
+      imgSound.style.left = '0%';
+      this.flat_open_side = false
+    }
   }
   
 }

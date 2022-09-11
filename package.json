@@ -28,7 +28,7 @@
     "photo-sphere-viewer": "^4.7.0",
     "rxjs": "~7.5.0",
     "save": "^2.5.0",
-    "three": "^0.143.0",
+    "three": "^0.144.0",
     "tilt.js": "^1.2.1",
     "tslib": "^2.3.0",
     "tsparticles": "^2.2.2",

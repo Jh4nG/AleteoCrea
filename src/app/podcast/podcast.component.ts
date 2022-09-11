@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MoveDirection, ClickMode, HoverMode, OutMode, Container, Engine } from "tsparticles-engine";
 import { loadFull } from "tsparticles";
+declare var $;
+
 @Component({
   selector: 'app-podcast',
   templateUrl: './podcast.component.html',
@@ -8,6 +10,44 @@ import { loadFull } from "tsparticles";
 })
 export class PodcastComponent implements OnInit {
   public id = "tsparticles";
+  playerTrack = $("#player-track");
+  bgArtwork = $("#bg-artwork");
+  bgArtworkUrl;
+  albumName = $("#album-name");
+  trackName = $("#track-name");
+  albumArt = $("#album-art");
+  sArea = $("#s-area");
+  seekBar = $("#seek-bar");
+  trackTime = $("#track-time");
+  insTime = $("#ins-time");
+  sHover = $("#s-hover");
+  playPauseButton = $("#play-pause-button");
+  i = this.playPauseButton.find("i");
+  tProgress = $("#current-time");
+  tTime = $("#track-length");
+  seekT;
+  seekLoc;
+  seekBarPos;
+  cM;
+  ctMinutes;
+  ctSeconds;
+  curMinutes;
+  curSeconds;
+  durMinutes;
+  durSeconds;
+  playProgress;
+  bTime;
+  audio = new Audio();
+  nTime = 0;
+  buffInterval = null;
+  tFlag = false;
+  albums = ["Dawn","Me & You","Electro Boy","Home","Proxy (Original Mix)"];
+  trackNames = ["Skylike - Dawn","Alex Skrindo - Me & You","Kaaze - Electro Boy","Jordan Schor - Home","Martin Garrix - Proxy"];
+  albumArtworks = ["_1", "_2", "_3", "_4", "_5"];
+  trackUrl = ["https://raw.githubusercontent.com/himalayasingh/music-player-1/master/music/2.mp3","https://raw.githubusercontent.com/himalayasingh/music-player-1/master/music/1.mp3","https://raw.githubusercontent.com/himalayasingh/music-player-1/master/music/3.mp3","https://raw.githubusercontent.com/himalayasingh/music-player-1/master/music/4.mp3","https://raw.githubusercontent.com/himalayasingh/music-player-1/master/music/5.mp3"];
+  playPreviousTrackButton = $("#play-previous");
+  playNextTrackButton = $("#play-next");
+  currIndex = -1;
 
   /* Starting from 1.19.0 you can use a remote url (AJAX request) to a JSON with the configuration */
   public particlesUrl = "http://foo.bar/particles.json";
@@ -420,7 +460,186 @@ export class PodcastComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.audio = new Audio();
+    this.selectTrack(0);  
+    this.audio.loop = false;  
+    this.playPauseButton.on("click", this.playPause);  
+    this.sArea.mousemove(function (event) {
+      this.showHover(event);
+    });
 
+    this.sArea.mouseout(this.hideHover);  
+    this.sArea.on("click", this.playFromClickedPos);  
+    $(this.audio).on("timeupdate", this.updateCurrTime);  
+    this.playPreviousTrackButton.on("click", function () {
+      this.selectTrack(-1);
+    });
+    this.playNextTrackButton.on("click", function () {
+      this.selectTrack(1);
+    });
   }
 
+  playPause() {
+      // setTimeout(function () {
+        if (this.audio.paused) {
+          this.playerTrack.addClass("active");
+          this.albumArt.addClass("active");
+          this.checkBuffering();
+          this.i.attr("class", "fas fa-pause");
+          this.audio.play();
+        } else {
+          this.playerTrack.removeClass("active");
+          this.albumArt.removeClass("active");
+          clearInterval(this.buffInterval);
+          this.albumArt.removeClass("buffering");
+          this.i.attr("class", "fas fa-play");
+          this.audio.pause();
+        }
+      // }, 300);
+  }
+  
+  showHover(event) {
+      this.seekBarPos = this.sArea.offset();
+      this.seekT = event.clientX - this.seekBarPos.left;
+      this.seekLoc = this.audio.duration * (this.seekT / this.sArea.outerWidth());
+  
+      this.sHover.width(this.seekT);
+  
+      this.cM = this.seekLoc / 60;
+  
+      this.ctMinutes = Math.floor(this.cM);
+      this.ctSeconds = Math.floor(this.seekLoc - this.ctMinutes * 60);
+  
+      if (this.ctMinutes < 0 || this.ctSeconds < 0) return;
+  
+      if (this.ctMinutes < 0 || this.ctSeconds < 0) return;
+  
+      if (this.ctMinutes < 10) this.ctMinutes = "0" + this.ctMinutes;
+      if (this.ctSeconds < 10) this.ctSeconds = "0" + this.ctSeconds;
+  
+      if (isNaN(this.ctMinutes) || isNaN(this.ctSeconds)) this.insTime.text("--:--");
+      else this.insTime.text(this.ctMinutes + ":" + this.ctSeconds);
+  
+      this.insTime.css({ left: this.seekT, "margin-left": "-21px" }).fadeIn(0);
+    }
+  
+     hideHover() {
+      this.sHover.width(0);
+      this.insTime.text("00:00").css({ left: "0px", "margin-left": "0px" }).fadeOut(0);
+    }
+  
+     playFromClickedPos() {
+      this.audio.currentTime = this.seekLoc;
+      this.seekBar.width(this.seekT);
+      this.hideHover();
+    }
+  
+     updateCurrTime() {
+      var nTime = new Date();
+      this.nTime = nTime.getTime();
+  
+      if (!this.tFlag) {
+        this.tFlag = true;
+        this.trackTime.addClass("active");
+      }
+  
+      this.curMinutes = Math.floor(this.audio.currentTime / 60);
+      this.curSeconds = Math.floor(this.audio.currentTime - this.curMinutes * 60);
+  
+      this.durMinutes = Math.floor(this.audio.duration / 60);
+      this.durSeconds = Math.floor(this.audio.duration - this.durMinutes * 60);
+  
+      this.playProgress = (this.audio.currentTime / this.audio.duration) * 100;
+  
+      if (this.curMinutes < 10) this.curMinutes = "0" + this.curMinutes;
+      if (this.curSeconds < 10) this.curSeconds = "0" + this.curSeconds;
+  
+      if (this.durMinutes < 10) this.durMinutes = "0" + this.durMinutes;
+      if (this.durSeconds < 10) this.durSeconds = "0" + this.durSeconds;
+  
+      if (isNaN(this.curMinutes) || isNaN(this.curSeconds)) this.tProgress.text("00:00");
+      else this.tProgress.text(this.curMinutes + ":" + this.curSeconds);
+  
+      if (isNaN(this.durMinutes) || isNaN(this.durSeconds)) this.tTime.text("00:00");
+      else this.tTime.text(this.durMinutes + ":" + this.durSeconds);
+  
+      if (
+        isNaN(this.curMinutes) ||
+        isNaN(this.curSeconds) ||
+        isNaN(this.durMinutes) ||
+        isNaN(this.durSeconds)
+      )
+        this.trackTime.removeClass("active");
+      else this.trackTime.addClass("active");
+  
+      this.seekBar.width(this.playProgress + "%");
+  
+      if (this.playProgress == 100) {
+        this.i.attr("class", "fa fa-play");
+        this.seekBar.width(0);
+        this.tProgress.text("00:00");
+        this.albumArt.removeClass("buffering").removeClass("active");
+        clearInterval(this.buffInterval);
+      }
+    }
+  
+    checkBuffering() {
+      clearInterval(this.buffInterval);
+      this.buffInterval = setInterval(function () {
+        if (this.nTime == 0 || this.bTime - this.nTime > 1000) this.albumArt.addClass("buffering");
+        else this.albumArt.removeClass("buffering");
+  
+        this.bTime = new Date();
+        this.bTime = this.bTime.getTime();
+      }, 100);
+    }
+  
+     selectTrack(flag) {
+      if (flag == 0 || flag == 1) ++this.currIndex;
+      else --this.currIndex;
+  
+      if (this.currIndex > -1 && this.currIndex < this.albumArtworks.length) {
+        if (flag == 0) this.i.attr("class", "fa fa-play");
+        else {
+          this.albumArt.removeClass("buffering");
+          this.i.attr("class", "fa fa-pause");
+        }
+  
+        this.seekBar.width(0);
+        this.trackTime.removeClass("active");
+        this.tProgress.text("00:00");
+        this.tTime.text("00:00");
+  
+        var currAlbum = this.albums[this.currIndex];
+        var currTrackName = this.trackNames[this.currIndex];
+        var currArtwork = this.albumArtworks[this.currIndex];
+  
+        this.audio.src = this.trackUrl[this.currIndex];
+  
+        this.nTime = 0;
+        this.bTime = new Date();
+        this.bTime = this.bTime.getTime();
+  
+        if (flag != 0) {
+          this.audio.play();
+          this.playerTrack.addClass("active");
+          this.albumArt.addClass("active");
+  
+          clearInterval(this.buffInterval);
+          this.checkBuffering();
+        }
+  
+        this.albumName.text(currAlbum);
+        this.trackName.text(currTrackName);
+        this.albumArt.find("img.active").removeClass("active");
+        $("#" + currArtwork).addClass("active");
+  
+        this.bgArtworkUrl = $("#" + currArtwork).attr("src");
+  
+        this.bgArtwork.css({ "background-image": "url(" + this.bgArtworkUrl + ")" });
+      } else {
+        if (flag == 0 || flag == 1) --this.currIndex;
+        else ++this.currIndex;
+      }
+     }
 }
