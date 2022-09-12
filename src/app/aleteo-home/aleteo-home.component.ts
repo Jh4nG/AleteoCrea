@@ -328,7 +328,7 @@ export class AleteoHomeComponent implements OnInit {
       resolution: 512,
       dropRadius: 20,
       perturbance: 0.01,
-      imageUrl : '../../assets/img/agua.jpg'
+      // imageUrl : '../../assets/img/agua.jpg'
     });
     $('.imgMariposa').tilt({
       glare: true,

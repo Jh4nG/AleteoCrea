@@ -1,10 +1,10 @@
 <div class="display-menu" *ngIf="!this.flat_open_side">
-	<button type="button" class="btn btn-dark" (click)="this.flat_open_side = true">
+	<button type="button" class="btn btn-dark" (click)="showSideBar(true)">
 		<i class="bi bi-chevron-double-right"></i>
 	</button>
 </div>
 <div>
-  <button class="display-menu--fixed-top sonido-botton">
+  <button class="display-menu--fixed-top sonido-botton" id="sonido-botton">
     <span> <img src="../assets/img/sound-size.gif" class="img-sound"></span>
   </button>
 </div>
@@ -17,7 +17,7 @@
     <div class="col-12">
       <div class="row">
         <div class="col-3">
-          <a (click)="this.flat_open_side = false" ><i class="bi bi-list"></i></a>
+          <a (click)="showSideBar(false)" ><i class="bi bi-list"></i></a>
         </div>
         <div class="col-9">
           <a
@@ -66,24 +66,24 @@
       data-bs-toggle="dropdown"
       aria-expanded="false"
     >
-      <img
+      <!-- <img
         src="https://github.com/mdo.png"
         alt=""
         width="32"
         height="32"
         class="rounded-circle me-2"
-      />
-      <strong>mdo</strong>
+      /> -->
+      <strong>Redes Sociales</strong>
     </a>
     <ul
       class="dropdown-menu dropdown-menu-dark text-small shadow"
       aria-labelledby="dropdownUser1"
     >
-      <li><a class="dropdown-item" href="#">New project...</a></li>
-      <li><a class="dropdown-item" href="#">Settings</a></li>
-      <li><a class="dropdown-item" href="#">Profile</a></li>
+      <li><a class="dropdown-item" href="#"><i class="fa fa-facebook"></i> Facebook</a></li>
+      <li><a class="dropdown-item" href="#"><i class="fa fa-instagram"></i> Instagram</a></li>
+      <!-- <li><a class="dropdown-item" href="#">Profile</a></li>
       <li><hr class="dropdown-divider" /></li>
-      <li><a class="dropdown-item" href="#">Sign out</a></li>
+      <li><a class="dropdown-item" href="#">Sign out</a></li> -->
     </ul>
   </div>
 </div>
@@ -99,16 +99,16 @@
   <img src="../assets/img/btnFlotanteM.png">
   <!-- <img src="../assets/img/btnFlotanteA.png"> -->
 </div>
-<div class="one" data-bs-toggle="tooltip" data-bs-placement="top" title="Podcast">
+<div class="one" data-bs-toggle="tooltip" data-bs-placement="top" title="Podcast" [routerLink]="['/podcast']">
   <i class="fa fa-microphone"></i>
 </div>
-<div class="two" data-bs-toggle="tooltip" data-bs-placement="top" title="Tienda Virtual">
+<div class="two" data-bs-toggle="tooltip" data-bs-placement="top" title="Tienda Virtual" [routerLink]="['/virtual-store']">
   <i class="fa fa-shopping-cart"></i>
 </div>
-<div class="three" data-bs-toggle="tooltip" data-bs-placement="top" title="Árbol">
+<div class="three" data-bs-toggle="tooltip" data-bs-placement="top" title="Árbol" [routerLink]="['/tree-page']">
   <i class="fa fa-tree"></i>
 </div>
-<a class="four" data-bs-toggle="tooltip" data-bs-placement="top" title="Más Contenidos">
+<a class="four" data-bs-toggle="tooltip" data-bs-placement="top" title="Más Contenidos" [routerLink]="['/contents']">
   <i class="fa fa-photo"></i>
 </a>
 <!-- Flotante Redes END -->
@@ -125,6 +125,12 @@
 </ngx-spinner>
 <!-- Spinner END -->
 
+<!-- Boton Flotante Voces del futuro -->
+<div class="btnVocesF" data-bs-toggle="tooltip" data-bs-placement="top" title="Voces del Futuro">
+  <img src="../assets/img/audio-spectrum-gif.gif">
+  <!-- <img src="../assets/img/btnFlotanteA.png"> -->
+</div>
+<!-- Boton Flotante Voces del futuro -->
 
 <app-modal-component idTarget="staticBackdrop">
   <ng-template #header>
