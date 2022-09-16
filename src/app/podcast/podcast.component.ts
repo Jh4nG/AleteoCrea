@@ -151,6 +151,7 @@ export class PodcastComponent implements OnInit {
 
   /** Mariposa en SVG */
   particlesOptions = {
+    fpsLimit: 60,
     background: {
       color: {
         value: '#000000',
