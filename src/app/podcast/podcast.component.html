@@ -1,19 +1,24 @@
-<ng-particles [id]="id" [options]="particlesOptions" [particlesInit]="particlesInit"
-  (particlesLoaded)="particlesLoaded($event)">
-</ng-particles>
+<app-modal-component idTarget="openReproductor" [visibleM]="false">
+  <ng-template #title></ng-template>
+  <ng-template #header>
+    <app-reproductor-component></app-reproductor-component>
+  </ng-template>
+  <ng-template #footer></ng-template>
+</app-modal-component>
 
 <div class="col-12 position-front">
   <div class="col-md-12 row">
-    <!-- <div class="col-md-4"><h1 style="color:white">Hola mundo</h1></div>
-    <div class="col-md-4"><h1 style="color:white">Hola mundo</h1></div>
-    <div class="col-md-4"><h1 style="color:white">Hola mundo</h1></div> -->
-    <!-- <div class="col-md-12 " align="center">
-      <img class="imgMariposa" src="../../assets/img/home/MariposaHome.png">
-    </div> -->
+    <div class="col-md-4">
+      <div *ngFor="let p of podcastPrincipal">
+        <p>{{ p.name_podcast }}</p>
+      </div>
+    </div>
+    <div class="col-md-4"></div>
+    <div class="col-md-4"></div>
   </div>
 
-
-  <div id="app-cover">
+  <!-- Reproductor abajo -->
+  <div id="app-cover" style="display: none;">
     <!-- <div id="bg-artwork"></div>
     <div id="bg-layer"></div> -->
     <div id="player">
@@ -32,32 +37,42 @@
       </div>
       <div id="player-content">
         <div id="album-art">
-          <img src="https://raw.githubusercontent.com/himalayasingh/music-player-1/master/img/_1.jpg" class="active"
-            id="_1">
+          <img src="../../assets/img/podcast/imgPrueba1.jpg" class="active" id="_1" />
+          <!-- <img src="https://raw.githubusercontent.com/himalayasingh/music-player-1/master/img/_1.jpg" class="active"
+            id="_1"> -->
           <img src="https://raw.githubusercontent.com/himalayasingh/music-player-1/master/img/_2.jpg" id="_2">
           <img src="https://raw.githubusercontent.com/himalayasingh/music-player-1/master/img/_3.jpg" id="_3">
           <img src="https://raw.githubusercontent.com/himalayasingh/music-player-1/master/img/_4.jpg" id="_4">
           <img src="https://raw.githubusercontent.com/himalayasingh/music-player-1/master/img/_5.jpg" id="_5">
           <div id="buffer-box">Buffering ...</div>
         </div>
-        <div id="player-controls">
-          <div class="control">
-            <div class="button" id="play-previous">
-              <i class="fa fa-backward"></i>
+        <div id="player-controls" align="center">
+          <div class="col-md-12 row">
+            <div class="col-md-3"></div>
+            <div class="col-md-2">
+              <div class="button" id="play-previous">
+                <i class="fa fa-backward"></i>
+              </div>
             </div>
-          </div>
-          <div class="control">
-            <div class="button" id="play-pause-button" (click)="playPause()">
-              <i class="fa fa-play"></i>
+            <div class="col-md-2">
+              <div class="button" id="play-pause-button" (click)="playPause()">
+                <i class="fa fa-play"></i>
+              </div>
             </div>
-          </div>
-          <div class="control">
-            <div class="button" id="play-next">
-              <i class="fa fa-forward"></i>
+            <div class="col-md-2">
+              <div class="button" id="play-next">
+                <i class="fa fa-forward"></i>
+              </div>
             </div>
+            <div class="col-md-3"></div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+  <a data-bs-toggle="modal" data-bs-target="#openReproductor">Hola</a>
+  
+
+  <ng-particles [id]="id" [options]="particlesOptions" [particlesInit]="particlesInit"
+    (particlesLoaded)="particlesLoaded($event)">
+  </ng-particles>

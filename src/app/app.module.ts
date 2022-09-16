@@ -13,6 +13,7 @@ import { NgParticlesModule } from 'ng-particles';
 import  { NgxSpinnerModule  } from 'ngx-spinner';
 import { ModalComponentComponent } from './components/modal-component/modal-component.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ReproductorComponentComponent } from './components/reproductor-component/reproductor-component.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
     ThreePagesComponent,
     VirtualStoreComponent,
     AdditionalContentsComponent,
-    ModalComponentComponent
+    ModalComponentComponent,
+    ReproductorComponentComponent
   ],
   imports: [
     BrowserModule,

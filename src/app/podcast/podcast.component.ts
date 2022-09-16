@@ -1,31 +1,39 @@
 import { Component, OnInit } from '@angular/core';
-import { MoveDirection, ClickMode, HoverMode, OutMode, Container, Engine } from "tsparticles-engine";
-import { loadFull } from "tsparticles";
-import { PodcastService } from '../services/podcast.service';
+import {
+  MoveDirection,
+  ClickMode,
+  HoverMode,
+  OutMode,
+  Container,
+  Engine,
+} from 'tsparticles-engine';
+import { loadFull } from 'tsparticles';
 declare var $;
+import { PodcastService } from '../services/podcast.service';
 
 @Component({
   selector: 'app-podcast',
   templateUrl: './podcast.component.html',
-  styleUrls: ['./podcast.component.scss']
+  styleUrls: ['./podcast.component.scss'],
 })
 export class PodcastComponent implements OnInit {
-  public id = "tsparticles";
-  playerTrack = $("#player-track");
-  bgArtwork = $("#bg-artwork");
+  podcastPrincipal : any;
+  public id = 'tsparticles';
+  playerTrack = $('#player-track');
+  bgArtwork = $('#bg-artwork');
   bgArtworkUrl;
-  albumName = $("#album-name");
-  trackName = $("#track-name");
-  albumArt = $("#album-art");
-  sArea = $("#s-area");
-  seekBar = $("#seek-bar");
-  trackTime = $("#track-time");
-  insTime = $("#ins-time");
-  sHover = $("#s-hover");
-  playPauseButton = $("#play-pause-button");
-  i = this.playPauseButton.find("i");
-  tProgress = $("#current-time");
-  tTime = $("#track-length");
+  albumName = $('#album-name');
+  trackName = $('#track-name');
+  albumArt = $('#album-art');
+  sArea = $('#s-area');
+  seekBar = $('#seek-bar');
+  trackTime = $('#track-time');
+  insTime = $('#ins-time');
+  sHover = $('#s-hover');
+  playPauseButton = $('#play-pause-button');
+  i = this.playPauseButton.find('i');
+  tProgress = $('#current-time');
+  tTime = $('#track-length');
   seekT;
   seekLoc;
   seekBarPos;
@@ -42,23 +50,32 @@ export class PodcastComponent implements OnInit {
   nTime = 0;
   buffInterval = null;
   tFlag = false;
-  albums = ["Dawn", "Me & You", "Electro Boy", "Home", "Proxy (Original Mix)"];
-  trackNames = ["Skylike - Dawn", "Alex Skrindo - Me & You", "Kaaze - Electro Boy", "Jordan Schor - Home", "Martin Garrix - Proxy"];
-  albumArtworks = ["_1", "_2", "_3", "_4", "_5"];
-  trackUrl = ["https://raw.githubusercontent.com/himalayasingh/music-player-1/master/music/2.mp3", "https://raw.githubusercontent.com/himalayasingh/music-player-1/master/music/1.mp3", "https://raw.githubusercontent.com/himalayasingh/music-player-1/master/music/3.mp3", "https://raw.githubusercontent.com/himalayasingh/music-player-1/master/music/4.mp3", "https://raw.githubusercontent.com/himalayasingh/music-player-1/master/music/5.mp3"];
-  playPreviousTrackButton = $("#play-previous");
-  playNextTrackButton = $("#play-next");
+  albums = ['Dawn', 'Me & You', 'Electro Boy', 'Home', 'Proxy (Original Mix)'];
+  trackNames = [
+    'Skylike - Dawn',
+    'Alex Skrindo - Me & You',
+    'Kaaze - Electro Boy',
+    'Jordan Schor - Home',
+    'Martin Garrix - Proxy',
+  ];
+  albumArtworks = ['_1', '_2', '_3', '_4', '_5'];
+  trackUrl = [
+    'https://raw.githubusercontent.com/himalayasingh/music-player-1/master/music/2.mp3',
+    'https://raw.githubusercontent.com/himalayasingh/music-player-1/master/music/1.mp3',
+    'https://raw.githubusercontent.com/himalayasingh/music-player-1/master/music/3.mp3',
+    'https://raw.githubusercontent.com/himalayasingh/music-player-1/master/music/4.mp3',
+    'https://raw.githubusercontent.com/himalayasingh/music-player-1/master/music/5.mp3',
+  ];
+  playPreviousTrackButton = $('#play-previous');
+  playNextTrackButton = $('#play-next');
   currIndex = -1;
 
   /* Starting from 1.19.0 you can use a remote url (AJAX request) to a JSON with the configuration */
-  public particlesUrl = "http://foo.bar/particles.json";
+  public particlesUrl = 'http://foo.bar/particles.json';
 
   constructor(private podcastService: PodcastService) {
-    this.podcastService.getAllPodcast().subscribe({
-      next: (resp) => { console.log(resp) }
-    })
+    this.getPodcastPrincipal();
   }
-
 
   /* or the classic JavaScript object */
   // particlesOptions = {
@@ -136,45 +153,45 @@ export class PodcastComponent implements OnInit {
   particlesOptions = {
     background: {
       color: {
-        value: "#000000"
+        value: '#000000',
       },
-      position: "50% 50%",
-      repeat: "no-repeat",
-      size: "cover"
+      position: '50% 50%',
+      repeat: 'no-repeat',
+      size: 'cover',
     },
     fullScreen: {
-      zIndex: 1
+      zIndex: 1,
     },
     detectRetina: false,
     interactivity: {
       events: {
         onClick: {
-          mode: "push"
+          mode: 'push',
         },
         onDiv: {
-          selectors: "#repulse-div",
-          mode: "repulse"
+          selectors: '#repulse-div',
+          mode: 'repulse',
         },
         onHover: {
           enable: true,
-          mode: "bubble"
-        }
+          mode: 'bubble',
+        },
       },
       modes: {
         slow: {
           factor: 1,
-          radius: 0
+          radius: 0,
         },
         attract: {
           distance: 200,
           duration: 0.4,
-          easing: "ease-out-quad",
+          easing: 'ease-out-quad',
           factor: 1,
           maxSpeed: 50,
-          speed: 1
+          speed: 1,
         },
         bounce: {
-          distance: 200
+          distance: 200,
         },
         bubble: {
           distance: 40,
@@ -186,31 +203,31 @@ export class PodcastComponent implements OnInit {
             distance: 200,
             duration: 0.4,
             mix: false,
-            selectors: []
-          }
+            selectors: [],
+          },
         },
         connect: {
           distance: 80,
           links: {
-            opacity: 0.5
+            opacity: 0.5,
           },
-          radius: 60
+          radius: 60,
         },
         grab: {
           distance: 400,
           links: {
             blink: false,
             consent: false,
-            opacity: 1
-          }
+            opacity: 1,
+          },
         },
         push: {
           default: true,
           groups: [],
-          quantity: 4
+          quantity: 4,
         },
         remove: {
-          quantity: 2
+          quantity: 2,
         },
         repulse: {
           distance: 200,
@@ -218,150 +235,150 @@ export class PodcastComponent implements OnInit {
           factor: 100,
           speed: 1,
           maxSpeed: 50,
-          easing: "ease-out-quad",
+          easing: 'ease-out-quad',
           divs: {
             distance: 200,
             duration: 0.4,
             factor: 100,
             speed: 1,
             maxSpeed: 50,
-            easing: "ease-out-quad",
-            selectors: []
-          }
+            easing: 'ease-out-quad',
+            selectors: [],
+          },
         },
         trail: {
           delay: 1,
           pauseOnStop: false,
-          quantity: 1
+          quantity: 1,
         },
         light: {
           area: {
             gradient: {
               start: {
-                value: "#ffffff"
+                value: '#ffffff',
               },
               stop: {
-                value: "#000000"
-              }
+                value: '#000000',
+              },
             },
-            radius: 1000
+            radius: 1000,
           },
           shadow: {
             color: {
-              value: "#000000"
+              value: '#000000',
             },
-            length: 2000
-          }
-        }
-      }
+            length: 2000,
+          },
+        },
+      },
     },
     particles: {
       color: {
-        value: "#ffffff"
+        value: '#ffffff',
       },
       move: {
         attract: {
           rotate: {
             x: 600,
-            y: 1200
-          }
+            y: 1200,
+          },
         },
         enable: true,
         outModes: {
-          default: OutMode.out
+          default: OutMode.out,
         },
-        speed: 1
+        speed: 1,
       },
       number: {
         density: {
-          area: 2000
+          area: 2000,
         },
-        value: 200
+        value: 200,
       },
       opacity: {
         value: {
           min: 0.05,
-          max: 0.4
+          max: 0.4,
         },
         animation: {
           enable: true,
-          minimumValue: 0.05
-        }
+          minimumValue: 0.05,
+        },
       },
       size: {
         random: true,
         value: 1,
         animation: {
           speed: 40,
-          minimumValue: 0.1
-        }
+          minimumValue: 0.1,
+        },
       },
       life: {
         count: 0,
         delay: {
           random: {
             enable: false,
-            minimumValue: 0
+            minimumValue: 0,
           },
           value: 0,
-          sync: false
+          sync: false,
         },
         duration: {
           random: {
             enable: false,
-            minimumValue: 0.0001
+            minimumValue: 0.0001,
           },
           value: 0,
-          sync: false
-        }
+          sync: false,
+        },
       },
       roll: {
         darken: {
           enable: false,
-          value: 0
+          value: 0,
         },
         enable: false,
         enlighten: {
           enable: false,
-          value: 0
+          value: 0,
         },
-        mode: "vertical",
-        speed: 25
+        mode: 'vertical',
+        speed: 25,
       },
       tilt: {
         random: {
           enable: false,
-          minimumValue: 0
+          minimumValue: 0,
         },
         value: 0,
         animation: {
           enable: false,
           speed: 0,
           decay: 0,
-          sync: false
+          sync: false,
         },
-        direction: "clockwise",
-        enable: false
+        direction: 'clockwise',
+        enable: false,
       },
       twinkle: {
         lines: {
           enable: false,
           frequency: 0.05,
-          opacity: 1
+          opacity: 1,
         },
         particles: {
           enable: false,
           frequency: 0.05,
-          opacity: 1
-        }
+          opacity: 1,
+        },
       },
       wobble: {
         distance: 5,
         enable: false,
         speed: {
           angle: 50,
-          move: 10
-        }
+          move: 10,
+        },
       },
       orbit: {
         animation: {
@@ -369,23 +386,23 @@ export class PodcastComponent implements OnInit {
           enable: false,
           speed: 1,
           decay: 0,
-          sync: false
+          sync: false,
         },
         enable: false,
         opacity: 1,
         rotation: {
           random: {
             enable: false,
-            minimumValue: 0
+            minimumValue: 0,
           },
-          value: 45
+          value: 45,
         },
-        width: 1
+        width: 1,
       },
       links: {
         blink: false,
         color: {
-          value: "#ffffff"
+          value: '#ffffff',
         },
         consent: false,
         distance: 30,
@@ -395,56 +412,56 @@ export class PodcastComponent implements OnInit {
         shadow: {
           blur: 5,
           color: {
-            value: "#000"
+            value: '#000',
           },
-          enable: false
+          enable: false,
         },
         triangles: {
           enable: false,
-          frequency: 1
+          frequency: 1,
         },
         width: 1,
-        warp: false
+        warp: false,
       },
       repulse: {
         random: {
           enable: false,
-          minimumValue: 0
+          minimumValue: 0,
         },
         value: 0,
         enabled: false,
         distance: 1,
         duration: 1,
         factor: 1,
-        speed: 1
-      }
+        speed: 1,
+      },
     },
     polygon: {
       draw: {
         enable: true,
         stroke: {
           color: {
-            value: "rgba(255,255,255,0.2)"
+            value: 'rgba(255,255,255,0.2)',
           },
           width: 1,
-          opacity: 0.2
-        }
+          opacity: 0.2,
+        },
       },
       enable: true,
-      inlineArrangement: "equidistant",
+      inlineArrangement: 'equidistant',
       // inline: {
       //   arrangement: "one-per-point"
       // },
       move: {
         radius: 10,
-        type: "path"
+        type: 'path',
       },
       scale: 0.5,
-      type: "inline",
+      type: 'inline',
       // url: "../assets/img/podcast/monarca.svg",
-      url: "https://particles.js.org/images/smalldeer.svg"
-    }
-  }
+      url: 'https://particles.js.org/images/smalldeer.svg',
+    },
+  };
 
   particlesLoaded(container: Container): void {
     console.log(container);
@@ -468,18 +485,18 @@ export class PodcastComponent implements OnInit {
     this.audio = new Audio();
     this.selectTrack(0);
     this.audio.loop = false;
-    this.playPauseButton.on("click", this.playPause);
+    this.playPauseButton.on('click', this.playPause);
     this.sArea.mousemove(function (event) {
       this.showHover(event);
     });
 
     this.sArea.mouseout(this.hideHover);
-    this.sArea.on("click", this.playFromClickedPos);
-    $(this.audio).on("timeupdate", this.updateCurrTime);
-    this.playPreviousTrackButton.on("click", function () {
+    this.sArea.on('click', this.playFromClickedPos);
+    $(this.audio).on('timeupdate', this.updateCurrTime);
+    this.playPreviousTrackButton.on('click', function () {
       this.selectTrack(-1);
     });
-    this.playNextTrackButton.on("click", function () {
+    this.playNextTrackButton.on('click', function () {
       this.selectTrack(1);
     });
   }
@@ -487,17 +504,18 @@ export class PodcastComponent implements OnInit {
   playPause() {
     // setTimeout(function () {
     if (this.audio.paused) {
-      this.playerTrack.addClass("active");
-      this.albumArt.addClass("active");
+      // debugger
+      $('#player-track').addClass('active');
+      $('#album-art').addClass('active');
       this.checkBuffering();
-      this.i.attr("class", "fas fa-pause");
+      this.i.attr('class', 'fas fa-pause');
       this.audio.play();
     } else {
-      this.playerTrack.removeClass("active");
-      this.albumArt.removeClass("active");
+      $('#player-track').removeClass('active');
+      $('#album-art').removeClass('active');
       clearInterval(this.buffInterval);
-      this.albumArt.removeClass("buffering");
-      this.i.attr("class", "fas fa-play");
+      $('#album-art').removeClass('buffering');
+      this.i.attr('class', 'fas fa-play');
       this.audio.pause();
     }
     // }, 300);
@@ -519,18 +537,22 @@ export class PodcastComponent implements OnInit {
 
     if (this.ctMinutes < 0 || this.ctSeconds < 0) return;
 
-    if (this.ctMinutes < 10) this.ctMinutes = "0" + this.ctMinutes;
-    if (this.ctSeconds < 10) this.ctSeconds = "0" + this.ctSeconds;
+    if (this.ctMinutes < 10) this.ctMinutes = '0' + this.ctMinutes;
+    if (this.ctSeconds < 10) this.ctSeconds = '0' + this.ctSeconds;
 
-    if (isNaN(this.ctMinutes) || isNaN(this.ctSeconds)) this.insTime.text("--:--");
-    else this.insTime.text(this.ctMinutes + ":" + this.ctSeconds);
+    if (isNaN(this.ctMinutes) || isNaN(this.ctSeconds))
+      this.insTime.text('--:--');
+    else this.insTime.text(this.ctMinutes + ':' + this.ctSeconds);
 
-    this.insTime.css({ left: this.seekT, "margin-left": "-21px" }).fadeIn(0);
+    this.insTime.css({ left: this.seekT, 'margin-left': '-21px' }).fadeIn(0);
   }
 
   hideHover() {
     this.sHover.width(0);
-    this.insTime.text("00:00").css({ left: "0px", "margin-left": "0px" }).fadeOut(0);
+    this.insTime
+      .text('00:00')
+      .css({ left: '0px', 'margin-left': '0px' })
+      .fadeOut(0);
   }
 
   playFromClickedPos() {
@@ -545,7 +567,7 @@ export class PodcastComponent implements OnInit {
 
     if (!this.tFlag) {
       this.tFlag = true;
-      this.trackTime.addClass("active");
+      this.trackTime.addClass('active');
     }
 
     this.curMinutes = Math.floor(this.audio.currentTime / 60);
@@ -556,17 +578,19 @@ export class PodcastComponent implements OnInit {
 
     this.playProgress = (this.audio.currentTime / this.audio.duration) * 100;
 
-    if (this.curMinutes < 10) this.curMinutes = "0" + this.curMinutes;
-    if (this.curSeconds < 10) this.curSeconds = "0" + this.curSeconds;
+    if (this.curMinutes < 10) this.curMinutes = '0' + this.curMinutes;
+    if (this.curSeconds < 10) this.curSeconds = '0' + this.curSeconds;
 
-    if (this.durMinutes < 10) this.durMinutes = "0" + this.durMinutes;
-    if (this.durSeconds < 10) this.durSeconds = "0" + this.durSeconds;
+    if (this.durMinutes < 10) this.durMinutes = '0' + this.durMinutes;
+    if (this.durSeconds < 10) this.durSeconds = '0' + this.durSeconds;
 
-    if (isNaN(this.curMinutes) || isNaN(this.curSeconds)) this.tProgress.text("00:00");
-    else this.tProgress.text(this.curMinutes + ":" + this.curSeconds);
+    if (isNaN(this.curMinutes) || isNaN(this.curSeconds))
+      this.tProgress.text('00:00');
+    else this.tProgress.text(this.curMinutes + ':' + this.curSeconds);
 
-    if (isNaN(this.durMinutes) || isNaN(this.durSeconds)) this.tTime.text("00:00");
-    else this.tTime.text(this.durMinutes + ":" + this.durSeconds);
+    if (isNaN(this.durMinutes) || isNaN(this.durSeconds))
+      this.tTime.text('00:00');
+    else this.tTime.text(this.durMinutes + ':' + this.durSeconds);
 
     if (
       isNaN(this.curMinutes) ||
@@ -574,16 +598,16 @@ export class PodcastComponent implements OnInit {
       isNaN(this.durMinutes) ||
       isNaN(this.durSeconds)
     )
-      this.trackTime.removeClass("active");
-    else this.trackTime.addClass("active");
+      this.trackTime.removeClass('active');
+    else this.trackTime.addClass('active');
 
-    this.seekBar.width(this.playProgress + "%");
+    this.seekBar.width(this.playProgress + '%');
 
     if (this.playProgress == 100) {
-      this.i.attr("class", "fa fa-play");
+      this.i.attr('class', 'fa fa-play');
       this.seekBar.width(0);
-      this.tProgress.text("00:00");
-      this.albumArt.removeClass("buffering").removeClass("active");
+      this.tProgress.text('00:00');
+      $('#album-art').removeClass('buffering').removeClass('active');
       clearInterval(this.buffInterval);
     }
   }
@@ -591,8 +615,9 @@ export class PodcastComponent implements OnInit {
   checkBuffering() {
     clearInterval(this.buffInterval);
     this.buffInterval = setInterval(function () {
-      if (this.nTime == 0 || this.bTime - this.nTime > 1000) this.albumArt.addClass("buffering");
-      else this.albumArt.removeClass("buffering");
+      if (this.nTime == 0 || this.bTime - this.nTime > 1000)
+        $('#album-art').addClass('buffering');
+      $('#album-art').removeClass('buffering');
 
       this.bTime = new Date();
       this.bTime = this.bTime.getTime();
@@ -604,16 +629,16 @@ export class PodcastComponent implements OnInit {
     else --this.currIndex;
 
     if (this.currIndex > -1 && this.currIndex < this.albumArtworks.length) {
-      if (flag == 0) this.i.attr("class", "fa fa-play");
+      if (flag == 0) this.i.attr('class', 'fa fa-play');
       else {
-        this.albumArt.removeClass("buffering");
-        this.i.attr("class", "fa fa-pause");
+        $('#album-art').removeClass('buffering');
+        this.i.attr('class', 'fa fa-pause');
       }
 
       this.seekBar.width(0);
-      this.trackTime.removeClass("active");
-      this.tProgress.text("00:00");
-      this.tTime.text("00:00");
+      this.trackTime.removeClass('active');
+      this.tProgress.text('00:00');
+      this.tTime.text('00:00');
 
       var currAlbum = this.albums[this.currIndex];
       var currTrackName = this.trackNames[this.currIndex];
@@ -627,8 +652,8 @@ export class PodcastComponent implements OnInit {
 
       if (flag != 0) {
         this.audio.play();
-        this.playerTrack.addClass("active");
-        this.albumArt.addClass("active");
+        this.playerTrack.addClass('active');
+        $('#album-art').addClass('active');
 
         clearInterval(this.buffInterval);
         this.checkBuffering();
@@ -636,15 +661,27 @@ export class PodcastComponent implements OnInit {
 
       this.albumName.text(currAlbum);
       this.trackName.text(currTrackName);
-      this.albumArt.find("img.active").removeClass("active");
-      $("#" + currArtwork).addClass("active");
+      $('#album-art').find('img.active').removeClass('active');
+      $('#' + currArtwork).addClass('active');
 
-      this.bgArtworkUrl = $("#" + currArtwork).attr("src");
+      this.bgArtworkUrl = $('#' + currArtwork).attr('src');
 
-      this.bgArtwork.css({ "background-image": "url(" + this.bgArtworkUrl + ")" });
+      this.bgArtwork.css({
+        'background-image': 'url(' + this.bgArtworkUrl + ')',
+      });
     } else {
       if (flag == 0 || flag == 1) --this.currIndex;
       else ++this.currIndex;
     }
   }
+
+  getPodcastPrincipal() {
+    this.podcastService.getAllPodcast().subscribe({
+      next: (resp) => { // Data de podcast
+        this.podcastPrincipal = resp;
+      },
+    });
+  }
+
+  
 }
