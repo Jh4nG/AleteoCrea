@@ -1,23 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Tooltip } from 'node_modules/bootstrap/dist/js/bootstrap.esm.min.js'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit,AfterContentInit {
   public flat_open_side:boolean = false;
   public flag=0;
   
-  constructor(private spinner: NgxSpinnerService) {}
   
+  constructor(private spinner: NgxSpinnerService,
+              private route : Router) {}
+  
+  ngAfterContentInit(){
+    this.route.events.subscribe((url:any) => {
+      if(url.url == '/home'){
+        this.spinner.show();
+        setTimeout(()=>{
+          this.spinner.hide();
+        },100);
+      }
+    });
+  }
+
   ngOnInit(): void {
-    this.spinner.show();
-    setTimeout(()=>{
-      this.spinner.hide();
-    },1000);
     Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
     .forEach(tooltipNode => new Tooltip(tooltipNode))
   }
