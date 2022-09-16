@@ -9,6 +9,8 @@ export class ModalComponentComponent implements OnInit, AfterContentInit {
 
   @Input() idTarget: string = '';
 
+  @Input() visibleM: boolean = true;
+  
   @ContentChildren(TemplateRef) contentTemplate: QueryList<ElementRef> | undefined;
 
   public header: any;
@@ -16,6 +18,7 @@ export class ModalComponentComponent implements OnInit, AfterContentInit {
   public content: any;
 
   public footer: any;
+
 
   constructor() { }
   

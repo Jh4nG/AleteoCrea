@@ -1,6 +1,10 @@
-<ng-particles [id]="id" [options]="particlesOptions" [particlesInit]="particlesInit"
-  (particlesLoaded)="particlesLoaded($event)">
-</ng-particles>
+<app-modal-component idTarget="openReproductor" [visibleM]="false">
+  <ng-template #title></ng-template>
+  <ng-template #header>
+    <app-reproductor-component></app-reproductor-component>
+  </ng-template>
+  <ng-template #footer></ng-template>
+</app-modal-component>
 
 <div class="col-12 position-front">
   <div class="col-md-12 row">
@@ -65,4 +69,14 @@
         </div>
       </div>
     </div>
+<<<<<<< HEAD
   </div>
+=======
+  </div>
+  <a data-bs-toggle="modal" data-bs-target="#openReproductor">Hola</a>
+  
+
+  <ng-particles [id]="id" [options]="particlesOptions" [particlesInit]="particlesInit"
+    (particlesLoaded)="particlesLoaded($event)">
+  </ng-particles>
+>>>>>>> origin/changeJeferson
