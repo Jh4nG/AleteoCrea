@@ -151,7 +151,7 @@ export class PodcastComponent implements OnInit {
 
   /** Mariposa en SVG */
   particlesOptions = {
-    fpsLimit: 60,
+    fpsLimit: 120,
     background: {
       color: {
         value: '#000000',
@@ -450,14 +450,14 @@ export class PodcastComponent implements OnInit {
       },
       enable: true,
       inlineArrangement: 'equidistant',
-      // inline: {
-      //   arrangement: "one-per-point"
-      // },
+      inline: {
+        arrangement: "one-per-point"
+      },
       move: {
         radius: 10,
         type: 'path',
       },
-      scale: 0.5,
+      scale: 0.7,
       type: 'inline',
       // url: "../assets/img/podcast/monarca.svg",
       url: 'https://particles.js.org/images/smalldeer.svg',
