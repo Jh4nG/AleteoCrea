@@ -457,9 +457,9 @@ export class PodcastComponent implements OnInit {
         radius: 10,
         type: 'path',
       },
-      scale: 0.5,
+      scale: 0.8,
       type: 'inline',
-      // url: "../assets/img/podcast/monarca.svg",
+      //url: "../assets/img/podcast/monarca.svg",
       url: 'https://particles.js.org/images/smalldeer.svg',
     },
   };

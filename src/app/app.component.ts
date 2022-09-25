@@ -1,39 +1,65 @@
-import { Component, OnInit, AfterContentInit } from '@angular/core';
+import { Component, OnInit, AfterContentInit, OnChanges, SimpleChanges } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Tooltip } from 'node_modules/bootstrap/dist/js/bootstrap.esm.min.js'
-import { Router } from '@angular/router';
+import { NavigationStart, Router } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit,AfterContentInit {
-  public flat_open_side:boolean = false;
-  public flag=0;
-  
-  
+export class AppComponent implements OnInit, AfterContentInit {
+  public flat_open_side: boolean = false;
+  public flag = 0;
+  public controlPage: string;
+
   constructor(private spinner: NgxSpinnerService,
-              private route : Router) {}
-  
-  ngAfterContentInit(){
-    this.route.events.subscribe((url:any) => {
-      if(url.url == '/home'){
+    public route: Router) {
+
+    route.events.subscribe({
+      next: res => {
+        if (res instanceof NavigationStart) {
+          if (res.url == '/tree-page') {
+            this.controlPage = res.url;
+          }
+
+          if (res.url !== '/tree-page' && this.controlPage !== '') {
+            if (this.controlPage == '/tree-page') {
+              setTimeout(() => {
+                window.location.reload();
+              }, 10);
+              this.controlPage = '';
+            }
+          }
+        }
+      },
+    });
+  }
+
+  // ngOnChanges(changes): void {
+  //   console.log(changes);
+
+  // }
+
+  ngAfterContentInit() {
+    this.route.events.subscribe((url: any) => {
+      if (url.url == '/home') {
         this.spinner.show();
-        setTimeout(()=>{
+        setTimeout(() => {
           this.spinner.hide();
-        },100);
+        }, 100);
       }
     });
   }
 
   ngOnInit(): void {
     Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-    .forEach(tooltipNode => new Tooltip(tooltipNode))
+      .forEach(tooltipNode => new Tooltip(tooltipNode))
   }
 
-  
-  shareFunction(){
+
+  shareFunction() {
     const left = 96;
     const position = 90;
     let one = document.querySelector('.one') as HTMLElement;
@@ -42,48 +68,48 @@ export class AppComponent implements OnInit,AfterContentInit {
     let four = document.querySelector('.four') as HTMLElement;
     if (this.flag == 0) {
       one.animate({
-        top: `${position-10}%`,
-        left: `${left+2}%`,
+        top: `${position - 10}%`,
+        left: `${left + 2}%`,
       }, 200);
       setTimeout(() => {
-        one.style.top = `${position-10}%`;
-        one.style.left = `${left+2}%`;
-      },210);
+        one.style.top = `${position - 10}%`;
+        one.style.left = `${left + 2}%`;
+      }, 210);
 
       setTimeout(() => {
         two.animate({
-          top: `${position-9}%`,
-          left: `${left-2}%`
+          top: `${position - 9}%`,
+          left: `${left - 2}%`
         }, 200);
         setTimeout(() => {
-          two.style.top = `${position-9}%`;
-          two.style.left = `${left-2}%`;
-        },210);
-      },200);
+          two.style.top = `${position - 9}%`;
+          two.style.left = `${left - 2}%`;
+        }, 210);
+      }, 200);
 
       setTimeout(() => {
         three.animate({
-          top: `${position-3}%`,
-          left: `${left-5}%`
+          top: `${position - 3}%`,
+          left: `${left - 5}%`
         }, 200);
         setTimeout(() => {
-          three.style.top = `${position-3}%`;
-          three.style.left = `${left-5}%`;
-        },210);
-      },300);
+          three.style.top = `${position - 3}%`;
+          three.style.left = `${left - 5}%`;
+        }, 210);
+      }, 300);
 
       setTimeout(() => {
         four.animate({
-          top: `${position+6}%`,
-          left: `${left-5}%`
+          top: `${position + 6}%`,
+          left: `${left - 5}%`
         }, 200);
         setTimeout(() => {
-          four.style.top = `${position+6}%`;
-          four.style.left = `${left-5}%`;
-        },210);
-      },400);
+          four.style.top = `${position + 6}%`;
+          four.style.left = `${left - 5}%`;
+        }, 210);
+      }, 400);
       this.flag = 1;
-    
+
     } else {
       one.animate({
         top: `${position}%`,
@@ -103,29 +129,29 @@ export class AppComponent implements OnInit,AfterContentInit {
       }, 200);
 
       setTimeout(() => {
-        one.style.top = `${position+1}%`;
+        one.style.top = `${position + 1}%`;
         one.style.left = `${left}%`;
-        two.style.top = `${position+1}%`;
+        two.style.top = `${position + 1}%`;
         two.style.left = `${left}%`;
-        three.style.top = `${position+1}%`;
+        three.style.top = `${position + 1}%`;
         three.style.left = `${left}%`;
-        four.style.top = `${position+1}%`;
+        four.style.top = `${position + 1}%`;
         four.style.left = `${left}%`;
-      },200);
+      }, 200);
       this.flag = 0;
     }
   }
 
   showSideBar(action: boolean) {
     let imgSound = document.getElementById('sonido-botton') as HTMLElement;
-    
-    if(action){
+
+    if (action) {
       imgSound.style.left = '3%';
       this.flat_open_side = true
-    }else{
+    } else {
       imgSound.style.left = '0%';
       this.flat_open_side = false
     }
   }
-  
+
 }
