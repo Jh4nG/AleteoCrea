@@ -26,7 +26,7 @@ const clipPlanes = [
 })
 export class ThreePagesComponent implements OnInit {
 
-  treeImg = '../../assets/img/Tree/guacari03_1.gltf';
+  treeImg = '../../assets/img/Tree/guacari_005.glb';
   constructor() { }
 
   ngOnInit(): void {
@@ -37,6 +37,7 @@ export class ThreePagesComponent implements OnInit {
     document.body.appendChild(renderer.domElement);
 
     scene = new THREE.Scene();
+    scene.background = new THREE.Color('rgb(2, 0, 36)');
 
     camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 200);
 
@@ -48,7 +49,7 @@ export class ThreePagesComponent implements OnInit {
     controls.maxDistance = 6; // Maximo que se puede alejar
     controls.enablePan = false;
 
-    const light = new THREE.HemisphereLight(0xffffff, 0x080808, 1.5);
+    const light = new THREE.HemisphereLight(0xffffff, 0xffffff, 1.5);
     light.position.set(- 1.25, 1, 1.25);
     scene.add(light);
 

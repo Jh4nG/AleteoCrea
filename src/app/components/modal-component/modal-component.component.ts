@@ -10,6 +10,10 @@ export class ModalComponentComponent implements OnInit, AfterContentInit {
   @Input() idTarget: string = '';
 
   @Input() visibleM: boolean = true;
+
+  @Input() tamanio : String = 'md';
+
+  @Input() bgModal : String;
   
   @ContentChildren(TemplateRef) contentTemplate: QueryList<ElementRef> | undefined;
 

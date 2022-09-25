@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit,AfterContentInit {
   public flat_open_side:boolean = false;
   public flag=0;
-  
+  public audioCont:boolean = true;  
   
   constructor(private spinner: NgxSpinnerService,
               private route : Router) {}
@@ -36,38 +36,48 @@ export class AppComponent implements OnInit,AfterContentInit {
   shareFunction(){
     const left = 96;
     const position = 90;
+    let home = document.querySelector('.home') as HTMLElement;
     let one = document.querySelector('.one') as HTMLElement;
     let two = document.querySelector('.two') as HTMLElement;
     let three = document.querySelector('.three') as HTMLElement;
     let four = document.querySelector('.four') as HTMLElement;
     if (this.flag == 0) {
+      home.animate({
+        top: `${position-9}%`,
+        left: `${left+2}%`,
+      }, 100);
+      setTimeout(() => {
+        home.style.top = `${position-9}%`;
+        home.style.left = `${left+2}%`;
+      },110);
+
       one.animate({
         top: `${position-10}%`,
-        left: `${left+2}%`,
+        left: `${left-1}%`,
       }, 200);
       setTimeout(() => {
         one.style.top = `${position-10}%`;
-        one.style.left = `${left+2}%`;
+        one.style.left = `${left-1}%`;
       },210);
 
       setTimeout(() => {
         two.animate({
-          top: `${position-9}%`,
-          left: `${left-2}%`
+          top: `${position-7}%`,
+          left: `${left-4}%`
         }, 200);
         setTimeout(() => {
-          two.style.top = `${position-9}%`;
-          two.style.left = `${left-2}%`;
+          two.style.top = `${position-7}%`;
+          two.style.left = `${left-4}%`;
         },210);
       },200);
 
       setTimeout(() => {
         three.animate({
-          top: `${position-3}%`,
+          top: `${position-0.5}%`,
           left: `${left-5}%`
         }, 200);
         setTimeout(() => {
-          three.style.top = `${position-3}%`;
+          three.style.top = `${position-0.5}%`;
           three.style.left = `${left-5}%`;
         },210);
       },300);
@@ -75,16 +85,20 @@ export class AppComponent implements OnInit,AfterContentInit {
       setTimeout(() => {
         four.animate({
           top: `${position+6}%`,
-          left: `${left-5}%`
+          left: `${left-4}%`
         }, 200);
         setTimeout(() => {
           four.style.top = `${position+6}%`;
-          four.style.left = `${left-5}%`;
+          four.style.left = `${left-4}%`;
         },210);
       },400);
       this.flag = 1;
     
     } else {
+      home.animate({
+        top: `${position}%`,
+        left: `${left}%`
+      }, 200);
       one.animate({
         top: `${position}%`,
         left: `${left}%`
@@ -103,6 +117,8 @@ export class AppComponent implements OnInit,AfterContentInit {
       }, 200);
 
       setTimeout(() => {
+        home.style.top = `${position+1}%`;
+        home.style.left = `${left}%`;
         one.style.top = `${position+1}%`;
         one.style.left = `${left}%`;
         two.style.top = `${position+1}%`;
@@ -120,7 +136,7 @@ export class AppComponent implements OnInit,AfterContentInit {
     let imgSound = document.getElementById('sonido-botton') as HTMLElement;
     
     if(action){
-      imgSound.style.left = '3%';
+      imgSound.style.left = '2.5%';
       this.flat_open_side = true
     }else{
       imgSound.style.left = '0%';
@@ -128,4 +144,21 @@ export class AppComponent implements OnInit,AfterContentInit {
     }
   }
   
+  starStopAudio(){
+    if(this.audioCont){
+      let soundBar = document.querySelectorAll('.bar');
+      soundBar.forEach((e)=>{
+        e.classList.remove('bar');
+        e.classList.add('barStop');
+      })
+      this.audioCont = false;
+    }else{
+      let soundBar = document.querySelectorAll('.barStop');
+      soundBar.forEach((e)=>{
+        e.classList.add('bar');
+        e.classList.remove('barStop');
+      })
+      this.audioCont = true;
+    }
+  }
 }
