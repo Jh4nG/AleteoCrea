@@ -13,6 +13,7 @@ export class AppComponent implements OnInit, AfterContentInit {
   public flat_open_side: boolean = false;
   public flag = 0;
   public controlPage: string;
+  public controlAudio: boolean = true;
 
   constructor(private spinner: NgxSpinnerService,
     public route: Router) {
@@ -168,5 +169,15 @@ export class AppComponent implements OnInit, AfterContentInit {
       imgSound.style.left = '0%';
       this.flat_open_side = false
     }
+  }
+
+  playPauseAudio(){
+    let a = document.getElementById('audioGeneralPage') as HTMLAudioElement;
+    if(this.controlAudio){
+      a.pause();
+    }else{
+      a.play();
+    }
+    this.controlAudio = !this.controlAudio;
   }
 }

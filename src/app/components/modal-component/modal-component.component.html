@@ -1,6 +1,6 @@
 <div class="modal fade" id="{{idTarget}}" data-bs-keyboard="true" tabindex="-1"
     attr.aria-labelledby="{{idTarget}}Label" aria-hidden="true">
-    <div class="cardModal modal-dialog modal-dialog-centered modal-{{tamanio}}">
+    <div class="{{ visibleCard ? 'cardModal': '' }} modal-dialog modal-dialog-centered modal-{{tamanio}}">
         <div class="modal-content {{bgModal}}" [ngClass]="[ !visibleM ? 'visible-modal': '' ]">
             <div class="modal-header" >
                 <ng-template [ngTemplateOutlet]="this.header" ></ng-template>

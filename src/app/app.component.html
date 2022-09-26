@@ -5,9 +5,10 @@
 </div>
 
 <div>
-  <button class="display-menu--fixed-top sonido-botton" id="sonido-botton">
+  <button class="display-menu--fixed-top sonido-botton" id="sonido-botton" (click)="playPauseAudio()">
     <span> <img src="../assets/img/sound-size.gif" class="img-sound"></span>
   </button>
+  <audio id="audioGeneralPage" src="../assets/audios/Entorno general de la sala.mp3" autoplay loop ></audio>
 </div>
 <div class="d-flex flex-column flex-shrink-0 p-3 text-white  "
   [ngClass]="[!this.flat_open_side? 'fix-nav' : ' fix-nav--close fix-nav', route.url == '/virtual-store' ? 'color-menu' : '']"
@@ -29,7 +30,7 @@
   <hr />
   <ul class="nav nav-pills flex-column mb-auto">
     <li class="nav-item">
-      <a data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="#" class="nav-link active" aria-current="page">
+      <a (click)="showSideBar(false)" data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="#" class="nav-link active" aria-current="page">
         <svg class="bi me-2" width="16" height="16">
           <use xlink:href="#home" />
         </svg>
@@ -37,7 +38,7 @@
       </a>
     </li>
     <li>
-      <a href="#" class="nav-link text-white">
+      <a (click)="showSideBar(false)" href="#" class="nav-link text-white">
         <svg class="bi me-2" width="16" height="16">
           <use xlink:href="#speedometer2" />
         </svg>
@@ -45,7 +46,7 @@
       </a>
     </li>
     <li>
-      <a href="#" class="nav-link text-white">
+      <a (click)="showSideBar(false)" href="#" class="nav-link text-white">
         <svg class="bi me-2" width="16" height="16">
           <use xlink:href="#table" />
         </svg>
@@ -84,7 +85,7 @@
 <!-- Flotante BIA END -->
 
 <!-- Flotante Redes -->
-<div class="share" (click)="shareFunction()">
+<div class="share" id="share" (click)="shareFunction()">
   <img src="../assets/img/btnFlotanteM.png">
   <!-- <img src="../assets/img/btnFlotanteA.png"> -->
 </div>

@@ -19,10 +19,26 @@
     }
 }
 
+.bgTransparentModal{
+    background-color: transparent;
+
+    .modal-header{
+        .closeBg{
+            background-color: transparent;
+            color: transparent;
+        }
+    }
+    .modal-dialog{
+        .bgNoBorder{
+            height: 100%;
+            width: 100%;
+        }
+    }
+}
+
 .bgDarkModal{
     background-color: black;
     color: white;
-
 }
 
 .ModalBlue{

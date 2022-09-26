@@ -26,7 +26,7 @@ const clipPlanes = [
 })
 export class ThreePagesComponent implements OnInit {
 
-  treeImg = '../../assets/img/Tree/guacari_005.glb';
+  treeImg = '../../assets/img/Tree/guacari03_1.gltf';
   constructor() { }
 
   ngOnInit(): void {
@@ -37,7 +37,7 @@ export class ThreePagesComponent implements OnInit {
     document.body.appendChild(renderer.domElement);
 
     scene = new THREE.Scene();
-    scene.background = new THREE.Color('rgb(2, 0, 36)');
+    // scene.background = new THREE.Color('rgb(256, 256, 256)');
 
     camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 200);
 

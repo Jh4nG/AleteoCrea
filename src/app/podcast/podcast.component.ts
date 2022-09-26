@@ -460,8 +460,8 @@ export class PodcastComponent implements OnInit {
       scale: 0.7,
       type: 'inline',
       // url: "../assets/img/podcast/monarca.svg",
-      // url: 'https://particles.js.org/images/smalldeer.svg',
-      url: '../assets/img/podcast/smalldeer.svg',
+      url: 'https://particles.js.org/images/smalldeer.svg',
+      // url: '../assets/img/podcast/smalldeer.svg',
       // position: '50% 50%',
     },
   };
