@@ -41,6 +41,10 @@ testem.log
 .DS_Store
 Thumbs.db
 
-
 # BD
 *.sql
+
+# Comrpimidos
+*.7z
+*.rar
+*.zip
