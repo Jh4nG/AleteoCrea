@@ -47,9 +47,10 @@ export class AppComponent implements OnInit, AfterContentInit {
     this.route.events.subscribe((url: any) => {
       if (url.url == '/home') {
         this.spinner.show();
+        let time = (window.location.hostname == 'localhost') ? 100 : 8500;
         setTimeout(() => {
           this.spinner.hide();
-        }, 100);
+        }, time);
       }
     });
   }
