@@ -1,39 +1,65 @@
-import { Component, OnInit, AfterContentInit } from '@angular/core';
+import { Component, OnInit, AfterContentInit, OnChanges, SimpleChanges } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Tooltip } from 'node_modules/bootstrap/dist/js/bootstrap.esm.min.js'
-import { Router } from '@angular/router';
+import { NavigationStart, Router } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit,AfterContentInit {
-  public flat_open_side:boolean = false;
-  public flag=0;
-  public audioCont:boolean = true;  
-  
+export class AppComponent implements OnInit, AfterContentInit {
+  public flat_open_side: boolean = false;
+  public flag = 0;
+  public controlPage: string;
+
   constructor(private spinner: NgxSpinnerService,
-              private route : Router) {}
-  
-  ngAfterContentInit(){
-    this.route.events.subscribe((url:any) => {
-      if(url.url == '/home'){
+    public route: Router) {
+
+    route.events.subscribe({
+      next: res => {
+        if (res instanceof NavigationStart) {
+          if (res.url == '/tree-page') {
+            this.controlPage = res.url;
+          }
+
+          if (res.url !== '/tree-page' && this.controlPage !== '') {
+            if (this.controlPage == '/tree-page') {
+              setTimeout(() => {
+                window.location.reload();
+              }, 10);
+              this.controlPage = '';
+            }
+          }
+        }
+      },
+    });
+  }
+
+  // ngOnChanges(changes): void {
+  //   console.log(changes);
+
+  // }
+
+  ngAfterContentInit() {
+    this.route.events.subscribe((url: any) => {
+      if (url.url == '/home') {
         this.spinner.show();
-        setTimeout(()=>{
+        setTimeout(() => {
           this.spinner.hide();
-        },100);
+        }, 100);
       }
     });
   }
 
   ngOnInit(): void {
     Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-    .forEach(tooltipNode => new Tooltip(tooltipNode))
+      .forEach(tooltipNode => new Tooltip(tooltipNode))
   }
 
-  
-  shareFunction(){
+
+  shareFunction() {
     const left = 96;
     const position = 90;
     let home = document.querySelector('.home') as HTMLElement;
@@ -93,7 +119,7 @@ export class AppComponent implements OnInit,AfterContentInit {
         },210);
       },400);
       this.flag = 1;
-    
+
     } else {
       home.animate({
         top: `${position}%`,
@@ -121,13 +147,13 @@ export class AppComponent implements OnInit,AfterContentInit {
         home.style.left = `${left}%`;
         one.style.top = `${position+1}%`;
         one.style.left = `${left}%`;
-        two.style.top = `${position+1}%`;
+        two.style.top = `${position + 1}%`;
         two.style.left = `${left}%`;
-        three.style.top = `${position+1}%`;
+        three.style.top = `${position + 1}%`;
         three.style.left = `${left}%`;
-        four.style.top = `${position+1}%`;
+        four.style.top = `${position + 1}%`;
         four.style.left = `${left}%`;
-      },200);
+      }, 200);
       this.flag = 0;
     }
   }
@@ -138,27 +164,9 @@ export class AppComponent implements OnInit,AfterContentInit {
     if(action){
       imgSound.style.left = '2.5%';
       this.flat_open_side = true
-    }else{
+    } else {
       imgSound.style.left = '0%';
       this.flat_open_side = false
-    }
-  }
-  
-  starStopAudio(){
-    if(this.audioCont){
-      let soundBar = document.querySelectorAll('.bar');
-      soundBar.forEach((e)=>{
-        e.classList.remove('bar');
-        e.classList.add('barStop');
-      })
-      this.audioCont = false;
-    }else{
-      let soundBar = document.querySelectorAll('.barStop');
-      soundBar.forEach((e)=>{
-        e.classList.add('bar');
-        e.classList.remove('barStop');
-      })
-      this.audioCont = true;
     }
   }
 }
