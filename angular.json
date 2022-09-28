@@ -39,6 +39,8 @@
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/jquery.ripples/dist/jquery.ripples-min.js",
+              "node_modules/requestanimationframe/app/requestAnimationFrame.js",
+              "node_modules/stats.js/build/stats.min.js",
               "node_modules/tilt.js/dest/tilt.jquery.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
               "node_modules/photo-sphere-viewer/dist/photo-sphere-viewer.js"

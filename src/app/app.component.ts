@@ -2,7 +2,6 @@ import { Component, OnInit, AfterContentInit, OnChanges, SimpleChanges } from '@
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Tooltip } from 'node_modules/bootstrap/dist/js/bootstrap.esm.min.js'
 import { NavigationStart, Router } from '@angular/router';
-import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -44,6 +43,10 @@ export class AppComponent implements OnInit, AfterContentInit {
   // }
 
   ngAfterContentInit() {
+    setTimeout(()=>{
+      let a = document.getElementById('audioGeneralPage') as HTMLAudioElement;
+      a.play();
+    },1000);
     this.route.events.subscribe((url: any) => {
       if (url.url == '/home') {
         this.spinner.show();

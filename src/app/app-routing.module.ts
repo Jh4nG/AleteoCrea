@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdditionalContentsComponent } from './additional-contents/additional-contents.component';
 import { AleteoHomeComponent } from './aleteo-home/aleteo-home.component';
+import { FutureVoicesComponent } from './future-voices/future-voices.component';
 import { PodcastComponent } from './podcast/podcast.component';
 import { ThreePagesComponent } from './three-pages/three-pages.component';
 import { VirtualStoreComponent } from './virtual-store/virtual-store.component';
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'contents',
     component: AdditionalContentsComponent
+  },
+  {
+    path: 'future-voices',
+    component : FutureVoicesComponent
   }
 ];
 @NgModule({

@@ -14,6 +14,7 @@ import  { NgxSpinnerModule  } from 'ngx-spinner';
 import { ModalComponentComponent } from './components/modal-component/modal-component.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReproductorComponentComponent } from './components/reproductor-component/reproductor-component.component';
+import { FutureVoicesComponent } from './future-voices/future-voices.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ReproductorComponentComponent } from './components/reproductor-componen
     VirtualStoreComponent,
     AdditionalContentsComponent,
     ModalComponentComponent,
-    ReproductorComponentComponent
+    ReproductorComponentComponent,
+    FutureVoicesComponent
   ],
   imports: [
     BrowserModule,
