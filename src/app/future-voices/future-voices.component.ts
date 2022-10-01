@@ -8,15 +8,8 @@ import * as  Stats from "node_modules/stats.js"
 })
 export class FutureVoicesComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
-    this.init();
-    this.step();
-  }
-
-  ROWS = 100;
-  COLS = 300;
+  ROWS = 170;
+  COLS = 440;
   NUM_PARTICLES = ( ( this.ROWS ) * ( this.COLS ) );
   THICKNESS = Math.pow( 80, 2 );
   SPACING = 3;
@@ -24,55 +17,49 @@ export class FutureVoicesComponent implements OnInit {
   COLOR = 220;
   DRAG = 0.95;
   EASE = 0.25;
-    
-    /*
-    
-    used for sine approximation, but Math.sin in Chrome is still fast enough :)http://jsperf.com/math-sin-vs-sine-approximation
+  container;
+  canvas;
+  mouse;
+  stats;
+  list = [];
+  ctx;
+  tog = true;
+  man = false;
+  dx; dy;
+  mx; my;
+  d; t; f;
+  a; b;
+  i; n;
+  w;
+  h;
+  p; s;
+  r; c;
 
-    B = 4 / Math.PI,
-    C = -4 / Math.pow( Math.PI, 2 ),
-    P = 0.225,
+  particle = {
+    vx: 0,
+    vy: 0,
+    x: 0,
+    y: 0
+  };
 
-    */
 
-    container;
-    canvas;
-    mouse;
-    stats;
-    list;
-    ctx;
-    tog;
-    man;
-    dx; dy;
-    mx; my;
-    d; t; f;
-    a; b;
-    i; n;
-    w; h;
-    p; s;
-    r; c;
+  constructor() { }
 
-    particle = {
-      vx: 0,
-      vy: 0,
-      x: 0,
-      y: 0
-    };
-
-  init() {
+  ngOnInit(): void {
+    this.init();
+    setInterval(()=>{
+      this.step();
+    });
+  }
   
+  init() {  
     this.container = document.getElementById('container');
     this.canvas = document.createElement('canvas');
-  
     this.ctx = this.canvas.getContext('2d');
-    this.man = false;
-    this.tog = true;
-  
-    this.list = [];
-  
-    this.w = this.canvas.width = this.COLS * this.SPACING + this.MARGIN * 2;
+    
+    this.w = this.canvas.width = this.COLS * this.SPACING + this.MARGIN * 2; 
     this.h = this.canvas.height = this.ROWS * this.SPACING + this.MARGIN * 2;
-  
+
     this.container.style.marginLeft = Math.round(this.w * -0.5) + 'px';
     this.container.style.marginTop = Math.round(this.h * -0.5) + 'px';
   
@@ -84,26 +71,17 @@ export class FutureVoicesComponent implements OnInit {
   
       this.list[i] = this.p;
     }
-  
-    this.container.addEventListener('mousemove', function (e) {
-  
-      this.bounds = this.container.getBoundingClientRect();
-      this.mx = e.clientX - this.bounds.left;
-      this.my = e.clientY - this.bounds.top;
-      this.man = true;
-  
-    });
     if (typeof Stats === 'function') {
-      document.body.appendChild((this.stats = new Stats()).domElement);
+      // document.body.appendChild((this.stats = new Stats()).domElement);
     }
   
     this.container.appendChild(this.canvas);
   }
   
   step() {
-    
-    if (this.stats) this.stats.begin();
-  
+
+    // if (this.stats) this.stats.begin();
+
     if (this.tog = !this.tog) {
   
       if (!this.man) {
@@ -143,10 +121,13 @@ export class FutureVoicesComponent implements OnInit {
   
       this.ctx.putImageData(this.a, 0, 0);
     }
-  
-    if (this.stats) this.stats.end();
-  
-    requestAnimationFrame(this.step);
+  }
+
+  eventoParticulas(e){
+    let bounds = this.container.getBoundingClientRect();
+    this.mx = e.clientX - bounds.left;
+    this.my = e.clientY - bounds.top;
+    this.man = true;
   }
 
 }

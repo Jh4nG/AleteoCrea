@@ -30,14 +30,16 @@ export class ThreePagesComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    renderer = new THREE.WebGLRenderer({ antialias: true });
+    const canvas = document.querySelector('#c');
+    renderer = new THREE.WebGLRenderer({ canvas,antialias: true });
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.localClippingEnabled = true;
     document.body.appendChild(renderer.domElement);
 
     scene = new THREE.Scene();
-    // scene.background = new THREE.Color('rgb(256, 256, 256)');
+    
+    // scene.background_image = new THREE.Color('url(../../assets/img/FondoAzul.png)');
 
     camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 200);
 
@@ -101,42 +103,42 @@ export class ThreePagesComponent implements OnInit {
 
     // gui
 
-    const gui = new GUI();
+    // const gui = new GUI();
 
-    gui.add(params, 'clipIntersection').name('clip intersection').onChange(function (value) {
+    // gui.add(params, 'clipIntersection').name('clip intersection').onChange(function (value) {
 
-      const children = group.children;
+    //   const children = group.children;
 
-      for (let i = 0; i < children.length; i++) {
+    //   for (let i = 0; i < children.length; i++) {
 
-        //children[ i ].material.clipIntersection = value;
-        children[i].customDepthMaterial.clipIntersection = value;
+    //     //children[ i ].material.clipIntersection = value;
+    //     children[i].customDepthMaterial.clipIntersection = value;
 
-      }
+    //   }
 
-      this.render();
+    //   this.render();
 
-    });
+    // });
 
-    gui.add(params, 'planeConstant', - 1, 1).step(0.01).name('plane constant').onChange(function (value) {
+    // gui.add(params, 'planeConstant', - 1, 1).step(0.01).name('plane constant').onChange(function (value) {
 
-      for (let j = 0; j < clipPlanes.length; j++) {
+    //   for (let j = 0; j < clipPlanes.length; j++) {
 
-        clipPlanes[j].constant = value;
+    //     clipPlanes[j].constant = value;
 
-      }
+    //   }
 
-      this.srender();
+    //   this.srender();
 
-    });
+    // });
 
-    gui.add(params, 'showHelpers').name('show helpers').onChange(function (value) {
+    // gui.add(params, 'showHelpers').name('show helpers').onChange(function (value) {
 
-      helpers.visible = value;
+    //   helpers.visible = value;
 
-      this.render();
+    //   this.render();
 
-    });
+    // });
 
     //
 
