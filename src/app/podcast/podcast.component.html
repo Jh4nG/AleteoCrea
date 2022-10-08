@@ -1,7 +1,11 @@
 <app-modal-component idTarget="openReproductor" [visibleM]="false" bgModal="bgTransparentModal bgNoBorder" [visibleCard]="false">
   <ng-template #title></ng-template>
   <ng-template #header>
-    <app-reproductor-component></app-reproductor-component>
+    <div class="row">
+      <div class="col-12">
+        <app-reproductor-component></app-reproductor-component>
+      </div>
+    </div>
   </ng-template>
   <ng-template #footer></ng-template>
 </app-modal-component>

@@ -7,8 +7,9 @@
 <div>
   <!-- <button class="display-menu--fixed-top sonido-botton" id="sonido-botton" (click)="playPauseAudio()">
     <span> <img src="../assets/img/sound-size.gif" class="img-sound"></span>
-  </button> -->
-  <audio id="audioGeneralPage" src="../assets/audios/Entorno general de la sala.mp3" autoplay loop ></audio>
+  </button>
+  <!-- <audio #audioGeneralPage id="audioGeneralPage" src="../assets/audios/Entorno general de la sala.mp3" ></audio> -->
+  <audio #audioGeneralPage  src="../assets/audios/Entorno general de la sala.mp3" ></audio>
 </div>
 <div class="d-flex flex-column flex-shrink-0 p-3 text-white  "
   [ngClass]="[!this.flat_open_side? 'fix-nav' : ' fix-nav--close fix-nav', route.url == '/virtual-store' ? 'color-menu' : '']"
