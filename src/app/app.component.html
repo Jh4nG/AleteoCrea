@@ -5,9 +5,9 @@
 </div>
 
 <div>
-  <button class="display-menu--fixed-top sonido-botton" id="sonido-botton" (click)="playPauseAudio()">
+  <!-- <button class="display-menu--fixed-top sonido-botton" id="sonido-botton" (click)="playPauseAudio()">
     <span> <img src="../assets/img/sound-size.gif" class="img-sound"></span>
-  </button>
+  </button> -->
   <audio id="audioGeneralPage" src="../assets/audios/Entorno general de la sala.mp3" autoplay loop ></audio>
 </div>
 <div class="d-flex flex-column flex-shrink-0 p-3 text-white  "
@@ -85,24 +85,29 @@
 <!-- Flotante BIA END -->
 
 <!-- Flotante Redes -->
-<div class="share" id="share" (click)="shareFunction()">
+<div class="share" id="share" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Inicio" [routerLink]="['/home']"> <!-- (click)="shareFunction()" --> 
   <img src="../assets/img/btnFlotanteM.png">
   <!-- <img src="../assets/img/btnFlotanteA.png"> -->
 </div>
-<div class="home" data-bs-toggle="tooltip" data-bs-placement="top" title="Home" [routerLink]="['/home']">
+<!-- <div class="home" data-bs-toggle="tooltip" data-bs-placement="top" title="Home" [routerLink]="['/home']">
   <i class="fa fa-home"></i>
+</div> -->
+
+<div class="audioIcon" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Reproducir/Pausar Audio" (click)="playPauseAudio()">
+  <img src="../assets/img/sound-size.gif">
 </div>
-<div class="one" data-bs-toggle="tooltip" data-bs-placement="top" title="Podcast" [routerLink]="['/podcast']">
+
+<div class="one" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Podcast" [routerLink]="['/podcast']">
   <i class="fa fa-microphone"></i>
 </div>
-<div class="two" data-bs-toggle="tooltip" data-bs-placement="top" title="Tienda Virtual"
+<div class="two" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tienda Virtual"
   [routerLink]="['/virtual-store']">
   <i class="fa fa-shopping-cart"></i>
 </div>
-<div class="three" data-bs-toggle="tooltip" data-bs-placement="top" title="Árbol" [routerLink]="['/tree-page']">
+<div class="three" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Árbol" [routerLink]="['/tree-page']">
   <i class="fa fa-tree"></i>
 </div>
-<a class="four" data-bs-toggle="tooltip" data-bs-placement="top" title="Más Contenidos" [routerLink]="['/contents']">
+<a class="four" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Más Contenidos" [routerLink]="['/contents']">
   <i class="fa fa-photo"></i>
 </a>
 <!-- Flotante Redes END -->
@@ -117,7 +122,7 @@
 <!-- Spinner END -->
 
 <!-- Boton Flotante Voces del futuro -->
-<div class="btnVocesF" data-bs-toggle="tooltip" data-bs-placement="top" title="Voces del Futuro" [routerLink]="['/future-voices']">
+<div class="btnVocesF" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Voces del Futuro" [routerLink]="['/future-voices']">
   <img src="../assets/img/audio-spectrum-gif.gif">
   <!-- <img src="../assets/img/btnFlotanteA.png"> -->
 </div>

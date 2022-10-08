@@ -1,1 +1,28 @@
-<div id="viewer" style="width: 100vw; height: 100vh;"></div>
+<div id="viewer" style="background-color: black; width: 100vw; height: 100vh;"></div>
+
+<app-modal-component idTarget="modalVirtualStore" tamanio="xl" bgModal="bgDarkModal ModalVirtual bgNoBorder hideClose">
+    <ng-template #header>
+        <div>Bienvenido a la tienda virtual</div>
+    </ng-template>
+    <ng-template #content>
+        <div>
+            <form>
+                <div class="form-group">
+                    <label>¿Que edad tiene?</label>
+                    <br><br>
+                    <button type="button">Menos de 18</button>
+                    <button type="button">Enrte 18 y 30</button>
+                    <button type="button">Más de 30</button>
+                </div>
+                <br><br><br>
+                <div>
+                    <button type="button" (click)="ngSubmitForm()"> Atras </button>
+                </div>
+            </form>
+        </div>
+    </ng-template>
+    <ng-template #footer>
+    </ng-template>
+</app-modal-component>
+
+<a id="btnModalPrincipal" data-bs-toggle="modal" data-bs-target="#modalVirtualStore" href="#" aria-current="page" style="display: none;"></a>

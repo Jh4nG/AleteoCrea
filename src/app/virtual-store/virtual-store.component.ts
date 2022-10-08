@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Viewer } from 'photo-sphere-viewer'
 import { MarkersPlugin } from 'photo-sphere-viewer/dist/plugins/markers';
+declare var $;
 
 @Component({
   selector: 'app-virtual-store',
@@ -13,12 +14,21 @@ export class VirtualStoreComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    setTimeout(()=>{
+      let btn = document.getElementById('btnModalPrincipal');
+      btn.click();
+    },500)
+  }
+  
+  constructViwer(){
     this.viewer = new Viewer({
       container: document.querySelector('#viewer') as HTMLCanvasElement,
-      panorama: 'https://photo-sphere-viewer-data.netlify.app/assets/sphere.jpg',
-      loadingImg: 'https://photo-sphere-viewer.js.org/assets/photosphere-logo.gif',
+      panorama: '../assets/img/store/tienda2.jpg',
+      // panorama: 'https://photo-sphere-viewer-data.netlify.app/assets/sphere.jpg',
+      loadingImg: '../assets/img/mariposa.gif',
       plugins: [
-        [MarkersPlugin, {
+        [MarkersPlugin, 
+          {
           markers: [{
             id: 'custom-tooltip',
             tooltip: {
@@ -68,5 +78,11 @@ export class VirtualStoreComponent implements OnInit {
         }]
       ]
     });
+  }
+  
+  ngSubmitForm(){
+    $('#modalVirtualStore').modal('hide');
+    $('.modal-backdrop.fade.show').remove();
+    this.constructViwer();
   }
 }
