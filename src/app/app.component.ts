@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterContentInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, AfterContentInit, OnChanges, SimpleChanges, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Tooltip } from 'node_modules/bootstrap/dist/js/bootstrap.esm.min.js'
 import { NavigationStart, Router } from '@angular/router';
@@ -8,11 +8,14 @@ import { NavigationStart, Router } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit, AfterContentInit {
+export class AppComponent implements OnInit, AfterContentInit, AfterViewInit {
+
   public flat_open_side: boolean = false;
   public flag = 0;
   public controlPage: string;
   public controlAudio: boolean = true;
+
+  @ViewChild('audioGeneralPage') audio!: ElementRef<HTMLAudioElement>;
 
   constructor(private spinner: NgxSpinnerService,
     public route: Router) {
@@ -37,16 +40,27 @@ export class AppComponent implements OnInit, AfterContentInit {
     });
   }
 
+  ngAfterViewInit(): void {
+    try {
+      setTimeout(()=>{
+        let a = document.getElementById('audioGeneralPage') as HTMLAudioElement;
+        this.audio.nativeElement.play();
+        //a.play();
+      },500);
+      
+    } catch (error) {
+      console.log(error);
+      
+    }
+    
+  }
+
   // ngOnChanges(changes): void {
   //   console.log(changes);
 
   // }
 
   ngAfterContentInit() {
-    setTimeout(()=>{
-      let a = document.getElementById('audioGeneralPage') as HTMLAudioElement;
-      a.play();
-    },1000);
     this.route.events.subscribe((url: any) => {
       if (url.url == '/home') {
         this.spinner.show();
@@ -178,9 +192,11 @@ export class AppComponent implements OnInit, AfterContentInit {
   playPauseAudio(){
     let a = document.getElementById('audioGeneralPage') as HTMLAudioElement;
     if(this.controlAudio){
-      a.pause();
+      this.audio.nativeElement.pause();
+      //a.pause();
     }else{
-      a.play();
+      this.audio.nativeElement.play();
+      //a.play();
     }
     this.controlAudio = !this.controlAudio;
   }
