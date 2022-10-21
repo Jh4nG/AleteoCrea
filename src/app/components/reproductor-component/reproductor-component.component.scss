@@ -1,64 +1,7 @@
-// .box {
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     filter: blur(5px) contrast(10);
-//     mix-blend-mode: screen;
-
-//   .visualizer {
-//     position: relative;
-//     width: 300px;
-//     height: 300px;
-//     border-radius: 50%;
-//     background: #fff;
-//     transition: .5s;
-//     transform: rotateZ(180deg);
-
-//     span {
-//       position: inherit;
-//       top: 50%;
-//       transform: translate(-50%, -50%);
-//       display: inline-block;
-//       width: 50px;
-//       height: 50px;
-//       border-radius: 10px;
-//       border-top: 40px solid #fff;
-//       border-right: 40px solid transparent;
-//       border-left: 40px solid transparent;
-//       transform-origin: top left;
-//       transition: 0.25s;
-//     }
-//   }
-// }
-// .play {
-//   position: absolute;
-//   top: 50%;
-//   left: 50%;
-//   transform: translate(-50%, -50%);
-//   width: 250px;
-//   height: 250px;
-//   background: #2a2a2a;
-//   border-radius: 50%;
-//   z-index: 10;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   .btn-play {
-//     margin-left: 25px;
-//     border-left: 80px solid #5f5;
-//     border-bottom: 55px solid transparent;
-//     border-top: 50px solid transparent;
-//     cursor: pointer;
-//   }
-//   .btn-pause {
-//     border-right: 20px solid #5f5;
-//     border-left: 20px solid #5f5;
-//     height: 100px;
-//     width: 75px;
-//     cursor: pointer;
-//   }
-// }
-
+.content-audio {
+  -ms-transform: skewY(-7deg);
+  transform: skewY(-7deg);
+}
 
 .box {
   width: 100%;
@@ -76,7 +19,7 @@
   height: 300px;
   border-radius: 50%;
   background: #fff;
-  transition: .5s;
+  transition: 0.5s;
   transform: rotateZ(180deg);
 }
 .play {
@@ -86,10 +29,11 @@
   transform: translate(-50%, -50%);
   width: 250px;
   height: 250px;
-  background-image: url('../../../assets/img/foo.jpg');
+  background-image: url('../../../assets/img/foo.jpg') ;
   background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
-  //background: #2a2a2a;
+  // background: #2a2a2a;
   border-radius: 50%;
   z-index: 10;
   display: flex;
@@ -122,5 +66,103 @@
   border-right: 20px solid transparent;
   border-left: 20px solid transparent;
   transform-origin: top left;
-  transition: .25s;
+  transition: 0.25s;
 }
+
+.accordion-header button {
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+}
+
+.content-button {
+  margin-bottom: 10px;
+  border-bottom: solid 1px rgb(56, 54, 54); 
+}
+
+
+.card-body {
+  color: white;
+  background-color: transparent;
+}
+
+
+.content-List {
+  -ms-transform: skewY(3deg);
+  transform: skewY(3deg);
+  box-shadow: rgba(50, 50, 93, 0.45) 0px 13px 27px -5px, rgba(0, 0, 0, 0.5) 0px 8px 16px -8px;
+  border-radius: 10px;
+}
+
+.list-music {
+  padding: 30px;
+}
+
+
+.anim-text-flow {
+  font-family: 'Silkscreen';
+  font-size: 23px;
+  text-align: center;
+}
+
+.anim-text-flow,
+.anim-text-flow-hover:hover {
+  /*
+   * Animation variables
+   */
+  $animationSteps: 20;
+  $animationDuration: 50;
+  $animationElement: span;
+  $animationElementsCount: 100;
+  $delayBetweenLetters: 0.2;
+
+  /*
+   * Elements settings
+   */
+  #{$animationElement} {
+    animation-name: anim-text-flow-keys;
+    animation-duration: #{$animationDuration}s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+  }
+
+  /*
+   * Keyframe loop
+   */
+  @keyframes anim-text-flow-keys {
+    @for $i from 0 through $animationSteps {
+      #{percentage($i * (1 / $animationSteps))} {
+        color: hsla(random(365), 60, 60, 1);
+      }
+    }
+  }
+
+  /*
+   * Element animation delay loop
+   */
+  $totalDelayTime: $animationElementsCount * $delayBetweenLetters;
+
+  @for $i from 1 through $animationElementsCount {
+    #{$animationElement}:nth-of-type(#{$i}) {
+      animation-delay: #{($i * $delayBetweenLetters) - $totalDelayTime}s;
+    }
+  }
+}
+
+hr {
+  color: white;
+  height: 5px;
+}
+.list-band{
+  ul{
+    li{
+      list-style: none;
+    }
+  }
+}
+.item_song {
+  font-size: 17px;
+  color: white;
+}
+
