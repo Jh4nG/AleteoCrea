@@ -23,7 +23,7 @@ export class VirtualStoreComponent implements OnInit {
   constructViwer(){
     this.viewer = new Viewer({
       container: document.querySelector('#viewer') as HTMLCanvasElement,
-      panorama: '../assets/img/store/tienda2.jpg',
+      panorama: '../assets/img/store/07 a.jpg',
       // panorama: 'https://photo-sphere-viewer-data.netlify.app/assets/sphere.jpg',
       loadingImg: '../assets/img/mariposa.gif',
       plugins: [
