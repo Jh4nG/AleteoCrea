@@ -1,8 +1,10 @@
 #container {
     background: #111;
     position: absolute;
-    left: 50%;
-    top: 50%;
+    // left: 50%;
+    // top: 50%;
+    width:100%;
+    height:100%;
 }
 
 #stats {
@@ -122,4 +124,153 @@
 .containerIframe{
     width: 100%;
     height: 99vh;
+}
+
+.btnRecorder{
+    position:fixed;
+    bottom: 2%;
+    left : 45.6%;
+    border-radius: 80px;
+}
+
+/* From uiverse.io by @Baimyrzaev */
+button.recording {
+  padding: 54px 56px;
+  background-color: #000;
+  font-size: 18px;
+  border: 0px solid transparent;
+  // border-radius: 70px;
+  position: relative;
+  background-color: transparent;
+  /* overflow: hidden; */
+  transition: 500ms;
+}
+
+button.recording span {
+  color: transparent;
+  position: relative;
+  transition: 500ms;
+  transition-delay: 500ms;
+  font-size: 27px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+button.recording:before {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 0%;
+  left: 50%;
+  right: 50%;
+  top: 50%;
+  bottom: 50%;
+  transition: 500ms;
+  transition-delay: 500ms;
+  background-color: red;
+  box-shadow: 0 0 10px red,
+    0 0 30px red, 
+    0 0 50px red;
+    border-radius: 70px;
+}
+
+button.recording div {
+  transition: 500ms;
+  position: absolute;
+  background-color: red;
+  box-shadow: 0 0 15px red, 0 0 30px red, 0 0 50px red;
+}
+
+button.recording .top {
+  width: 15px;
+  height: 2px;
+  top: 0;
+  left: 0;
+}
+
+button.recording .bottom {
+  width: 15px;
+  height: 2px;
+  bottom: 0;
+  right: 0;
+}
+
+button.recording .left {
+  width: 2px;
+  height: 15px;
+  top: 0;
+  left: 0;
+}
+
+button.recording .right {
+  width: 2px;
+  height: 15px;
+  bottom: 0;
+  right: 0;
+}
+
+button.recording:hover {
+  color: #000;
+}
+
+button.recording:hover span {
+  color: white;
+}
+
+button.recording:hover:before {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+button.recording:hover .top, 
+button.recording:hover .bottom {
+  width: 100%;
+}
+
+button.recording:hover .left,
+button.recording:hover .right {
+  height: 100%;
+}
+
+.btnRecorderStart{
+  position:fixed;
+  bottom: 2%;
+  left : 45.6%;
+  border-radius: 80px;
+}
+
+button.recordingStart {
+  border-radius: 70px;
+  padding: 48px 48px;
+  background-color: #000;
+  font-size: 18px;
+  border: 2px solid red;
+  // border-radius: 70px;
+  position: relative;
+  background-color: black;
+  /* overflow: hidden; */
+  transition: 500ms;
+}
+
+button.recordingStart span {
+  color: red;
+  position: relative;
+  transition: 500ms;
+  transition-delay: 500ms;
+  font-size: 30px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+#divRecording{
+  display: block;
+}
+#divRecordingStart{
+  display: none;
 }

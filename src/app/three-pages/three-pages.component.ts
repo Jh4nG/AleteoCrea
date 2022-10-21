@@ -26,7 +26,7 @@ const clipPlanes = [
 })
 export class ThreePagesComponent implements OnInit {
 
-  treeImg = '../../assets/img/Tree/guacari03_1.gltf';
+  treeImg = '../../assets/img/Tree/arbolParcial.glb';
   constructor() { }
 
   ngOnInit(): void {

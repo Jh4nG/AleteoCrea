@@ -98,7 +98,6 @@ export class ReproductorComponentComponent implements OnInit, AfterViewInit {
     const update = () => {
       window.requestAnimationFrame(update);
       this.analyser.getByteFrequencyData(this.dataArray);
-      console.log(this.dataArray);
 
       for (let i = 0; i < this.bufferLength; i++) {
         let item = this.dataArray[i];
@@ -131,5 +130,4 @@ export class ReproductorComponentComponent implements OnInit, AfterViewInit {
       this.playContainer.nativeElement.style.backgroundImage = 'url(../../../assets/img/btnFlotanteM.png)';
     }
   }
-
 }

@@ -132,12 +132,6 @@
 	font-size: 20px;
 }
 
-.audioIcon>img {
-	width: 140%;
-    margin-bottom: 20px;
-    margin-left: -7px;
-}
-
 .one i {
 	position: absolute;
 	margin: 7px 0px 0px -6px;
@@ -167,8 +161,9 @@
 }
 
 .audioIcon{
+	background-image: url("../assets/img/OndaAudio.gif");
+    background-size: cover;
 	left: 40%;
-	background: #000;
 }
 
 .one {
@@ -372,7 +367,7 @@ main {
 
 /** Mariposa */
 .btnVocesF>img {
-	width: 100%;
+	width: 85%;
 	margin-bottom: 10px;
 }
 
