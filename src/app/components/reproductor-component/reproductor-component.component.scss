@@ -29,7 +29,7 @@
   transform: translate(-50%, -50%);
   width: 250px;
   height: 250px;
-  background-image: url('../../../assets/img/foo.jpg') ;
+  background-image: url("../../../assets/img/foo.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -41,14 +41,14 @@
   align-items: center;
 }
 .btn-play {
-  border-left: 80px solid #5f5;
+  border-left: 80px solid rgb(254, 255, 255);
   border-bottom: 50px solid transparent;
   border-top: 50px solid transparent;
   cursor: pointer;
 }
 .btn-pause {
-  border-right: 20px solid #5f5;
-  border-left: 20px solid #5f5;
+  border-right: 20px solid rgb(255, 255, 255);
+  border-left: 20px solid rgb(255, 255, 255);
   width: 75px;
   height: 100px;
   cursor: pointer;
@@ -77,15 +77,13 @@
 
 .content-button {
   margin-bottom: 10px;
-  border-bottom: solid 1px rgb(56, 54, 54); 
+  border-bottom: solid 1px rgb(56, 54, 54);
 }
-
 
 .card-body {
   color: white;
   background-color: transparent;
 }
-
 
 .content-List {
   -ms-transform: skewY(3deg);
@@ -98,9 +96,8 @@
   padding: 30px;
 }
 
-
 .anim-text-flow {
-  font-family: 'Silkscreen';
+  font-family: "Silkscreen";
   font-size: 23px;
   text-align: center;
 }
@@ -150,13 +147,19 @@
   }
 }
 
+
+
+.txt {
+  display: block;
+}
+
 hr {
   color: white;
   height: 5px;
 }
-.list-band{
-  ul{
-    li{
+.list-band {
+  ul {
+    li {
       list-style: none;
     }
   }
@@ -165,4 +168,3 @@ hr {
   font-size: 17px;
   color: white;
 }
-
