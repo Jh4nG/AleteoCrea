@@ -1,4 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import Collapse from 'bootstrap/js/dist/collapse';
+declare var $;
 
 @Component({
   selector: 'app-reproductor-component',
@@ -13,29 +15,38 @@ export class ReproductorComponentComponent implements OnInit, AfterViewInit {
 
   @ViewChild('visualizerBox') visualizer!: ElementRef;
 
+  @ViewChild('playAudio') playContainer!: ElementRef;
+
   public ctx = new window.AudioContext();
 
   public analyser = this.ctx.createAnalyser();
 
   public source;
 
-  public bufferLength; 
+  public bufferLength;
 
   public dataArray;
 
   public elements = [];
 
+  public collapse: Collapse;
+
+  
   //public play: boolean = false;
 
-  constructor() { }
+  constructor() { 
+    
+  }
 
+  
   ngOnInit(): void {
+
     window.AudioContext = window.AudioContext || window.webkitAudioContext;
+
   }
 
   ngAfterViewInit(): void {
     this.source = this.ctx.createMediaElementSource(this.audioReproducto.nativeElement);
-    
   }
 
   eventPlay(): void {
@@ -108,4 +119,17 @@ export class ReproductorComponentComponent implements OnInit, AfterViewInit {
     }
     return num;
   }
+
+  eventChangeSong(cancion: any) {
+
+    if(cancion == 1) {
+      this.audioReproducto.nativeElement.src = '../../../assets/audios/forever.mp3';
+      this.playContainer.nativeElement.style.backgroundImage = 'url(./../../../assets/img/foo.jpg)';
+
+    } else if (cancion == 2) {
+      this.audioReproducto.nativeElement.src = '../../../assets/audios/y2mate.com - Kurt  Vengo Del Futuro.mp3';
+      this.playContainer.nativeElement.style.backgroundImage = 'url(../../../assets/img/btnFlotanteM.png)';
+    }
+  }
+
 }

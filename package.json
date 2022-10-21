@@ -29,6 +29,7 @@
     "ng-particles": "^3.2.2",
     "ngx-spinner": "^14.0.0",
     "photo-sphere-viewer": "^4.7.0",
+    "popper.js": "^1.16.1",
     "requestanimationframe": "0.0.23",
     "rxjs": "~7.5.0",
     "save": "^2.5.0",

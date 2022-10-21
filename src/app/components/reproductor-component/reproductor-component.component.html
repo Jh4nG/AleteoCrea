@@ -1,11 +1,64 @@
-<div class="">
-    <div class="">
+<div class="row">
+    <div class="col-6 content-audio" style="min-width: 350px;">
         <audio #audioContainer src="../../../assets/audios/forever.mp3"></audio>
         <div class="box">
             <div #visualizerBox class="visualizer"></div>
         </div>
-        <div class="play">
+        <div #playAudio class="play">
             <div #btn class="btn-play" (click)="eventPlay()"></div>
+        </div>
+    </div>
+    <div class="col-6 content-List">
+        <div class="list-music">
+            <div class="row">
+                <div class="col-12">
+                    <div class="txt anim-text-flow">
+                        <span class="">Los Patitos Rojos</span>
+                    </div>
+                </div>
+                <hr>
+                <div class="col-12">
+                    <div class="list-band">
+                        <ul>
+                            <li class="">
+                                <a (click)="eventChangeSong(1)">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <img src="./../../../assets/img/foo.jpg" alt=""
+                                                style="width: 70%; border-radius: 50%;">
+                                        </div>
+                                        <div class="col-9">
+                                            <div class="item_song">
+                                                <span>
+                                                    1. cancion
+                                                </span>
+                                                <span><img src="./../../../assets/img/sound-size.gif" width="80px" alt=""></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="mt-3">
+                                <a (click)="eventChangeSong(2)">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <img src="./../../../assets/img/btnFlotanteM.png" alt=""
+                                                style="width: 70%; border-radius: 50%;">
+                                        </div>
+                                        <div class="col-9">
+                                            <div class="item_song">
+                                                <span>
+                                                    2. cancion 2
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

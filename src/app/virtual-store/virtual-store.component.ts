@@ -27,7 +27,7 @@ export class VirtualStoreComponent implements OnInit {
       // panorama: 'https://photo-sphere-viewer-data.netlify.app/assets/sphere.jpg',
       loadingImg: '../assets/img/mariposa.gif',
       plugins: [
-        [MarkersPlugin, 
+        [ MarkersPlugin, 
           {
           markers: [{
             id: 'custom-tooltip',
