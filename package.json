@@ -33,6 +33,7 @@
     "requestanimationframe": "0.0.23",
     "rxjs": "~7.5.0",
     "save": "^2.5.0",
+    "speechkitt": "^1.0.0",
     "stats.js": "^0.17.0",
     "three": "^0.144.0",
     "tilt.js": "^1.2.1",

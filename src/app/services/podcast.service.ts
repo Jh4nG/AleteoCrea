@@ -6,9 +6,35 @@ import { Observable } from 'rxjs';
 })
 export class PodcastService {
 
+  API = 'http://localhost/swAleteoCrea/index';
   constructor(private http: HttpClient) { }
 
   public getAllPodcast(): Observable<any> {
     return this.http.get('http://localhost:4000/api/aleteo');
   }
+
+  public savePodcast(name = 'Anónimo', file : any) : Observable <any> {
+    let data = {
+      "controlador": "Podcast",
+      "metodo": "createNewPodcast",
+      "podcast": {
+          "createPodcast": {
+              "name_user": name,
+              "check_terminos": true
+          },
+          "file": file
+      }
+    }
+    return this.http.post(this.API, data);
+  }
+
+  public getPodcast() : Observable <any> {
+    let data = {
+      "controlador": "Podcast",
+      "metodo": "getDataPodcastUser"
+    }
+    return this.http.post(this.API, data);
+  }
+
+
 }

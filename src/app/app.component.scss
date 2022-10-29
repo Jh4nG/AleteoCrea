@@ -314,6 +314,10 @@ main {
 	}
 }
 
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link{
+	background-color: #2f2bd6;
+}
+
 .display-menu {
 	margin-left: 0.5%;
 	top: 2%;

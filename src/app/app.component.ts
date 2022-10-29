@@ -41,18 +41,6 @@ export class AppComponent implements OnInit, AfterContentInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    try {
-      setTimeout(()=>{
-        let a = document.getElementById('audioGeneralPage') as HTMLAudioElement;
-        this.audio.nativeElement.play();
-        //a.play();
-      },500);
-      
-    } catch (error) {
-      console.log(error);
-      
-    }
-    
   }
 
   // ngOnChanges(changes): void {
@@ -75,6 +63,18 @@ export class AppComponent implements OnInit, AfterContentInit, AfterViewInit {
   ngOnInit(): void {
     Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
       .forEach(tooltipNode => new Tooltip(tooltipNode))
+    try {
+      setTimeout(()=>{
+        let a = document.getElementById('audioGeneralPage') as HTMLAudioElement;
+        this.audio.nativeElement.play();
+        //a.play();
+      },500);
+      
+    } catch (error) {
+      console.log(error);
+      
+    }
+    
   }
 
 
