@@ -15,6 +15,7 @@ import { ModalComponentComponent } from './components/modal-component/modal-comp
 import { HttpClientModule } from '@angular/common/http';
 import { ReproductorComponentComponent } from './components/reproductor-component/reproductor-component.component';
 import { FutureVoicesComponent } from './future-voices/future-voices.component';
+import { ParticlesComponent } from './components/particles/particles.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { FutureVoicesComponent } from './future-voices/future-voices.component';
     AdditionalContentsComponent,
     ModalComponentComponent,
     ReproductorComponentComponent,
-    FutureVoicesComponent
+    FutureVoicesComponent,
+    ParticlesComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import Collapse from 'bootstrap/js/dist/collapse';
 declare var $;
 
@@ -7,7 +7,9 @@ declare var $;
   templateUrl: './reproductor-component.component.html',
   styleUrls: ['./reproductor-component.component.scss']
 })
-export class ReproductorComponentComponent implements OnInit, AfterViewInit {
+export class ReproductorComponentComponent implements OnInit, AfterViewInit, OnChanges {
+
+  @Input() listPodCast: any;
 
   @ViewChild('btn') btn!: ElementRef;
 
@@ -31,18 +33,25 @@ export class ReproductorComponentComponent implements OnInit, AfterViewInit {
 
   public collapse: Collapse;
 
-  
-  //public play: boolean = false;
+  public principalSong: string = '../../../assets/audios/forever.mp3';
+
+  public nameBand: string;
 
   constructor() { 
     
+    
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if(changes['listPodCast']?.currentValue) {
+      this.filterPrincipalSong();
+    }
   }
 
   
   ngOnInit(): void {
-
     window.AudioContext = window.AudioContext || window.webkitAudioContext;
-
+    
   }
 
   ngAfterViewInit(): void {
@@ -66,9 +75,7 @@ export class ReproductorComponentComponent implements OnInit, AfterViewInit {
   }
 
   onPlay(): void {
-    // if (this.play) {
 
-    // }
     this.source.connect(this.analyser);
     this.source.connect(this.ctx.destination);
     this.analyser.fftSize = 64;
@@ -120,14 +127,20 @@ export class ReproductorComponentComponent implements OnInit, AfterViewInit {
   }
 
   eventChangeSong(cancion: any) {
-
-    if(cancion == 1) {
-      this.audioReproducto.nativeElement.src = '../../../assets/audios/forever.mp3';
+      
+      this.audioReproducto.nativeElement.src = cancion.url_cancion;
       this.playContainer.nativeElement.style.backgroundImage = 'url(./../../../assets/img/foo.jpg)';
 
-    } else if (cancion == 2) {
-      this.audioReproducto.nativeElement.src = '../../../assets/audios/y2mate.com - Kurt  Vengo Del Futuro.mp3';
-      this.playContainer.nativeElement.style.backgroundImage = 'url(../../../assets/img/btnFlotanteM.png)';
-    }
+      this.eventPlay();
+
+  }
+
+  filterPrincipalSong() {
+    let song = this.listPodCast?.filter((item) => {
+      
+      return item.principal == 1;
+    });
+    this.nameBand = song[0].name_podcast;
+    this.audioReproducto.nativeElement.src = song[0].url_cancion;
   }
 }
