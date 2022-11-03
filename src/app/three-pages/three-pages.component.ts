@@ -3,7 +3,7 @@ import * as THREE from 'three';
 import { GLTFLoader, GLTF } from 'three/examples/jsm/loaders/GLTFLoader';
 import { GUI } from 'three/examples/jsm/libs/lil-gui.module.min.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-
+import MouseMeshInteraction from '../../assets/three.mmi.js';
 let camera, scene, renderer;
 
 const params = {
@@ -27,6 +27,7 @@ const clipPlanes = [
 export class ThreePagesComponent implements OnInit {
 
   treeImg = '../../assets/img/Tree/arbolParcial.glb';
+  public mmi;
   constructor() { }
 
   ngOnInit(): void {
@@ -73,25 +74,6 @@ export class ThreePagesComponent implements OnInit {
 
     const group = new THREE.Group();
 
-    // for ( let i = 1; i <= 30; i += 2 ) {
-
-    //   const geometry = new THREE.SphereGeometry( i / 30, 48, 24 );
-
-    //   const material = new THREE.MeshLambertMaterial( {
-
-    //     color: new THREE.Color().setHSL( Math.random(), 0.5, 0.5 ),
-    //     side: THREE.DoubleSide,
-    //     clippingPlanes: clipPlanes,
-    //     clipIntersection: params.clipIntersection
-
-    //   } );
-
-    //   group.add( new THREE.Mesh( geometry, material ) );
-
-    // }
-
-    // scene.add( group );
-
     // helpers
 
     const helpers = new THREE.Group();
@@ -101,48 +83,12 @@ export class ThreePagesComponent implements OnInit {
     helpers.visible = false;
     scene.add(helpers);
 
-    // gui
-
-    // const gui = new GUI();
-
-    // gui.add(params, 'clipIntersection').name('clip intersection').onChange(function (value) {
-
-    //   const children = group.children;
-
-    //   for (let i = 0; i < children.length; i++) {
-
-    //     //children[ i ].material.clipIntersection = value;
-    //     children[i].customDepthMaterial.clipIntersection = value;
-
-    //   }
-
-    //   this.render();
-
-    // });
-
-    // gui.add(params, 'planeConstant', - 1, 1).step(0.01).name('plane constant').onChange(function (value) {
-
-    //   for (let j = 0; j < clipPlanes.length; j++) {
-
-    //     clipPlanes[j].constant = value;
-
-    //   }
-
-    //   this.srender();
-
-    // });
-
-    // gui.add(params, 'showHelpers').name('show helpers').onChange(function (value) {
-
-    //   helpers.visible = value;
-
-    //   this.render();
-
-    // });
-
-    //
-
+    
     window.addEventListener('resize', this.onWindowResize);
+    this.mmi = new MouseMeshInteraction(scene, camera);
+    this.firstScene();
+    console.log(this.mmi);
+    
     this.render();
   }
 
@@ -155,7 +101,27 @@ export class ThreePagesComponent implements OnInit {
   }
 
   render() {
+    requestAnimationFrame(() => {
+      this.render();
+    });
+    this.mmi.update();
     renderer.render(scene, camera);
+  }
+
+  firstScene() {
+    let red_color = new THREE.Color(0xff0000);
+    let geometriCub = new THREE.BoxGeometry(0.02, 0.1, 0.1);
+    let materialGeometri = new THREE.MeshBasicMaterial( {color: 0x00ff00});
+    let cube = new THREE.Mesh(geometriCub, materialGeometri);
+    cube.position.set(1.19, 0.01, -0.1);
+    cube.name = 'cubo1';
+    
+    
+    this.mmi.addHandler('cubo1', 'click',function(event)  {
+      alert('Hola mundo')
+    })
+    scene.add( cube );
+    
   }
 
 }

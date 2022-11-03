@@ -36,7 +36,8 @@ import { ParticlesComponent } from './components/particles/particles.component';
     AppRoutingModule,
     NgParticlesModule,
     NgxSpinnerModule,
-    HttpClientModule
+    HttpClientModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
