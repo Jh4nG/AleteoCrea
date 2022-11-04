@@ -328,3 +328,154 @@
   transform-origin: top left;
   transition: 0.25s;
 }
+
+.left-galaxias {
+  display: inline-block;
+  position: fixed;
+  top: 35%;
+  left: 1%;
+
+  .galaxia1 {
+    margin-bottom: 15px;
+
+  }
+  .galaxia2 {
+    margin-bottom: 18px;
+    margin-left: 26px;
+
+  }
+  .galaxia3 {
+    margin-left: 5px;
+
+  }
+}
+
+.rigth-galaxias {
+  display: inline-block;
+  position: fixed;
+  top: 35%;
+  right: 1%;
+
+  .galaxia4 {
+    margin-bottom: 15px;
+    margin-left: 15px;
+  }
+  .galaxia5 {
+    margin-bottom: 18px;
+  }
+  .galaxia6 {
+    margin-left: 26px;
+  }
+}
+
+.galaxia {
+  img {
+    cursor: pointer;
+    border-radius: 50%;
+    width: 45px;
+    margin-bottom: 10px;
+  }
+}
+
+.estrellas {
+  
+  .podcast-1 {
+    cursor: pointer;
+    display: flex;
+    position: fixed;
+    top: 60%;
+    left: 36%;
+    img {
+      width: 28px;
+      border-radius: 50%;
+    }
+  }
+  .podcast-2 {
+    cursor: pointer;
+    display: flex;
+    position: fixed;
+    top: 29%;
+    left: 43%;
+    img {
+      width: 28px;
+      border-radius: 50%;
+    }
+  }
+  .podcast-3 {
+    cursor: pointer;
+    display: flex;
+    position: fixed;
+    top: 43%;
+    left: 51%;
+    img {
+      width: 25px;
+      border-radius: 50%;
+    }
+  }
+  .podcast-4 {
+    cursor: pointer;
+    display: flex;
+    position: fixed;
+    top: 28%;
+    left: 61%;
+    img {
+      width: 32px;
+      border-radius: 50%;
+    }
+  }
+  .podcast-5 {
+    cursor: pointer;
+    display: flex;
+    position: fixed;
+    top: 66%;
+    left: 51%;
+    img {
+      width: 32px;
+      border-radius: 50%;
+    }
+  }
+  .podcast-6 {
+    cursor: pointer;
+    display: flex;
+    position: fixed;
+    top: 54%;
+    left: 44%;
+    img {
+      width: 32px;
+      border-radius: 50%;
+    }
+  }
+  .podcast-7 {
+    cursor: pointer;
+    display: flex;
+    position: fixed;
+    top: 65%;
+    left: 43%;
+    img {
+      width: 19px;
+      border-radius: 50%;
+    }
+  }
+  .podcast-8 {
+    cursor: pointer;
+    display: flex;
+    position: fixed;
+    top: 38%;
+    left: 57%;
+    img {
+      width: 21px;
+      border-radius: 50%;
+    }
+  }
+  .podcast-9 {
+    cursor: pointer;
+    display: flex;
+    position: fixed;
+    top: 79%;
+    left: 52.5%;
+    img {
+      width: 25px;
+      border-radius: 50%;
+    }
+  }
+}

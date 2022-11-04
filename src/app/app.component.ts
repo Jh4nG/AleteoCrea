@@ -25,10 +25,21 @@ export class AppComponent implements OnInit, AfterContentInit, AfterViewInit {
         if (res instanceof NavigationStart) {
           if (res.url == '/tree-page') {
             this.controlPage = res.url;
+          } else if(res.url == '/podcast') {
+            this.controlPage = res.url;
           }
 
           if (res.url !== '/tree-page' && this.controlPage !== '') {
             if (this.controlPage == '/tree-page') {
+              setTimeout(() => {
+                window.location.reload();
+              }, 10);
+              this.controlPage = '';
+            }
+          }
+
+          if (res.url !== '/podcast' && this.controlPage !== '') {
+            if (this.controlPage == '/podcast') {
               setTimeout(() => {
                 window.location.reload();
               }, 10);

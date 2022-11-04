@@ -1,10 +1,12 @@
+<app-particles></app-particles>
+
 <app-modal-component idTarget="openReproductor" [visibleM]="false" bgModal="bgTransparentModal bgNoBorder"
   [visibleCard]="false" tamanio="lg">
   <ng-template #title></ng-template>
   <ng-template #header>
     <div class="row">
       <div class="col-12">
-        <app-reproductor-component></app-reproductor-component>
+        <app-reproductor-component [listPodCast]="listBandSelected"></app-reproductor-component>
       </div>
     </div>
   </ng-template>
@@ -12,18 +14,93 @@
 </app-modal-component>
 
 <div class="col-12 position-front">
-  <div class="col-md-12 row">
-    <div class="col-md-4">
-      <div *ngFor="let p of podcastPrincipal">
-        <p>{{ p.name_podcast }}</p>
-      </div>
+
+  <div class="galaxias left-galaxias">
+    <div class="item-galaxia galaxia1">
+      <a class="galaxia" (click)="getListOfMusic('NFS')">
+        <img class="" data-bs-toggle="modal" data-bs-target="#openReproductor"
+          src="./../../assets/img/podcast/galaxias/galaxia1.gif">
+      </a>
     </div>
-    <div class="col-md-4"></div>
-    <div class="col-md-4"></div>
+    <div class="item-galaxia galaxia2">
+      <a class="galaxia " (click)="getListOfMusic('Los inestables')">
+        <img data-bs-toggle="modal" data-bs-target="#openReproductor"
+          src="./../../assets/img/podcast/galaxias/galaxia2.gif">
+      </a>
+    </div>
+    <div class="item-galaxia galaxia3">
+      <a class="galaxia " (click)="getListOfMusic('DO-MI-FA')">
+        <img data-bs-toggle="modal" data-bs-target="#openReproductor"
+          src="./../../assets/img/podcast/galaxias/galaxia3.gif">
+      </a>
+    </div>
+  </div>
+  <div class="galaxias rigth-galaxias">
+    <div class="item-galaxia galaxia4">
+      <a class="galaxia " (click)="getListOfMusic('Apocalipsis Now Milton Rural')">
+        <img data-bs-toggle="modal" data-bs-target="#openReproductor"
+          src="./../../assets/img/podcast/galaxias/galaxia4.gif">
+      </a>
+    </div>
+    <div class="item-galaxia galaxia5">
+      <a class="galaxia " (click)="getListOfMusic('Fragor Raizal')">
+        <img data-bs-toggle="modal" data-bs-target="#openReproductor"
+          src="./../../assets/img/podcast/galaxias/galaxia5.gif">
+      </a>
+    </div>
+    <div class="item-galaxia galaxia6">
+      <a class="galaxia " (click)="getListOfMusic('Degeneración Z')">
+        <img data-bs-toggle="modal" data-bs-target="#openReproductor"
+          src="./../../assets/img/podcast/galaxias/galaxia6.gif">
+      </a>
+    </div>
   </div>
 
-  <a data-bs-toggle="modal" data-bs-target="#openReproductor">Hola</a>
-
-  <ng-particles [id]="id" [options]="particlesOptions" [particlesInit]="particlesInit"
-    (particlesLoaded)="particlesLoaded($event)">
-  </ng-particles>
+  <div class="estrellas">
+    <div class="podcast-1">
+      <a>
+        <img src="../../assets/img/podcast/galaxias/estrella.gif" alt="">
+      </a>
+    </div>
+    <div class="podcast-2">
+      <a>
+        <img src="../../assets/img/podcast/galaxias/estrella.gif" alt="">
+      </a>
+    </div>
+    <div class="podcast-3">
+      <a>
+        <img src="../../assets/img/podcast/galaxias/estrella.gif" alt="">
+      </a>
+    </div>
+    <div class="podcast-4">
+      <a>
+        <img src="../../assets/img/podcast/galaxias/estrella.gif" alt="">
+      </a>
+    </div>
+    <div class="podcast-5">
+      <a>
+        <img src="../../assets/img/podcast/galaxias/estrella.gif" alt="">
+      </a>
+    </div>
+    <div class="podcast-6">
+      <a>
+        <img src="../../assets/img/podcast/galaxias/estrella.gif" alt="">
+      </a>
+    </div>
+    <div class="podcast-7">
+      <a>
+        <img src="../../assets/img/podcast/galaxias/estrella.gif" alt="">
+      </a>
+    </div>
+    <div class="podcast-8">
+      <a>
+        <img src="../../assets/img/podcast/galaxias/estrella.gif" alt="">
+      </a>
+    </div>
+    <div class="podcast-9">
+      <a>
+        <img src="../../assets/img/podcast/galaxias/estrella.gif" alt="">
+      </a>
+    </div>
+  </div>
+</div>
