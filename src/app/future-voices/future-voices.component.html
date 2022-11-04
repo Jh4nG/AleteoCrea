@@ -43,10 +43,18 @@
     <div class="row">
         <div class="nav-pills flex-column mb-auto" style="max-height: 60vh;overflow: auto;">
             <div class="col-md-12  nav-item" *ngFor="let d of dataVoiceFuture; first as isFirst">
-                <div class="nav-link nav-voice-future" [ngClass]=" [isFirst? 'active' : '']">
+                <div class="nav-link nav-voice-future divVoice{{d.id}}" [ngClass]="[isFirst? 'active' : '']" (click)="this.changeAudio( d.id )">
                     <b>{{ d.name_user }}</b>
                     <br>
-                    {{ d.register_create }}
+                    <div class="col-md-12 row">
+                        <div class="col-6">
+                            {{ d.time_audio }}
+                        </div>
+                        <div class="col-6" align="right">
+                            {{ this.convetirFecha(d.register_create.substr(0, 10)) }}
+                        </div>
+
+                    </div>
                 </div>
                 <!-- <a data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="#" class="nav-link active" aria-current="page">
                     <svg class="bi me-2" width="16" height="16">
@@ -59,15 +67,18 @@
     </div>
     <div class="reproductor">    
         <div class="reproduccion">
-          <div class="reproduccion__progreso">
-            <input type="range" value="0" min="0" max="0" step="0.01">
-            <time>--:--/--:--</time>
+          <div class="reproduccion__progreso" align="center">
+            <!-- <input type="range" value="0" min="0" max="0" step="0.01"> -->
+            <audio id="audioVoiceActual" style="display: none;"></audio>
+            <time>{{this.timeTranscurridoActualString}}/{{this.timeActual}}</time>
           </div>
           <div class="reproduccion__controles">
             <div class="controles__reproduccion">
-              <button type="button"><i class="fa fa-step-backward"></i></button>
+              <button type="button" (click)="this.changeAudio('-')"><i class="fa fa-step-backward"></i></button>
               <button type="button" (click)="iniciarReproductor()" ><i class="fa fa-play"></i></button>
-              <button type="button"><i class="fa fa-step-forward"></i></button>
+              <button style="display:none" type="button" (click)="pauseReproductor()" ><i class="fa fa-pause"></i></button>
+              <button style="display:none" type="button" (click)="stopReproductor()" ><i class="fa fa-stop"></i></button>
+              <button type="button" (click)="this.changeAudio('+')"><i class="fa fa-step-forward"></i></button>
             </div>
             <div class="controles__volumen">
               <button type="button" name="button"><i class="fa fa-volume-up"></i></button>
@@ -93,10 +104,12 @@
     </ng-template>
     <ng-template #footer>
         <div class="col-12">
-            <div class="row" align="center">
-                <div class="col">
-                    <button class="btn btn-success" (click)="this.startRecording(true)">Aceptar</button>
-                    <button class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
+            <div class="row col-md-12">
+                <div class="col-6" align="right">
+                    <button class="btn btn-aleteo-blue bShadowBlue" (click)="this.startRecording(true)">Aceptar</button>
+                </div>
+                <div class="col-6">
+                    <button class="btn btn-danger bShadowRed" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
                 </div>
             </div>
         </div>

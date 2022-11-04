@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as  Stats from "node_modules/stats.js"
 import { Tooltip } from 'node_modules/bootstrap/dist/js/bootstrap.esm.min.js'
 import { PodcastService } from '../services/podcast.service';
+import * as moment from 'moment';
 declare var $; 
 declare var webkitSpeechRecognition: any;
 
@@ -12,7 +13,13 @@ declare var webkitSpeechRecognition: any;
 })
 export class FutureVoicesComponent implements OnInit {
 
+  meses = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
   dataVoiceFuture : any;
+  idAudioActual = 0;
+  timeActual = "00:00";
+  timeTranscurridoActualString = "00:00";
+  timeTranscurridoActual = 0;
+  inter : any;
   public open_side_voice: boolean = false;
   idFrame; 
   listadoCanciones = [];
@@ -88,6 +95,12 @@ export class FutureVoicesComponent implements OnInit {
       this.step();
     });
     this.getVoiceUsers();
+  }
+
+  convetirFecha(fecha){
+    var fecha = fecha.split('-').reverse();
+    fecha[1] = this.meses[Number(fecha[1]-1)].substr(0,3);
+    return fecha.join('-');
   }
   
   init() {  
@@ -172,6 +185,11 @@ export class FutureVoicesComponent implements OnInit {
     this.man = true;
   }
 
+  openModal(){
+    $('#modalTratamientoDatos').modal('show');
+    this.showSideBarVoice(false);
+  }
+
   startRecording(type){
     let recording = document.getElementById('divRecording') as HTMLElement;
     let start = document.getElementById('divRecordingStart') as HTMLElement;
@@ -189,6 +207,7 @@ export class FutureVoicesComponent implements OnInit {
       })
       .then(
         stream => {
+          let d = new Date().toLocaleTimeString(); // tiempo inicio grabación
           // Comenzar a grabar con el stream
           this.mediaRecorder = new MediaRecorder(stream);
           this.mediaRecorder.start();
@@ -208,15 +227,22 @@ export class FutureVoicesComponent implements OnInit {
           this.mediaRecorder.addEventListener("stop", () => {
             // Detener el stream
             stream.getTracks().forEach(track => track.stop());
+            let d2 = new Date().toLocaleTimeString();
+            let da = moment(d, 'hh:mm:ss');
+            let da2 = moment(d2, 'hh:mm:ss');
+            var seconds = moment.duration(da2.diff(da)).asSeconds();
+            var minute = (seconds/60).toString().split('.');
+            var minutes = Number.parseInt(minute[0]);
+            seconds = seconds - (minutes * 60);
+            var time = `${(minutes < 10) ? '0'+minutes : minutes}:${(seconds<10) ? '0'+seconds : seconds}`;
             // Detener la cuenta regresiva
             // Convertir los fragmentos a un objeto binario
             const blobAudio = new Blob(this.fragmentosDeAudio);
-            debugger
             const reader = new FileReader();
             reader.readAsDataURL(blobAudio);
             reader.addEventListener('loadend', (event) => { 
               const audio = reader.result as String;
-              this.service.savePodcast('Anónimo',audio.replace('data:application/octet-stream;base64,','')).subscribe(
+              this.service.savePodcast('Anónimo',audio.replace('data:application/octet-stream;base64,',''),time).subscribe(
                 resp =>{
 
                   this.getVoiceUsers();
@@ -263,6 +289,7 @@ export class FutureVoicesComponent implements OnInit {
       resp =>{
         if(resp.status == 200){
           this.dataVoiceFuture = resp.data;
+          this.setValueAudio(0);
         }else{
           console.log('No se a podido cargar voces del futuro');
         }
@@ -270,105 +297,81 @@ export class FutureVoicesComponent implements OnInit {
     );
   }
 
+  setValueAudio(id : any){
+    this.timeActual = this.dataVoiceFuture[id].time_audio;
+    let audio = document.getElementById('audioVoiceActual') as HTMLAudioElement;
+    audio.src = this.dataVoiceFuture[id].url_podcast;
+  }
+
   iniciarReproductor(){
-    this.reproductor.boton['reproducirPausa'] = document.querySelector('.controles__reproduccion .' + this.icono['reproducir']).parentElement;
-    this.reproductor.boton['cancionSiguiente'] = document.querySelector('.controles__reproduccion .fa-step-forward').parentElement;
-    this.reproductor.boton['cancionAnterior'] = document.querySelector('.controles__reproduccion .fa-step-backward').parentElement;
-    this.reproductor.boton['volumen'] = document.querySelector('.controles__volumen button');
-    this.reproductor.deslizador['volumen'] = document.querySelector('.controles__volumen input');
-    this.reproductor.deslizador['progresoCancion'] = document.querySelector('.reproduccion__progreso input');
-
-    this.reproductor.caratula = document.querySelector('.cancion__caratula img');
-    this.reproductor.duracion = document.querySelector('.reproduccion__progreso time');
-    this.reproductor.nodo = document.querySelector('.reproductor');
-
-    this.reproductor.boton['reproducirPausa'].addEventListener('click', this.alternarReproduccion);
-    this.reproductor.boton['cancionSiguiente'].addEventListener('click', () => this.cargarCancion(1));
-    this.reproductor.boton['cancionAnterior'].addEventListener('click', () =>  this.cargarCancion(-1));
-    this.reproductor.boton['volumen'].addEventListener('click', this.alternarDeslizadorVolumen);
-    document.addEventListener('click', this.alternarDeslizadorVolumen);
-    this.reproductor.deslizador['volumen'].addEventListener('input', this.moverVolumen);
-    this.reproductor.deslizador['progresoCancion'].addEventListener('input', this.moverProgreso);
-
-    // this.reproductor.caratula.style.animationPlayState = 'paused';
-
-    this.cargarCancion(this.reproduciendo);
+    let audio = document.getElementById('audioVoiceActual') as HTMLAudioElement;
+    audio.play();
+    document.querySelector('.controles__reproduccion button i.fa.fa-play').parentElement.setAttribute('style','display:none');
+    document.querySelector('.controles__reproduccion button i.fa.fa-pause').parentElement.setAttribute('style','');
+    document.querySelector('.controles__reproduccion button i.fa.fa-stop').parentElement.setAttribute('style','');
+    this.contadorTime();
   }
 
-  moverProgreso(e){
-    let momento = e.target.value;
-    this.cancion.audio.fastSeek(momento);
+  contadorTime(){
+    let tmpTimeAudio : any = this.timeActual.split(':');
+    tmpTimeAudio = (Number.parseInt(tmpTimeAudio[0]) * 60) + tmpTimeAudio[1]; 
+    this.inter = setInterval(()=>{
+      if(tmpTimeAudio <= this.timeTranscurridoActual){ // Detener intervalo
+        this.timeTranscurridoActual = 0;
+        this.timeTranscurridoActualString = "00:00";
+        clearInterval(this.inter);
+        return;
+      }
+      this.timeTranscurridoActual++;
+      var minute = (this.timeTranscurridoActual/60).toString().split('.');
+      var minutes = Number.parseInt(minute[0]);
+      var seconds = this.timeTranscurridoActual - (minutes * 60);
+      this.timeTranscurridoActualString = `${(minutes < 10) ? '0'+minutes : minutes}:${(seconds<10) ? '0'+seconds : seconds}`;
+    },1000);
   }
 
-  cargarCancion(sentido){
-    let cambiarA = this.reproduciendo + sentido;
-    // this.reproductor.caratula.classList.add('oculto');
-
-    if(cambiarA >= this.listadoCanciones.length) this.reproduciendo = 0;
-    else if(cambiarA < 0) this.reproduciendo = this.listadoCanciones.length - 1;
-    else this.reproduciendo = cambiarA;
-
-    // this.cancion.URI = this.uris.musica + this.listadoCanciones[this.reproduciendo] + '.mp3';
-    this.cancion.URI = this.dataVoiceFuture[4]['url_podcast'];
-    // this.cancion.caratula = this.uris.caratula + this.listadoCanciones[this.reproduciendo] + '.jpg';
-    this.cancion.audio.src = this.cancion.URI;
-
-    // this.reproductor.caratula.src = this.cancion.caratula;
-    // this.reproductor.caratula.classList.remove('oculto');
-
-    this.reproductor.deslizador['progresoCancion'].value = 0;
-
-    setTimeout( () => this.cambiarCancion(), 5000);
-  }
-
-  cambiarCancion(){
-    this.cancion.duracion = this.duracionCancion(this.cancion.audio.duration);
-
-    this.reproductor.duracion.innerText = `00:00/${this.cancion.duracion.minutos}:${this.cancion.duracion.segundos}`;
-    this.reproductor.deslizador['progresoCancion'].max = this.cancion.audio.duration;
-
-    // let cancion__titulo = document.querySelector('.cancion__titulo') as HTMLElement;
-    // cancion__titulo.innerText = this.listadoCanciones[this.reproduciendo];
-
-    debugger
-    if(this.reproductor.boton['reproducirPausa'].firstChild.classList.contains(this.icono['pausa'])) this.cancion.audio.play();
-  }
-
-  duracionCancion(duracionS){
-    let minutos, segundos;
-    minutos = Math.floor(duracionS/60).toString().padStart(2, '0');
-    segundos = Math.floor(duracionS - minutos*60).toString().padStart(2, '0');
-
-    return({minutos, segundos});
-  }
-
-  actualizarReproductor(){
-    this.idFrame = requestAnimationFrame(this.actualizarReproductor);
-
-    let momentoActual = this.duracionCancion(this.cancion.audio.currentTime);
-    this.reproductor.duracion.innerText = `${momentoActual.minutos}:${momentoActual.segundos}/${this.cancion.duracion[0]}:${this.cancion.duracion[1]}`;
-
-    this.reproductor.deslizador['progresoCancion'].value = this.cancion.audio.currentTime;
-
-    //Si terminó la canción, cambiar a la siguiente.
-    if(this.cancion.audio.currentTime == this.cancion.audio.duration) this.cargarCancion(1);
-  }
-
-  alternarReproduccion(){
-    let pausar = this.reproductor.boton['reproducirPausa'].firstChild.classList.toggle(this.icono['reproducir']);
-    this.reproductor.boton['reproducirPausa'].firstChild.classList.toggle(this.icono['pausa']);
-
-    if(!pausar){
-      this.idFrame = requestAnimationFrame(this.actualizarReproductor);
-      this.cancion.audio.play();
-      // this.reproductor['caratula'].style.animationPlayState = 'running';
-      this.reproductor.nodo.classList.add('reproduciendo');
-    } else {
-      window.cancelAnimationFrame(this.idFrame);
-      this.cancion.audio.pause();
-      // this.reproductor['caratula'].style.animationPlayState = 'paused';
-      this.reproductor.nodo.classList.remove('reproduciendo');
+  changeAudio(id : any){
+    $('.nav-link.nav-voice-future').removeClass('active');
+    if(id == '+'){
+      debugger
+      if((this.dataVoiceFuture.length-1) == this.idAudioActual){
+        this.idAudioActual = 0;
+      }else{
+        this.idAudioActual++;
+      }
+      id = this.idAudioActual;
+    }else if(id == '-'){
+      if(this.idAudioActual == 0){
+        this.idAudioActual = this.dataVoiceFuture.length-1;
+      }else{
+        this.idAudioActual--;
+      }
+      id = this.idAudioActual;
     }
+    $(`.divVoice${id}`).addClass('active');
+    this.stopReproductor();
+    this.setValueAudio(id);
+  }
+
+  pauseReproductor(){
+    let audio = document.getElementById('audioVoiceActual') as HTMLAudioElement;
+    audio.pause();
+    document.querySelector('.controles__reproduccion button i.fa.fa-play').parentElement.setAttribute('style','');
+    document.querySelector('.controles__reproduccion button i.fa.fa-pause').parentElement.setAttribute('style','display:none');
+    document.querySelector('.controles__reproduccion button i.fa.fa-stop').parentElement.setAttribute('style','display:none');
+    clearInterval(this.inter);
+  }
+
+  stopReproductor(){
+    let audio = document.getElementById('audioVoiceActual') as HTMLAudioElement;
+    audio.pause();
+    audio.currentTime = 0;
+    this.timeTranscurridoActual = 0;
+    this.timeTranscurridoActualString = '00:00';
+    document.querySelector('.controles__reproduccion button i.fa.fa-play').parentElement.setAttribute('style','');
+    document.querySelector('.controles__reproduccion button i.fa.fa-pause').parentElement.setAttribute('style','display:none');
+    document.querySelector('.controles__reproduccion button i.fa.fa-stop').parentElement.setAttribute('style','display:none');
+    clearInterval(this.inter);
   }
 
   alternarDeslizadorVolumen(e){
@@ -390,9 +393,5 @@ export class FutureVoicesComponent implements OnInit {
     if(volumen == 0) iconoVolumen.className = this.icono['volumenSilenciado'];
     else if(volumen <= 50) iconoVolumen.className = this.icono['volumenBajo'];
     else iconoVolumen.className = this.icono['volumenAlto'];
-  }
-
-  openModal(){
-    $('#modalTratamientoDatos').modal('show');
   }
 }
