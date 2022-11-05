@@ -42,8 +42,8 @@
     <hr />
     <div class="row">
         <div class="nav-pills flex-column mb-auto" style="max-height: 60vh;overflow: auto;">
-            <div class="col-md-12  nav-item" *ngFor="let d of dataVoiceFuture; first as isFirst">
-                <div class="nav-link nav-voice-future divVoice{{d.id}}" [ngClass]="[isFirst? 'active' : '']" (click)="this.changeAudio( d.id )">
+            <div class="col-md-12  nav-item" *ngFor="let d of dataVoiceFuture;let indexOfelement=index;">
+                <div class="nav-link nav-voice-future divVoice{{indexOfelement}}" [ngClass]="[indexOfelement == 0? 'active' : '']" (click)="this.changeAudio( indexOfelement )">
                     <b>{{ d.name_user }}</b>
                     <br>
                     <div class="col-md-12 row">
@@ -81,8 +81,8 @@
               <button type="button" (click)="this.changeAudio('+')"><i class="fa fa-step-forward"></i></button>
             </div>
             <div class="controles__volumen">
-              <button type="button" name="button"><i class="fa fa-volume-up"></i></button>
-              <input type="range" value="100" min="0" max="100" step="1" class="oculto">
+              <button type="button" name="button"><i class="fa fa-volume-up" (click)="this.alternarDeslizadorVolumen($event)"></i></button>
+              <input type="range" value="100" min="0" max="100" step="1" class="oculto" (input)="this.moverVolumen($event)">
             </div>
           </div>
         </div>
@@ -110,6 +110,57 @@
                 </div>
                 <div class="col-6">
                     <button class="btn btn-danger bShadowRed" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</app-modal-component>
+
+
+<app-modal-component idTarget="modalConfirmVoice" tamanio="md" bgModal="bgDarkModal ModalBlue bgNoBorder">
+    <ng-template #header>
+      <div>GRABACIÓN DE AUDIO</div>
+    </ng-template>
+    <ng-template #content>
+      <div>
+        ¿Está seguro que desea confirmar la grabación del audio?
+        <br>
+        Recuerde que puede confirmar un nombre de usuario de quien graba el audio, de lo contrario se grabará con el nombre de "Anónimo".
+        <br>
+        <br>
+        <label>Nombre de usuario:</label>
+        <br>
+        <br>
+        <input class="form-control" name="inpNameUser" placeholder="Museo Interactivo">
+      </div>
+    </ng-template>
+    <ng-template #footer>
+        <div class="col-12">
+            <div class="row col-md-12">
+                <div class="col-6" align="right">
+                    <button class="btn btn-aleteo-blue bShadowBlue" (click)="this.confirmRecording(true)">Aceptar</button>
+                </div>
+                <div class="col-6">
+                    <button class="btn btn-danger bShadowRed" data-bs-dismiss="modal" aria-label="Close" (click)="this.confirmRecording(false)">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</app-modal-component>
+
+
+<app-modal-component idTarget="modalConfirm" tamanio="md" bgModal="bgDarkModal ModalBlue bgNoBorder">
+    <ng-template #header>
+      <div>CONFIRMACIÓN DE GRABACIÓN</div>
+    </ng-template>
+    <ng-template #content>
+      <div id="txtConfirmAudio"></div>
+    </ng-template>
+    <ng-template #footer>
+        <div class="col-12">
+            <div class="row col-md-12" align="center">
+                <div class="col-12">
+                    <button class="btn btn-aleteo-blue bShadowBlue" data-bs-dismiss="modal" aria-label="Close" (click)="this.confirmRecording(false)">Aceptar</button>
                 </div>
             </div>
         </div>

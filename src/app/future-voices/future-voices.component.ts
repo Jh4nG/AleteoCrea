@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import * as  Stats from "node_modules/stats.js"
 import { Tooltip } from 'node_modules/bootstrap/dist/js/bootstrap.esm.min.js'
 import { PodcastService } from '../services/podcast.service';
@@ -16,17 +16,19 @@ export class FutureVoicesComponent implements OnInit {
   meses = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
   dataVoiceFuture : any;
   idAudioActual = 0;
+  timeRecording = "";
   timeActual = "00:00";
   timeTranscurridoActualString = "00:00";
   timeTranscurridoActual = 0;
   inter : any;
+  intervalParticle : any;
   public open_side_voice: boolean = false;
   idFrame; 
   listadoCanciones = [];
   icono = {
           'pausa' : 'fa-pause', 
           'reproducir' : 'fa-play',
-          'volumenSilenciado' : 'fa fa-volume-mute',
+          'volumenSilenciado' : 'fa fa-volume-off',
           'volumenBajo' : 'fa fa-volume-down',
           'volumenAlto' : 'fa fa-volume-up'
         }; 
@@ -91,7 +93,7 @@ export class FutureVoicesComponent implements OnInit {
 
   ngOnInit(): void {
     this.init();
-    setInterval(()=>{
+    this.intervalParticle = setInterval(()=>{
       this.step();
     });
     this.getVoiceUsers();
@@ -134,8 +136,6 @@ export class FutureVoicesComponent implements OnInit {
   }
   
   step() {
-
-    // if (this.stats) this.stats.begin();
 
     if (this.tog = !this.tog) {
   
@@ -195,6 +195,7 @@ export class FutureVoicesComponent implements OnInit {
     let start = document.getElementById('divRecordingStart') as HTMLElement;
     recording.setAttribute('style','display:none');
     start.setAttribute('style','display:none');
+    $('[name="inpNameUser"]').val('');
     if(type){// Empieza a grabar
       start.setAttribute('style','display:block');
       $('#modalTratamientoDatos').modal('hide');
@@ -219,9 +220,19 @@ export class FutureVoicesComponent implements OnInit {
           });
           
           let recognition = new webkitSpeechRecognition();
+          recognition.lang = "es-CO";
+          recognition.continuous = true;
           recognition.interimResults = true;
+          recognition.start();
           recognition.addEventListener('result', (e) => {
-            console.log(e.results);
+            this.man = false;
+            if(e.results[0].isFinal){
+              this.man = true;
+              recognition.abort();
+              setTimeout(()=>{
+                recognition.start();
+              },500);
+            }
           });
 
           this.mediaRecorder.addEventListener("stop", () => {
@@ -234,33 +245,12 @@ export class FutureVoicesComponent implements OnInit {
             var minute = (seconds/60).toString().split('.');
             var minutes = Number.parseInt(minute[0]);
             seconds = seconds - (minutes * 60);
-            var time = `${(minutes < 10) ? '0'+minutes : minutes}:${(seconds<10) ? '0'+seconds : seconds}`;
-            // Detener la cuenta regresiva
-            // Convertir los fragmentos a un objeto binario
-            const blobAudio = new Blob(this.fragmentosDeAudio);
-            const reader = new FileReader();
-            reader.readAsDataURL(blobAudio);
-            reader.addEventListener('loadend', (event) => { 
-              const audio = reader.result as String;
-              this.service.savePodcast('Anónimo',audio.replace('data:application/octet-stream;base64,',''),time).subscribe(
-                resp =>{
-
-                  this.getVoiceUsers();
-                }
-              );
-            });
-            // // Crear una URL o enlace para descargar
-            // const urlParaDescargar = URL.createObjectURL(blobAudio);
-            // // Crear un elemento <a> invisible para descargar el audio
-            // let a = document.createElement("a") as HTMLElement;
-            // document.body.appendChild(a);
-            // a.setAttribute('style' , "display: none");
-            // a.setAttribute('href', urlParaDescargar);
-            // a.setAttribute('download', "grabacion_parzibyte.me.webm");
-            // // Hacer click en el enlace
-            // a.click();
-            // // Y remover el objeto
-            // window.URL.revokeObjectURL(urlParaDescargar);
+            this.timeRecording = `${(minutes < 10) ? '0'+minutes : minutes}:${(seconds<10) ? '0'+seconds : seconds}`;
+            setTimeout(()=>{
+              this.man = true;
+              recognition.stop();
+            },1000);
+            $('#modalConfirmVoice').modal('show');
           });
         }
       )
@@ -273,6 +263,49 @@ export class FutureVoicesComponent implements OnInit {
       this.mediaRecorder.stop();
       this.mediaRecorder = null;
       recording.setAttribute('style','display:block');
+    }
+  }
+
+  confirmRecording(type : boolean){
+    try {
+      if(type){
+        $('#modalConfirmVoice').modal('hide');
+        // Convertir los fragmentos a un objeto binario
+        const blobAudio = new Blob(this.fragmentosDeAudio);
+        const reader = new FileReader();
+        reader.readAsDataURL(blobAudio);
+        reader.addEventListener('loadend', (event) => { 
+          const audio = reader.result as String;
+          let name = ($('[name="inpNameUser"]').val() != '') ? $('[name="inpNameUser"]').val() : 'Anónimo';
+          this.service.savePodcast(name,audio.replace('data:application/octet-stream;base64,',''),this.timeRecording).subscribe(
+            resp =>{
+              let txt = "";
+              if(resp.status == 200){
+                txt = `Audio grabado correctamente.
+                <br><br>
+                Gracias por dejar su voz del futuro. Recuerde que puede escuchar su audio y el de otros usuarios clickeando en el botón (<i class="fa fa-list"></i>) que está en la parte izquierda inferior.`;
+              }else{  
+                txt = `Error al grabar audio.
+                <br><br>
+                Ha ocurrido un arror al grabar el audio, por favor intente nuevamente.`;
+              }
+              $('#txtConfirmAudio').html(txt);
+              $('#modalConfirm').modal('show');
+              this.getVoiceUsers();
+            }
+          );
+        });
+      }else{
+        this.timeRecording = "";
+        this.fragmentosDeAudio = [];
+      }
+    } catch (error) {
+      let txt = "";
+      txt = `Error al grabar audio.
+                <br><br>
+                Ha ocurrido un arror al grabar el audio, por favor intente nuevamente.`;
+      $('#txtConfirmAudio').html(txt);
+      $('#modalConfirm').modal('show');
     }
   }
 
@@ -317,9 +350,7 @@ export class FutureVoicesComponent implements OnInit {
     tmpTimeAudio = (Number.parseInt(tmpTimeAudio[0]) * 60) + tmpTimeAudio[1]; 
     this.inter = setInterval(()=>{
       if(tmpTimeAudio <= this.timeTranscurridoActual){ // Detener intervalo
-        this.timeTranscurridoActual = 0;
-        this.timeTranscurridoActualString = "00:00";
-        clearInterval(this.inter);
+        this.stopReproductor();
         return;
       }
       this.timeTranscurridoActual++;
@@ -333,7 +364,6 @@ export class FutureVoicesComponent implements OnInit {
   changeAudio(id : any){
     $('.nav-link.nav-voice-future').removeClass('active');
     if(id == '+'){
-      debugger
       if((this.dataVoiceFuture.length-1) == this.idAudioActual){
         this.idAudioActual = 0;
       }else{
@@ -347,10 +377,13 @@ export class FutureVoicesComponent implements OnInit {
         this.idAudioActual--;
       }
       id = this.idAudioActual;
+    }else{
+      this.idAudioActual = id;
     }
     $(`.divVoice${id}`).addClass('active');
     this.stopReproductor();
     this.setValueAudio(id);
+    this.iniciarReproductor();
   }
 
   pauseReproductor(){
@@ -376,19 +409,23 @@ export class FutureVoicesComponent implements OnInit {
 
   alternarDeslizadorVolumen(e){
     e.stopPropagation();
-    // if(e.target == this.reproductor.boton['volumen'] || e.target == this.reproductor.boton['volumen'].firstChild){
-    //   this.reproductor.deslizador['volumen'].classList.toggle('oculto');
-    // } else {
-    //   this.reproductor.deslizador['volumen'].classList.add('oculto');
-    // }
+    let input = document.querySelector('.controles__volumen input');
+    let button = document.querySelector('.controles__volumen button');
+    if(e.target == button || e.target == button.firstChild){
+      input.classList.toggle('oculto');
+    } else {
+      input.classList.add('oculto');
+    }
   }
 
   moverVolumen(e){
     let volumen = e.target.value;
 
-    this.cancion.audio.volume = volumen/100;
+    let audio = document.getElementById('audioVoiceActual') as HTMLAudioElement;
+    audio.volume = volumen/100;
+    let button = document.querySelector('.controles__volumen button');
 
-    let iconoVolumen = this.reproductor.boton['volumen'].querySelector('i');
+    let iconoVolumen = button.querySelector('i');
 
     if(volumen == 0) iconoVolumen.className = this.icono['volumenSilenciado'];
     else if(volumen <= 50) iconoVolumen.className = this.icono['volumenBajo'];
