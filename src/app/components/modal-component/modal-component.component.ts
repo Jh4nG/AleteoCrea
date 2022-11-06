@@ -15,6 +15,10 @@ export class ModalComponentComponent implements OnInit, AfterContentInit {
 
   @Input() bgModal : String;
 
+  @Input() backdrop : String = "true";
+
+  @Input() keyboard : String = "true";
+
   @Input() visibleCard : boolean = true;
   
   @ContentChildren(TemplateRef) contentTemplate: QueryList<ElementRef> | undefined;

@@ -8,7 +8,7 @@ import { NavigationStart, Router } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit, AfterContentInit, AfterViewInit {
+export class AppComponent implements OnInit, AfterContentInit{
 
   public flat_open_side: boolean = false;
   public flag = 0;
@@ -51,14 +51,6 @@ export class AppComponent implements OnInit, AfterContentInit, AfterViewInit {
     });
   }
 
-  ngAfterViewInit(): void {
-  }
-
-  // ngOnChanges(changes): void {
-  //   console.log(changes);
-
-  // }
-
   ngAfterContentInit() {
     this.route.events.subscribe((url: any) => {
       if (url.url == '/home') {
@@ -76,10 +68,29 @@ export class AppComponent implements OnInit, AfterContentInit, AfterViewInit {
       .forEach(tooltipNode => new Tooltip(tooltipNode))
     try {
       setTimeout(()=>{
-        let a = document.getElementById('audioGeneralPage') as HTMLAudioElement;
-        this.audio.nativeElement.play();
-        //a.play();
-      },500);
+        switch(window.location.hash){
+          case '#/home':
+            this.audio.nativeElement.src="../assets/audios/plataforma/1. Plataforma principal.mp3";
+          break;
+          case '#/tree-page':
+            this.audio.nativeElement.src="../assets/audios/plataforma/3. Arte - árbol.mp3";
+          break;
+          case '#/podcast':
+            this.audio.nativeElement.src="../assets/audios/plataforma/2. Podcast.mp3";
+          break;
+          case '#/virtual-store':
+            this.audio.nativeElement.src="../assets/audios/plataforma/4. Tienda del futuro.mp3";
+          break;
+          case '#/contents':
+            this.audio.nativeElement.src="../assets/audios/plataforma/6. Contenidos adicionales.mp3";
+          break;
+          default:
+            this.audio.nativeElement.src="../assets/audios/plataforma/1. Plataforma principal.mp3";
+          break;
+        }
+        let btnAudio = document.getElementById('btnStartAudio') as HTMLAudioElement;
+        btnAudio.click();
+      },2000);
       
     } catch (error) {
       console.log(error);
@@ -196,14 +207,23 @@ export class AppComponent implements OnInit, AfterContentInit, AfterViewInit {
     }
   }
 
+  startAudioPlatform(){
+    this.audio.nativeElement.autoplay = true;
+    this.audio.nativeElement.loop = true;
+    this.audio.nativeElement.play().then(()=>{
+      console.log('play correct');
+    }).catch(()=>{
+      console.log('play error');
+    });
+  }
+
   playPauseAudio(){
-    let a = document.getElementById('audioGeneralPage') as HTMLAudioElement;
     if(this.controlAudio){
       this.audio.nativeElement.pause();
-      //a.pause();
+      document.getElementsByClassName('divAudioIcon')[0].classList.add('audioIconStop');
     }else{
       this.audio.nativeElement.play();
-      //a.play();
+      document.getElementsByClassName('divAudioIcon')[0].classList.remove('audioIconStop');
     }
     this.controlAudio = !this.controlAudio;
   }

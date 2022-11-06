@@ -5,12 +5,10 @@
 </div>
 
 <div>
-  <!-- <button class="display-menu--fixed-top sonido-botton" id="sonido-botton" (click)="playPauseAudio()">
-    <span> <img src="../assets/img/sound-size.gif" class="img-sound"></span>
-  </button>
-  <audio #audioGeneralPage id="audioGeneralPage" src="../assets/audios/Entorno general de la sala.mp3" ></audio> -->
-  <audio #audioGeneralPage  autoplay src="../assets/audios/Entorno general de la sala.mp3" ></audio>
+  <button style="display: none;" id="btnStartAudio" (click)="startAudioPlatform()"></button>
+  <audio #audioGeneralPage></audio>
 </div>
+
 <div class="d-flex flex-column flex-shrink-0 p-3 text-white  "
   [ngClass]="[!this.flat_open_side? 'fix-nav' : ' fix-nav--close fix-nav', route.url == '/virtual-store' ? 'color-menu' : '']"
   style="width: 280px;">
@@ -90,28 +88,14 @@
   <img src="../assets/img/btnFlotanteM.png">
   <!-- <img src="../assets/img/btnFlotanteA.png"> -->
 </div>
-<!-- <div class="home" data-bs-toggle="tooltip" data-bs-placement="top" title="Home" [routerLink]="['/home']">
-  <i class="fa fa-home"></i>
-</div> -->
 
-<div class="audioIcon" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Reproducir/Pausar Audio" (click)="playPauseAudio()">
-  <!-- <img src="../assets/img/OndaAudio.gif"> -->
-</div>
+<div class="divAudioIcon audioIcon" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Reproducir/Pausar Audio" (click)="playPauseAudio()"></div>
 
-<div class="one" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Podcast" [routerLink]="['/podcast']">
-  <i class="fa fa-microphone"></i>
-  <!-- <img src="../assets/img/iconos_podcast.gif" width="100%"> -->
-</div>
-<div class="two" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tienda Virtual"
-  [routerLink]="['/virtual-store']">
-  <i class="fa fa-shopping-cart"></i>
-</div>
-<div class="three" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Árbol" [routerLink]="['/tree-page']">
-  <i class="fa fa-tree"></i>
-</div>
-<a class="four" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Más Contenidos" [routerLink]="['/contents']">
-  <i class="fa fa-photo"></i>
-</a>
+<div class="one" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Podcast" [routerLink]="['/podcast']"></div>
+<div class="two" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tienda Virtual" [routerLink]="['/virtual-store']"></div>
+<div class="three" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Árbol" [routerLink]="['/tree-page']"></div>
+
+<a class="four" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Más Contenidos" [routerLink]="['/contents']"></a>
 <!-- Flotante Redes END -->
 
 <!-- Roting -->
