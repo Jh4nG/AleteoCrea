@@ -26,7 +26,7 @@ const clipPlanes = [
 })
 export class ThreePagesComponent implements OnInit {
 
-  treeImg = '../../assets/img/Tree/arbolParcial.glb';
+  treeImg = '../../assets/img/Tree/guacari   03_11_2022.glb';
   public mmi;
   constructor() { }
 
@@ -110,7 +110,7 @@ export class ThreePagesComponent implements OnInit {
 
   firstScene() {
     let red_color = new THREE.Color(0xff0000);
-    let geometriCub = new THREE.BoxGeometry(0.02, 0.1, 0.1);
+    let geometriCub = new THREE.BoxGeometry(0.1, 0.1, 0.1);
     let materialGeometri = new THREE.MeshBasicMaterial( {color: 0x00ff00});
     let cube = new THREE.Mesh(geometriCub, materialGeometri);
     cube.position.set(1.19, 0.01, -0.1);
