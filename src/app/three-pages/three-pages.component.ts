@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { NavigationStart, Router } from '@angular/router';
 import * as THREE from 'three';
 import { GLTFLoader, GLTF } from 'three/examples/jsm/loaders/GLTFLoader';
 import { GUI } from 'three/examples/jsm/libs/lil-gui.module.min.js';
@@ -24,11 +25,17 @@ const clipPlanes = [
   templateUrl: './three-pages.component.html',
   styleUrls: ['./three-pages.component.scss']
 })
-export class ThreePagesComponent implements OnInit {
+export class ThreePagesComponent implements OnInit, OnDestroy {
 
   treeImg = '../../assets/img/Tree/guacari   03_11_2022.glb';
   public mmi;
-  constructor() { }
+  public routeSub: any;
+  constructor(private route: Router) { }
+
+  ngOnDestroy(): void {
+    window.location.reload();
+    
+  }
 
   ngOnInit(): void {
     const canvas = document.querySelector('#c');

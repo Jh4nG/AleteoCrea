@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 declare var $;
 import { PodcastService } from '../services/podcast.service';
 import { GetModel } from '../models/getModel';
@@ -8,7 +8,7 @@ import { GetModel } from '../models/getModel';
   templateUrl: './podcast.component.html',
   styleUrls: ['./podcast.component.scss'],
 })
-export class PodcastComponent implements OnInit {
+export class PodcastComponent implements OnInit, OnDestroy {
 
   public modelService: GetModel;
 
@@ -22,6 +22,10 @@ export class PodcastComponent implements OnInit {
 
   ngOnInit(): void {
 
+  }
+
+  ngOnDestroy(): void {
+    window.location.reload();
   }
 
   getPodcastPrincipal() {

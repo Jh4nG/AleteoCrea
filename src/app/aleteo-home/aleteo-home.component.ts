@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 declare var $; 
 
 @Component({
@@ -6,9 +6,13 @@ declare var $;
   templateUrl: './aleteo-home.component.html',
   styleUrls: ['./aleteo-home.component.scss']
 })
-export class AleteoHomeComponent implements OnInit {
+export class AleteoHomeComponent implements OnInit, OnDestroy {
 
   constructor() { }
+
+  ngOnDestroy(): void {
+    window.location.reload();
+  }
 
   ngOnInit(): void {
     $('.img-agua').ripples({

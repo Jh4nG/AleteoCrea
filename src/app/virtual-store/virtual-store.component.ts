@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Viewer } from 'photo-sphere-viewer'
 import { MarkersPlugin } from 'photo-sphere-viewer/dist/plugins/markers';
 declare var $;
@@ -8,10 +8,14 @@ declare var $;
   templateUrl: './virtual-store.component.html',
   styleUrls: ['./virtual-store.component.scss']
 })
-export class VirtualStoreComponent implements OnInit {
+export class VirtualStoreComponent implements OnInit, OnDestroy {
 
   viewer: Viewer;
   constructor() { }
+  
+  ngOnDestroy(): void {
+    window.location.reload();
+  }
 
   ngOnInit(): void {
     setTimeout(()=>{
