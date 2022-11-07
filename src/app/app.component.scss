@@ -160,30 +160,42 @@
 	background: #000;
 }
 
+.divAudioIcon{
+	left: 40%;
+}
+
 .audioIcon{
 	background-image: url("../assets/img/OndaAudio.gif");
-    background-size: cover;
-	left: 40%;
+	background-size: cover;
+}
+
+.audioIconStop{
+	background-image: url("../assets/img/OndaAudioStop.jpg");
+	background-size: cover;
 }
 
 .one {
     left: 43%;
-	background: #2196f3;
+	background-image: url('../assets/img/iconos_podcast.gif');
+    background-size: 100%;
 }
 
 .two {
     left: 46%;
-	background: #00e5ff;
+	background-image: url('../assets/img/iconos_tienda.gif');
+    background-size: 100%;
 }
 
 .three {
     left: 54%;
-	background: #25d366;
+	background-image: url('../assets/img/iconos_arbol.gif');
+    background-size: 100%;
 }
 
 .four {
     left: 57%;
-	background: #6a1b9a;
+	background-image: url('../assets/img/iconos_contenidoAd.gif');
+    background-size: 100%;
 }
 
 a:hover {
@@ -312,6 +324,10 @@ main {
 	i {
 		font-size: 25px;
 	}
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link{
+	background-color: #2f2bd6;
 }
 
 .display-menu {

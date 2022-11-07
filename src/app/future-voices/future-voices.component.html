@@ -1,22 +1,91 @@
 <div id="container" (mousemove)="eventoParticulas($event)">
     <div class="info"></div>
     <div id="divRecording" class="btnRecorder">
-        <button class="recording" data-bs-toggle="tooltip" data-bs-placement="top" title="Grabar Audio" data-bs-toggle="modal" data-bs-target="#modalTratamientoDatos">
+        <button class="recording" data-bs-toggle="tooltip" data-bs-placement="top" title="Grabar Audio" aria-label="Grabar Audio" data-bs-target="#modalTratamientoDatos" (click)="openModal()">
             <span class="fa fa-microphone"></span>
-            <!-- <div class="top"></div>
-            <div class="left"></div>
-            <div class="bottom"></div>
-            <div class="right"></div> -->
         </button>
-        <!-- <button class="icon-btn add-btn">
-            <div class="fa fa-microphone iconBtn"></div>
-            <div class="btn-txt">Grabar Audio</div>
-        </button> -->
     </div>
     <div id="divRecordingStart" class="btnRecorderStart">
         <button class="recordingStart" data-bs-toggle="tooltip" data-bs-placement="top" title="Detener grabación" (click)="this.startRecording(false)">
             <span class="fa fa-stop-circle-o"></span>
         </button>
+    </div>
+
+    <div id="divViewGrabaciones" class="btnViewGrabaciones">
+        <button class="btn btn-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Voces del futuro" (click)="showSideBarVoice(true)">
+            <!-- <span class="fa fa-music"></span> -->
+            <span class="fa fa-list"></span>
+        </button>
+    </div>
+
+</div>
+
+<div class="d-flex flex-column flex-shrink-0 p-3 text-white color-menu fix-nav"
+    [ngClass]=" [!this.open_side_voice? 'fix-nav' : ' fix-nav--close fix-nav']"
+    style="width: 35%;height: 100vh;">
+    <div class="row">
+        <div class="col-12">
+        <div class="row">
+            <div class="col-3">
+            </div>
+            <div class="col-7">
+                <span class="fs-4">Voces del futuro</span>
+                <!-- <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                </a> -->
+            </div>
+            <div class="col-2" style="cursor:pointer;">
+                <a (click)="showSideBarVoice(false)"><i class="fa fa-close"></i></a>
+            </div>
+        </div>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="nav-pills flex-column mb-auto" style="max-height: 60vh;overflow: auto;">
+            <div class="col-md-12  nav-item" *ngFor="let d of dataVoiceFuture;let indexOfelement=index;">
+                <div class="nav-link nav-voice-future divVoice{{indexOfelement}}" [ngClass]="[indexOfelement == 0? 'active' : '']" (click)="this.changeAudio( indexOfelement )">
+                    <b>{{ d.name_user }}</b>
+                    <br>
+                    <div class="col-md-12 row">
+                        <div class="col-6">
+                            {{ d.time_audio }}
+                        </div>
+                        <div class="col-6" align="right">
+                            {{ this.convetirFecha(d.register_create.substr(0, 10)) }}
+                        </div>
+
+                    </div>
+                </div>
+                <!-- <a data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="#" class="nav-link active" aria-current="page">
+                    <svg class="bi me-2" width="16" height="16">
+                    <use xlink:href="#home" />
+                    </svg>
+                    Sobre Aleteo
+                </a> -->
+            </div>
+        </div>
+    </div>
+    <div class="reproductor">    
+        <div class="reproduccion">
+          <div class="reproduccion__progreso" align="center">
+            <!-- <input type="range" value="0" min="0" max="0" step="0.01"> -->
+            <audio id="audioVoiceActual" style="display: none;"></audio>
+            <time>{{this.timeTranscurridoActualString}}/{{this.timeActual}}</time>
+          </div>
+          <div class="reproduccion__controles">
+            <div class="controles__reproduccion">
+              <button type="button" (click)="this.changeAudio('-')"><i class="fa fa-step-backward"></i></button>
+              <button type="button" (click)="iniciarReproductor()" ><i class="fa fa-play"></i></button>
+              <button style="display:none" type="button" (click)="pauseReproductor()" ><i class="fa fa-pause"></i></button>
+              <button style="display:none" type="button" (click)="stopReproductor()" ><i class="fa fa-stop"></i></button>
+              <button type="button" (click)="this.changeAudio('+')"><i class="fa fa-step-forward"></i></button>
+            </div>
+            <div class="controles__volumen">
+              <button type="button" name="button"><i class="fa fa-volume-up" (click)="this.alternarDeslizadorVolumen($event)"></i></button>
+              <input type="range" value="100" min="0" max="100" step="1" class="oculto" (input)="this.moverVolumen($event)">
+            </div>
+          </div>
+        </div>
     </div>
 </div>
 <!-- <div class="containerGlobal">
@@ -35,12 +104,63 @@
     </ng-template>
     <ng-template #footer>
         <div class="col-12">
-            <div class="row" align="center">
-                <div class="col-2">
-                    <button class="btn btn-success" (click)="this.startRecording(true)">Aceptar</button>
+            <div class="row col-md-12">
+                <div class="col-6" align="right">
+                    <button class="btn btn-aleteo-blue bShadowBlue" (click)="this.startRecording(true)">Aceptar</button>
                 </div>
-                <div class="col-2">
-                    <button class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
+                <div class="col-6">
+                    <button class="btn btn-danger bShadowRed" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</app-modal-component>
+
+
+<app-modal-component idTarget="modalConfirmVoice" tamanio="md" bgModal="bgDarkModal ModalBlue bgNoBorder">
+    <ng-template #header>
+      <div>GRABACIÓN DE AUDIO</div>
+    </ng-template>
+    <ng-template #content>
+      <div>
+        ¿Está seguro que desea confirmar la grabación del audio?
+        <br>
+        Recuerde que puede confirmar un nombre de usuario de quien graba el audio, de lo contrario se grabará con el nombre de "Anónimo".
+        <br>
+        <br>
+        <label>Nombre de usuario:</label>
+        <br>
+        <br>
+        <input class="form-control" name="inpNameUser" placeholder="Museo Interactivo">
+      </div>
+    </ng-template>
+    <ng-template #footer>
+        <div class="col-12">
+            <div class="row col-md-12">
+                <div class="col-6" align="right">
+                    <button class="btn btn-aleteo-blue bShadowBlue" (click)="this.confirmRecording(true)">Aceptar</button>
+                </div>
+                <div class="col-6">
+                    <button class="btn btn-danger bShadowRed" data-bs-dismiss="modal" aria-label="Close" (click)="this.confirmRecording(false)">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</app-modal-component>
+
+
+<app-modal-component idTarget="modalConfirm" tamanio="md" bgModal="bgDarkModal ModalBlue bgNoBorder">
+    <ng-template #header>
+      <div>CONFIRMACIÓN DE GRABACIÓN</div>
+    </ng-template>
+    <ng-template #content>
+      <div id="txtConfirmAudio"></div>
+    </ng-template>
+    <ng-template #footer>
+        <div class="col-12">
+            <div class="row col-md-12" align="center">
+                <div class="col-12">
+                    <button class="btn btn-aleteo-blue bShadowBlue" data-bs-dismiss="modal" aria-label="Close" (click)="this.confirmRecording(false)">Aceptar</button>
                 </div>
             </div>
         </div>
