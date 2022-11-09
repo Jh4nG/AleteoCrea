@@ -29,11 +29,7 @@ const clipPlanes = [
 })
 export class ThreePagesComponent implements OnInit, OnDestroy {
 
-<<<<<<< HEAD
-  treeImg = '../../assets/img/Tree/guacari.gltf';
-=======
   treeImg = '../../assets/img/Tree/guacari prueba.gltf';
->>>>>>> 4257b73cee5c77c502b413cb14b104c8db0748c1
   public mmi;
   public routeSub: any;
 
@@ -67,13 +63,8 @@ export class ThreePagesComponent implements OnInit, OnDestroy {
     controls.maxDistance = 6; // Maximo que se puede alejar
     controls.enablePan = false;
 
-<<<<<<< HEAD
-    const light = new THREE.HemisphereLight(0xffffff, 0xffffff, 1.5);
-    light.position.set(- 1.25, 1, 1.25);
-=======
     //const light = new THREE.HemisphereLight(0xffffff, 0xffffff, 1);
     //light.position.set(- 1.25, 1, 1.25);
->>>>>>> 4257b73cee5c77c502b413cb14b104c8db0748c1
     // scene.add(light);
 
     // const helper = new THREE.CameraHelper( light.shadow.camera );
