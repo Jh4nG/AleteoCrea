@@ -1,4 +1,4 @@
-<div class="modal fade" id="{{idTarget}}" [attr.data-bs-backdrop]="backdrop" [attr.data-bs-keyboard]="keyboard" tabindex="-1"
+<div #elementModal class="modal fade" id="{{idTarget}}" [attr.data-bs-backdrop]="backdrop" [attr.data-bs-keyboard]="keyboard" tabindex="-1"
     attr.aria-labelledby="{{idTarget}}Label" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-{{tamanio}}">
         <div class="{{ visibleCard ? 'cardModal': '' }} modal-content {{bgModal}}" [ngClass]="[ !visibleM ? 'visible-modal': '' ]">

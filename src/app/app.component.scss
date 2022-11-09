@@ -44,15 +44,48 @@
 	bottom: 8%;
 	left: 93%;
 	z-index: 999;
+	cursor: pointer;
 }
 
 .bia-flotante:hover {
 	transform: translateY(-7px);
 }
 
+.btnFirtsHelp {
+	display: none;
+	width: 35px;
+	height: 35px;
+	background-color: black;
+	// display: none;
+	position: fixed;
+	bottom: 18%;
+	left: 89%;
+	z-index: 999;
+	border-radius: 50px;
+	border: 1px solid white;
+	border-style: none solid solid none;
+	cursor: pointer;
+}
+
+.btnSecondHelp {
+	display: none;
+	width: 35px;
+	height: 35px;
+	background-color: black;
+	// display: none;
+	position: fixed;
+	bottom: 10%;
+	left: 89%;
+	z-index: 999;
+	border-radius: 50px;
+	border: 1px solid white;
+	border-style: none solid solid none;
+	cursor: pointer;
+}
+
 
 .imgBia {
-	width: 55%;
+	width: 100%;
 }
 
 .share {
@@ -75,6 +108,8 @@
 	border-radius: 50px;
 	-webkit-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
+	border: 1px solid white;
+	border-style: none solid solid none;
 }
 
 /** Aleteo */
@@ -162,6 +197,8 @@
 
 .divAudioIcon{
 	left: 40%;
+	border: 1px solid white;
+	border-style: none solid solid none;
 }
 
 .audioIcon{
@@ -379,6 +416,8 @@ main {
 	border-radius: 50px;
 	-webkit-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
+	border: 1px solid white;
+	border-style: none solid solid none;
 }
 
 /** Mariposa */

@@ -63,7 +63,7 @@
 
 .ModalVirtual {
     background: transparent;
-    border: 2px solid #2f2bd6;
+    // border: 2px solid #2f2bd6;
     box-shadow: 2px 2px 15px #000000 inset;
     text-align: center;
     color: #e8e8e8;
@@ -71,11 +71,6 @@
     align-items: center;
     justify-content: center;
     font-family: 'Pacifico';
-    transition: all 0.3s;
-}
-
-.ModalVirtual:hover {
-    box-shadow: 2px 2px 15px #2f2bd6 inset;
     transition: all 0.3s;
 }
 

@@ -26,7 +26,7 @@ const clipPlanes = [
 })
 export class ThreePagesComponent implements OnInit {
 
-  treeImg = '../../assets/img/Tree/arbolParcial.glb';
+  treeImg = '../../assets/img/Tree/guacari.gltf';
   public mmi;
   constructor() { }
 
@@ -54,7 +54,7 @@ export class ThreePagesComponent implements OnInit {
 
     const light = new THREE.HemisphereLight(0xffffff, 0xffffff, 1.5);
     light.position.set(- 1.25, 1, 1.25);
-    scene.add(light);
+    // scene.add(light);
 
     // const helper = new THREE.CameraHelper( light.shadow.camera );
     // scene.add( helper );

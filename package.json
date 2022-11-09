@@ -21,6 +21,7 @@
     "@popperjs/core": "^2.11.6",
     "@types/stats.js": "^0.17.0",
     "@types/three": "^0.144.0",
+    "animate.css": "^4.1.1",
     "bootstrap": "^5.2.0",
     "bootstrap-icons": "^1.9.1",
     "font-awesome": "^4.7.0",

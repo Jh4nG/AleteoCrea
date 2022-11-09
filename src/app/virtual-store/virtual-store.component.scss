@@ -17,6 +17,7 @@ button {
     text-shadow: 0 0 .5em var(--glow-color);
     position: relative;
     transition: all 0.3s;
+    margin: 10px;
 }
 
 button::after {
@@ -45,4 +46,20 @@ button:active {
     box-shadow: 0 0 0.6em .25em var(--glow-color),
         0 0 2.5em 2em var(--glow-spread-color),
         inset 0 0 .5em .25em var(--glow-color);
+}
+
+.btnSelected{
+    color: var(--btn-color);
+    background-color: var(--glow-color);
+    box-shadow: 0 0 1em .25em var(--glow-color),
+        0 0 4em 2em var(--glow-spread-color),
+        inset 0 0 .75em .25em var(--glow-color);
+}
+
+.secondsQuestion{
+    display: none;
+}
+
+.thirdQuestion{
+    display: none;
 }

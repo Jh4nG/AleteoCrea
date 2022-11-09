@@ -1,4 +1,4 @@
-<div id="viewer" style="background-color: black; width: 100vw; height: 100vh;"></div>
+<div id="viewer" style="background-color: black; width: 100%; height: 100vh;"></div>
 
 <app-modal-component idTarget="modalVirtualStore" tamanio="xl" bgModal="bgDarkModal ModalVirtual bgNoBorder hideClose" backdrop="static" keyboard="false">
     <ng-template #header>
@@ -7,18 +7,63 @@
     <ng-template #content>
         <div>
             <form>
-                <div class="form-group">
-                    <label>¿Que edad tiene?</label>
-                    <br><br>
-                    <button type="button">Menos de 18</button>
-                    <button type="button">Enrte 18 y 30</button>
-                    <button type="button">Más de 30</button>
+                <div class="firstQuestion">
+                    <div class="form-group">
+                        <label>A partir de su condición socio-neuronal y económica basada de su chip identificador Dinamic Vir, ¿qué nivel social tiene?</label>
+                        <br><br>
+                        <button class="btnFirst" data-value="1" (click)="selectOption($event, 1)" type="button">Alto</button>
+                        <button class="btnFirst" data-value="2" (click)="selectOption($event, 1)" type="button">Medio</button>
+                        <button class="btnFirst" data-value="3" (click)="selectOption($event, 1)" type="button">Bajo</button>
+                    </div>
                 </div>
-                <br><br><br>
-                <div>
-                    <button type="button" (click)="ngSubmitForm()"> Atras </button>
+                <div class="secondsQuestion">
+                    <div class="form-group">
+                        <label>Incidente a su condición laboral, responda qué tipo de contrato tiene:</label>
+                        <br><br>
+                        <button class="btnSecond" (click)="selectOption($event, 2)" type="button">Definido de por vida.</button>
+                        <button class="btnSecond" (click)="selectOption($event, 2)" type="button">Contrato indefinido a término quincenal.</button>
+                        <button class="btnSecond" (click)="selectOption($event, 2)" type="button">Contrato por cuarto de hora.</button>
+                    </div>
+                    <br><br><br>
+                    <button type="button" (click)="retroceder(1)"> Atrás </button>
+                </div>
+                <div class="thirdQuestion">
+                    <label>¿Cuál es su rango de edad asemeja? (Recuerde que es la edad que asemeja, no la real)</label>
+                    <br><br>
+                    <button class="btnThird" (click)="selectOption($event, 3)" type="button">18 a 32 años.</button>
+                    <button class="btnThird" (click)="selectOption($event, 3)" type="button">33 a 55 años.</button>
+                    <button class="btnThird" (click)="selectOption($event, 3)" type="button">56 en adelante.</button>
+                    <br><br><br>
+                    <button type="button" (click)="retroceder(2)"> Atrás </button>
                 </div>
             </form>
+        </div>
+    </ng-template>
+    <ng-template #footer>
+    </ng-template>
+</app-modal-component>
+
+<app-modal-component (closeEvent)="eventCloseModalProduct()" idTarget="modalProduct" tamanio="xl" bgModal="bgDarkModal ModalVirtual bgNoBorder">
+    <ng-template #header>
+        <div>
+            <h1 id="nameProduct"></h1>
+        </div>
+    </ng-template>
+    <ng-template #content>
+        <div id="divContentProducto" class="col-12 row">
+            <div class="col-4"><img class="animate__animated animate__fadeInDown " id="imgFirstProduct" src="" width="100%"></div>
+            <div class="col-4"><img class="animate__animated animate__fadeInDown animate__delay-1s" id="imgSecondProduct" src="" width="100%"></div>
+            <div class="col-4"><img class="animate__animated animate__fadeInDown animate__delay-2s" id="imgThridProduct" src="" width="100%"></div>
+        </div>
+        <br>
+        <div align="center">
+            <div class="col-4" >
+                <button id="btnSoundProduct" (click)="startStopSoundProduct()">
+                    <audio id="soundProduct" src="" style="display: none;"></audio>
+                    <i class="fa "></i>
+                </button>
+                <button id="btnAddCard" data-id="" type="button">Añadir al carrito</button>
+            </div>
         </div>
     </ng-template>
     <ng-template #footer>

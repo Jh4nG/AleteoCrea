@@ -6,7 +6,7 @@
 
 <div>
   <button style="display: none;" id="btnStartAudio" (click)="startAudioPlatform()"></button>
-  <audio #audioGeneralPage></audio>
+  <audio #audioGeneralPage [volume]="0.1"></audio>
 </div>
 
 <div class="d-flex flex-column flex-shrink-0 p-3 text-white  "
@@ -77,10 +77,14 @@
 </div>
 
 <!-- Flotante BIA-->
-<a href="#" class="bia-flotante">
-  <img class="imgBia" src="../assets/img/BIA.gif" data-bs-toggle="tooltip" data-bs-placement="top"
+<div href="#" class="bia-flotante" (click)="openViewHelp()">
+  <img class="imgBia" src="../assets/img/BIA01.gif" data-bs-toggle="tooltip" data-bs-placement="top"
     title="¿Necesitas Ayuda?" />
-</a>
+</div>
+
+<div class="btnFirtsHelp" data-bs-toggle="tooltip" data-bs-placement="left" title="Video Ayuda" (click)="openVideoHelp(1)"></div>
+<div class="btnSecondHelp" data-bs-toggle="tooltip" data-bs-placement="left" title="Otros contenidos" (click)="openVideoHelp(2)"></div>
+
 <!-- Flotante BIA END -->
 
 <!-- Flotante Redes -->
@@ -89,13 +93,13 @@
   <!-- <img src="../assets/img/btnFlotanteA.png"> -->
 </div>
 
-<div class="divAudioIcon audioIcon" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Reproducir/Pausar Audio" (click)="playPauseAudio()"></div>
+<div class="divAudioIcon audioIcon audioIconStop" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Reproducir/Pausar Audio" (click)="playPauseAudio()"></div>
 
 <div class="one" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Podcast" [routerLink]="['/podcast']"></div>
 <div class="two" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tienda Virtual" [routerLink]="['/virtual-store']"></div>
 <div class="three" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Árbol" [routerLink]="['/tree-page']"></div>
 
-<a class="four" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Más Contenidos" [routerLink]="['/contents']"></a>
+<a class="four" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Contenidos Adiconales" [routerLink]="['/contents']"></a>
 <!-- Flotante Redes END -->
 
 <!-- Roting -->
@@ -125,5 +129,17 @@
   </ng-template>
   <ng-template #footer>
     footer
+  </ng-template>
+</app-modal-component>
+
+<app-modal-component idTarget="modalVideoHelp" tamanio="lg" bgModal="bgDarkModal ModalVirtual bgNoBorder hideClose">
+  <ng-template #header>
+  </ng-template>
+  <ng-template #content>
+    <div>
+      <video id="videoHelp" style="width: 80%;" controls></video>
+    </div>
+  </ng-template>
+  <ng-template #footer>
   </ng-template>
 </app-modal-component>

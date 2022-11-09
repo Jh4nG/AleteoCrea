@@ -1,0 +1,138 @@
+[
+    {
+        "id": "ARMA_EsAlto",
+        "nameProduct" : "AK 47 Láser 1.0",
+        "folder" : "AK 47 - LASER 1.0",
+        "images" : [
+            "ARMA_EsAlto1.jpg",
+            "ARMA_EsAlto2.jpg",
+            "ARMA_EsAlto3.jpg"
+        ],
+        "soundProduct" : "AK 47 Láser 1.0 _mezcla.mp3",
+        "latitude": 0.25,
+        "longitude": 1.94,
+        "image": "https://photo-sphere-viewer.js.org/assets/pin-blue.png",
+        "width": 32,
+        "height": 32,
+        "anchor": "bottom center"
+    },
+    {
+        "id": "impresora_EsAlto",
+        "nameProduct" : "NANO ART 3000 - VIR",
+        "folder" : "NANO ART 3000 - VIR",
+        "images" : [
+            "impresora_EsAlto1.jpg",
+            "impresora_EsAlto2.jpg",
+            "impresora_EsAlto3.jpg"
+        ],
+        "soundProduct" : "Nano-art 3000 – VIR _mezcla.mp3",
+        "latitude": 0.2,
+        "longitude": 2.73,
+        "image": "https://photo-sphere-viewer.js.org/assets/pin-blue.png",
+        "width": 32,
+        "height": 32,
+        "anchor": "bottom center"
+    },
+    {
+        "id": "celular_EsAlto",
+        "nameProduct" : "HOLOGRAM VIR",
+        "folder" : "HOLOGRAM VIR",
+        "images" : [
+            "celular_EsAlto1.jpg",
+            "celular_EsAlto2.jpg",
+            "celular_EsAlto3.jpg"
+        ],
+        "soundProduct" : "Hologram VIR XR _mezcla.mp3",
+        "latitude": 0.19,
+        "longitude": 3.51,
+        "image": "https://photo-sphere-viewer.js.org/assets/pin-blue.png",
+        "width": 32,
+        "height": 32,
+        "anchor": "bottom center"
+    },
+    {
+        "id": "Medic_EsAlto",
+        "nameProduct" : "MEDIC VIR",
+        "folder" : "MEDIC VIR",
+        "images" : [
+            "Medic_EsAlto1.jpg",
+            "Medic_EsAlto2.jpg",
+            "Medic_EsAlto3.jpg"
+        ],
+        "soundProduct" : "MEDIC – VIR _mezcla.mp3",
+        "latitude": 0.19,
+        "longitude": 4.3,
+        "image": "https://photo-sphere-viewer.js.org/assets/pin-blue.png",
+        "width": 32,
+        "height": 32,
+        "anchor": "bottom center"
+    },
+    {
+        "id": "sonohero_EsAlto",
+        "nameProduct" : "SONO HERO VIR",
+        "folder" : "SONO HERO VIR",
+        "images" : [
+            "sonohero_EsAlto1.jpg",
+            "sonohero_EsAlto2.jpg",
+            "sonohero_EsAlto3.jpg"
+        ],
+        "soundProduct" : "Sono Hero VIR- El instrumento del futur _mezcla.mp3",
+        "latitude": 0.23,
+        "longitude": 5.14,
+        "image": "https://photo-sphere-viewer.js.org/assets/pin-blue.png",
+        "width": 32,
+        "height": 32,
+        "anchor": "bottom center"
+    },
+    {
+        "id": "Audiofonos_EsAlto",
+        "nameProduct" : "MEMORI - VIR",
+        "folder" : "MEMORI - VIR",
+        "images" : [
+            "Audiofonos_EsAlto1.jpg",
+            "Audiofonos_EsAlto2.jpg",
+            "Audiofonos_EsAlto3.jpg"
+        ],
+        "soundProduct" : "Memori – Vir_mezcla.mp3",
+        "latitude": 0.19,
+        "longitude": 5.85,
+        "image": "https://photo-sphere-viewer.js.org/assets/pin-blue.png",
+        "width": 32,
+        "height": 32,
+        "anchor": "bottom center"
+    },
+    {
+        "id": "CHIP_EsAlto1",
+        "nameProduct" : "CHIP IDENTIFICADOR DV",
+        "folder" : "CHIP IDENTIFICADOR DV",
+        "images" : [
+            "CHIP_EsAlto1.jpg",
+            "CHIP_EsAlto2.jpg",
+            "CHIP_EsAlto3.jpg"
+        ],
+        "soundProduct" : "CHIP IDENTIFICADOR _mezcla.mp3",
+        "latitude": 0.23,
+        "longitude": 6.64,
+        "image": "https://photo-sphere-viewer.js.org/assets/pin-blue.png",
+        "width": 32,
+        "height": 32,
+        "anchor": "bottom center"
+    },
+    {
+        "id": "Emocionotronic_EsAlto",
+        "nameProduct" : "EMOCIONATRONIC 2.0",
+        "folder" : "EMOCIONATRONIC 2.0",
+        "images" : [
+            "Emocionotronic_EsAlto1.jpg",
+            "Emocionotronic_EsAlto2.jpg",
+            "Emocionotronic_EsAlto3.jpg"
+        ],
+        "soundProduct" : "EMOCIONOTRONIC 2.0 _mezcla.mp3",
+        "latitude": 0.21,
+        "longitude": 7.44,
+        "image": "https://photo-sphere-viewer.js.org/assets/pin-blue.png",
+        "width": 32,
+        "height": 32,
+        "anchor": "bottom center"
+    }
+]
