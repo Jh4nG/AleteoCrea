@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import * as  Stats from "node_modules/stats.js"
 import { Tooltip } from 'node_modules/bootstrap/dist/js/bootstrap.esm.min.js'
 import { PodcastService } from '../services/podcast.service';
@@ -11,7 +11,7 @@ declare var webkitSpeechRecognition: any;
   templateUrl: './future-voices.component.html',
   styleUrls: ['./future-voices.component.scss']
 })
-export class FutureVoicesComponent implements OnInit {
+export class FutureVoicesComponent implements OnInit, OnDestroy {
 
   meses = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
   dataVoiceFuture : any;
@@ -90,6 +90,10 @@ export class FutureVoicesComponent implements OnInit {
   base64String : any;
 
   constructor(public service : PodcastService) { }
+
+  ngOnDestroy(): void {
+    window.location.reload();
+  }
 
   ngOnInit(): void {
     this.init();

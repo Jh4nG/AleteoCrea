@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Viewer } from 'photo-sphere-viewer'
 import { MarkersPlugin } from 'photo-sphere-viewer/dist/plugins/markers';
 import { GyroscopePlugin } from "photo-sphere-viewer/dist/plugins/gyroscope";
@@ -11,7 +11,7 @@ declare var $;
   templateUrl: './virtual-store.component.html',
   styleUrls: ['./virtual-store.component.scss']
 })
-export class VirtualStoreComponent implements OnInit {
+export class VirtualStoreComponent implements OnInit, OnDestroy {
 
   estratoSelected = "1";
   viewer: Viewer;
@@ -31,6 +31,10 @@ export class VirtualStoreComponent implements OnInit {
   soundProduct : boolean;
 
   constructor(private http: HttpClient) { }
+  
+  ngOnDestroy(): void {
+    window.location.reload();
+  }
 
   ngOnInit(): void {
     // setTimeout(()=>{

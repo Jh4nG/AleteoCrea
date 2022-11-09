@@ -9,7 +9,7 @@ declare var $;
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit, AfterContentInit{
+export class AppComponent implements OnInit, AfterContentInit {
 
   public flat_open_side: boolean = false;
   public flag = 0;
@@ -22,36 +22,6 @@ export class AppComponent implements OnInit, AfterContentInit{
 
   constructor(private spinner: NgxSpinnerService,
     public route: Router) {
-
-    route.events.subscribe({
-      next: res => {
-        if (res instanceof NavigationStart) {
-          if (res.url == '/tree-page') {
-            this.controlPage = res.url;
-          } else if(res.url == '/podcast') {
-            this.controlPage = res.url;
-          }
-
-          if (res.url !== '/tree-page' && this.controlPage !== '') {
-            if (this.controlPage == '/tree-page') {
-              setTimeout(() => {
-                window.location.reload();
-              }, 10);
-              this.controlPage = '';
-            }
-          }
-
-          if (res.url !== '/podcast' && this.controlPage !== '') {
-            if (this.controlPage == '/podcast') {
-              setTimeout(() => {
-                window.location.reload();
-              }, 10);
-              this.controlPage = '';
-            }
-          }
-        }
-      },
-    });
   }
 
   ngAfterContentInit() {
@@ -119,7 +89,6 @@ export class AppComponent implements OnInit, AfterContentInit{
     } catch (error) {
       console.log(error);
     }
-
   }
 
 
@@ -133,55 +102,55 @@ export class AppComponent implements OnInit, AfterContentInit{
     let four = document.querySelector('.four') as HTMLElement;
     if (this.flag == 0) {
       home.animate({
-        top: `${position-9}%`,
-        left: `${left+2}%`,
+        top: `${position - 9}%`,
+        left: `${left + 2}%`,
       }, 100);
       setTimeout(() => {
-        home.style.top = `${position-9}%`;
-        home.style.left = `${left+2}%`;
-      },110);
+        home.style.top = `${position - 9}%`;
+        home.style.left = `${left + 2}%`;
+      }, 110);
 
       one.animate({
-        top: `${position-10}%`,
-        left: `${left-1}%`,
+        top: `${position - 10}%`,
+        left: `${left - 1}%`,
       }, 200);
       setTimeout(() => {
-        one.style.top = `${position-10}%`;
-        one.style.left = `${left-1}%`;
-      },210);
+        one.style.top = `${position - 10}%`;
+        one.style.left = `${left - 1}%`;
+      }, 210);
 
       setTimeout(() => {
         two.animate({
-          top: `${position-7}%`,
-          left: `${left-4}%`
+          top: `${position - 7}%`,
+          left: `${left - 4}%`
         }, 200);
         setTimeout(() => {
-          two.style.top = `${position-7}%`;
-          two.style.left = `${left-4}%`;
-        },210);
-      },200);
+          two.style.top = `${position - 7}%`;
+          two.style.left = `${left - 4}%`;
+        }, 210);
+      }, 200);
 
       setTimeout(() => {
         three.animate({
-          top: `${position-0.5}%`,
-          left: `${left-5}%`
+          top: `${position - 0.5}%`,
+          left: `${left - 5}%`
         }, 200);
         setTimeout(() => {
-          three.style.top = `${position-0.5}%`;
-          three.style.left = `${left-5}%`;
-        },210);
-      },300);
+          three.style.top = `${position - 0.5}%`;
+          three.style.left = `${left - 5}%`;
+        }, 210);
+      }, 300);
 
       setTimeout(() => {
         four.animate({
-          top: `${position+6}%`,
-          left: `${left-4}%`
+          top: `${position + 6}%`,
+          left: `${left - 4}%`
         }, 200);
         setTimeout(() => {
-          four.style.top = `${position+6}%`;
-          four.style.left = `${left-4}%`;
-        },210);
-      },400);
+          four.style.top = `${position + 6}%`;
+          four.style.left = `${left - 4}%`;
+        }, 210);
+      }, 400);
       this.flag = 1;
 
     } else {
@@ -207,9 +176,9 @@ export class AppComponent implements OnInit, AfterContentInit{
       }, 200);
 
       setTimeout(() => {
-        home.style.top = `${position+1}%`;
+        home.style.top = `${position + 1}%`;
         home.style.left = `${left}%`;
-        one.style.top = `${position+1}%`;
+        one.style.top = `${position + 1}%`;
         one.style.left = `${left}%`;
         two.style.top = `${position + 1}%`;
         two.style.left = `${left}%`;
@@ -223,14 +192,14 @@ export class AppComponent implements OnInit, AfterContentInit{
   }
 
   showSideBar(action: boolean) {
-    if(action){
+    if (action) {
       this.flat_open_side = true
     } else {
       this.flat_open_side = false
     }
   }
 
-  startAudioPlatform(){
+  startAudioPlatform() {
     this.audio.nativeElement.autoplay = true;
     this.audio.nativeElement.loop = true;
     this.audio.nativeElement.play().then(()=>{
@@ -242,11 +211,11 @@ export class AppComponent implements OnInit, AfterContentInit{
     });
   }
 
-  playPauseAudio(){
-    if(this.controlAudio){
+  playPauseAudio() {
+    if (this.controlAudio) {
       this.audio.nativeElement.pause();
       document.getElementsByClassName('divAudioIcon')[0].classList.add('audioIconStop');
-    }else{
+    } else {
       this.audio.nativeElement.play();
       document.getElementsByClassName('divAudioIcon')[0].classList.remove('audioIconStop');
     }

@@ -19,19 +19,19 @@
     <div class="item-galaxia galaxia1">
       <a class="galaxia" (click)="getListOfMusic('NFS')">
         <img class="" data-bs-toggle="modal" data-bs-target="#openReproductor"
-          src="./../../assets/img/podcast/galaxias/galaxia1.gif">
+          src="./../../assets/img/podcast/galaxias/galaxy-no-background1,1.gif">
       </a>
     </div>
     <div class="item-galaxia galaxia2">
       <a class="galaxia " (click)="getListOfMusic('Los inestables')">
         <img data-bs-toggle="modal" data-bs-target="#openReproductor"
-          src="./../../assets/img/podcast/galaxias/galaxia2.gif">
+          src="./../../assets/img/podcast/galaxias/galaxy-no-background2,1.gif">
       </a>
     </div>
     <div class="item-galaxia galaxia3">
       <a class="galaxia " (click)="getListOfMusic('DO-MI-FA')">
         <img data-bs-toggle="modal" data-bs-target="#openReproductor"
-          src="./../../assets/img/podcast/galaxias/galaxia3.gif">
+          src="./../../assets/img/podcast/galaxias/galaxy-no-background3,1.gif">
       </a>
     </div>
   </div>
@@ -39,68 +39,71 @@
     <div class="item-galaxia galaxia4">
       <a class="galaxia " (click)="getListOfMusic('Apocalipsis Now Milton Rural')">
         <img data-bs-toggle="modal" data-bs-target="#openReproductor"
-          src="./../../assets/img/podcast/galaxias/galaxia4.gif">
+          src="./../../assets/img/podcast/galaxias/galaxy-no-background4,1.gif">
       </a>
     </div>
     <div class="item-galaxia galaxia5">
       <a class="galaxia " (click)="getListOfMusic('Fragor Raizal')">
         <img data-bs-toggle="modal" data-bs-target="#openReproductor"
-          src="./../../assets/img/podcast/galaxias/galaxia5.gif">
+          src="./../../assets/img/podcast/galaxias/galaxy-no-background5,1.gif">
       </a>
     </div>
     <div class="item-galaxia galaxia6">
       <a class="galaxia " (click)="getListOfMusic('Degeneración Z')">
         <img data-bs-toggle="modal" data-bs-target="#openReproductor"
-          src="./../../assets/img/podcast/galaxias/galaxia6.gif">
+          src="./../../assets/img/podcast/galaxias/galaxy-no-background6,1.gif">
       </a>
     </div>
   </div>
 
   <div class="estrellas">
     <div class="podcast-1">
-      <a>
+      <a (click)="eventReproducirPodcast(1)">
         <img src="../../assets/img/podcast/galaxias/estrella.gif" alt="">
       </a>
     </div>
     <div class="podcast-2">
-      <a>
+      <a (click)="eventReproducirPodcast(2)">
         <img src="../../assets/img/podcast/galaxias/estrella.gif" alt="">
       </a>
     </div>
     <div class="podcast-3">
-      <a>
+      <a (click)="eventReproducirPodcast(3)">
         <img src="../../assets/img/podcast/galaxias/estrella.gif" alt="">
       </a>
     </div>
     <div class="podcast-4">
-      <a>
+      <a (click)="eventReproducirPodcast(4)">
         <img src="../../assets/img/podcast/galaxias/estrella.gif" alt="">
       </a>
     </div>
     <div class="podcast-5">
-      <a>
+      <a (click)="eventReproducirPodcast(5)">
         <img src="../../assets/img/podcast/galaxias/estrella.gif" alt="">
       </a>
     </div>
     <div class="podcast-6">
-      <a>
+      <a (click)="eventReproducirPodcast(6)">
         <img src="../../assets/img/podcast/galaxias/estrella.gif" alt="">
       </a>
     </div>
     <div class="podcast-7">
-      <a>
+      <a (click)="eventReproducirPodcast(7)">
         <img src="../../assets/img/podcast/galaxias/estrella.gif" alt="">
       </a>
     </div>
     <div class="podcast-8">
-      <a>
+      <a (click)="eventReproducirPodcast(8)">
         <img src="../../assets/img/podcast/galaxias/estrella.gif" alt="">
       </a>
     </div>
     <div class="podcast-9">
-      <a>
+      <a (click)="eventReproducirPodcast(9)">
         <img src="../../assets/img/podcast/galaxias/estrella.gif" alt="">
       </a>
     </div>
   </div>
+</div>
+<div>
+  <audio id="podcastAudios"   src=""></audio>
 </div>

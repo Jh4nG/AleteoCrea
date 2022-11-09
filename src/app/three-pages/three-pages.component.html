@@ -1,1 +1,14 @@
 <canvas id="c"></canvas>
+
+<app-modal-component idTarget="openReproductor" [visibleM]="false" bgModal="bgDarkModal ModalVirtual bgNoBorder hideClose"
+  [visibleCard]="true" tamanio="lg">
+  <ng-template #title></ng-template>
+  <ng-template #header>
+    <div class="row">
+      <div class="col-12">
+        <video src="../../assets/video/La tecnocotidianidad.mp4" controls width="100%" autoplay loop></video>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template #footer></ng-template>
+</app-modal-component>
