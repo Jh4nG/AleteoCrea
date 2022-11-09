@@ -81,7 +81,6 @@ export class AppComponent implements OnInit, AfterContentInit {
     } catch (error) {
       console.log(error);
     }
-
   }
 
 

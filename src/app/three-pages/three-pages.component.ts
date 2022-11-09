@@ -7,6 +7,8 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import MouseMeshInteraction from '../../assets/three.mmi.js';
 let camera, scene, renderer;
 
+declare var $;
+
 const params = {
   clipIntersection: true,
   planeConstant: 0,
@@ -27,26 +29,28 @@ const clipPlanes = [
 })
 export class ThreePagesComponent implements OnInit, OnDestroy {
 
-  treeImg = '../../assets/img/Tree/guacari   03_11_2022.glb';
+  treeImg = '../../assets/img/Tree/guacari prueba.gltf';
   public mmi;
   public routeSub: any;
+
+  public openModal: boolean = false;
   constructor(private route: Router) { }
 
   ngOnDestroy(): void {
     window.location.reload();
-    
   }
 
   ngOnInit(): void {
     const canvas = document.querySelector('#c');
-    renderer = new THREE.WebGLRenderer({ canvas,antialias: true });
+    renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.localClippingEnabled = true;
+    renderer.outputEncoding = THREE.sRGBEncoding;
     document.body.appendChild(renderer.domElement);
-
     scene = new THREE.Scene();
-    
+    //scene.background = new THREE.Color('white')
+
     // scene.background_image = new THREE.Color('url(../../assets/img/FondoAzul.png)');
 
     camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 200);
@@ -59,16 +63,17 @@ export class ThreePagesComponent implements OnInit, OnDestroy {
     controls.maxDistance = 6; // Maximo que se puede alejar
     controls.enablePan = false;
 
-    const light = new THREE.HemisphereLight(0xffffff, 0xffffff, 1.5);
-    light.position.set(- 1.25, 1, 1.25);
-    scene.add(light);
+    //const light = new THREE.HemisphereLight(0xffffff, 0xffffff, 1);
+    //light.position.set(- 1.25, 1, 1.25);
+    // scene.add(light);
 
     // const helper = new THREE.CameraHelper( light.shadow.camera );
     // scene.add( helper );
 
-    
+
     // Se agregar la imagen del arbol
     const loader = new GLTFLoader();
+    this.mmi = new MouseMeshInteraction(scene, camera);
     loader.load(this.treeImg, (gltf) => {
       let tree = gltf.scene;
       tree.rotation.set(0, 0, 0);
@@ -76,27 +81,25 @@ export class ThreePagesComponent implements OnInit, OnDestroy {
       tree.position.set(0, -1, 0);
       tree.visible = true;
       scene.add(tree);
+
+      this.mmi.addHandler('insectos-11', 'click', function (event) {
+        alert('Hola mundo');
+      });
+
+      this.mmi.addHandler('Desvanecida', 'click',(event) => {
+        $('#openReproductor').modal('show')
+      });
+
       this.render();
     });
 
+    
     const group = new THREE.Group();
 
-    // helpers
 
-    const helpers = new THREE.Group();
-    helpers.add(new THREE.PlaneHelper(clipPlanes[0], 2, 0xff0000));
-    helpers.add(new THREE.PlaneHelper(clipPlanes[1], 2, 0x00ff00));
-    helpers.add(new THREE.PlaneHelper(clipPlanes[2], 2, 0x0000ff));
-    helpers.visible = false;
-    scene.add(helpers);
-
-    
     window.addEventListener('resize', this.onWindowResize);
-    this.mmi = new MouseMeshInteraction(scene, camera);
-    this.firstScene();
-    console.log(this.mmi);
-    
-    this.render();
+    window.requestAnimationFrame(() => this.render());
+
   }
 
 
@@ -107,28 +110,64 @@ export class ThreePagesComponent implements OnInit, OnDestroy {
     this.render();
   }
 
-  render() {
-    requestAnimationFrame(() => {
-      this.render();
-    });
-    this.mmi.update();
+  render(): void {
+
     renderer.render(scene, camera);
+    this.mmi.update();
+    setTimeout(() => {
+      window.requestAnimationFrame(() => { this.render() });
+    }, 60);
   }
 
-  firstScene() {
-    let red_color = new THREE.Color(0xff0000);
-    let geometriCub = new THREE.BoxGeometry(0.1, 0.1, 0.1);
-    let materialGeometri = new THREE.MeshBasicMaterial( {color: 0x00ff00});
-    let cube = new THREE.Mesh(geometriCub, materialGeometri);
-    cube.position.set(1.19, 0.01, -0.1);
-    cube.name = 'cubo1';
-    
-    
-    this.mmi.addHandler('cubo1', 'click',function(event)  {
-      alert('Hola mundo')
-    })
-    scene.add( cube );
-    
-  }
+  // firstScene() {
+  //   let geometriCub = new THREE.BoxGeometry(0.1, 0.1, 0.1);
+  //   // let materialGeometri = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+  //   let materialGeometri = new THREE.MeshBasicMaterial(
+  //     {
+  //       color: 0x00ff00,
+  //       transparent: true,
+  //       opacity: 1,
+  //       wireframe: true
+  //     }
+  //   );
+  //   let cube = new THREE.Mesh(geometriCub, materialGeometri);
+  //   cube.position.set(1.19, 0.01, -0.1);
+  //   cube.name = 'cubo1';
 
+
+  //   this.mmi.addHandler('cubo1', 'click', function (event) {
+  //     alert('Hola mundo')
+  //   });
+
+  //   this.mmi.addHandler('cubo1', 'mouseover', (event) => {
+  //     console.log(event);
+      
+  //     console.log('hola mundo');
+      
+  //   });
+
+  //   scene.add(cube);
+  // }
+
+  // secondElement(): void {
+  //   let geometriCub = new THREE.BoxGeometry(1, 0.1, 0.2);
+  //   let materialGeometri = new THREE.MeshBasicMaterial(
+  //     { 
+  //       color: 0xffffff, 
+  //       transparent: true, 
+  //       opacity: 1, 
+  //       wireframe: true 
+  //     }
+  //   );
+  //   // let materialGeometri = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0 });
+  //   let cube = new THREE.Mesh(geometriCub, materialGeometri);
+  //   cube.position.set(-1.5, 0.01, -0.1);
+  //   cube.name = 'cubo2';
+
+  //   this.mmi.addHandler('cubo2', 'click', function (event) {
+  //     alert('Hola mundo 2')
+  //   })
+
+  //   scene.add(cube);
+  // }
 }
