@@ -2,3 +2,26 @@
 body{
     overflow: hidden;
 }
+
+.psv-loader-container{
+    background-color: black !important;
+}  
+
+@font-face {
+    font-family: 'OriginTech';
+    src: url('assets/font/OriginTech\ personal\ use.ttf');
+}
+
+@font-face {
+    font-family: 'TechnoBoard';
+    src: url('assets/font/TechnoBoard.ttf');
+}
+
+@font-face {
+    font-family: 'Glitch';
+    src: url('assets/font/Glitch\ inside.otf');
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: 'OriginTech';
+}

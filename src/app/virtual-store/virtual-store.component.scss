@@ -1,65 +1,235 @@
-button {
-    --glow-color: rgb(217, 176, 255);
-    --glow-spread-color: rgba(191, 123, 255, 0.781);
-    --enhanced-glow-color: rgb(231, 206, 255);
-    --btn-color: rgb(100, 61, 136);
-    border: .25em solid var(--glow-color);
-    padding: 1em 3em;
-    color: var(--glow-color);
-    font-size: 15px;
-    font-weight: bold;
-    background-color: var(--btn-color);
-    border-radius: 1em;
-    outline: none;
-    box-shadow: 0 0 1em .25em var(--glow-color),
-        0 0 4em 1em var(--glow-spread-color),
-        inset 0 0 .75em .25em var(--glow-color);
-    text-shadow: 0 0 .5em var(--glow-color);
-    position: relative;
-    transition: all 0.3s;
-    margin: 10px;
+button.btnPlataform {
+  --glow-color: rgb(217, 176, 255);
+  --glow-spread-color: rgba(191, 123, 255, 0.781);
+  --enhanced-glow-color: rgb(231, 206, 255);
+  --btn-color: rgb(100, 61, 136);
+  border: 0.25em solid var(--glow-color);
+  padding: 1em 3em;
+  color: var(--glow-color);
+  font-size: 15px;
+  font-weight: bold;
+  background-color: var(--btn-color);
+  border-radius: 1em;
+  outline: none;
+  box-shadow: 0 0 1em 0.25em var(--glow-color),
+    0 0 4em 1em var(--glow-spread-color),
+    inset 0 0 0.75em 0.25em var(--glow-color);
+  text-shadow: 0 0 0.5em var(--glow-color);
+  position: relative;
+  transition: all 0.3s;
+  margin: 10px;
 }
 
-button::after {
-    pointer-events: none;
-    content: "";
-    position: absolute;
-    top: 120%;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background-color: var(--glow-spread-color);
-    filter: blur(2em);
-    opacity: .7;
-    transform: perspective(1.5em) rotateX(35deg) scale(1, .6);
+.btnCarShoppingAdd {
+  padding: 0em !important;
 }
 
-button:hover {
-    color: var(--btn-color);
-    background-color: var(--glow-color);
-    box-shadow: 0 0 1em .25em var(--glow-color),
-        0 0 4em 2em var(--glow-spread-color),
-        inset 0 0 .75em .25em var(--glow-color);
+.btnCarShoppingDelete{
+  display: block;
+  width: 60px;
+  height: 50px;
+  border-radius: 70px;
+  padding: 0em !important;
 }
 
-button:active {
-    box-shadow: 0 0 0.6em .25em var(--glow-color),
-        0 0 2.5em 2em var(--glow-spread-color),
-        inset 0 0 .5em .25em var(--glow-color);
+button.btnPlataform::after {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  top: 120%;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--glow-spread-color);
+  filter: blur(2em);
+  opacity: 0.7;
+  transform: perspective(1.5em) rotateX(35deg) scale(1, 0.6);
 }
 
-.btnSelected{
-    color: var(--btn-color);
-    background-color: var(--glow-color);
-    box-shadow: 0 0 1em .25em var(--glow-color),
-        0 0 4em 2em var(--glow-spread-color),
-        inset 0 0 .75em .25em var(--glow-color);
+button.btnPlataform:hover {
+  color: var(--btn-color);
+  background-color: var(--glow-color);
+  box-shadow: 0 0 1em 0.25em var(--glow-color),
+    0 0 4em 2em var(--glow-spread-color),
+    inset 0 0 0.75em 0.25em var(--glow-color);
 }
 
-.secondsQuestion{
+button.btnPlataform:active {
+  box-shadow: 0 0 0.6em 0.25em var(--glow-color),
+    0 0 2.5em 2em var(--glow-spread-color),
+    inset 0 0 0.5em 0.25em var(--glow-color);
+}
+
+.btnSelected {
+  color: var(--btn-color);
+  background-color: var(--glow-color);
+  box-shadow: 0 0 1em 0.25em var(--glow-color),
+    0 0 4em 2em var(--glow-spread-color),
+    inset 0 0 0.75em 0.25em var(--glow-color);
+}
+
+.secondsQuestion {
+  display: none;
+}
+
+.thirdQuestion {
+  display: none;
+}
+
+.btnViewCarShopping {
+  position: fixed;
+  top: 2%;
+  right: 2%;
+  z-index: 999;
+}
+
+.btnViewCarShopping button {
+  display: block;
+  width: 60px;
+  height: 50px;
+  border-radius: 70px;
+}
+
+.cntCarShopping {
+  width: 20px;
+  font-size: 13px;
+  border-radius: 72px;
+  position: absolute;
+  background-color: rgb(217, 176, 255);
+  color: #2f2bd6;
+  height: 20px;
+  margin-top: -19px;
+  margin-left: 30px;
+}
+
+.card {
+  background-color: #2f2bd6;
+  border-radius: 20px;
+  transition: all 0.3s;
+  border-radius: 20px;
+}
+
+.card2 {
+  background-color: #1a1a1a;
+  transition: all 0.2s;
+  border-radius: 20px;
+}
+
+.card2 img{
+  border-radius: 20px;
+}
+
+.card2:hover {
+  transform: scale(0.98);
+  border-radius: 20px;
+}
+
+.card2:hover img{
+  border-radius: 20px;
+  transform: scale(0.98);
+}
+
+.card:hover {
+  background-image: linear-gradient(163deg, #00ff75 0%, #3700ff 100%);
+  box-shadow: 0px 0px 30px 1px rgba(0, 255, 117, 0.3);
+}
+
+.alert-aleteo-success{
+    --bs-alert-color: white;
+    --bs-alert-border-color: #8a87ff;
+    box-shadow: 0px 0px 30px transparent, 0px 0px 60px #2f2bd6;
+}
+
+.alert-aleteo-danger{
+    --bs-alert-color: white;
+    --bs-alert-border-color: #f16f6f;
+    box-shadow: 0px 0px 30px transparent, 0px 0px 60px #d82b2b;
+}
+
+.alert-aleteo-warning{
+    --bs-alert-color: white;
+    --bs-alert-border-color: #f5c55e;
+    box-shadow: 0px 0px 30px transparent, 0px 0px 60px #d8a12b;
+}
+
+.alertFixed{
     display: none;
+    position: fixed;
+    bottom: 2%;
+    right: 2%;
+    z-index: 1056;
 }
 
-.thirdQuestion{
-    display: none;
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link{
+	background-color: #d82b2b;
+}
+
+.nav-voice-future{
+  margin-bottom: 5px;
+  padding: 10px;
+}
+
+.nav-link{
+  color: white;
+}
+
+// .nav-link.nav-voice-future:hover{
+//   color: #d82b2b;
+// }
+// .nav-link.nav-voice-future.active{
+//   color: white;
+// }
+
+.fix-nav {
+	position: fixed;
+	width: 50%;
+  height: 100vh;
+	z-index: 9999 !important;
+
+	-webkit-transform: translate3d(300%, 0px, 0px);
+	transform: translate3d(300%, 0px, 0px);
+	visibility: visible;
+	transition: all 1s ease 0s;
+	-webkit-transition: all 1s ease 0s;
+
+
+	&--close {
+		-webkit-transform: translate3d(100%, 0px, 0px);
+		transform: translate3d(100%, 0px, 0px);
+		visibility: visible;
+	}
+
+	i {
+    margin-top: 10px;
+    font-size: 20px;
+	}
+}
+
+.color-menu {
+	background-color: rgba(0, 0, 0, 1);
+  // background-image: url('../../assets/img/FondoRojo.png');
+  background-size: cover;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(54 34 72); 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(76 48 102); 
 }

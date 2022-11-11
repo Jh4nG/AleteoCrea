@@ -1,9 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Viewer } from 'photo-sphere-viewer'
 import { MarkersPlugin } from 'photo-sphere-viewer/dist/plugins/markers';
-import { GyroscopePlugin } from "photo-sphere-viewer/dist/plugins/gyroscope";
-import { VisibleRangePlugin } from "photo-sphere-viewer/dist/plugins/visible-range";
 import { HttpClient } from '@angular/common/http';
+import { NgxSpinnerService } from 'ngx-spinner';
 declare var $;
 
 @Component({
@@ -13,8 +12,13 @@ declare var $;
 })
 export class VirtualStoreComponent implements OnInit, OnDestroy {
 
+  cantidadProductAddCar = 0;
+  cantidadDolaresInicial = 0;
+  cantidadDolaresGastados = 0;
   estratoSelected = "1";
+  productsAddToCar = [];
   viewer: Viewer;
+  public open_side_car: boolean = false;
   animatedValues = {
     latitude : { start: -Math.PI / 2, end: 0.2 },
     longitude: { start: Math.PI, end: 0 },
@@ -29,8 +33,13 @@ export class VirtualStoreComponent implements OnInit, OnDestroy {
     }
   }
   soundProduct : boolean;
+  stoExist : any;
+  stoAdver : any;
+  stoAdd : any;
+  spinerMariposa = "MariposaSpinner";
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    private spinner: NgxSpinnerService) { }
   
   ngOnDestroy(): void {
     window.location.reload();
@@ -73,6 +82,7 @@ export class VirtualStoreComponent implements OnInit, OnDestroy {
         navbar: 'caption description',
         caption : 'Museo Interactivo',
         defaultLong: this.configInit.longitude[this.estratoSelected],
+        defaultZoomLvl : 4,
         plugins: [
           [ MarkersPlugin, 
             {
@@ -89,12 +99,25 @@ export class VirtualStoreComponent implements OnInit, OnDestroy {
   }
 
   getProductModal(marker : any){
-    this.soundProduct = false;
-    let c = marker.config;
+    $('#alertProductAdd').hide();
+    $('#alertProductExist').hide();
+    $('#alertProductExcedeLimit').hide();
     let path = "../assets/img/store/OBJETOS/";
+    let c = marker.config;
+    $('#imgFirstProduct').attr('src',`${path}${c.folder}/${c.images[0]}`);
+    $('#imgSecondProduct').attr('src',`${path}${c.folder}/${c.images[1]}`);
+    $('#imgThridProduct').attr('src',`${path}${c.folder}/${c.images[2]}`);
+    this.showSideBarCar(false);
+    this.soundProduct = false;
     $('#nameProduct').html(c.nameProduct);
-    $('#modalProduct').modal('show');
     $('#btnAddCard').attr('data-id',marker.id);
+    $('#btnAddCard').attr('data-name',c.nameProduct);
+    $('#btnAddCard').attr('data-price',c.priceInt);
+    $('#btnAddCard').attr('data-prices',c.price);
+    $('#btnAddCard').attr('data-imgReference',`${path}${c.folder}/${c.images[0]}`);
+    $('#btnAddCard').attr('data-caracteristica',c.caracteristica);
+    $('#btnAddCard').attr('data-especificaciones',c.especificaciones);
+    $('#priceProduct').html(c.price);
     let soundProduct = document.getElementById('soundProduct') as HTMLAudioElement;
     soundProduct.src = `${path}${c.folder}/${c.soundProduct}`;
     soundProduct.play().then(()=>{
@@ -106,11 +129,7 @@ export class VirtualStoreComponent implements OnInit, OnDestroy {
       $('#btnSoundProduct i').removeClass('fa-pause');
       this.soundProduct = false;
     });
-    setTimeout(()=>{
-      $('#imgFirstProduct').attr('src',`${path}${c.folder}/${c.images[0]}`).addClass('animate__animated animate__fadeInDown');
-      $('#imgSecondProduct').attr('src',`${path}${c.folder}/${c.images[1]}`).addClass('animate__animated animate__fadeInDown animate__delay-1s');
-      $('#imgThridProduct').attr('src',`${path}${c.folder}/${c.images[2]}`).addClass('animate__animated animate__fadeInDown animate__delay-2s');
-    },100);
+    $('#modalProduct').modal('show');
   }
 
   startStopSoundProduct(){
@@ -136,6 +155,8 @@ export class VirtualStoreComponent implements OnInit, OnDestroy {
   ngSubmitForm(){
     $('#modalVirtualStore').modal('hide');
     $('.modal-backdrop.fade.show').remove();
+    this.estratoSelected = "1"; // Quitar en prod
+    this.cantidadDolaresInicial = 40000; // Quitar en prod
     this.constructViwer();
   }
 
@@ -145,6 +166,7 @@ export class VirtualStoreComponent implements OnInit, OnDestroy {
         $('.btnFirst').removeClass('btnSelected');
         e.currentTarget.setAttribute('class', 'btnFirst btnSelected');
         this.estratoSelected = e.currentTarget.getAttribute('data-value');
+        this.cantidadDolaresInicial = (this.estratoSelected == "1") ? 300000 : (this.estratoSelected == "2") ? 70000 : 12000; // precios iniciales dependiendo del estrato
         $('.firstQuestion').fadeOut(()=>{
           $('.secondsQuestion').fadeIn(1000);
         });
@@ -178,4 +200,60 @@ export class VirtualStoreComponent implements OnInit, OnDestroy {
       break;
     }
   }
+
+  addtoCar(event){
+    let p = event.target.dataset;
+    (this.stoExist != undefined) ? clearInterval(this.stoExist) : '';
+    (this.stoAdver != undefined) ? clearInterval(this.stoAdver) : '';
+    (this.stoAdd != undefined) ? clearInterval(this.stoAdd) : '';
+    let exist = this.productsAddToCar.find((item)=>{ return p.id == item.id });
+    if(exist != undefined){ // producto ya añadido
+      $('#alertProductAdd').fadeOut();
+      $('#alertProductExist').removeClass('animate__fadeOutUp').fadeIn().addClass('animate__animated animate__fadeInRight');
+      this.stoExist = setTimeout(() => {
+        $('#alertProductExist').addClass('animate__animated animate__fadeOutUp').fadeOut();
+      }, 3000);
+    }else if(this.cantidadDolaresInicial < this.cantidadDolaresGastados + parseInt(p.price)){ // Excede presupuesto
+      $('#alertProductAdd').fadeOut();
+      $('#alertProductExist').fadeOut();
+      $('#alertProductExcedeLimit').removeClass('animate__fadeOutUp').fadeIn().addClass('animate__animated animate__fadeInRight');
+      this.stoAdver = setTimeout(() => {
+        $('#alertProductExcedeLimit').addClass('animate__animated animate__fadeOutUp').fadeOut();
+      }, 3000);
+    }else{ // nuevo añadido
+      $('#alertProductExist').fadeOut();
+      $('#alertProductExcedeLimit').fadeOut();
+      $('#alertProductAdd').removeClass('animate__fadeOutUp').fadeIn().addClass('animate__animated animate__fadeInRight');
+      this.stoAdd = setTimeout(() => {
+        $('#alertProductAdd').addClass('animate__animated animate__fadeOutUp').fadeOut();
+      }, 3000);
+      this.productsAddToCar.push({"id":p.id,"price":p.price,"priceS":p.prices,"caracteristica":p.caracteristica,"especificaciones":p.especificaciones,"name" : p.name, "imgReference" : p.imgreference});
+      this.cantidadDolaresGastados += parseInt(p.price);
+      this.cantidadProductAddCar += 1;
+    }
+  }
+
+  deleteProductCar(id,price){
+    this.productsAddToCar = this.removeIdFromCollection(this.productsAddToCar, id);
+    this.cantidadDolaresGastados -= price;
+    this.cantidadProductAddCar--;
+  }
+
+  removeIdFromCollection = (collection, id) => {
+    return collection.filter(datum => {
+      if (Array.isArray(datum.values)) {
+        datum.values = this.removeIdFromCollection(datum.values, id);
+      }
+      return datum.id !== id;
+    });
+  }
+
+  showSideBarCar(action: boolean) {
+    if(action){
+      this.open_side_car = true;
+    } else {
+      this.open_side_car = false;
+    }
+  }
+
 }
