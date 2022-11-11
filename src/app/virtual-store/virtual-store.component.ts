@@ -58,20 +58,20 @@ export class VirtualStoreComponent implements OnInit, OnDestroy {
     let panorama = "";
     switch(this.estratoSelected){
       case '1': // Alto
-          json = "../assets/jsonStore/alto.json";
-          panorama = "../assets/img/store/Estratos/ALTO.jpg";
+          json ="./assets/jsonStore/alto.json";
+          panorama ="./assets/img/store/Estratos/ALTO.jpg";
         break;
       case '2': // Medio
-          json = "../assets/jsonStore/medio.json";
-          panorama = "../assets/img/store/Estratos/MEDIO.jpg";
+          json ="./assets/jsonStore/medio.json";
+          panorama ="./assets/img/store/Estratos/MEDIO.jpg";
         break;
       case '3': // Bajo
-          json = "../assets/jsonStore/bajo.json";
-          panorama = "../assets/img/store/Estratos/BAJO.jpg";
+          json ="./assets/jsonStore/bajo.json";
+          panorama ="./assets/img/store/Estratos/BAJO.jpg";
         break;
       default:
-          json = "../assets/jsonStore/alto.json";
-          panorama = "../assets/img/store/Estratos/ALTO.jpg";
+          json ="./assets/jsonStore/alto.json";
+          panorama ="./assets/img/store/Estratos/ALTO.jpg";
         break;
     }
     this.http.get(json).subscribe(data=>{
@@ -102,7 +102,7 @@ export class VirtualStoreComponent implements OnInit, OnDestroy {
     $('#alertProductAdd').hide();
     $('#alertProductExist').hide();
     $('#alertProductExcedeLimit').hide();
-    let path = "../assets/img/store/OBJETOS/";
+    let path ="./assets/img/store/OBJETOS/";
     let c = marker.config;
     $('#imgFirstProduct').attr('src',`${path}${c.folder}/${c.images[0]}`);
     $('#imgSecondProduct').attr('src',`${path}${c.folder}/${c.images[1]}`);

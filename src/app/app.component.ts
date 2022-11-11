@@ -46,49 +46,49 @@ export class AppComponent implements OnInit, AfterContentInit {
             switch (res.url) {
               case '/home':
                 setTimeout(() => {
-                  this.audio.nativeElement.src = "../assets/audios/plataforma/1. Plataforma principal.mp3";
+                  this.audio.nativeElement.src ="./assets/audios/plataforma/1. Plataforma principal.mp3";
                   this.videoHelp1 = "La desaparición de Colombia.mp4";
                   this.videoHelp2 = "La desaparición de Colombia.mp4";
                 }, 1000);
                 break;
               case '/tree-page':
                 setTimeout(() => {
-                  this.audio.nativeElement.src = "../assets/audios/plataforma/3. Arte - árbol.mp3";
+                  this.audio.nativeElement.src ="./assets/audios/plataforma/3. Arte - árbol.mp3";
                   this.videoHelp1 = "helpTree.mp4";
                   this.videoHelp2 = "La desaparición de Colombia.mp4";
                 }, 1000);
                 break;
               case '/podcast':
                 setTimeout(() => {
-                  this.audio.nativeElement.src = "../assets/audios/plataforma/2. Podcast.mp3";
+                  this.audio.nativeElement.src ="./assets/audios/plataforma/2. Podcast.mp3";
                   this.videoHelp1 = "La desaparición de Colombia.mp4";
                   this.videoHelp2 = "La desaparición de Colombia.mp4";
                 }, 1000);
                 break;
               case '/virtual-store':
                 setTimeout(() => {
-                  this.audio.nativeElement.src = "../assets/audios/plataforma/4. Tienda del futuro.mp3";
+                  this.audio.nativeElement.src ="./assets/audios/plataforma/4. Tienda del futuro.mp3";
                   this.videoHelp1 = "La desaparición de Colombia.mp4";
                   this.videoHelp2 = "La desaparición de Colombia.mp4";
                 }, 1000);
                 break;
               case '/contents':
                 setTimeout(() => {
-                  this.audio.nativeElement.src = "../assets/audios/plataforma/6. Contenidos adicionales.mp3";
+                  this.audio.nativeElement.src ="./assets/audios/plataforma/6. Contenidos adicionales.mp3";
                   this.videoHelp1 = "La desaparición de Colombia.mp4";
                   this.videoHelp2 = "La desaparición de Colombia.mp4";
                 }, 1000);
                 break;
               case '/future-voices':
                 setTimeout(() => {
-                  this.audio.nativeElement.src = "../assets/audios/plataforma/5. Voces del futuro.mp3";
+                  this.audio.nativeElement.src ="./assets/audios/plataforma/5. Voces del futuro.mp3";
                   this.videoHelp1 = "La desaparición de Colombia.mp4";
                   this.videoHelp2 = "La desaparición de Colombia.mp4";
                 }, 1000);
                 break;
               default:
                 setTimeout(() => {
-                  this.audio.nativeElement.src = "../assets/audios/plataforma/1. Plataforma principal.mp3";
+                  this.audio.nativeElement.src ="./assets/audios/plataforma/1. Plataforma principal.mp3";
                   this.videoHelp1 = "La desaparición de Colombia.mp4";
                   this.videoHelp2 = "La desaparición de Colombia.mp4";
                 }, 1000);
@@ -251,11 +251,11 @@ export class AppComponent implements OnInit, AfterContentInit {
     let video = document.getElementById("videoHelp") as HTMLVideoElement;
     video.src = "";
     if(type == 1){ // Ayuda uno
-      video.src = "../assets/VideoHelp/"+this.videoHelp1;
+      video.src ="./assets/VideoHelp/"+this.videoHelp1;
       video.play();
       video.volume = 0.1;
     }else{ // Ayuda 2
-      video.src = "../assets/VideoHelp/"+this.videoHelp2;
+      video.src ="./assets/VideoHelp/"+this.videoHelp2;
       video.play();
       video.volume = 0.1;
     }
