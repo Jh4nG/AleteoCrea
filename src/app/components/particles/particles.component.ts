@@ -451,7 +451,7 @@ export class ParticlesComponent implements OnInit {
       },
       scale: screen.width > 1536? 1.3: 0.9,
       type: 'inline',
-      url: "../assets/img/podcast/mariposa_lowpoly_soldado_Mesa_de_trabajo_1_copia_3.svg",
+      url:"./assets/img/podcast/mariposa_lowpoly_soldado_Mesa_de_trabajo_1_copia_3.svg",
       // url: 'https://particles.js.org/images/mariposa.svg',
       // url: '../assets/img/podcast/smalldeer.svg',
       // position: '50% 50%',

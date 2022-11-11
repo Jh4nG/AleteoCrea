@@ -6,7 +6,7 @@
 
 <div>
   <button style="display: none;" id="btnStartAudio" (click)="startAudioPlatform()"></button>
-  <audio #audioGeneralPage [volume]="0.4" ></audio>
+  <audio #audioGeneralPage [volume]="0.1" ></audio>
 </div>
 
 <div class="d-flex flex-column flex-shrink-0 p-3 text-white  "
@@ -78,7 +78,7 @@
 
 <!-- Flotante BIA-->
 <div href="#" class="bia-flotante" (click)="openViewHelp()">
-  <img class="imgBia" src="../assets/img/BIA01.gif" data-bs-toggle="tooltip" data-bs-placement="top"
+  <img class="imgBia" src="./assets/img/BIA01.gif" data-bs-toggle="tooltip" data-bs-placement="top"
     title="¿Necesitas Ayuda?" />
 </div>
 
@@ -89,8 +89,8 @@
 
 <!-- Flotante Redes -->
 <div class="share" id="share" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Inicio" [routerLink]="['/home']"> <!-- (click)="shareFunction()" --> 
-  <img src="../assets/img/btnFlotanteM.png">
-  <!-- <img src="../assets/img/btnFlotanteA.png"> -->
+  <img src="./assets/img/btnFlotanteM.png">
+  <!-- <img src="./assets/img/btnFlotanteA.png"> -->
 </div>
 
 <div class="divAudioIcon audioIcon audioIconStop" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Reproducir/Pausar Audio" (click)="playPauseAudio()"></div>
@@ -99,7 +99,7 @@
 <div class="two" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tienda Virtual" [routerLink]="['/virtual-store']"></div>
 <div class="three" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Árbol" [routerLink]="['/tree-page']"></div>
 
-<a class="four" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Contenidos Adiconales" [routerLink]="['/contents']"></a>
+<a class="four" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Contenidos Adicionales" [routerLink]="['/contents']"></a>
 <!-- Flotante Redes END -->
 
 <!-- Roting -->
@@ -113,8 +113,8 @@
 
 <!-- Boton Flotante Voces del futuro -->
 <div class="btnVocesF" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Voces del Futuro" [routerLink]="['/future-voices']">
-  <img src="../assets/img/VocesFuturoSpectrum.gif">
-  <!-- <img src="../assets/img/btnFlotanteA.png"> -->
+  <img src="./assets/img/VocesFuturoSpectrum.gif">
+  <!-- <img src="./assets/img/btnFlotanteA.png"> -->
 </div>
 <!-- Boton Flotante Voces del futuro -->
 
@@ -132,7 +132,7 @@
   </ng-template>
 </app-modal-component>
 
-<app-modal-component idTarget="modalVideoHelp" tamanio="lg" bgModal="bgDarkModal ModalVirtual bgNoBorder hideClose">
+<app-modal-component (closeEvent)="stopVideoModalHepl()" idTarget="modalVideoHelp" tamanio="lg" bgModal="bgDarkModal ModalVirtual bgNoBorder hideClose">
   <ng-template #header>
   </ng-template>
   <ng-template #content>

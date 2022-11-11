@@ -2,16 +2,17 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { GetModel } from '../models/getModel';
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class PodcastService {
 
-  API = 'http://localhost/swAleteoCrea/index';
+  API = environment.api;
   constructor(private http: HttpClient) { }
 
   public getAllPodcast(getModel: GetModel): Observable<any> {
-    return this.http.post<any>('http://localhost/swAleteoCrea/index', getModel);
+    return this.http.post<any>(this.API, getModel);
   }
 
   public savePodcast(name = 'Anónimo', file : any, time : any) : Observable <any> {
