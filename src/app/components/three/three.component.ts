@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 import * as THREE from 'three';
 import { GLTFLoader, GLTF } from 'three/examples/jsm/loaders/GLTFLoader';
@@ -27,6 +27,8 @@ const clipPlanes = [
   styleUrls: ['./three.component.scss']
 })
 export class ThreeComponent implements OnInit, OnDestroy {
+
+  @Output() sendObjectSelected: EventEmitter<any> = new EventEmitter<any>();
 
   treeImg = '../../assets/img/Tree/GUACARÍ CON ICONOS b 11_11_2022.gltf';
   public mmi;
@@ -82,14 +84,41 @@ export class ThreeComponent implements OnInit, OnDestroy {
       tree.visible = true;
       scene.add(tree);
 
-      this.mmi.addHandler('insectos-11', 'click', function (event) {
-        alert('Hola mundo');
+      this.mmi.addHandler('Icono1', 'click',(event) => {
+        this.sendObjectSelected.emit('Icono1');
       });
 
-      this.mmi.addHandler('Desvanecida', 'click',(event) => {
-        $('#openModalThree').modal('show')
+      this.mmi.addHandler('Icono2', 'click',(event) => {
+        this.sendObjectSelected.emit('Icono2');
       });
 
+      this.mmi.addHandler('Icono3', 'click',(event) => {
+        this.sendObjectSelected.emit('Icono3');
+      });
+
+      this.mmi.addHandler('Icono4', 'click',(event) => {
+        this.sendObjectSelected.emit('Icono4');
+      });
+
+      this.mmi.addHandler('Icono5', 'click',(event) => {
+        this.sendObjectSelected.emit('Icono5');
+      });
+      
+      this.mmi.addHandler('Icono6', 'click',(event) => {
+        this.sendObjectSelected.emit('Icono6');
+      });
+
+      this.mmi.addHandler('Icono7', 'click',(event) => {
+        this.sendObjectSelected.emit('Icono7');
+      });
+
+      this.mmi.addHandler('Icono8', 'click',(event) => {
+        this.sendObjectSelected.emit('Icono8');
+      });
+
+      this.mmi.addHandler('Icono9', 'click',(event) => {
+        this.sendObjectSelected.emit('Icono9');
+      });
       this.render();
     });
 

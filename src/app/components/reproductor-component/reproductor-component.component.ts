@@ -33,7 +33,7 @@ export class ReproductorComponentComponent implements OnInit, AfterViewInit, OnC
 
   public collapse: Collapse;
 
-  public principalSong: string = '../../../assets/audios/forever.mp3';
+  public principalSong: string = '';
 
   public nameBand: string;
 
@@ -46,10 +46,11 @@ export class ReproductorComponentComponent implements OnInit, AfterViewInit, OnC
 
   ngOnChanges(changes: SimpleChanges): void {
     if(changes['listPodCast']?.currentValue) {
+      
       this.filterPrincipalSong();
     }
 
-    if(changes['modalClose'].currentValue) {
+    if(changes['modalClose']?.currentValue) {
       let audio = this.audioReproducto.nativeElement;
       audio.pause();
     }
@@ -152,6 +153,13 @@ export class ReproductorComponentComponent implements OnInit, AfterViewInit, OnC
     });
     this.nameBand = song[0].name_podcast;
     this.audioReproducto.nativeElement.src = song[0].url_cancion;
+    try {
+      let img = `url(${song[0].url_img})`;
+      this.playContainer.nativeElement.style.backgroundImage = img;
+    } catch (error) {
+      console.log(error);
+      
+    }
   }
 
   clickItem(item: number) {

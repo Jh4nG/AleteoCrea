@@ -20,7 +20,13 @@ const clipPlanes = [
   styleUrls: ['./three-pages.component.scss']
 })
 export class ThreePagesComponent implements OnInit, OnDestroy {
-  
+
+  public acctionSelected: string;
+
+  constructor() {
+
+  }
+
   ngOnInit(): void {
     throw new Error('Method not implemented.');
   }
@@ -29,7 +35,42 @@ export class ThreePagesComponent implements OnInit, OnDestroy {
     window.location.reload();
   }
 
-  openTextModal()  {
+  openTextModal() {
     $('#openModalText').modal('show');
+  }
+
+  actionClickObject(object: string) {
+    this.acctionSelected = object;
+    switch (this.acctionSelected) {
+      case 'Icono1':
+        $('#openModalThreeIcono1').modal('show');
+        break;
+      case 'Icono2':
+        $('#openModalThreeIcono2').modal('show');
+        break;
+      case 'Icono3':
+        $('#openModalThreeIcono2').modal('show');
+        break;
+      case 'Icono4':
+        $('#openModalThreeIcono4').modal('show');
+        break;
+      case 'Icono5':
+        $('#openModalThreeIcono5').modal('show');
+        break;
+      case 'Icono6':
+        $('#openModalThreeIcono6').modal('show');
+        break;
+      case 'Icono7':
+        $('#openModalThreeIcono7').modal('show');
+        break;
+      case 'Icono8':
+        $('#openModalThreeIcono8').modal('show');
+        break;
+      case 'Icono9':
+        $('#openModalThreeIcono9').modal('show');
+        break;
+      default:
+        break;
+    }
   }
 }
