@@ -40,14 +40,14 @@
 }
 .btn-play {
   margin-top: 162px;
-  border-left: 57px solid rgb(37, 37, 37);
+  border-left: 57px solid rgb(99, 4, 4);
   border-bottom: 26px solid transparent;
   border-top: 31px solid transparent;
   cursor: pointer;
 }
 .btn-pause {
-  border-right: 20px solid rgb(255, 255, 255);
-  border-left: 20px solid rgb(255, 255, 255);
+  border-right: 20px solid rgb(99, 4, 4);
+  border-left: 20px solid rgb(99, 4, 4);
   width: 75px;
   height: 50px;
   margin-top: 162px;
@@ -167,4 +167,25 @@ hr {
 .item_song {
   font-size: 17px;
   color: white;
+}
+
+.inestables {
+  background-image: url('./../../../assets/img/podcast/Los inestable.png') !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.apocalipsis {
+  background-image: url('./../../../assets/img/podcast/Apocalipse now.png') !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.fragor {
+  background-image: url('./../../../assets/img/podcast/Fragor Raizal.jpg') !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }

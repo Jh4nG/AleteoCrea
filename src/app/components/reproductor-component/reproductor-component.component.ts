@@ -39,27 +39,29 @@ export class ReproductorComponentComponent implements OnInit, AfterViewInit, OnC
 
   @Input() modalClose: boolean = false;
 
-  constructor() { 
-    
-    
+  constructor() {
+
+
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if(changes['listPodCast']?.currentValue) {
-      
+    if (changes['listPodCast']?.currentValue) {
+
       this.filterPrincipalSong();
     }
 
-    if(changes['modalClose']?.currentValue) {
+    if (changes['modalClose']?.currentValue) {
       let audio = this.audioReproducto.nativeElement;
+      this.eventPlay();
       audio.pause();
+
     }
   }
 
-  
+
   ngOnInit(): void {
     this.modalClose = true;
-    window.AudioContext = window.AudioContext || window.webkitAudioContext;    
+    window.AudioContext = window.AudioContext || window.webkitAudioContext;
   }
 
   ngAfterViewInit(): void {
@@ -70,7 +72,7 @@ export class ReproductorComponentComponent implements OnInit, AfterViewInit, OnC
     let audio = this.audioReproducto.nativeElement;
     let btnN = this.btn.nativeElement;
     console.log(audio.paused);
-    
+
     if (audio.paused) {
       btnN.classList.add('btn-pause');
       btnN.classList.remove('btn-play');
@@ -137,39 +139,57 @@ export class ReproductorComponentComponent implements OnInit, AfterViewInit, OnC
   }
 
   eventChangeSong(cancion: any) {
-      this.audioReproducto.nativeElement.src = cancion.url_cancion;
-      let img = `url(${cancion.url_img})`;
-      this.playContainer.nativeElement.style.backgroundImage = img;
-      let audio = this.audioReproducto.nativeElement;
-      audio.pause();
-      this.eventPlay();
+    this.audioReproducto.nativeElement.src = cancion.url_cancion;
+    let img = `url(${cancion.url_img})`;
+    this.playContainer.nativeElement.style.backgroundImage = img;
+    let audio = this.audioReproducto.nativeElement;
+    audio.pause();
+    this.eventPlay();
   }
 
   filterPrincipalSong() {
     let song = this.listPodCast?.filter((item) => {
       console.log(this.listPodCast);
-      
+
       return item.principal == 1;
     });
     this.nameBand = song[0].name_podcast;
     this.audioReproducto.nativeElement.src = song[0].url_cancion;
+
     try {
-      let img = `url(${song[0].url_img})`;
-      this.playContainer.nativeElement.style.backgroundImage = img;
+      switch (song[0].name_podcast) {
+        case 'Los inestables':
+          this.playContainer.nativeElement.classList.remove('apocalipsis', 'fragor');
+          this.playContainer.nativeElement.classList.add('inestables');
+          break;
+        case 'Apocalipsis Now Milton Rural':
+          this.playContainer.nativeElement.classList.remove('inestables', 'fragor');
+          this.playContainer.nativeElement.classList.add('apocalipsis');
+          break;
+        case 'Fragor Raizal':
+          this.playContainer.nativeElement.classList.remove('inestables', 'apocalipsis');
+          this.playContainer.nativeElement.classList.add('fragor');
+          break;
+          default:
+          this.playContainer.nativeElement.classList.remove('inestables', 'apocalipsis', 'fragor');
+          let img = `url(${song[0].url_img})`;
+          this.playContainer.nativeElement.style.backgroundImage = img;
+          break;
+      }
+
     } catch (error) {
       console.log(error);
-      
     }
   }
 
   clickItem(item: number) {
     let itemsLi = document.querySelectorAll('.item-selected');
-   
-    itemsLi.forEach((itemL) => {     
-      if(itemL.id !== item.toString()) {
-        itemL.setAttribute('style','display: none;')
+
+    itemsLi.forEach((itemL) => {
+      if (itemL.id !== item.toString()) {
+        itemL.setAttribute('style', 'display: none;')
       } else {
-        itemL.setAttribute('style','display: inline;')
+        itemL.setAttribute('style', 'display: inline;')
       }
     });
   }

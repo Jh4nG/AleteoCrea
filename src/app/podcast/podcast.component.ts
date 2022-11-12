@@ -146,5 +146,8 @@ export class PodcastComponent implements OnInit, OnDestroy {
 
   eventoCerrado() {
     this.closeModal = true;
+    setTimeout(() => {
+      this.closeModal = false;
+    }, 200);
   }
 }
