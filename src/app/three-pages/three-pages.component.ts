@@ -1,6 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 import * as THREE from 'three';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 declare var $;
@@ -23,12 +24,12 @@ export class ThreePagesComponent implements OnInit, OnDestroy {
 
   public acctionSelected: string;
 
-  constructor() {
+  constructor(private spinner: NgxSpinnerService) {
 
   }
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    
   }
 
   ngOnDestroy(): void {
