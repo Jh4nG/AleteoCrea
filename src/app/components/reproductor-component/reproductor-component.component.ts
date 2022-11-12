@@ -37,6 +37,8 @@ export class ReproductorComponentComponent implements OnInit, AfterViewInit, OnC
 
   public nameBand: string;
 
+  @Input() modalClose: boolean = false;
+
   constructor() { 
     
     
@@ -46,12 +48,17 @@ export class ReproductorComponentComponent implements OnInit, AfterViewInit, OnC
     if(changes['listPodCast']?.currentValue) {
       this.filterPrincipalSong();
     }
+
+    if(changes['modalClose'].currentValue) {
+      let audio = this.audioReproducto.nativeElement;
+      audio.pause();
+    }
   }
 
   
   ngOnInit(): void {
-    window.AudioContext = window.AudioContext || window.webkitAudioContext;
-    
+    this.modalClose = true;
+    window.AudioContext = window.AudioContext || window.webkitAudioContext;    
   }
 
   ngAfterViewInit(): void {
@@ -61,16 +68,18 @@ export class ReproductorComponentComponent implements OnInit, AfterViewInit, OnC
   eventPlay(): void {
     let audio = this.audioReproducto.nativeElement;
     let btnN = this.btn.nativeElement;
+    console.log(audio.paused);
+    
     if (audio.paused) {
-      audio.play();
       btnN.classList.add('btn-pause');
       btnN.classList.remove('btn-play');
       //this.ctx.resume();
+      audio.play();
       this.onPlay();
     } else {
-      audio.pause();
       btnN.classList.add('btn-play');
       btnN.classList.remove('btn-pause');
+      audio.pause();
     }
   }
 
@@ -127,20 +136,33 @@ export class ReproductorComponentComponent implements OnInit, AfterViewInit, OnC
   }
 
   eventChangeSong(cancion: any) {
-      
       this.audioReproducto.nativeElement.src = cancion.url_cancion;
-      this.playContainer.nativeElement.style.backgroundImage = 'url(./../../../assets/img/foo.jpg)';
-
+      let img = `url(${cancion.url_img})`;
+      this.playContainer.nativeElement.style.backgroundImage = img;
+      let audio = this.audioReproducto.nativeElement;
+      audio.pause();
       this.eventPlay();
-
   }
 
   filterPrincipalSong() {
     let song = this.listPodCast?.filter((item) => {
+      console.log(this.listPodCast);
       
       return item.principal == 1;
     });
     this.nameBand = song[0].name_podcast;
     this.audioReproducto.nativeElement.src = song[0].url_cancion;
+  }
+
+  clickItem(item: number) {
+    let itemsLi = document.querySelectorAll('.item-selected');
+   
+    itemsLi.forEach((itemL) => {     
+      if(itemL.id !== item.toString()) {
+        itemL.setAttribute('style','display: none;')
+      } else {
+        itemL.setAttribute('style','display: inline;')
+      }
+    });
   }
 }

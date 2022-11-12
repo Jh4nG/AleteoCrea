@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router'
 declare var $; 
 
 @Component({
@@ -8,7 +9,7 @@ declare var $;
 })
 export class AleteoHomeComponent implements OnInit, OnDestroy {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnDestroy(): void {
     window.location.reload();
@@ -21,10 +22,10 @@ export class AleteoHomeComponent implements OnInit, OnDestroy {
       perturbance: 0.01,
       // imageUrl : '../../assets/img/agua.jpg'
     });
-    $('.imgMariposa').tilt({
-      glare: true,
-      maxGlare: .5,
-      axis: "x"
-    });
+  }
+
+  routePages(page: string): void {
+    
+    this.router.navigateByUrl(`/${page}`);
   }
 }

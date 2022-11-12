@@ -33,7 +33,6 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  // background: #2a2a2a;
   border-radius: 50%;
   z-index: 10;
   display: flex;
@@ -41,16 +40,18 @@
   align-items: center;
 }
 .btn-play {
-  border-left: 80px solid rgb(254, 255, 255);
-  border-bottom: 50px solid transparent;
-  border-top: 50px solid transparent;
+  margin-top: 162px;
+  border-left: 57px solid rgb(37, 37, 37);
+  border-bottom: 26px solid transparent;
+  border-top: 31px solid transparent;
   cursor: pointer;
 }
 .btn-pause {
   border-right: 20px solid rgb(255, 255, 255);
   border-left: 20px solid rgb(255, 255, 255);
   width: 75px;
-  height: 100px;
+  height: 50px;
+  margin-top: 162px;
   cursor: pointer;
 }
 .element {

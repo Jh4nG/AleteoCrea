@@ -1,12 +1,218 @@
-<canvas id="c"></canvas>
+<app-three></app-three>
 
-<app-modal-component idTarget="openReproductor" [visibleM]="false" bgModal="bgDarkModal ModalVirtual bgNoBorder hideClose"
-  [visibleCard]="true" tamanio="lg">
+<div class="texto-curatorial">
+  <button (click)="openTextModal()"> <i class="bi bi-file-earmark-richtext-fill"></i> </button>
+</div>
+
+
+<app-modal-component idTarget="openModalThree" [visibleM]="false"
+  bgModal="bgDarkModal ModalVirtual bgNoBorder hideClose" [visibleCard]="true" tamanio="lg">
   <ng-template #title></ng-template>
   <ng-template #header>
     <div class="row">
       <div class="col-12">
         <video src="../../assets/video/La tecnocotidianidad.mp4" controls width="100%" autoplay loop></video>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template #footer></ng-template>
+</app-modal-component>
+
+
+<app-modal-component idTarget="openModalText" [visibleM]="false" bgModal="bgDarkModal ModalBlue bgNoBorder hideClose"
+  [visibleCard]="true" tamanio="lg">
+  <ng-template #title>
+    <h4>TEXTO CURATORIAL</h4>
+  </ng-template>
+  <ng-template #header>
+    <div class="row">
+      <div class=" col-12 text-principal">
+        <p class="animate__animated animate__bounceInRight">
+          Este es un recopilado de parte de BIA 045 de los movimientos artísticos más significativos entre el año 2026 a
+          2040 y algo más. Cada uno de los artistas o movimientos que se exponen en esta galería representan aspectos de
+          vital importancia social, económica o política para la sociedad en donde circundaron. Desafortunadamente cada
+          uno de los movimientos desapareció después de la guerra, solo quedaron algunos vestigios de su historia y sus
+          artistas que se describirán a continuación:
+        </p>
+
+        <h5 class="animate__animated animate__bounceInLeft">Movimiento Callejero-Galería (2026-30)</h5>
+        <p class="animate__animated animate__bounceInRight">
+          Esta primera etapa artista de <strong>Grafiti holográfico</strong> en calle se realizó con elementos muy
+          rústicos y construidos por sus propios miembros.
+        </p>
+        <p class="animate__animated animate__bounceInRight">
+          En esta primera etapa del movimiento no se destacaron artistas, ya que tomaron como base el Dogma 95 para su
+          desarrollo. En donde los artistas grafiteros no firmaban sus obras, sino que colocaban una firma comunal con el
+          nombre de: Los errados (nombre generado por ellos al determinarse como seres que no se adecuaban al engranaje de
+          la dictadura).
+        </p>
+        <p class="animate__animated animate__bounceInRight">
+          Este movimiento se reunía en espacios clandestinos y grafiteaba las calles en altas horas de la noche o de la
+          madrugada cuando no existía visibilidad de parte de militares y policía. Se concentraban sobre todo en las
+          ciudades grandes, pero existen datos de artistas en zonas rurales que muy poco se visibilizaron.
+        </p>
+        <p class="animate__animated animate__bounceInRight">
+          Se caracterizaron por criticar la dictadura de Benavidez Romero con mensajes fuertes y directos, a veces
+          ofensivos. En ocasiones tenían una perspectiva más simbólica en sus grafitis.
+        </p>
+        <p class="animate__animated animate__bounceInRight">
+          El movimiento tuvo un golpe muy fuerte casi al finalizar la dictadura en 2031 debido a que se asesinaron a
+          muchos de sus miembros en la llamada: “Masacre de los caídos”, en donde militares radicales de Benavidez
+          entraron, perfilaron y secuestraron diversos jóvenes presuntos del movimiento y los violaron (principalmente a
+          las mujeres) y asesinaron con un balazo en la cabeza.
+        </p>
+        <p class="animate__animated animate__bounceInRight">
+          Durante su más grande frente de expresión entre 2026 y 2030 fueron asesinados más de 30 miembros y desaparecidos
+          otros 20.
+        </p>
+        <p class="animate__animated animate__bounceInRight">
+          Después de la dictadura el movimiento se dispersó y se revelaron varios nombres de sus miembros que re
+          fundamentaron el arte callejero y lo llevaron a Galerías.
+        </p>
+        
+        <h5 class="animate__animated animate__bounceInLeft">Callejero-galería de autor / Ramiro Restrepo (2031-32).</h5>
+        <p class="animate__animated animate__bounceInRight">
+          Nacido en Bogotá en 2001, fue miembro de Los errados, movimiento de grafiti casi desaparecido. Pese a que ese
+          movimiento no revelaba su nombre, cinco integrantes de este decidieron hacerlo al montar la Galería con el
+          nombre de Doyógrafo dirigida por Mario Martínez.
+        </p>
+        <p class="animate__animated animate__bounceInRight">
+          Se hicieron llamar: Los nuevos errados, pero los sobrevivientes del primer movimiento los rebautizaron como Los
+          erratas, por su posterior vinculación con el estado en muchos aspectos y el cual se utilizó en la jerga común
+          después por todos los artistas.
+        </p>
+        <p class="animate__animated animate__bounceInRight">
+          Las obras de Restrepo se encuentran más cercanas a una simplificación de la vida cotidiana de los andinenses
+          desde la tecnología y algunos procesos relacionados a las grandes industrias y su avance en el país. Más que una
+          crítica a ello parece aceptarlo y lo toma como parte de los procesos necesarios para una vida. También, realiza
+          una reinterpretación de las obras que dice supuestamente realizó cuando era miembro de Los errados.
+        </p>
+        <p class="animate__animated animate__bounceInRight">
+          Sus obras más significativas son Emocionotronic familiar (2032); La tecnocotidianidad (2033) y El mirar
+          posmoderno (2033). Lamentablemente sus obras desaparecieron en la quema del Doyógrafo. Solo se conservan sus
+          piezas reinterpretadas.
+        </p>
+
+        <h5 class="animate__animated animate__bounceInLeft">Pos-realismo Purista (2032-36)</h5>
+        <p style="font-style: oblique;">Juan Mauricio Vélez</p>
+        <p class="animate__animated animate__bounceInRight">
+          Artista del movimiento purista del pos-realismo Andino, que centró su obra en la relación entre la
+          tecnología,
+          el sistema binario y el diseño gráfico holográfico.
+        </p>
+        <p class="animate__animated animate__bounceInRight">
+          Vélez, siendo de familia pudiente, se crió junto a su padre dentro de todo lo que simbolizaron los procesos de
+          avances tecnológicos y tuvo su mayor acercamiento al ingresar DinamicVIR al país.
+        </p>
+        <p class="animate__animated animate__bounceInRight">
+          Por ello, su obra jamás buscó la crítica de los procesos del país o tuvo acercamiento a las clases medias y
+          bajas. Toda su obra acercó la relación entre los cuerpos biológicos, la tecnología y el sistema binario,
+          generando una relación de códigos binarios que realzaban los cuerpos.
+        </p>
+        <p class="animate__animated animate__bounceInRight">
+          Toda su obra se podía observar de manera gratuita y sin restricciones a quienes tuvieran la posibilidad de
+          acceder a la red virtual por medio del direccionador de red virtual en la Galería DinamicArt.
+        </p>
+        <p style="font-style: oblique;">
+          Wilber Mayolo
+        </p>
+        <p class="animate__animated animate__bounceInRight">
+          Ingeniero de profesión de la Universidad Nacional Andinense y artista por hobbie. Por lo menos en sus primeras
+          etapas en 2032 cuando el avance tecnológico del país andino apenas estaba comenzando a recuperarse después de la
+          dictadura, sus prototipos para nanotecnología artística no fueron bien recibidos.
+        </p>
+        <p class="animate__animated animate__bounceInRight">
+          Inventor del primer prototipo de Nano art en 2034, que construyó en su propio estudio y que después patentó y
+          desarrolló con apoyo de DinamicVIR para finales de 2035.
+        </p>
+        <p class="animate__animated animate__bounceInRight">
+          Su más famosa obra que es un compendio se llamó: La danza de las nanoratas (2035), en donde exhibió en la
+          gigante galería independiente El Odeón partículas nanotecnológicas de ratas y otros animales e insectos que las
+          personas podía respirar por el aire, simbolizando cómo la corrupción y, tratos con empresas privadas invadía de
+          nuevo al país Andino, así como dijo él: Incluso hasta en el aire se puede percibir la corrupción.
+        </p>
+        <p class="animate__animated animate__bounceInRight">
+          La única forma de verlo era con una lupa especial creada por él y microscopios que pudieran llevar los
+          asistentes. La entrada era libre para cualquier persona, sin importar su tipo de identificación (Chip o cédula
+          antigua).
+        </p>
+        <p class="animate__animated animate__bounceInRight">
+          Su movimiento se basó en la experimentación igual que Fluxus, pero su estilo era más elaborado y crítico. Fue
+          vetado de las galerías estatales después de su exhibición La danza de las nanoratas e incluso DinamicVIR le
+          retiró su financiación. Desapareció en el 2036 después de decir que tendría una obra preparada que
+          revolucionaría la vida del país y haría revuelco en empresas poderosas. Jamás se logró saber de su paradero.
+        </p>
+        <p class="animate__animated animate__bounceInRight">
+          Se presume que su desaparición tuvo que ver con la caída de DinamicVIR a finales de aquel año de 2036.
+        </p>
+        <p style="font-style: oblique;">
+          Miriam Bustamante (2035-39)
+        </p>
+        <p class="animate__animated animate__bounceInRight">
+          Destacada artista del movimiento pos-realista que siempre fue crítica a la sociedad tecnológica promovida por el
+          estado y desarrollada por DinamicVIR con quien tuvo diversos encuentros penales por acoso y supuestas amenazas
+          de muerte.
+        </p>
+        <p class="animate__animated animate__bounceInRight">
+          Sus obras se centraron en mostrar en las calles de la red virtual piezas que mostraban la dependencia de la
+          tecnología por parte de los andinenses. Ante esto, sus críticos siempre fueron recurrentes al mencionar que
+          usaba el medio para criticar al medio, a lo cual se recupera su frase: El medio debe ser crítico consigo para
+          que no se convierta en el medio.
+        </p>
+        <p class="animate__animated animate__bounceInRight">
+          Después de la caída definitiva de la red en 2037, y la reorganización, Bustamante comenzó a recurrir a estilos
+          más gráficos y físicos en sus obras al punto de convertirse en una desarrolladora del antigua panfleto (Código
+          en software libre, acciones en art.net o anymous del arte).
+        </p>
+        <p class="animate__animated animate__bounceInRight">
+          Bustamante tiene obras famosas entre las que se destacan: La red y el cuerpo (2035); Panfletos de las Tics
+          (2037); La tecnología y yo (2039), este último un performance (¿que se entiende por performance?) que recoge una
+          versión de la red virtual de DinamicVir y la convierte en una obra tangible tipo laberinto.
+        </p>
+        <h5 class="animate__animated animate__bounceInLeft">
+          Re-hacer Andino (2037- ¿?)
+        </h5>
+        <p style="font-style: oblique;">
+          Leydy Quintero
+        </p>
+        <p class="animate__animated animate__bounceInRight">
+          Artista y ambientalista que desarrolló todo su trabajo con la planta FO como parte de sus llamados rituales de
+          construcción en donde intentaba buscar los elementos de la planta más naturales posibles para entrar en transe
+          al momento de desarrollar su obra.
+        </p>
+        <p class="animate__animated animate__bounceInRight">
+          Jugó a reinterpretar obras de otros movimientos, sobre todo el Callejero de los errados del cual tomó piezas
+          desarrolladas en la ciudad y las transformó en obras que tenían total empatía con el campo. Recordando que fue
+          por aquella época en la que el campo tomó más relevancia en el estado.
+        </p>
+        <p class="animate__animated animate__bounceInRight">
+          El movimiento fue conocido como re-hacer naturalista y fue una de las principales exponentes. Su relación con la
+          naturaleza y la influencia del Landart y Nery Oxman, le dieron el sello único que la convirtió en la artista del
+          nuevo país, cuando fue nombrada ministra de cultura y arte en el gobierno de Mario Martínez en el 2040.
+        </p>
+        <p class="animate__animated animate__bounceInRight">
+          Muchos mencionan que por su edad (40 años al momento de ser ministra) pudo ser una de Los errados debido a su
+          uso de aquellas obras y el acercamiento con Mario Martínez, pero no son más que especulaciones.
+        </p>
+        <p style="font-style: oblique;">
+          Lexus Morantes
+        </p>
+        <p class="animate__animated animate__bounceInRight">
+          Artista que desarrolló su obra en recuperar las tecnologías de pos-realismo andino pero asociadas hacia el
+          mapping en calle holográfico y las influencia de Olafur Eliasson.
+        </p>
+        <p class="animate__animated animate__bounceInRight">
+          Bajo la influencia del FO en todas sus posibilidades legales (y se dice que ilegales) promovió propuestas en
+          calle y recintos cerrados con diversos elementos como objetos electrónicos, drogas, rostros, cuerpos y demás sin
+          tener ningún tipo de arte o ideología predefinada, aunque los cuerpos que proyectaba eran normalmente de
+          transexuales, considerándose uno.
+        </p>
+        <p class="animate__animated animate__bounceInRight">
+          Su más grande proyecto fue la proyección superliminal, nombre que tuvo su movimiento dentro del Re-hacer andino,
+          en donde colocó una mapping holográfico sobre la plaza mayor de Bogotá y proyectó toda una noche las plantas y
+          drogas que había usado para poder crear aquella pieza.
+        </p>
+
       </div>
     </div>
   </ng-template>

@@ -191,7 +191,7 @@ export class ParticlesComponent implements OnInit {
           duration: 2,
           mix: false,
           opacity: 8,
-          size: 6,
+          size: 10,
           divs: {
             distance: 200,
             duration: 0.4,
@@ -286,6 +286,7 @@ export class ParticlesComponent implements OnInit {
         density: {
           area: 2000,
         },
+        limit:450,
         value: 200,
       },
       opacity: {
@@ -300,7 +301,7 @@ export class ParticlesComponent implements OnInit {
       },
       size: {
         random: true,
-        value: 1,
+        value: 4,
         animation: {
           speed: 40,
           minimumValue: 0.1,
