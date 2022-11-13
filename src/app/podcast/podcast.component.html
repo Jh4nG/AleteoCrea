@@ -1,12 +1,12 @@
 <app-particles></app-particles>
 
 <app-modal-component idTarget="openReproductor" [visibleM]="false" bgModal="bgTransparentModal bgNoBorder"
-  [visibleCard]="false" tamanio="lg">
+  [visibleCard]="false" tamanio="lg" (closeEvent)="eventoCerrado()">
   <ng-template #title></ng-template>
   <ng-template #header>
     <div class="row">
       <div class="col-12">
-        <app-reproductor-component [listPodCast]="listBandSelected"></app-reproductor-component>
+        <app-reproductor-component [listPodCast]="listBandSelected" [modalClose]="this.closeModal"></app-reproductor-component>
       </div>
     </div>
   </ng-template>
@@ -17,89 +17,99 @@
 
   <div class="galaxias left-galaxias">
     <div class="item-galaxia galaxia1">
-      <a class="galaxia" (click)="getListOfMusic('NFS')">
-        <img class="" data-bs-toggle="modal" data-bs-target="#openReproductor"
-          src="./../../assets/img/podcast/galaxias/galaxy-no-background1,1.gif">
-      </a>
+      <span data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="NFS" >
+        <a class="galaxia" (click)="getListOfMusic('NFS')" >
+          <img class="" data-bs-toggle="modal" data-bs-target="#openReproductor"
+            src="./../../assets/img/podcast/galaxias/galaxy-no-background1,1.gif">
+        </a>
+      </span>
     </div>
     <div class="item-galaxia galaxia2">
-      <a class="galaxia " (click)="getListOfMusic('Los inestables')">
-        <img data-bs-toggle="modal" data-bs-target="#openReproductor"
-          src="./../../assets/img/podcast/galaxias/galaxy-no-background2,1.gif">
-      </a>
+      <span data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Los inestables">
+        <a class="galaxia " (click)="getListOfMusic('Los inestables')">
+          <img data-bs-toggle="modal" data-bs-target="#openReproductor"
+            src="./../../assets/img/podcast/galaxias/galaxy-no-background2,1.gif">
+        </a>
+      </span>
     </div>
     <div class="item-galaxia galaxia3">
-      <a class="galaxia " (click)="getListOfMusic('DO-MI-FA')">
-        <img data-bs-toggle="modal" data-bs-target="#openReproductor"
-          src="./../../assets/img/podcast/galaxias/galaxy-no-background3,1.gif">
-      </a>
+      <span data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="DO-MI-FA">
+        <a class="galaxia " (click)="getListOfMusic('DO-MI-FA')">
+          <img data-bs-toggle="modal" data-bs-target="#openReproductor"
+            src="./../../assets/img/podcast/galaxias/galaxy-no-background3,1.gif">
+        </a>
+      </span>
     </div>
-  </div>
-  <div class="galaxias rigth-galaxias">
     <div class="item-galaxia galaxia4">
-      <a class="galaxia " (click)="getListOfMusic('Apocalipsis Now Milton Rural')">
-        <img data-bs-toggle="modal" data-bs-target="#openReproductor"
-          src="./../../assets/img/podcast/galaxias/galaxy-no-background4,1.gif">
-      </a>
+      <span data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Apocalipsis Now Milton Rural">
+        <a class="galaxia " (click)="getListOfMusic('Apocalipsis Now Milton Rural')">
+          <img data-bs-toggle="modal" data-bs-target="#openReproductor"
+            src="./../../assets/img/podcast/galaxias/galaxy-no-background4,1.gif">
+        </a>
+      </span>
     </div>
     <div class="item-galaxia galaxia5">
-      <a class="galaxia " (click)="getListOfMusic('Fragor Raizal')">
-        <img data-bs-toggle="modal" data-bs-target="#openReproductor"
-          src="./../../assets/img/podcast/galaxias/galaxy-no-background5,1.gif">
-      </a>
+      <span data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="AFragor Raizal">
+        <a class="galaxia " (click)="getListOfMusic('Fragor Raizal')">
+          <img data-bs-toggle="modal" data-bs-target="#openReproductor"
+            src="./../../assets/img/podcast/galaxias/galaxy-no-background5,1.gif">
+        </a>
+      </span>
     </div>
     <div class="item-galaxia galaxia6">
-      <a class="galaxia " (click)="getListOfMusic('Degeneración Z')">
-        <img data-bs-toggle="modal" data-bs-target="#openReproductor"
-          src="./../../assets/img/podcast/galaxias/galaxy-no-background6,1.gif">
-      </a>
+      <span data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Degeneración Z">
+        <a class="galaxia " (click)="getListOfMusic('Degeneración Z')">
+          <img data-bs-toggle="modal" data-bs-target="#openReproductor"
+            src="./../../assets/img/podcast/galaxias/galaxy-no-background6,1.gif">
+        </a>
+      </span>
     </div>
   </div>
 
   <div class="estrellas">
     <div class="podcast-1">
       <a (click)="eventReproducirPodcast(1)">
-        <img src="../../assets/img/podcast/galaxias/estrella.gif" alt="">
+        <img src="../../assets/img/podcast/galaxias/Estrella2.gif" alt="">
       </a>
     </div>
     <div class="podcast-2">
       <a (click)="eventReproducirPodcast(2)">
-        <img src="../../assets/img/podcast/galaxias/estrella.gif" alt="">
+        <img src="../../assets/img/podcast/galaxias/Estrella2.gif" alt="">
       </a>
     </div>
     <div class="podcast-3">
       <a (click)="eventReproducirPodcast(3)">
-        <img src="../../assets/img/podcast/galaxias/estrella.gif" alt="">
+        <img src="../../assets/img/podcast/galaxias/Estrella2.gif" alt="">
       </a>
     </div>
     <div class="podcast-4">
       <a (click)="eventReproducirPodcast(4)">
-        <img src="../../assets/img/podcast/galaxias/estrella.gif" alt="">
+        <img src="../../assets/img/podcast/galaxias/Estrella2.gif" alt="">
       </a>
     </div>
     <div class="podcast-5">
       <a (click)="eventReproducirPodcast(5)">
-        <img src="../../assets/img/podcast/galaxias/estrella.gif" alt="">
+        <img src="../../assets/img/podcast/galaxias/Estrella2.gif" alt="">
       </a>
     </div>
     <div class="podcast-6">
       <a (click)="eventReproducirPodcast(6)">
-        <img src="../../assets/img/podcast/galaxias/estrella.gif" alt="">
+        <img src="../../assets/img/podcast/galaxias/Estrella2.gif" alt="">
       </a>
     </div>
     <div class="podcast-7">
       <a (click)="eventReproducirPodcast(7)">
-        <img src="../../assets/img/podcast/galaxias/estrella.gif" alt="">
+        <img src="../../assets/img/podcast/galaxias/Estrella2.gif" alt="">
       </a>
     </div>
     <div class="podcast-8">
       <a (click)="eventReproducirPodcast(8)">
-        <img src="../../assets/img/podcast/galaxias/estrella.gif" alt="">
+        <img src="../../assets/img/podcast/galaxias/Estrella2.gif" alt="">
       </a>
     </div>
     <div class="podcast-9">
       <a (click)="eventReproducirPodcast(9)">
-        <img src="../../assets/img/podcast/galaxias/estrella.gif" alt="">
+        <img src="../../assets/img/podcast/galaxias/Estrella2.gif" alt="">
       </a>
     </div>
   </div>
@@ -107,3 +117,5 @@
 <div>
   <audio id="podcastAudios"   src=""></audio>
 </div>
+
+<div class="one" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Podcast" [routerLink]="['/podcast']">Hola</div>

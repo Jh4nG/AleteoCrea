@@ -10,7 +10,7 @@
 </div>
 
 <div class="d-flex flex-column flex-shrink-0 p-3 text-white  "
-  [ngClass]="[!this.flat_open_side? 'fix-nav' : ' fix-nav--close fix-nav', route.url == '/virtual-store' ? 'color-menu' : '']"
+  [ngClass]="[!this.flat_open_side? 'fix-nav' : ' fix-nav--close fix-nav', route.url == '/virtual-store' || route.url == '/contents' ? 'color-menu' : '']"
   style="width: 280px;">
   <div class="row">
     <div class="col-12">
@@ -29,7 +29,7 @@
   <hr />
   <ul class="nav nav-pills flex-column mb-auto">
     <li class="nav-item">
-      <a (click)="showSideBar(false)" data-bs-toggle="modal" data-bs-target="#sobreNosotros" href="#" class="nav-link active" aria-current="page">
+      <a (click)="showSideBar(false)" data-bs-toggle="modal" data-bs-target="#sobreNosotros" href="#" class="nav-link text-white" aria-current="page">
         <svg class="bi me-2" width="16" height="16">
           <use xlink:href="#home" />
         </svg>
@@ -106,11 +106,6 @@
 <router-outlet></router-outlet>
 <!-- Roting END -->
 
-<!-- Spinner  -->
-<ngx-spinner bdColor="rgba(0, 0, 0, 1)" template="<img src='assets/img/mariposa.gif' />">
-</ngx-spinner>
-<!-- Spinner END -->
-
 <!-- Boton Flotante Voces del futuro -->
 <div class="btnVocesF" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Voces del Futuro" [routerLink]="['/future-voices']">
   <img src="./assets/img/VocesFuturoSpectrum.gif">
@@ -123,22 +118,22 @@
     <div><h1>Sobre nosotros</h1></div>
   </ng-template>
   <ng-template #content>
-    <div>
+    <div class="text-principal">
       <div class="animate__animated animate__bounceInLeft">
-        <b>El proyecto</b><br><br>
+        <h5><b>El proyecto</b></h5>
         <p>
           Aleteo – Transmedia es un proyecto de nuevos medios de ciencia ficción que se mueve desde diversos campos creativos y de comunicación para contar una historia del futuro de Colombia y el mundo. 
         </p>
       </div>
       <div class="animate__animated animate__bounceInRight">
-        <b>Storyline</b><br><br>
+        <h5><b>Storyline</b></h5>
         <p>
           Una joven que fue declarada como muerta en el 2029 en una dictadura militar que dividió a Colombia en tres países, es reclutada por una organización que viaja en el tiempo llamada Aleteo para que cambie el futuro catastrófico que le espera a la humanidad y la tierra. 
         </p>
       </div>
 
       <div class="animate__animated animate__bounceInLeft">
-        <b>- Sinopsis</b><br><br>
+        <h5><b>- Sinopsis</b></h5>
         <p>
           En el año 2029, después de una guerra civil, Colombia se divide territorialmente en tres países. En una sociedad que se encuentra bajo una dictadura tecnológica y militar, Camila, una psicóloga rebelde se opone a esta realidad y sus leyes, por lo que es juzgada con pena de muerte en una cámara de cremación. Al momento de morir, es transportada a una organización del tiempo llamada Aleteo.
         </p>
@@ -147,7 +142,7 @@
         </p>
       </div>
       <div class="animate__animated animate__bounceInRight">
-        <b> - El universo del Museo Interactivo </b><br><br>
+        <h5><b> - El universo del Museo Interactivo </b></h5>
           Aleteo ocurre en una realidad cercana a la Colombia actual que cambia de rumbo al generarse un golpe de estado que lo cambia todo. Se divide en dos partes: 
           <br>
           <ol>
@@ -202,7 +197,7 @@
     <div><h1>Sobre nosotros</h1></div>
   </ng-template>
   <ng-template #content>
-    <div class="col-md-12 row">
+    <div class="col-md-12 row text-principal">
       <div class="animate__animated animate__rollIn">
         El proyecto Aleteo – Transmedia es desarrollado por un equipo de artistas de Colombia que han dedicado su tiempo y experiencia a que se haga realidad. 
         <br>      <br>
@@ -369,29 +364,37 @@
     <div><h1>Contáctenos</h1></div>
   </ng-template>
   <ng-template #content>
-    <div class="col-md-12 row">
-      <a href="https://wa.link/2xn55p" target="_blank">
+    <div class="col-md-12 row animate__animated animate__rotateIn text-principal" align="center">
+      <a class="bgA" href="https://wa.link/2xn55p" target="_blank">
         <i class="fa fa-whatsapp"></i> 3214175816
       </a>
-      <a href="https://wa.link/vr8wn3" target="_blank">
+      <a class="bgA" href="https://wa.link/vr8wn3" target="_blank">
         <i class="fa fa-whatsapp"></i> 3014996737
       </a>
 
-      <a href="mailto:Corpolachimeneacultural@gmail.com">Corpolachimeneacultural@gmail.com</a>
-      <a href="mailto:Corpolachimeneacultural@gmail.com">Corpolachimeneacultural@gmail.com</a>
-      <a href="mailto:proyectoaleteoproduccion@gmail.com">proyectoaleteoproduccion@gmail.com</a>
-      <br>
+      <a class="bgA" href="mailto:Corpolachimeneacultural@gmail.com">Corpolachimeneacultural@gmail.com</a>
+      <a class="bgA" href="mailto:Corpolachimeneacultural@gmail.com">Corpolachimeneacultural@gmail.com</a>
+      <a class="bgA" href="mailto:proyectoaleteoproduccion@gmail.com">proyectoaleteoproduccion@gmail.com</a>
+      <br><br>
       <div class="col-md-12">
         <h5>Síguenos en redes</h5>
+        <i class="fa fa-instagram"></i> aleteo_transmedia
         <br>
-        IG: aleteo_transmedia
-        <br><br>
-        FB: Aleteo – Transmedia
+        <i class="fa fa-facebook"></i>  Aleteo – Transmedia
         <br><br>
         <h5>Plataforma: </h5>
-        <a href="www.aleteotransmedia.com" target="_blank">Aleteo Transmedia</a>
+        <a class="bgA" href="www.aleteotransmedia.com" target="_blank">Aleteo Transmedia</a>
       </div>
     </div>
   </ng-template>
   <ng-template #footer></ng-template>
 </app-modal-component>
+<!-- Spinner  -->
+<ngx-spinner name="spinnerMariposa" bdColor="rgba(0, 0, 0, 1)" template="<img src='assets/img/Cargando_Gif.gif' width='100%' />">
+</ngx-spinner>
+<!-- Spinner END -->
+
+<!-- Spinner  -->
+<ngx-spinner name="spinnerInicio" bdColor="rgba(0, 0, 0, 1)" template="<img src='assets/img/mariposa.gif' width='100%' />">
+</ngx-spinner>
+<!-- Spinner END -->

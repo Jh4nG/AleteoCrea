@@ -24,15 +24,16 @@
                                 <a (click)="eventChangeSong(song)">
                                     <div class="row">
                                         <div class="col-3">
-                                            <img src="./../../../assets/img/foo.jpg" alt=""
+                                            <img src="{{song.url_img}}" alt=""
                                                 style="width: 70%; border-radius: 50%;">
                                         </div>
                                         <div class="col-9">
                                             <div class="item_song">
                                                 <span>
-                                                    {{ i + 1 + '. ' + song.name_cancion}}
+                                                    <a (click)="clickItem(i)">
+                                                        <i id="{{i}}" class="item-selected bi bi-play-circle" [ngStyle]="{'display': song.principal == 1? 'inline': 'none'}"></i>   {{'  '  + i + 1 + '. ' + song.name_cancion}}
+                                                    </a>
                                                 </span>
-                                                <span><img src="./../../../assets/img/sound-size.gif" width="80px" alt=""></span>
                                             </div>
                                         </div>
                                     </div>

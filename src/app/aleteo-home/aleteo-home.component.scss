@@ -11,8 +11,23 @@
 }
 
 .imgMariposa{
-    width: 75%;
+    background: url("../../assets/img/home/Mariposa_2.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 100vh;
     margin-top: 0%;
-    transform-style: preserve-3d;
-    transform: translateZ(20px);
+    padding: 5%;
+    // transform-style: preserve-3d;
+    // transform: translateZ(20px);
+}
+
+.button-link {
+    width: 100%;
+    height: 100vh;
+}
+
+.navigation-link {
+    height: 50vh;
 }

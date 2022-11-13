@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 declare var $;
 import { PodcastService } from '../services/podcast.service';
 import { GetModel } from '../models/getModel';
+import { Tooltip } from 'node_modules/bootstrap/dist/js/bootstrap.esm.min.js'
 
 @Component({
   selector: 'app-podcast',
@@ -20,12 +21,17 @@ export class PodcastComponent implements OnInit, OnDestroy {
 
   public lastPodcast: number = 0;
 
+  public closeModal: boolean = false;
+
   constructor(private podcastService: PodcastService) {
     this.getPodcastPrincipal();
     
   }
 
   ngOnInit(): void {
+    Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    .forEach(tooltipNode => new Tooltip(tooltipNode))
+
     this.elementAudio = document.getElementById('podcastAudios') as HTMLAudioElement;
     console.log(this.elementAudio);
     
@@ -129,8 +135,6 @@ export class PodcastComponent implements OnInit, OnDestroy {
       this.lastPodcast = podcast;
     }
     
-    
-    
   }
 
   getListOfMusic(band: string): void {
@@ -138,5 +142,12 @@ export class PodcastComponent implements OnInit, OnDestroy {
       return item.name_podcast == band
     });
     this.listBandSelected = list;
+  }
+
+  eventoCerrado() {
+    this.closeModal = true;
+    setTimeout(() => {
+      this.closeModal = false;
+    }, 200);
   }
 }
