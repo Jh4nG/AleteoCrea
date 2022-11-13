@@ -1,0 +1,72 @@
+<!-- Spinner  -->
+<ngx-spinner width="50%" [name]="spinerMariposa" template = "<img src='assets/img/Cargando_Gif.gif'/>"></ngx-spinner>
+<!-- Spinner END -->
+
+<div class="container">
+    <div class="col-md-12 row">
+        <!-- <video class="video"  autoplay="true" muted="true" loop="true" width="100%" src="../../assets/img/contentsAdd/Gris2.mov">
+        </video> -->
+        <div class="col-md-12 marginEmpty" ></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-9 row" align="center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="">
+                        <img class="imgCard" src="../../assets/img/contentsAdd/Aleteo - Transmedia.png" width="100%">
+                    </div>
+                    <div class="content" (click)="openViewContent('aleteo')">
+                        <h3>Aleteo Transmedia</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="">
+                        <img class="imgCard" src="../../assets/img/contentsAdd/BIA.png" width="100%">
+                    </div>
+                    <div class="content" (click)="openViewContent('bia')">
+                        <h3>BIA</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12"> <br></div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="">
+                        <img class="imgCard" src="../../assets/img/contentsAdd/IMG_9012 - copia.JPG" width="100%">
+                    </div>
+                
+                    <div class="content" (click)="openViewContent('camila')">
+                        <h3>CAMILA</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="">
+                        <img class="imgCard" src="../../assets/img/contentsAdd/Museo Interactivo.JPG" width="100%">
+                    </div>
+                    <div class="content" (click)="openViewContent('museo')">
+                        <h3>Museo Interactivo</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>
+
+<app-modal-component (closeEvent)="eventCloseModalContentAdd()" idTarget="modalContentAdd" tamanio="xl" bgModal="bgDarkModal ModalVirtual bgNoBorder hideClose">
+    <ng-template #header>
+        <div>
+            <h1 id="nameVideo"></h1>
+        </div>
+    </ng-template>
+    <ng-template #content>
+        <div class="col-12" align="center">
+            <video id="videoContentAdd" class="bgColorVideo" controls></video>
+        </div>
+    </ng-template>
+    <ng-template #footer>
+    </ng-template>
+</app-modal-component>

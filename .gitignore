@@ -48,3 +48,6 @@ Thumbs.db
 *.7z
 *.rar
 *.zip
+
+#Ignore
+/src/assets/img/contentsAdd
