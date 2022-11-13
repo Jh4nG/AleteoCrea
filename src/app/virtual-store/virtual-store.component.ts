@@ -46,11 +46,14 @@ export class VirtualStoreComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    // setTimeout(()=>{
-    //   let btn = document.getElementById('btnModalPrincipal');
-    //   btn.click();
-    // },500);
-    this.ngSubmitForm();
+    if(window.location.hostname == 'localhost'){
+      this.ngSubmitForm();
+    }else{
+      setTimeout(()=>{
+        let btn = document.getElementById('btnModalPrincipal');
+        btn.click();
+      },500);
+    }
   }
   
   constructViwer(){
@@ -156,7 +159,9 @@ export class VirtualStoreComponent implements OnInit, OnDestroy {
     $('#modalVirtualStore').modal('hide');
     $('.modal-backdrop.fade.show').remove();
     this.estratoSelected = "1"; // Quitar en prod
-    this.cantidadDolaresInicial = 40000; // Quitar en prod
+    if(window.location.hostname == 'localhost'){
+      this.cantidadDolaresInicial = 40000; // Quitar en prod
+    }
     this.constructViwer();
   }
 
