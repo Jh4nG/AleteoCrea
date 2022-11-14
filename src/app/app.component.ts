@@ -24,9 +24,9 @@ export class AppComponent implements OnInit, AfterContentInit {
     public route: Router) {
 
     window.addEventListener('DOMContentLoaded', (event) => {
-      this.spinner.show();
+      this.spinner.show('spinnerMariposa');
       setTimeout(() => {
-        this.spinner.hide();
+        this.spinner.hide('spinnerMariposa');
       }, 2000);
     });
   }

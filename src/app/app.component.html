@@ -6,11 +6,11 @@
 
 <div>
   <button style="display: none;" id="btnStartAudio" (click)="startAudioPlatform()"></button>
-  <audio #audioGeneralPage [volume]="0.1" ></audio>
+  <audio #audioGeneralPage [volume]="0.7" ></audio>
 </div>
 
 <div class="d-flex flex-column flex-shrink-0 p-3 text-white  "
-  [ngClass]="[!this.flat_open_side? 'fix-nav' : ' fix-nav--close fix-nav', route.url == '/virtual-store' ? 'color-menu' : '']"
+  [ngClass]="[!this.flat_open_side? 'fix-nav' : ' fix-nav--close fix-nav', route.url == '/virtual-store' || route.url == '/contents' ? 'color-menu' : '']"
   style="width: 280px;">
   <div class="row">
     <div class="col-12">
@@ -29,7 +29,7 @@
   <hr />
   <ul class="nav nav-pills flex-column mb-auto">
     <li class="nav-item">
-      <a (click)="showSideBar(false)" data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="#" class="nav-link active" aria-current="page">
+      <a (click)="showSideBar(false)" data-bs-toggle="modal" data-bs-target="#sobreNosotros" href="#" class="nav-link text-white" aria-current="page">
         <svg class="bi me-2" width="16" height="16">
           <use xlink:href="#home" />
         </svg>
@@ -37,7 +37,7 @@
       </a>
     </li>
     <li>
-      <a (click)="showSideBar(false)" href="#" class="nav-link text-white">
+      <a (click)="showSideBar(false)" href="#" data-bs-toggle="modal" data-bs-target="#CreditosModal" class="nav-link text-white">
         <svg class="bi me-2" width="16" height="16">
           <use xlink:href="#speedometer2" />
         </svg>
@@ -45,7 +45,7 @@
       </a>
     </li>
     <li>
-      <a (click)="showSideBar(false)" href="#" class="nav-link text-white">
+      <a (click)="showSideBar(false)" href="#" data-bs-toggle="modal" data-bs-target="#ContactenosModal" class="nav-link text-white"> 
         <svg class="bi me-2" width="16" height="16">
           <use xlink:href="#table" />
         </svg>
@@ -67,8 +67,8 @@
       <strong>Redes Sociales</strong>
     </a>
     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-      <li><a class="dropdown-item" href="#"><i class="fa fa-facebook"></i> Facebook</a></li>
-      <li><a class="dropdown-item" href="#"><i class="fa fa-instagram"></i> Instagram</a></li>
+      <li><a class="dropdown-item" target="_blank" href="https://www.facebook.com/aleteotransmedia"><i class="fa fa-facebook"></i> Facebook</a></li>
+      <li><a class="dropdown-item" target="_blank" href="https://www.instagram.com/aleteo_transmedia/"><i class="fa fa-instagram"></i> Instagram</a></li>
       <!-- <li><a class="dropdown-item" href="#">Profile</a></li>
       <li><hr class="dropdown-divider" /></li>
       <li><a class="dropdown-item" href="#">Sign out</a></li> -->
@@ -113,18 +113,70 @@
 </div>
 <!-- Boton Flotante Voces del futuro -->
 
-<app-modal-component idTarget="staticBackdrop" tamanio="lg" bgModal="bgDarkModal ModalBlue bgNoBorder">
+<app-modal-component idTarget="sobreNosotros" tamanio="lg" bgModal="bgDarkModal ModalBlue bgNoBorder">
   <ng-template #header>
-    <div>Titulo</div>
+    <div><h1>Sobre nosotros</h1></div>
   </ng-template>
   <ng-template #content>
-    <div>
-      contenido
+    <div class="text-principal">
+      <div class="animate__animated animate__bounceInLeft">
+        <h5><b>El proyecto</b></h5>
+        <p>
+          Aleteo – Transmedia es un proyecto de nuevos medios de ciencia ficción que se mueve desde diversos campos creativos y de comunicación para contar una historia del futuro de Colombia y el mundo. 
+        </p>
+      </div>
+      <div class="animate__animated animate__bounceInRight">
+        <h5><b>Storyline</b></h5>
+        <p>
+          Una joven que fue declarada como muerta en el 2029 en una dictadura militar que dividió a Colombia en tres países, es reclutada por una organización que viaja en el tiempo llamada Aleteo para que cambie el futuro catastrófico que le espera a la humanidad y la tierra. 
+        </p>
+      </div>
+
+      <div class="animate__animated animate__bounceInLeft">
+        <h5><b>- Sinopsis</b></h5>
+        <p>
+          En el año 2029, después de una guerra civil, Colombia se divide territorialmente en tres países. En una sociedad que se encuentra bajo una dictadura tecnológica y militar, Camila, una psicóloga rebelde se opone a esta realidad y sus leyes, por lo que es juzgada con pena de muerte en una cámara de cremación. Al momento de morir, es transportada a una organización del tiempo llamada Aleteo.
+        </p>
+        <p>
+          Aleteo le pide que viaje en el tiempo para cambiar la vida de ocho personas durante los próximos diez años al régimen, con la intención de modificar un futuro postapocalíptico que ella misma cree que generó.
+        </p>
+      </div>
+      <div class="animate__animated animate__bounceInRight">
+        <h5><b> - El universo del Museo Interactivo </b></h5>
+          Aleteo ocurre en una realidad cercana a la Colombia actual que cambia de rumbo al generarse un golpe de estado que lo cambia todo. Se divide en dos partes: 
+          <br>
+          <ol>
+            <li>
+              La realidad: Se concentra entre los años 2028 hasta el 2040 en Colombia: 
+            </li>
+              <ul>
+                <li>
+                  Desde el 2028 se dio un golpe de estado militar que provocó en 2029 la separación del país en tres estados: Pacífico-Caribe; Andino; y Amazónico. Nos concentramos en el país Andino epicentro de una dictadura que duró hasta el año 2032. 
+                </li>
+                <li>
+                  Desde el 2032 se realizaron nuevas elecciones con un presidente que logró mejorar las actividades tecnológicas y económicas del país. 
+                </li>
+                <li>
+                  En el año 2036 el país “logró estabilizar su economía”, pero su estilo de vida dividió la sociedad desapareciendo la clase media. 
+                </li>
+                <li>
+                  En 2040 después de diversas protestas en el país y por el acercamiento de mandatarios con los demás países se logra unificar de nuevo a Colombia, llamada ahora la Nueva Colombia. 
+                </li>
+                <li>
+                  En 2041 estalla una guerra mundial que terminaría en 2060 con la extinción de la humanidad. 
+                </li>
+              </ul>
+            <li>
+              Aleteo: Un lugar específico en donde las leyes del tiempo-espacio se ven distorsionadas ante la ley de gravedad absoluta (generada por la partícula de Dios), en donde viajeros en el tiempo tienen la misión de hacer que la humanidad no acabe la vida. 
+            </li>
+            <li>
+              El tiempo: Se divide en tiempo real que dura 31 años: 2029 a 2060 (el fin de la existencia) y el tiempo en Aleteo que serían meses (un aproximado de 10 meses debido a su variabilidad).
+            </li>
+          </ol>
+      </div>
     </div>
   </ng-template>
-  <ng-template #footer>
-    footer
-  </ng-template>
+  <ng-template #footer></ng-template>
 </app-modal-component>
 
 <app-modal-component (closeEvent)="stopVideoModalHepl()" idTarget="modalVideoHelp" tamanio="lg" bgModal="bgDarkModal ModalVirtual bgNoBorder hideClose">
@@ -139,7 +191,211 @@
   </ng-template>
 </app-modal-component>
 
+
+<app-modal-component idTarget="CreditosModal" tamanio="lg" bgModal="bgDarkModal ModalBlue bgNoBorder">
+  <ng-template #header>
+    <div><h1>Sobre nosotros</h1></div>
+  </ng-template>
+  <ng-template #content>
+    <div class="col-md-12 row text-principal">
+      <div class="animate__animated animate__rollIn">
+        El proyecto Aleteo – Transmedia es desarrollado por un equipo de artistas de Colombia que han dedicado su tiempo y experiencia a que se haga realidad. 
+        <br>      <br>
+      </div>
+      
+      <div class="col-md-6">
+        <div class="animate__animated animate__rollIn">
+          <h5>Casa Productora:</h5> 
+          La Chimenea Cultural
+          <br>
+          <br>
+        </div>
+        <div class="animate__animated animate__rollIn">
+          <h5>Director y productor:</h5>
+          Edison González 
+          <br><br>
+          <h5>Asistente de producción:</h5>
+          Laura Mora
+          <br><br>
+          <h5>Guion:</h5>
+          Edison González
+          <br><br>
+        </div>
+        <div class="animate__animated animate__rollIn">
+          <h5>Directores creativos:</h5>
+          Alejandro Cubillos
+          <br>
+          David Julio
+          <br>
+          Laura Mora
+          <br>
+          Edison González
+          <br>
+          Artistas visuales 
+          <br>
+          Sara Contreras
+          <br>
+          Julián Romero
+          <br>
+          Paola Piraquive
+          <br>
+          Andrés Mora
+          <br>
+        </div>
+
+        <br>
+        <div class="animate__animated animate__rollIn">
+
+          <h5>Artistas plásticos:</h5>
+          Michelle Rodríguez
+          <br>
+          Juan Pablo Suárez
+          <br>
+          Laura Mora
+          <br><br>
+          <h5>Fotógrafos:</h5>
+          Laura Berbeo
+          <br>
+          David Julio
+          <br>
+          Laura Mora
+          <br>
+          Sonidistas
+          <br>
+          Cristian Cuervo
+          <br>
+          Alejandro Cubillos
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="animate__animated animate__rollIn">
+          <h5>Músicos:</h5>
+          Kevin Sánchez
+          <br>
+          María Paula Riaño
+          <br>
+          Milton Galindo
+          <br><br>
+          <h5>Desarrolladores:</h5>
+          Jhon Jairo González
+          <br>
+          Jefferson Piñeros
+          <br><br>
+          <h5>Montajistas audiovisuales y sonoros:</h5>
+          Juan Guzmán
+          <br>
+          Edison González
+          <br>
+          Milton Galindo
+          <br>
+          Alejandro Cubillos
+          <br><br>
+          <h5>Redes:</h5>
+          Kevin Sánchez
+          <br>
+          Ingrid Castiblanco
+          <br>
+          Luisa Rodríguez
+          <br><br>
+          <h5>Actores:</h5>
+          Luisa Rodríguez
+          <br>
+          John Prieto
+          <br>      <br>
+          <h5>Agradecimientos:</h5>
+          Paola Rey
+          <br>
+          Leonel Fonseca
+          <br>      <br>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <br><br>
+      </div>
+
+      <div class="col-md-12 row">
+        <br><br>
+        <h5>Casa productora:</h5> 
+        <div class="col-md-12">
+          <div align="center">
+            <img src="../assets/img/home/Logo Chimenea.png" width="60%">
+          </div>
+        </div>
+        <h5>Aliados:</h5> 
+        <div class="col-md-4">
+          <br>
+          <div align="center">
+            <img src="../assets/img/home/Ressonar films logo final blanco-01.png" width="80%">
+          </div>
+          <!-- Ressonar Films -->
+        </div>
+        <div class="col-md-4">
+          <br>
+          <div align="center">
+            <img src="../assets/img/home/Artboard 1.png" width="80%">
+          </div>
+          <!-- Tres Olas Producciones -->
+        </div>
+        <div class="col-md-4">
+          <br>
+          <div align="center">
+            <img src="../assets/img/home/logo1.png" width="80%">
+          </div>
+          <!-- Comunicarte -->
+        </div>
+        <br>      <br>
+        <div class="col-md-12">
+          <h5>Con el apoyo de:</h5> 
+          Ministerio de las Tecnologías de la Información y las Comunicaciones.
+          <br>
+          Fondo Único de Tecnologías de la Información y las Comunicaciones.
+          <br>
+          Ministerio de Cultura.
+        </div>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template #footer></ng-template>
+</app-modal-component>
+
+
+
+<app-modal-component idTarget="ContactenosModal" tamanio="lg" bgModal="bgDarkModal ModalBlue bgNoBorder">
+  <ng-template #header>
+    <div><h1>Contáctenos</h1></div>
+  </ng-template>
+  <ng-template #content>
+    <div class="col-md-12 row animate__animated animate__rotateIn text-principal" align="center">
+      <a class="bgA" href="https://wa.link/2xn55p" target="_blank">
+        <i class="fa fa-whatsapp"></i> 3214175816
+      </a>
+      <a class="bgA" href="https://wa.link/vr8wn3" target="_blank">
+        <i class="fa fa-whatsapp"></i> 3014996737
+      </a>
+
+      <a class="bgA" href="mailto:Corpolachimeneacultural@gmail.com">Corpolachimeneacultural@gmail.com</a>
+      <a class="bgA" href="mailto:Corpolachimeneacultural@gmail.com">Corpolachimeneacultural@gmail.com</a>
+      <a class="bgA" href="mailto:proyectoaleteoproduccion@gmail.com">proyectoaleteoproduccion@gmail.com</a>
+      <br><br>
+      <div class="col-md-12">
+        <h5>Síguenos en redes</h5>
+        <i class="fa fa-instagram"></i> aleteo_transmedia
+        <br>
+        <i class="fa fa-facebook"></i>  Aleteo – Transmedia
+        <br><br>
+        <h5>Plataforma: </h5>
+        <a class="bgA" href="https://aleteotransmedia.com/" target="_blank">Aleteo Transmedia</a>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template #footer></ng-template>
+</app-modal-component>
 <!-- Spinner  -->
-<ngx-spinner bdColor="rgba(0, 0, 0, 1)" template="<img src='assets/img/Cargando_Gif.gif' width='100%' />">
+<ngx-spinner name="spinnerMariposa" bdColor="rgba(0, 0, 0, 1)" template="<img src='assets/img/Cargando_Gif.gif' width='100%' />">
+</ngx-spinner>
+<!-- Spinner END -->
+
+<!-- Spinner  -->
+<ngx-spinner name="spinnerInicio" bdColor="rgba(0, 0, 0, 1)" template="<img src='assets/img/mariposa.gif' width='100%' />">
 </ngx-spinner>
 <!-- Spinner END -->

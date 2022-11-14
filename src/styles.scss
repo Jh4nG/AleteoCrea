@@ -22,6 +22,15 @@ body{
     src: url('assets/font/Glitch\ inside.otf');
 }
 
-h1,h2,h3,h4,h5,h6 {
-    font-family: 'OriginTech';
+@font-face {
+    font-family: 'Nasalization';
+    src: url('assets/font/nasalization-rg.otf');
 }
+
+*{
+    font-family: 'Nasalization';
+}
+
+// h1,h2,h3,h4,h5,h6 {
+//     font-family: 'OriginTech';
+// }
