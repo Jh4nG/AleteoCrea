@@ -50,7 +50,7 @@ export class ThreePagesComponent implements OnInit, OnDestroy {
         $('#openModalThreeIcono2').modal('show');
         break;
       case 'Icono3':
-        $('#openModalThreeIcono2').modal('show');
+        $('#openModalThreeIcono3').modal('show');
         break;
       case 'Icono4':
         $('#openModalThreeIcono4').modal('show');
