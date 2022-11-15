@@ -52,7 +52,7 @@ export class AleteoHomeComponent implements OnInit, OnDestroy, AfterViewInit {
       setTimeout(()=> {
         podcasText.classList.remove('animate__fadeIn');
         podcasText.classList.add('animate__fadeOut');
-      }, 2000);
+      }, 1500);
     });
     // animación Tienda
     let tiendaOver = document.getElementById('tienda-link');
@@ -70,7 +70,7 @@ export class AleteoHomeComponent implements OnInit, OnDestroy, AfterViewInit {
       setTimeout(()=> {
         tiendaText.classList.remove('animate__fadeIn');
         tiendaText.classList.add('animate__fadeOut');
-      }, 2000);      
+      }, 1500);      
     });
 
     // animación Arbol
@@ -109,7 +109,7 @@ export class AleteoHomeComponent implements OnInit, OnDestroy, AfterViewInit {
       setTimeout(()=> {
         contenidoText.classList.remove('animate__fadeIn');
         contenidoText.classList.add('animate__fadeOut');
-      }, 2000); 
+      }, 1500); 
       
     });
     
