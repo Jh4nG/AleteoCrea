@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-10" align="center" style="margin-top: 10px;">
                 <h4 class="fs-4">PRODUCTOS AÑADIDOS</h4>
-                <h6>Presupuesto: {{ cantidadDolaresInicial - cantidadDolaresGastados }} dolares</h6>
+                <h6>Presupuesto Actual: {{ cantidadDolaresInicial - cantidadDolaresGastados }} dolares</h6>
             </div>
             <div class="col-2" style="cursor:pointer;">
                 <a (click)="showSideBarCar(false)"><i class="fa fa-close"></i></a>
@@ -72,6 +72,8 @@
                         <button class="btnPlataform btnFirst" data-value="1" (click)="selectOption($event, 1)" type="button">Alto</button>
                         <button class="btnPlataform btnFirst" data-value="2" (click)="selectOption($event, 1)" type="button">Medio</button>
                         <button class="btnPlataform btnFirst" data-value="3" (click)="selectOption($event, 1)" type="button">Bajo</button>
+                        <br><br><br>
+                        <button class="btnPlataform" type="button" [routerLink]="['/home']"> Salir </button>
                     </div>
                 </div>
                 <div class="secondsQuestion">

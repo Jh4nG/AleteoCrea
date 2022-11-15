@@ -120,7 +120,7 @@ export class VirtualStoreComponent implements OnInit, OnDestroy {
     $('#btnAddCard').attr('data-imgReference',`${path}${c.folder}/${c.images[0]}`);
     $('#btnAddCard').attr('data-caracteristica',c.caracteristica);
     $('#btnAddCard').attr('data-especificaciones',c.especificaciones);
-    $('#priceProduct').html(c.price);
+    $('#priceProduct').html(`Precio: ${c.price}`);
     let soundProduct = document.getElementById('soundProduct') as HTMLAudioElement;
     soundProduct.src = `${path}${c.folder}/${c.soundProduct}`;
     soundProduct.play().then(()=>{

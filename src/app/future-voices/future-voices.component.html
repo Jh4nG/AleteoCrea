@@ -98,8 +98,25 @@
     </ng-template>
     <ng-template #content>
       <div>
-        Para continuar con el proceso de "Grabar Voz del futuro" es necesario que de su concentimiento aceptando las políticas y tratamientos de datos...
 
+        Para continuar con el proceso de "Grabar tu voz del futuro" es necesario que des tu consentimiento aceptando las políticas y tratamientos de datos de la grabación. 
+        <br>
+        <ol>
+            <li>
+                Estas piezas pueden ser escuchadas por cualquier usuario de Aleteo que ingrese a la plataforma.
+            </li>
+            <li>
+                No usar lenguaje soez, racista o agresivo que no tenga un sentido estético o que prenda ofender.
+            </li>
+            <li>
+                La Chimenea Cultural no se responsabiliza por las voces dejadas en este espacio y tiene el derecho de eliminarla si incumplen el punto número 2. 
+            </li>
+        </ol>
+        <p>
+            Queremos un futuro diferente.
+            <br>
+            <b>¡¡¡Esperamos tu mensaje de voz con ansias!!!</b>
+        </p>
       </div>
     </ng-template>
     <ng-template #footer>
@@ -119,19 +136,17 @@
 
 <app-modal-component idTarget="modalConfirmVoice" tamanio="md" bgModal="bgDarkModal ModalBlue bgNoBorder">
     <ng-template #header>
-      <div>GRABACIÓN DE AUDIO</div>
+      <div>TU GRABACIÓN HA FINALIZADO – EL FUTURO LA ESPERA</div>
     </ng-template>
     <ng-template #content>
       <div>
-        ¿Está seguro que desea confirmar la grabación del audio?
-        <br>
-        Recuerde que puede confirmar un nombre de usuario de quien graba el audio, de lo contrario se grabará con el nombre de "Anónimo".
+        Si deseas que quede almacenada en la base de datos de BIA solo tienes que nombrarla y quedará lista para ser escuchada en un futuro. Si no deseas nombrarla quedará con el nombre: “anónimo”.
         <br>
         <br>
-        <label>Nombre de usuario:</label>
+        <label>Nombre de audio:</label>
         <br>
         <br>
-        <input class="form-control" name="inpNameUser" placeholder="Museo Interactivo">
+        <input class="form-control" name="inpNameUser" placeholder="Anónimo">
       </div>
     </ng-template>
     <ng-template #footer>

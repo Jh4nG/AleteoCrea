@@ -252,8 +252,9 @@ export class FutureVoicesComponent implements OnInit, OnDestroy {
             this.timeRecording = `${(minutes < 10) ? '0'+minutes : minutes}:${(seconds<10) ? '0'+seconds : seconds}`;
             setTimeout(()=>{
               this.man = true;
+              recognition.abort();
               recognition.stop();
-            },1000);
+            },3000);
             $('#modalConfirmVoice').modal('show');
           });
         }
