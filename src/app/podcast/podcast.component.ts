@@ -25,16 +25,15 @@ export class PodcastComponent implements OnInit, OnDestroy {
 
   constructor(private podcastService: PodcastService) {
     this.getPodcastPrincipal();
-    
+
   }
 
   ngOnInit(): void {
     Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-    .forEach(tooltipNode => new Tooltip(tooltipNode))
+      .forEach(tooltipNode => new Tooltip(tooltipNode))
 
     this.elementAudio = document.getElementById('podcastAudios') as HTMLAudioElement;
-    console.log(this.elementAudio);
-    
+
   }
 
   ngOnDestroy(): void {
@@ -57,84 +56,149 @@ export class PodcastComponent implements OnInit, OnDestroy {
     if (podcast == this.lastPodcast) {
       
       if (this.elementAudio.paused) {
-        console.log('Puta');
+        let element;
+        let img;
         switch (podcast) {
           case 1:
+            element = document.querySelector('.podcast-1');
+            img = element.lastChild.lastChild as HTMLElement;
+            img.classList.add('img-change-size');
+
             this.elementAudio.src = '../../assets/audios/podcast/Cap 1 - Archivo de BIa 235.mp3';
             this.elementAudio.play();
             break;
           case 2:
+            element = document.querySelector('.podcast-2');
+            img = element.lastChild.lastChild as HTMLElement;
+            img.classList.add('img-change-size');
             this.elementAudio.src = '../../assets/audios/podcast/Cap 2 - Archivo de BIA 531.mp3';
             this.elementAudio.play();
             break;
           case 3:
+            element = document.querySelector('.podcast-3');
+            img = element.lastChild.lastChild as HTMLElement;
+            img.classList.add('img-change-size');
             this.elementAudio.src = '../../assets/audios/podcast/Cap 3 - Archivo de BIA 134.mp3';
             this.elementAudio.play();
             break;
           case 4:
+            element = document.querySelector('.podcast-4');
+            img = element.lastChild.lastChild as HTMLElement;
+            img.classList.add('img-change-size');
             this.elementAudio.src = '../../assets/audios/podcast/Cap 4 - Archivo de BIA 112.mp3';
             this.elementAudio.play();
             break;
           case 5:
+            element = document.querySelector('.podcast-5');
+            img = element.lastChild.lastChild as HTMLElement;
+            img.classList.add('img-change-size');
             this.elementAudio.src = '../../assets/audios/podcast/Cap 5 - Archivo de BIA 1041.mp3';
             this.elementAudio.play();
             break;
           case 6:
-    
+            element = document.querySelector('.podcast-6');
+            img = element.lastChild.lastChild as HTMLElement;
+            img.classList.add('img-change-size');
+            this.elementAudio.src = '../../assets/audios/podcast/Cap 6 - Archivo de BIA 998.mp3';
+            this.elementAudio.play();
             break;
           case 7:
-    
+            element = document.querySelector('.podcast-7');
+            img = element.lastChild.lastChild as HTMLElement;
+            img.classList.add('img-change-size');
+            this.elementAudio.src = '../../assets/audios/podcast/Cap 7 - Archivo de BIA 475.mp3';
+            this.elementAudio.play();
             break;
           case 8:
-    
+            element = document.querySelector('.podcast-8');
+            img = element.lastChild.lastChild as HTMLElement;
+            img.classList.add('img-change-size');
+            this.elementAudio.src = '../../assets/audios/podcast/Cap 8 - Archivo BIA 385.mp3';
+            this.elementAudio.play();
             break;
           case 9:
-    
+            element = document.querySelector('.podcast-9');
+            img = element.lastChild.lastChild as HTMLElement;
+            img.classList.add('img-change-size');
+            this.elementAudio.src = '../../assets/audios/podcast/Cap 9 - Presente el devenir.mp3';
+            this.elementAudio.play();
             break;
         }
       } else {
-        console.log('Mierda');
         this.elementAudio.pause();
       }
       this.lastPodcast = podcast;
     } else {
+      let element;
+      let img;
       switch (podcast) {
         case 1:
+          element = document.querySelector('.podcast-1');
+          img = element.lastChild.lastChild as HTMLElement;
+          img.classList.add('img-change-size');
           this.elementAudio.src = '../../assets/audios/podcast/Cap 1 - Archivo de BIa 235.mp3';
           this.elementAudio.play();
           break;
         case 2:
+          element = document.querySelector('.podcast-2');
+          img = element.lastChild.lastChild as HTMLElement;
+          img.classList.add('img-change-size');
           this.elementAudio.src = '../../assets/audios/podcast/Cap 2 - Archivo de BIA 531.mp3';
           this.elementAudio.play();
           break;
         case 3:
+          element = document.querySelector('.podcast-3');
+          img = element.lastChild.lastChild as HTMLElement;
+          img.classList.add('img-change-size');
           this.elementAudio.src = '../../assets/audios/podcast/Cap 3 - Archivo de BIA 134.mp3';
           this.elementAudio.play();
           break;
         case 4:
+          element = document.querySelector('.podcast-4');
+          img = element.lastChild.lastChild as HTMLElement;
+          img.classList.add('img-change-size');
           this.elementAudio.src = '../../assets/audios/podcast/Cap 4 - Archivo de BIA 112.mp3';
           this.elementAudio.play();
           break;
         case 5:
+          element = document.querySelector('.podcast-5');
+          img = element.lastChild.lastChild as HTMLElement;
+          img.classList.add('img-change-size');
           this.elementAudio.src = '../../assets/audios/podcast/Cap 5 - Archivo de BIA 1041.mp3';
           this.elementAudio.play();
           break;
         case 6:
-  
+          element = document.querySelector('.podcast-6');
+          img = element.lastChild.lastChild as HTMLElement;
+          img.classList.add('img-change-size');
+          this.elementAudio.src = '../../assets/audios/podcast/Cap 6 - Archivo de BIA 998.mp3';
+          this.elementAudio.play();
           break;
         case 7:
-  
+          element = document.querySelector('.podcast-7');
+          img = element.lastChild.lastChild as HTMLElement;
+          img.classList.add('img-change-size');
+          this.elementAudio.src = '../../assets/audios/podcast/Cap 7 - Archivo de BIA 475.mp3';
+          this.elementAudio.play();
           break;
         case 8:
-  
+          element = document.querySelector('.podcast-8');
+          img = element.lastChild.lastChild as HTMLElement;
+          img.classList.add('img-change-size');
+          this.elementAudio.src = '../../assets/audios/podcast/Cap 8 - Archivo BIA 385.mp3';
+          this.elementAudio.play();
           break;
         case 9:
-  
+          element = document.querySelector('.podcast-9');
+          img = element.lastChild.lastChild as HTMLElement;
+          img.classList.add('img-change-size');
+          this.elementAudio.src = '../../assets/audios/podcast/Cap 9 - Presente el devenir.mp3';
+          this.elementAudio.play();
           break;
       }
       this.lastPodcast = podcast;
     }
-    
+
   }
 
   getListOfMusic(band: string): void {
