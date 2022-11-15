@@ -70,61 +70,63 @@ export class AppComponent implements OnInit, AfterContentInit {
         next: (res) => {
           if (res instanceof NavigationStart) {
             let imgBia = document.getElementById('imgBia') as HTMLImageElement;
+            let divimgBia = document.getElementById('divimgBia') as HTMLElement;
             switch (res.url) {
               case '/home':
                 setTimeout(() => {
                   this.audio.nativeElement.src = "./assets/audios/plataforma/1. Plataforma principal.mp3";
-                  this.videoHelp1 = "La desaparición de Colombia.mp4";
-                  this.videoHelp2 = "La desaparición de Colombia.mp4";
+                  this.videoHelp1 = "(Inicio) Escena 1.mp4";
+                  this.videoHelp2 = "(Inicio) Escena 2 cor.mp4";
                   imgBia.src = "./assets/img/BIAs/BIA01.gif";
                 }, 1000);
                 break;
               case '/tree-page':
                 setTimeout(() => {
                   this.audio.nativeElement.src = "./assets/audios/plataforma/3. Arte - árbol.mp3";
-                  this.videoHelp1 = "helpTree.mp4";
-                  this.videoHelp2 = "La desaparición de Colombia.mp4";
+                  this.videoHelp1 = "(Artes)Escena 5 cor.mp4";
+                  this.videoHelp2 = "(Artes) Escena 6 cor.mp4";
                   imgBia.src = "./assets/img/BIAs/(Artes) Gif 3.gif";
                 }, 1000);
                 break;
               case '/podcast':
                 setTimeout(() => {
                   this.audio.nativeElement.src = "./assets/audios/plataforma/2. Podcast.mp3";
-                  this.videoHelp1 = "La desaparición de Colombia.mp4";
-                  this.videoHelp2 = "La desaparición de Colombia.mp4";
+                  this.videoHelp1 = "(Podcast) Escena 3.mp4";
+                  this.videoHelp2 = "(Podcast) Escena 4.mp4";
                   imgBia.src = "./assets/img/BIAs/(Podcast) Gif 2.gif";
                 }, 1000);
                 break;
               case '/virtual-store':
                 setTimeout(() => {
                   this.audio.nativeElement.src = "./assets/audios/plataforma/4. Tienda del futuro.mp3";
-                  this.videoHelp1 = "La desaparición de Colombia.mp4";
-                  this.videoHelp2 = "La desaparición de Colombia.mp4";
+                  this.videoHelp1 = "(Tienda)Escena 7.mp4";
+                  this.videoHelp2 = "(Tienda) Escena 8.mp4";
                   imgBia.src = "./assets/img/BIAs/(Tienda) GIF 4.gif";
                 }, 1000);
                 break;
               case '/contents':
                 setTimeout(() => {
                   this.audio.nativeElement.src = "./assets/audios/plataforma/6. Contenidos adicionales.mp3";
-                  this.videoHelp1 = "La desaparición de Colombia.mp4";
-                  this.videoHelp2 = "La desaparición de Colombia.mp4";
-                  imgBia.src="";
+                  this.videoHelp1 = "";
+                  this.videoHelp2 = "";
+                  divimgBia.style.display = 'none';
                 }, 1000);
                 break;
               case '/future-voices':
                 setTimeout(() => {
                   this.audio.nativeElement.src = "./assets/audios/plataforma/5. Voces del futuro.mp3";
-                  this.videoHelp1 = "La desaparición de Colombia.mp4";
-                  this.videoHelp2 = "La desaparición de Colombia.mp4";
+                  this.videoHelp1 = "(Voces) Escena 9 cor.mp4";
+                  this.videoHelp2 = "(Voces) Escena 10 cor.mp4";
                   imgBia.src = "./assets/img/BIAs/BIA01.gif";
                 }, 1000);
                 break;
               default:
                 setTimeout(() => {
                   this.audio.nativeElement.src = "./assets/audios/plataforma/1. Plataforma principal.mp3";
-                  this.videoHelp1 = "La desaparición de Colombia.mp4";
-                  this.videoHelp2 = "La desaparición de Colombia.mp4";
-                  imgBia.src="";
+                  this.videoHelp1 = "(Inicio) Escena 1.mp4";
+                  this.videoHelp2 = "(Inicio) Escena 2 cor.mp4";
+                  imgBia.src = "./assets/img/BIAs/BIA01.gif";
+                  divimgBia.style.display = 'none';
                 }, 1000);
                 break;
             }
@@ -287,11 +289,11 @@ export class AppComponent implements OnInit, AfterContentInit {
     if (type == 1) { // Ayuda uno
       video.src = "./assets/VideoHelp/" + this.videoHelp1;
       video.play();
-      video.volume = 0.1;
+      video.volume = 0.7;
     } else { // Ayuda 2
       video.src = "./assets/VideoHelp/" + this.videoHelp2;
       video.play();
-      video.volume = 0.1;
+      video.volume = 0.7;
     }
     $('#modalVideoHelp').modal('show');
     this.openViewHelp();
