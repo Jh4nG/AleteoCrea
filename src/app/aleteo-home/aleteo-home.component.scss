@@ -55,9 +55,24 @@
     cursor: pointer;
 }
 
-
-.glitch {
+@media screen and (max-width: 1920px) {
+  .glitch {
     font-size: 8rem;
+  }
+}
+
+@media screen and (max-width: 1536px) {
+  .glitch {
+    font-size: 5rem;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .glitch {
+    font-size: 4rem;
+  }
+}
+.glitch {
     font-weight: bold;
     text-transform: uppercase;
     position: relative;
