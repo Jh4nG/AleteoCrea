@@ -20,10 +20,10 @@ export class AleteoHomeComponent implements OnInit, OnDestroy, AfterViewInit {
   
   ngOnInit(): void {
     
-    this.spinner.show();
-    setTimeout(() => {
-      this.spinner.hide();
-    }, 3600);
+    // this.spinner.show();
+    // setTimeout(() => {
+    //   this.spinner.hide();
+    // }, 3600);
     
     $('.img-agua').ripples({
       resolution: 512,

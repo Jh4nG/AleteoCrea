@@ -54,7 +54,7 @@ export class ThreeComponent implements OnInit, OnDestroy {
 
     // scene.background_image = new THREE.Color('url(../../assets/img/FondoAzul.png)');
 
-    camera = new THREE.PerspectiveCamera(20, window.innerWidth / window.innerHeight, 1, 500);
+    camera = new THREE.PerspectiveCamera(25, window.innerWidth / window.innerHeight, 1, 500);
     // cercanía, 
 
     camera.position.set(4, 0.5, 3); // posición para mostrar objeto de entrada

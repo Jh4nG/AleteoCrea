@@ -23,22 +23,41 @@ export class AppComponent implements OnInit, AfterContentInit {
   constructor(private spinner: NgxSpinnerService,
     public route: Router) {
 
-    window.addEventListener('DOMContentLoaded', (event) => {
-      this.spinner.show('spinnerMariposa');
-      setTimeout(() => {
-        this.spinner.hide('spinnerMariposa');
-      }, 2000);
+    window.addEventListener('load', (event) => {
+      // this.route.events.subscribe((url: any) => {
+      //   if (url instanceof NavigationStart) {
+      //     if (url.url == '/home') {
+      //       this.spinner.show('spinnerInicio');
+      //       let time = (window.location.hostname == 'localhost') ? 100 : 8500;
+      //       setTimeout(() => {
+      //         this.spinner.hide('spinnerInicio');
+      //       }, time);
+      //     }else{
+      //       this.spinner.show('spinnerMariposa');
+      //       setTimeout(() => {
+      //         this.spinner.hide('spinnerMariposa');
+      //       }, 2000);
+      //     }
+      //   }
+      // });
     });
   }
 
   ngAfterContentInit() {
     this.route.events.subscribe((url: any) => {
-      if (url.url == '/home') {
-        this.spinner.show();
-        let time = (window.location.hostname == 'localhost') ? 100 : 8500;
-        setTimeout(() => {
-          this.spinner.hide();
-        }, time);
+      if (url instanceof NavigationStart) {
+        if (url.url == '/home') {
+          this.spinner.show('spinnerInicio');
+          let time = (window.location.hostname == 'localhost') ? 100 : 4500;
+          setTimeout(() => {
+            this.spinner.hide('spinnerInicio');
+          }, time);
+        }else{
+          this.spinner.show('spinnerMariposa');
+          setTimeout(() => {
+            this.spinner.hide('spinnerMariposa');
+          }, 2000);
+        }
       }
     });
   }

@@ -51,3 +51,6 @@ Thumbs.db
 
 #Ignore
 /src/assets/img/contentsAdd
+
+# Ignore help
+/src/assets/VideoHelp
