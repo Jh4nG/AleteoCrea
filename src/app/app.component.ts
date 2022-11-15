@@ -50,12 +50,14 @@ export class AppComponent implements OnInit, AfterContentInit {
       this.route.events.subscribe({
         next: (res) => {
           if (res instanceof NavigationStart) {
+            let imgBia = document.getElementById('imgBia') as HTMLImageElement;
             switch (res.url) {
               case '/home':
                 setTimeout(() => {
                   this.audio.nativeElement.src = "./assets/audios/plataforma/1. Plataforma principal.mp3";
                   this.videoHelp1 = "La desaparición de Colombia.mp4";
                   this.videoHelp2 = "La desaparición de Colombia.mp4";
+                  imgBia.src = "./assets/img/BIAs/BIA01.gif";
                 }, 1000);
                 break;
               case '/tree-page':
@@ -63,6 +65,7 @@ export class AppComponent implements OnInit, AfterContentInit {
                   this.audio.nativeElement.src = "./assets/audios/plataforma/3. Arte - árbol.mp3";
                   this.videoHelp1 = "helpTree.mp4";
                   this.videoHelp2 = "La desaparición de Colombia.mp4";
+                  imgBia.src = "./assets/img/BIAs/(Artes) Gif 3.gif";
                 }, 1000);
                 break;
               case '/podcast':
@@ -70,6 +73,7 @@ export class AppComponent implements OnInit, AfterContentInit {
                   this.audio.nativeElement.src = "./assets/audios/plataforma/2. Podcast.mp3";
                   this.videoHelp1 = "La desaparición de Colombia.mp4";
                   this.videoHelp2 = "La desaparición de Colombia.mp4";
+                  imgBia.src = "./assets/img/BIAs/(Podcast) Gif 2.gif";
                 }, 1000);
                 break;
               case '/virtual-store':
@@ -77,6 +81,7 @@ export class AppComponent implements OnInit, AfterContentInit {
                   this.audio.nativeElement.src = "./assets/audios/plataforma/4. Tienda del futuro.mp3";
                   this.videoHelp1 = "La desaparición de Colombia.mp4";
                   this.videoHelp2 = "La desaparición de Colombia.mp4";
+                  imgBia.src = "./assets/img/BIAs/(Tienda) GIF 4.gif";
                 }, 1000);
                 break;
               case '/contents':
@@ -84,6 +89,7 @@ export class AppComponent implements OnInit, AfterContentInit {
                   this.audio.nativeElement.src = "./assets/audios/plataforma/6. Contenidos adicionales.mp3";
                   this.videoHelp1 = "La desaparición de Colombia.mp4";
                   this.videoHelp2 = "La desaparición de Colombia.mp4";
+                  imgBia.src="";
                 }, 1000);
                 break;
               case '/future-voices':
@@ -91,6 +97,7 @@ export class AppComponent implements OnInit, AfterContentInit {
                   this.audio.nativeElement.src = "./assets/audios/plataforma/5. Voces del futuro.mp3";
                   this.videoHelp1 = "La desaparición de Colombia.mp4";
                   this.videoHelp2 = "La desaparición de Colombia.mp4";
+                  imgBia.src = "./assets/img/BIAs/BIA01.gif";
                 }, 1000);
                 break;
               default:
@@ -98,6 +105,7 @@ export class AppComponent implements OnInit, AfterContentInit {
                   this.audio.nativeElement.src = "./assets/audios/plataforma/1. Plataforma principal.mp3";
                   this.videoHelp1 = "La desaparición de Colombia.mp4";
                   this.videoHelp2 = "La desaparición de Colombia.mp4";
+                  imgBia.src="";
                 }, 1000);
                 break;
             }
