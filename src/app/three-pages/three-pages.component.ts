@@ -1,12 +1,8 @@
-import { Component, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
-import { NavigationStart, Router } from '@angular/router';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import * as THREE from 'three';
 import { NgxSpinnerService } from 'ngx-spinner';
-
-
+import { NgImageSliderComponent } from 'ng-image-slider';
 declare var $;
-
-
 
 const clipPlanes = [
   new THREE.Plane(new THREE.Vector3(1, 0, 0), 0),
@@ -24,12 +20,22 @@ export class ThreePagesComponent implements OnInit, OnDestroy {
 
   public acctionSelected: string;
 
+  @ViewChild('nav') slider: NgImageSliderComponent;
+
+  // public imageObject: Array<object> = [
+  //   {
+  //     image: 'assets/img/Tree/MovimientCallejero/icono3/Mariposas_gIF.gif',
+  //     thumbImage: 'assets/img/Tree/MovimientCallejero/icono3/Mariposas_gIF.gif',
+  //     alt: 'alt of image',
+  //     title: 'title of image'
+  //   }
+  // ];
+
   constructor(private spinner: NgxSpinnerService) {
 
   }
 
   ngOnInit(): void {
-    
   }
 
   ngOnDestroy(): void {
@@ -50,6 +56,7 @@ export class ThreePagesComponent implements OnInit, OnDestroy {
         $('#openModalThreeIcono2').modal('show');
         break;
       case 'Icono3':
+
         $('#openModalThreeIcono3').modal('show');
         break;
       case 'Icono4':
@@ -74,4 +81,14 @@ export class ThreePagesComponent implements OnInit, OnDestroy {
         break;
     }
   }
+
+  prevImageClick() {
+    this.slider.prev();
+  }
+
+  nextImageClick() {
+    this.slider.next();
+  }
 }
+
+

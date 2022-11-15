@@ -128,3 +128,10 @@
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(76, 51, 99); 
 }
+
+.image-zoom {
+  transition: 1s;
+}
+.image-zoom:hover {
+  transform: scale(1.5);
+}

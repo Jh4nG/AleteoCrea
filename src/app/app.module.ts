@@ -17,7 +17,7 @@ import { ReproductorComponentComponent } from './components/reproductor-componen
 import { FutureVoicesComponent } from './future-voices/future-voices.component';
 import { ParticlesComponent } from './components/particles/particles.component';
 import { ThreeComponent } from './components/three/three.component';
-
+import { NgImageSliderModule } from 'ng-image-slider';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,6 +39,7 @@ import { ThreeComponent } from './components/three/three.component';
     NgParticlesModule,
     NgxSpinnerModule,
     HttpClientModule,
+    NgImageSliderModule
     
   ],
   providers: [],
