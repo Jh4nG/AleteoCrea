@@ -28,6 +28,7 @@
     "jquery": "^3.6.1",
     "jquery.ripples": "^0.6.3",
     "moment": "^2.29.4",
+    "ng-image-slider": "^6.1.0",
     "ng-particles": "^3.2.2",
     "ngx-spinner": "^14.0.0",
     "photo-sphere-viewer": "^4.7.0",

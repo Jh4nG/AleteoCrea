@@ -339,7 +339,7 @@
       img {
         cursor: pointer;
         border-radius: 50%;
-        width: 30%;
+        width: 38%;
         margin-bottom: 10px;
         transition: transform 250ms;
       }
@@ -419,7 +419,7 @@
       img {
         cursor: pointer;
         border-radius: 50%;
-        width: 45%;
+        width: 60%;
         margin-bottom: 10px;
         transition: transform 250ms;
       }
@@ -471,11 +471,7 @@
       left: 36%;
       img {
         width: 28px;
-        border-radius: 50%;
-      }
-      img:hover {
-        width: 33px;
-        border-radius: 50%;
+        transition: 1s;
       }
     }
     .podcast-2 {
@@ -486,11 +482,7 @@
       left: 43%;
       img {
         width: 28px;
-        border-radius: 50%;
-      }
-      img:hover {
-        width: 33px;
-        border-radius: 50%;
+        transition: 1s;
       }
     }
     .podcast-3 {
@@ -501,11 +493,7 @@
       left: 51.5%;
       img {
         width: 25px;
-        border-radius: 50%;
-      }
-      img:hover {
-        width: 30px;
-        border-radius: 50%;
+        transition: 1s;
       }
     }
     .podcast-4 {
@@ -516,11 +504,7 @@
       left: 62%;
       img {
         width: 32px;
-        border-radius: 50%;
-      }
-      img:hover {
-        width: 38px;
-        border-radius: 50%;
+        transition: 1s;
       }
     }
     .podcast-5 {
@@ -531,11 +515,7 @@
       left: 51.5%;
       img {
         width: 32px;
-        border-radius: 50%;
-      }
-      img:hover {
-        width: 38px;
-        border-radius: 50%;
+        transition: 1s;
       }
     }
     .podcast-6 {
@@ -546,11 +526,7 @@
       left: 44.5%;
       img {
         width: 32px;
-        border-radius: 50%;
-      }
-      img:hover {
-        width: 38px;
-        border-radius: 50%;
+        transition: 1s;
       }
     }
     .podcast-7 {
@@ -561,11 +537,7 @@
       left: 42.6%;
       img {
         width: 19px;
-        border-radius: 50%;
-      }
-      img:hover {
-        width: 24px;
-        border-radius: 50%;
+        transition: 1s;
       }
     }
     .podcast-8 {
@@ -576,11 +548,7 @@
       left: 57.5%;
       img {
         width: 21px;
-        border-radius: 50%;
-      }
-      img:hover {
-        width: 26px;
-        border-radius: 50%;
+        transition: 1s;
       }
     }
     .podcast-9 {
@@ -591,11 +559,7 @@
       left: 52.5%;
       img {
         width: 25px;
-        border-radius: 50%;
-      }
-      img:hover {
-        width: 30px;
-        border-radius: 50%;
+        transition: 1s;
       }
     }
   }
@@ -611,11 +575,7 @@
       left: 37.4%;
       img {
         width: 28px;
-        border-radius: 50%;
-      }
-      img:hover {
-        width: 34px;
-        border-radius: 50%;
+        transition: 1s;
       }
     }
     .podcast-2 {
@@ -626,11 +586,7 @@
       left: 43.5%;
       img {
         width: 28px;
-        border-radius: 50%;
-      }
-      img:hover {
-        width: 34px;
-        border-radius: 50%;
+        transition: 1s;
       }
     }
     .podcast-3 {
@@ -641,11 +597,7 @@
       left: 51%;
       img {
         width: 25px;
-        border-radius: 50%;
-      }
-      img:hover {
-        width: 30px;
-        border-radius: 50%;
+        transition: 1s;
       }
     }
     .podcast-4 {
@@ -656,11 +608,7 @@
       left: 60%;
       img {
         width: 32px;
-        border-radius: 50%;
-      }
-      img:hover {
-        width: 38px;
-        border-radius: 50%;
+        transition: 1s;
       }
     }
     .podcast-5 {
@@ -671,11 +619,7 @@
       left: 51.5%;
       img {
         width: 32px;
-        border-radius: 50%;
-      }
-      img:hover {
-        width: 38px;
-        border-radius: 50%;
+        transition: 1s;
       }
     }
     .podcast-6 {
@@ -686,11 +630,7 @@
       left: 44.5%;
       img {
         width: 32px;
-        border-radius: 50%;
-      }
-      img:hover {
-        width: 38px;
-        border-radius: 50%;
+        transition: 1s;
       }
     }
     .podcast-7 {
@@ -701,11 +641,7 @@
       left: 43.8%;
       img {
         width: 19px;
-        border-radius: 50%;
-      }
-      img:hover {
-        width: 25px;
-        border-radius: 50%;
+        transition: 1s;
       }
     }
     .podcast-8 {
@@ -716,11 +652,7 @@
       left: 56.2%;
       img {
         width: 21px;
-        border-radius: 50%;
-      }
-      img:hover {
-        width: 27px;
-        border-radius: 50%;
+        transition: 1s;
       }
     }
     .podcast-9 {
@@ -731,12 +663,12 @@
       left: 52.5%;
       img {
         width: 25px;
-        border-radius: 50%;
-      }
-      img:hover {
-        width: 30px;
-        border-radius: 50%;
+        transition: 1s;
       }
     }
   }
+}
+
+.img-change-size {
+  transform: scale(2.5);
 }
