@@ -47,17 +47,7 @@ export class AppComponent implements OnInit, AfterContentInit {
     this.audioService.getChangeMusicPlatform().subscribe(
       {
         next : (resp) => {
-          if(resp == false){ // debería pausar
-            if(this.controlAudio){
-              this.playPauseAudio(false);
-            }
-          }else{ // lo debería activar
-            if(this.controlAudio == false){
-              if(this.controlAudioUser){
-                this.playPauseAudio(false);
-              }
-            }
-          }
+          this.callAudioPlatform(resp);
         }
       }
     );
@@ -326,5 +316,19 @@ export class AppComponent implements OnInit, AfterContentInit {
     let video = document.getElementById("videoHelp") as HTMLVideoElement;
     video.pause();
     video.currentTime = 0;
+  }
+
+  callAudioPlatform(resp : boolean){
+    if(resp == false){ // debería pausar
+      if(this.controlAudio){
+        this.playPauseAudio(false);
+      }
+    }else{ // lo debería activar
+      if(this.controlAudio == false){
+        if(this.controlAudioUser){
+          this.playPauseAudio(false);
+        }
+      }
+    }
   }
 }
