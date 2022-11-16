@@ -68,13 +68,13 @@
   <ng-template #footer></ng-template>
 </app-modal-component>
 
-<app-modal-component idTarget="openModalThreeIcono4" [visibleM]="false" bgModal=" ModalVirtual bgNoBorder hideClose "
+<app-modal-component idTarget="openModalThreeIcono4" (closeEvent)="activeAudio('icono4')" [visibleM]="false" bgModal=" ModalVirtual bgNoBorder hideClose "
   [visibleCard]="true" tamanio="lg">
   <ng-template #title></ng-template>
   <ng-template #header>
     <div class="row">
       <div class="col-12">
-        <video src="../../assets/img/Tree/MovimientCallejero/icono4/La tecnocotidianidad.mp4" width="100%" controls
+        <video id="icono4" src="../../assets/img/Tree/MovimientCallejero/icono4/La tecnocotidianidad.mp4" width="100%" controls
           loop></video>
       </div>
     </div>
@@ -82,13 +82,13 @@
   <ng-template #footer></ng-template>
 </app-modal-component>
 
-<app-modal-component idTarget="openModalThreeIcono5" [visibleM]="false" bgModal=" ModalVirtual bgNoBorder hideClose "
+<app-modal-component idTarget="openModalThreeIcono5" (closeEvent)="activeAudio('icono5')" [visibleM]="false" bgModal=" ModalVirtual bgNoBorder hideClose "
   [visibleCard]="true" tamanio="lg">
   <ng-template #title></ng-template>
   <ng-template #header>
     <div class="row">
       <div class="col-12">
-        <video src="../../assets/img/Tree/MovimientCallejero/icono5/Wilmer Mayolo Sinestesia.mp4" width="100%" controls
+        <video id="icono5" src="../../assets/img/Tree/MovimientCallejero/icono5/Wilmer Mayolo Sinestesia.mp4" width="100%" controls
            loop></video>
       </div>
     </div>
@@ -96,13 +96,13 @@
   <ng-template #footer></ng-template>
 </app-modal-component>
 
-<app-modal-component idTarget="openModalThreeIcono6" [visibleM]="false" bgModal=" ModalVirtual bgNoBorder hideClose "
+<app-modal-component idTarget="openModalThreeIcono6" (closeEvent)="activeAudio('icono6')" [visibleM]="false" bgModal=" ModalVirtual bgNoBorder hideClose "
   [visibleCard]="true" tamanio="lg">
   <ng-template #title></ng-template>
   <ng-template #header>
     <div class="row">
       <div class="col-12">
-        <video src="../../assets/img/Tree/MovimientCallejero/icono6/La desaparición de Colombia.mp4" width="100%"
+        <video id="icono6" src="../../assets/img/Tree/MovimientCallejero/icono6/La desaparición de Colombia.mp4" width="100%"
           controls  loop></video>
       </div>
     </div>
@@ -110,14 +110,14 @@
   <ng-template #footer></ng-template>
 </app-modal-component>
 
-<app-modal-component idTarget="openModalThreeIcono7" [visibleM]="false"
+<app-modal-component idTarget="openModalThreeIcono7" (closeEvent)="activeAudio('icono7')" [visibleM]="false"
   bgModal=" ModalVirtual bgNoBorder hideClose " [visibleCard]="true" tamanio="lg">
   <ng-template #title></ng-template>
   <ng-template #header>
     <div class="row">
       <div class="col-12">
        
-        <video src="../../assets/img/Tree/MovimientCallejero/icono7/Significado en piel.mp4" width="100%" controls  loop></video>
+        <video id="icono7" src="../../assets/img/Tree/MovimientCallejero/icono7/Significado en piel.mp4" width="100%" controls  loop></video>
       </div>
     </div>
   </ng-template>
@@ -144,13 +144,13 @@
   <ng-template #footer></ng-template>
 </app-modal-component>
 
-<app-modal-component idTarget="openModalThreeIcono9" [visibleM]="false"
+<app-modal-component idTarget="openModalThreeIcono9" (closeEvent)="activeAudio('icono9')" [visibleM]="false"
   bgModal=" ModalVirtual bgNoBorder hideClose " [visibleCard]="true" tamanio="lg">
   <ng-template #title></ng-template>
   <ng-template #header>
     <div class="row">
       <div class="col-12">
-        <video src="../../assets/img/Tree/MovimientCallejero/icono9/2025 Miriam Bustamante Video.mp4" width="100%" controls loop></video>
+        <video id="icono9" src="../../assets/img/Tree/MovimientCallejero/icono9/2025 Miriam Bustamante Video.mp4" width="100%" controls loop></video>
       </div>
     </div>
   </ng-template>

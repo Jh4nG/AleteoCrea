@@ -1,6 +1,6 @@
 <app-particles></app-particles>
 
-<app-modal-component idTarget="openReproductor" [visibleM]="false" bgModal="bgTransparentModal bgNoBorder"
+<app-modal-component (closeEvent)="activeAudio()" idTarget="openReproductor" [visibleM]="false" bgModal="bgTransparentModal bgNoBorder"
   [visibleCard]="false" tamanio="lg" (closeEvent)="eventoCerrado()">
   <ng-template #title></ng-template>
   <ng-template #header>
