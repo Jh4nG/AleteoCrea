@@ -2,6 +2,8 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import * as THREE from 'three';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { NgImageSliderComponent } from 'ng-image-slider';
+import { AudioObserverService } from '../services/audioObserver/audio-observer.service';
+
 declare var $;
 
 const clipPlanes = [
@@ -31,7 +33,7 @@ export class ThreePagesComponent implements OnInit, OnDestroy {
   //   }
   // ];
 
-  constructor(private spinner: NgxSpinnerService) {
+  constructor(private spinner: NgxSpinnerService, private audioService: AudioObserverService) {
 
   }
 
@@ -60,21 +62,26 @@ export class ThreePagesComponent implements OnInit, OnDestroy {
         $('#openModalThreeIcono3').modal('show');
         break;
       case 'Icono4':
+        this.silenceAudio();
         $('#openModalThreeIcono4').modal('show');
         break;
       case 'Icono5':
+        this.silenceAudio();
         $('#openModalThreeIcono5').modal('show');
         break;
       case 'Icono6':
+        this.silenceAudio();
         $('#openModalThreeIcono6').modal('show');
         break;
       case 'Icono7':
+        this.silenceAudio();
         $('#openModalThreeIcono7').modal('show');
         break;
       case 'Icono8':
         $('#openModalThreeIcono8').modal('show');
         break;
       case 'Icono9':
+        this.silenceAudio();
         $('#openModalThreeIcono9').modal('show');
         break;
       default:
@@ -89,6 +96,18 @@ export class ThreePagesComponent implements OnInit, OnDestroy {
   nextImageClick() {
     this.slider.next();
   }
+
+  silenceAudio() {
+    this.audioService.sendChangeMusicPlatform(false);
+  }
+
+  activeAudio(id: string) {
+    let video = document.getElementById(id) as HTMLVideoElement;
+    video.pause();
+    video.currentTime = 0;
+    this.audioService.sendChangeMusicPlatform(true);
+  }
+
 }
 
 

@@ -3,6 +3,7 @@ declare var $;
 import { PodcastService } from '../services/podcast.service';
 import { GetModel } from '../models/getModel';
 import { Tooltip } from 'node_modules/bootstrap/dist/js/bootstrap.esm.min.js'
+import { AudioObserverService } from '../services/audioObserver/audio-observer.service';
 
 @Component({
   selector: 'app-podcast',
@@ -23,7 +24,8 @@ export class PodcastComponent implements OnInit, OnDestroy {
 
   public closeModal: boolean = false;
 
-  constructor(private podcastService: PodcastService) {
+  constructor(private podcastService: PodcastService, 
+    private audioService: AudioObserverService) {
     this.getPodcastPrincipal();
 
   }
@@ -53,6 +55,7 @@ export class PodcastComponent implements OnInit, OnDestroy {
   }
 
   eventReproducirPodcast(podcast: number): void {
+    this.silenceAudio();
     if (podcast == this.lastPodcast) {
       
       if (this.elementAudio.paused) {
@@ -206,6 +209,7 @@ export class PodcastComponent implements OnInit, OnDestroy {
       return item.name_podcast == band
     });
     this.listBandSelected = list;
+    this.silenceAudio();
   }
 
   eventoCerrado() {
@@ -213,5 +217,13 @@ export class PodcastComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.closeModal = false;
     }, 200);
+  }
+
+  silenceAudio() {
+    this.audioService.sendChangeMusicPlatform(false);
+  }
+
+  activeAudio() {
+    this.audioService.sendChangeMusicPlatform(true);
   }
 }
