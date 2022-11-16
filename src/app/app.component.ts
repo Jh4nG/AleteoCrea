@@ -85,7 +85,7 @@ export class AppComponent implements OnInit, AfterContentInit {
               case '/home':
                 setTimeout(() => {
                   this.audio.nativeElement.src = "./assets/audios/plataforma/1. Plataforma principal.mp3";
-                  this.videoHelp1 = "(Inicio) Escena 1.mp4";
+                  this.videoHelp1 = "(Inicio) Escena 1 Cor.mp4";
                   this.videoHelp2 = "(Inicio) Escena 2 cor.mp4";
                   imgBia.src = "./assets/img/BIAs/BIA01.gif";
                 }, 1000);
@@ -101,7 +101,7 @@ export class AppComponent implements OnInit, AfterContentInit {
               case '/podcast':
                 setTimeout(() => {
                   this.audio.nativeElement.src = "./assets/audios/plataforma/2. Podcast.mp3";
-                  this.videoHelp1 = "(Podcast) Escena 3.mp4";
+                  this.videoHelp1 = "(Podcast) Escena 3 cor.mp4";
                   this.videoHelp2 = "(Podcast) Escena 4.mp4";
                   imgBia.src = "./assets/img/BIAs/(Podcast) Gif 2.gif";
                 }, 1000);
@@ -109,8 +109,8 @@ export class AppComponent implements OnInit, AfterContentInit {
               case '/virtual-store':
                 setTimeout(() => {
                   this.audio.nativeElement.src = "./assets/audios/plataforma/4. Tienda del futuro.mp3";
-                  this.videoHelp1 = "(Tienda)Escena 7.mp4";
-                  this.videoHelp2 = "(Tienda) Escena 8.mp4";
+                  this.videoHelp1 = "(Tienda) Escena 7 cor.mp4";
+                  this.videoHelp2 = "(Tienda) Escena 8 cor.mp4";
                   imgBia.src = "./assets/img/BIAs/(Tienda) GIF 4.gif";
                 }, 1000);
                 break;
@@ -308,6 +308,7 @@ export class AppComponent implements OnInit, AfterContentInit {
       video.play();
       video.volume = 0.7;
     }
+    this.callAudioPlatform(false); // Silenciar audio plataforma
     $('#modalVideoHelp').modal('show');
     this.openViewHelp();
   }
@@ -316,6 +317,7 @@ export class AppComponent implements OnInit, AfterContentInit {
     let video = document.getElementById("videoHelp") as HTMLVideoElement;
     video.pause();
     video.currentTime = 0;
+    this.callAudioPlatform(true); // Activar audio plataforma
   }
 
   callAudioPlatform(resp : boolean){
