@@ -134,7 +134,7 @@ export class VirtualStoreComponent implements OnInit, OnDestroy {
       $('#btnSoundProduct i').removeClass('fa-pause');
       this.soundProduct = false;
     });
-    this.callAudioPlatform(false); // silenciar audio
+    this.audioService.sendChangeMusicPlatform(false); // silenciar audio plataforma
     $('#modalProduct').modal('show');
   }
 
@@ -156,7 +156,7 @@ export class VirtualStoreComponent implements OnInit, OnDestroy {
     let soundProduct = document.getElementById('soundProduct') as HTMLAudioElement;
     soundProduct.pause();
     soundProduct.currentTime = 0;
-    this.callAudioPlatform(true); // silenciar audio
+    this.audioService.sendChangeMusicPlatform(true); // Activar audio plataforma
   }
   
   ngSubmitForm(){
@@ -264,10 +264,4 @@ export class VirtualStoreComponent implements OnInit, OnDestroy {
       this.open_side_car = false;
     }
   }
-
-  callAudioPlatform(type:boolean){
-    // true -> para activar, false -> desactivar
-    this.audioService.sendChangeMusicPlatform(type);
-  }
-
 }

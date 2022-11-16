@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit, AfterContentInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { AudioObserverService } from './../services/audioObserver/audio-observer.service';
 declare var $;
 @Component({
   selector: 'app-additional-contents',
@@ -10,7 +11,8 @@ export class AdditionalContentsComponent implements OnInit, OnDestroy, AfterCont
 
   videoActualSrc : any = "";
   spinerMariposa = "MariposaSpinner";
-  constructor(private spinner: NgxSpinnerService) { }
+  constructor(private spinner: NgxSpinnerService,
+    public audioService : AudioObserverService) { }
 
   ngOnDestroy(): void {
     window.location.reload();
@@ -50,6 +52,7 @@ export class AdditionalContentsComponent implements OnInit, OnDestroy, AfterCont
     video.src = this.videoActualSrc;
     video.play();
     video.volume = 0.7;
+    this.audioService.sendChangeMusicPlatform(false); // silenciar audio plataforma
     $('#modalContentAdd').modal('show');
   }
 
@@ -58,6 +61,7 @@ export class AdditionalContentsComponent implements OnInit, OnDestroy, AfterCont
     video.pause();
     video.currentTime = 0;
     video.src = "";
+    this.audioService.sendChangeMusicPlatform(true); // activar audio plataforma
   }
 
 }

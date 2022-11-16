@@ -3,6 +3,7 @@ import * as  Stats from "node_modules/stats.js"
 import { Tooltip } from 'node_modules/bootstrap/dist/js/bootstrap.esm.min.js'
 import { PodcastService } from '../services/podcast.service';
 import * as moment from 'moment';
+import { AudioObserverService } from './../services/audioObserver/audio-observer.service';
 declare var $; 
 declare var webkitSpeechRecognition: any;
 
@@ -89,7 +90,8 @@ export class FutureVoicesComponent implements OnInit, OnDestroy {
   fragmentosDeAudio : any;
   base64String : any;
 
-  constructor(public service : PodcastService) { }
+  constructor(public service : PodcastService,
+    public audioService : AudioObserverService) { }
 
   ngOnDestroy(): void {
     window.location.reload();
@@ -212,6 +214,7 @@ export class FutureVoicesComponent implements OnInit, OnDestroy {
       })
       .then(
         stream => {
+          this.audioService.sendChangeMusicPlatform(false); // silenciar audio plataforma
           let d = new Date().toLocaleTimeString(); // tiempo inicio grabación
           // Comenzar a grabar con el stream
           this.mediaRecorder = new MediaRecorder(stream);
@@ -289,6 +292,7 @@ export class FutureVoicesComponent implements OnInit, OnDestroy {
                 txt = `Audio grabado correctamente.
                 <br><br>
                 Gracias por dejar su voz del futuro. Recuerde que puede escuchar su audio y el de otros usuarios clickeando en el botón (<i class="fa fa-list"></i>) que está en la parte izquierda inferior.`;
+                this.audioService.sendChangeMusicPlatform(true); // silenciar audio plataforma
               }else{  
                 txt = `Error al grabar audio.
                 <br><br>
@@ -342,6 +346,7 @@ export class FutureVoicesComponent implements OnInit, OnDestroy {
   }
 
   iniciarReproductor(){
+    this.audioService.sendChangeMusicPlatform(false); // silenciar audio plataforma
     let audio = document.getElementById('audioVoiceActual') as HTMLAudioElement;
     audio.play();
     document.querySelector('.controles__reproduccion button i.fa.fa-play').parentElement.setAttribute('style','display:none');
@@ -392,6 +397,7 @@ export class FutureVoicesComponent implements OnInit, OnDestroy {
   }
 
   pauseReproductor(){
+    this.audioService.sendChangeMusicPlatform(true); // activar audio plataforma
     let audio = document.getElementById('audioVoiceActual') as HTMLAudioElement;
     audio.pause();
     document.querySelector('.controles__reproduccion button i.fa.fa-play').parentElement.setAttribute('style','');
@@ -401,6 +407,7 @@ export class FutureVoicesComponent implements OnInit, OnDestroy {
   }
 
   stopReproductor(){
+    this.audioService.sendChangeMusicPlatform(true); // activar audio plataforma
     let audio = document.getElementById('audioVoiceActual') as HTMLAudioElement;
     audio.pause();
     audio.currentTime = 0;
