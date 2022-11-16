@@ -3,6 +3,7 @@ import { Viewer } from 'photo-sphere-viewer'
 import { MarkersPlugin } from 'photo-sphere-viewer/dist/plugins/markers';
 import { HttpClient } from '@angular/common/http';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { AudioObserverService } from './../services/audioObserver/audio-observer.service';
 declare var $;
 
 @Component({
@@ -39,7 +40,8 @@ export class VirtualStoreComponent implements OnInit, OnDestroy {
   spinerMariposa = "MariposaSpinner";
 
   constructor(private http: HttpClient,
-    private spinner: NgxSpinnerService) { }
+    private spinner: NgxSpinnerService,
+    public audioService : AudioObserverService) { }
   
   ngOnDestroy(): void {
     window.location.reload();
@@ -132,6 +134,7 @@ export class VirtualStoreComponent implements OnInit, OnDestroy {
       $('#btnSoundProduct i').removeClass('fa-pause');
       this.soundProduct = false;
     });
+    this.callAudioPlatform(false); // silenciar audio
     $('#modalProduct').modal('show');
   }
 
@@ -153,6 +156,7 @@ export class VirtualStoreComponent implements OnInit, OnDestroy {
     let soundProduct = document.getElementById('soundProduct') as HTMLAudioElement;
     soundProduct.pause();
     soundProduct.currentTime = 0;
+    this.callAudioPlatform(true); // silenciar audio
   }
   
   ngSubmitForm(){
@@ -259,6 +263,11 @@ export class VirtualStoreComponent implements OnInit, OnDestroy {
     } else {
       this.open_side_car = false;
     }
+  }
+
+  callAudioPlatform(type:boolean){
+    // true -> para activar, false -> desactivar
+    this.audioService.sendChangeMusicPlatform(type);
   }
 
 }

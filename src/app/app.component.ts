@@ -2,6 +2,7 @@ import { Component, OnInit, AfterContentInit, OnChanges, SimpleChanges, AfterVie
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Tooltip } from 'node_modules/bootstrap/dist/js/bootstrap.esm.min.js'
 import { NavigationStart, Router } from '@angular/router';
+import { AudioObserverService } from './services/audioObserver/audio-observer.service';
 declare var $;
 
 @Component({
@@ -15,13 +16,15 @@ export class AppComponent implements OnInit, AfterContentInit {
   public flag = 0;
   public controlPage: string;
   public controlAudio: boolean = true;
+  public controlAudioUser: boolean = true;
   public viewHelp = true;
   public videoHelp1 = "";
   public videoHelp2 = "";
   @ViewChild('audioGeneralPage') audio!: ElementRef<HTMLAudioElement>;
 
   constructor(private spinner: NgxSpinnerService,
-    public route: Router) {
+    public route: Router,
+    public audioService : AudioObserverService) {
 
     window.addEventListener('load', (event) => {
       // this.route.events.subscribe((url: any) => {
@@ -41,6 +44,23 @@ export class AppComponent implements OnInit, AfterContentInit {
       //   }
       // });
     });
+    this.audioService.getChangeMusicPlatform().subscribe(
+      {
+        next : (resp) => {
+          if(resp == false){ // debería pausar
+            if(this.controlAudio){
+              this.playPauseAudio(false);
+            }
+          }else{ // lo debería activar
+            if(this.controlAudio == false){
+              if(this.controlAudioUser){
+                this.playPauseAudio(false);
+              }
+            }
+          }
+        }
+      }
+    );
   }
 
   ngAfterContentInit() {
@@ -261,7 +281,10 @@ export class AppComponent implements OnInit, AfterContentInit {
     });
   }
 
-  playPauseAudio() {
+  playPauseAudio(type:boolean = true) {
+    if(type){
+      this.controlAudioUser = !this.controlAudioUser;
+    }
     if (this.controlAudio) {
       this.audio.nativeElement.pause();
       document.getElementsByClassName('divAudioIcon')[0].classList.add('audioIconStop');
