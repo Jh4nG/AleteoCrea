@@ -57,10 +57,21 @@ export class AppComponent implements OnInit, AfterContentInit {
     this.route.events.subscribe((url: any) => {
       if (url instanceof NavigationStart) {
         if (url.url == '/home') {
+          let statusAleteo = localStorage.getItem('AleteoMuseoInteractivo');
+          if(statusAleteo == null){
+            localStorage.setItem('AleteoMuseoInteractivo', 'Primer Ingreso plataforma');
+          }
+          this.videoHelp1 = "(Inicio) Escena 1 Cor.mp4";
           this.spinner.show('spinnerInicio');
-          let time = (window.location.hostname == 'localhost') ? 100 : 4500;
+          let time = (window.location.hostname == 'localhost') ? 4500 : 4500;
           setTimeout(() => {
             this.spinner.hide('spinnerInicio');
+            if(statusAleteo == null){
+              this.openVideoHelp(1,false); // Abre el primer Vídeo de Ayuda
+              document.getElementById('videoHelp').addEventListener('ended',()=>{
+                $('#modalVideoHelp').modal('hide');
+              });
+            }
           }, time);
         }else{
           this.spinner.show('spinnerMariposa');
@@ -150,7 +161,6 @@ export class AppComponent implements OnInit, AfterContentInit {
       console.log(error);
     }
   }
-
 
   shareFunction() {
     const left = 96;
@@ -296,7 +306,7 @@ export class AppComponent implements OnInit, AfterContentInit {
     this.viewHelp = !this.viewHelp;
   }
 
-  openVideoHelp(type: number) {
+  openVideoHelp(type: number, process : boolean = true) {
     let video = document.getElementById("videoHelp") as HTMLVideoElement;
     video.src = "";
     if (type == 1) { // Ayuda uno
@@ -310,7 +320,9 @@ export class AppComponent implements OnInit, AfterContentInit {
     }
     this.callAudioPlatform(false); // Silenciar audio plataforma
     $('#modalVideoHelp').modal('show');
-    this.openViewHelp();
+    if(process){
+      this.openViewHelp();
+    }
   }
 
   stopVideoModalHepl() {

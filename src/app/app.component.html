@@ -113,6 +113,14 @@
 </div>
 <!-- Boton Flotante Voces del futuro -->
 
+<app-modal-component hiddenOverFlow="true" (closeEvent)="stopVideoModalHepl()" idTarget="modalVideoHelp" tamanio="xl" bgModal="bgDarkModal ModalVirtual bgNoBorder hideClose" bgBtnOmitir="btnDisplay">
+  <ng-template #content>
+    <div>
+      <video id="videoHelp" style="width: 80%;" controls></video>
+    </div>
+  </ng-template>
+</app-modal-component>
+
 <app-modal-component idTarget="sobreNosotros" tamanio="lg" bgModal="bgDarkModal ModalBlue bgNoBorder">
   <ng-template #header>
     <div><h1>Sobre nosotros</h1></div>
@@ -178,19 +186,6 @@
   </ng-template>
   <ng-template #footer></ng-template>
 </app-modal-component>
-
-<app-modal-component (closeEvent)="stopVideoModalHepl()" idTarget="modalVideoHelp" tamanio="lg" bgModal="bgDarkModal ModalVirtual bgNoBorder hideClose">
-  <ng-template #header>
-  </ng-template>
-  <ng-template #content>
-    <div>
-      <video id="videoHelp" style="width: 80%;" controls></video>
-    </div>
-  </ng-template>
-  <ng-template #footer>
-  </ng-template>
-</app-modal-component>
-
 
 <app-modal-component idTarget="CreditosModal" tamanio="lg" bgModal="bgDarkModal ModalBlue bgNoBorder">
   <ng-template #header>

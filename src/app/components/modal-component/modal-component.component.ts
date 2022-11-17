@@ -15,11 +15,15 @@ export class ModalComponentComponent implements OnInit, AfterContentInit, AfterV
 
   @Input() bgModal : String;
 
+  @Input() bgBtnOmitir : String;
+
   @Input() backdrop : String = "true";
 
   @Input() keyboard : String = "true";
 
   @Input() visibleCard : boolean = true;
+
+  @Input() hiddenOverFlow: string = "false";
 
   @Output() closeEvent: EventEmitter<any> = new EventEmitter<any>();
 
@@ -62,8 +66,5 @@ export class ModalComponentComponent implements OnInit, AfterContentInit, AfterV
           break;
       }
     });
-    console.log('Hola mundo');
-    
-    
   }
 }

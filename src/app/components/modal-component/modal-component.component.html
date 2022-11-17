@@ -1,11 +1,14 @@
 <div #elementModal class="modal fade" id="{{idTarget}}" [attr.data-bs-backdrop]="backdrop" [attr.data-bs-keyboard]="keyboard" tabindex="-1"
-    attr.aria-labelledby="{{idTarget}}Label" aria-hidden="true">
+    attr.aria-labelledby="{{idTarget}}Label" aria-hidden="true" [ngClass]="[hiddenOverFlow == 'true' ? 'hiddenOverFlow' : '']">
     <div class="modal-dialog modal-dialog-centered modal-{{tamanio}}">
         <div class="{{ visibleCard ? 'cardModal': '' }} modal-content {{bgModal}}" [ngClass]="[ !visibleM ? 'visible-modal': '' ]">
             <div class="modal-header" >
                 <ng-template [ngTemplateOutlet]="this.header" ></ng-template>
                 <button type="button" class="closeBg" data-bs-dismiss="modal" aria-label="Close">
                     <i class="fa fa-close"></i>
+                </button>
+                <button type="button" class="btnCloseGlitch bgBlackBtnGlitch btnHidden {{bgBtnOmitir}}" data-bs-dismiss="modal" aria-label="Close">
+                    Omitir
                 </button>
             </div>
             <div class="modal-body">
