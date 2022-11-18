@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterContentInit, OnChanges, SimpleChanges, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, AfterContentInit, OnChanges, SimpleChanges, AfterViewInit, ViewChild, ElementRef, HostListener, EventEmitter } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Tooltip } from 'node_modules/bootstrap/dist/js/bootstrap.esm.min.js'
 import { NavigationStart, Router } from '@angular/router';
@@ -17,10 +17,22 @@ export class AppComponent implements OnInit, AfterContentInit {
   public controlPage: string;
   public controlAudio: boolean = true;
   public controlAudioUser: boolean = true;
+  public controlAudioFirts: boolean = false;
+  public controlVideo: boolean = false;
   public viewHelp = true;
   public videoHelp1 = "";
   public videoHelp2 = "";
   @ViewChild('audioGeneralPage') audio!: ElementRef<HTMLAudioElement>;
+  private mousemove = new EventEmitter<MouseEvent>();
+
+  @HostListener('mousemove', ['$event'])
+  onMousemove(event: MouseEvent) {
+    if(!this.controlAudioFirts){
+      if(!this.controlVideo){
+        this.startAudioPlatform();
+      }
+    }
+  }
 
   constructor(private spinner: NgxSpinnerService,
     public route: Router,
@@ -147,7 +159,7 @@ export class AppComponent implements OnInit, AfterContentInit {
                   this.videoHelp1 = "(Inicio) Escena 1.mp4";
                   this.videoHelp2 = "(Inicio) Escena 2 cor.mp4";
                   imgBia.src = "./assets/img/BIAs/BIA01.gif";
-                  divimgBia.style.display = 'none';
+                  // divimgBia.style.display = 'none';
                 }, 1000);
                 break;
             }
@@ -274,10 +286,12 @@ export class AppComponent implements OnInit, AfterContentInit {
     this.audio.nativeElement.loop = true;
     this.audio.nativeElement.play().then(() => {
       document.getElementsByClassName('divAudioIcon')[0].classList.remove('audioIconStop');
-      console.log('play correct');
+      this.controlAudioFirts = !this.controlAudioFirts;
+      this.controlAudio = true;
+      // console.log('play correct');
     }).catch(() => {
       this.controlAudio = false;
-      console.log('play error');
+      // console.log('play error');
     });
   }
 
@@ -311,7 +325,11 @@ export class AppComponent implements OnInit, AfterContentInit {
     video.src = "";
     if (type == 1) { // Ayuda uno
       video.src = "./assets/VideoHelp/" + this.videoHelp1;
-      video.play();
+      video.play().then(() => {
+        console.log('Reproducir vídeo correctamente');
+      }).catch(() => {
+        console.log('Error al reproducir vídeo');
+      });
       video.volume = 0.7;
     } else { // Ayuda 2
       video.src = "./assets/VideoHelp/" + this.videoHelp2;
@@ -319,6 +337,7 @@ export class AppComponent implements OnInit, AfterContentInit {
       video.volume = 0.7;
     }
     this.callAudioPlatform(false); // Silenciar audio plataforma
+    this.controlVideo = true;
     $('#modalVideoHelp').modal('show');
     if(process){
       this.openViewHelp();
@@ -330,6 +349,7 @@ export class AppComponent implements OnInit, AfterContentInit {
     video.pause();
     video.currentTime = 0;
     this.callAudioPlatform(true); // Activar audio plataforma
+    this.controlVideo = false;
   }
 
   callAudioPlatform(resp : boolean){

@@ -48,14 +48,14 @@ export class VirtualStoreComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    if(window.location.hostname == 'localhost'){
-      this.ngSubmitForm();
-    }else{
+    // if(window.location.hostname == 'localhost'){
+    //   this.ngSubmitForm();
+    // }else{
       setTimeout(()=>{
         let btn = document.getElementById('btnModalPrincipal');
         btn.click();
       },500);
-    }
+    // }
   }
   
   constructViwer(){
@@ -135,6 +135,11 @@ export class VirtualStoreComponent implements OnInit, OnDestroy {
       this.soundProduct = false;
     });
     this.audioService.sendChangeMusicPlatform(false); // silenciar audio plataforma
+    document.getElementById('soundProduct').addEventListener('ended',()=>{
+      $('#btnSoundProduct i').addClass('fa-play');
+      $('#btnSoundProduct i').removeClass('fa-pause');
+      console.log('finaliza');
+    });
     $('#modalProduct').modal('show');
   }
 
@@ -173,7 +178,7 @@ export class VirtualStoreComponent implements OnInit, OnDestroy {
     switch(type){
       case 1: // First Question
         $('.btnFirst').removeClass('btnSelected');
-        e.currentTarget.setAttribute('class', 'btnFirst btnSelected');
+        e.currentTarget.setAttribute('class', 'btnPlataform btnFirst btnSelected');
         this.estratoSelected = e.currentTarget.getAttribute('data-value');
         this.cantidadDolaresInicial = (this.estratoSelected == "1") ? 300000 : (this.estratoSelected == "2") ? 70000 : 12000; // precios iniciales dependiendo del estrato
         $('.firstQuestion').fadeOut(()=>{
@@ -182,14 +187,14 @@ export class VirtualStoreComponent implements OnInit, OnDestroy {
       break;
       case 2: // Second Question
         $('.btnSecond').removeClass('btnSelected');
-        e.currentTarget.setAttribute('class', 'btnSecond btnSelected');
+        e.currentTarget.setAttribute('class', 'btnPlataform btnSecond btnSelected');
         $('.secondsQuestion').fadeOut(()=>{
           $('.thirdQuestion').fadeIn(1000);
         });
       break;
       case 3: // Third Question
         $('.btnThird').removeClass('btnSelected');
-        e.currentTarget.setAttribute('class', 'btnThird btnSelected');
+        e.currentTarget.setAttribute('class', 'btnPlataform btnThird btnSelected');
         this.ngSubmitForm();
       break;
     }

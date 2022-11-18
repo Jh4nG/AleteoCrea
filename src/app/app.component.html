@@ -96,7 +96,7 @@
 <div class="divAudioIcon audioIcon audioIconStop" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Reproducir/Pausar Audio" (click)="playPauseAudio()"></div>
 
 <div class="one" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Podcast" [routerLink]="['/podcast']"></div>
-<div class="two" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tienda Virtual" [routerLink]="['/virtual-store']"></div>
+<div class="two" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tienda del Futuro" [routerLink]="['/virtual-store']"></div>
 <div class="three" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Árbol" [routerLink]="['/tree-page']"></div>
 
 <a class="four" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Contenidos Adicionales" [routerLink]="['/contents']"></a>
@@ -116,7 +116,7 @@
 <app-modal-component hiddenOverFlow="true" (closeEvent)="stopVideoModalHepl()" idTarget="modalVideoHelp" tamanio="xl" bgModal="bgDarkModal ModalVirtual bgNoBorder hideClose" bgBtnOmitir="btnDisplay">
   <ng-template #content>
     <div>
-      <video id="videoHelp" style="width: 80%;" controls></video>
+      <video id="videoHelp" style="width: 80%;" controls loading="lazy"></video>
     </div>
   </ng-template>
 </app-modal-component>
