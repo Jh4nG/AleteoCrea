@@ -29,8 +29,8 @@ export class VirtualStoreComponent implements OnInit, OnDestroy {
   configInit = {
     longitude : { 
       "1" : 1.9, // Alto
-      "2" : 1, // Medio
-      "3" : 1 // Bajo
+      "2" : 1.11, // Medio
+      "3" : 1.22 // Bajo
     }
   }
   soundProduct : boolean;
@@ -38,6 +38,7 @@ export class VirtualStoreComponent implements OnInit, OnDestroy {
   stoAdver : any;
   stoAdd : any;
   spinerMariposa = "MariposaSpinner";
+  stoAutoRotate : any;
 
   constructor(private http: HttpClient,
     private spinner: NgxSpinnerService,
@@ -48,14 +49,15 @@ export class VirtualStoreComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    // if(window.location.hostname == 'localhost'){
-    //   this.ngSubmitForm();
-    // }else{
+    if(window.location.hostname == 'localhost'){
+      this.estratoSelected = "3"; // Quitar en prod
+      this.ngSubmitForm();
+    }else{
       setTimeout(()=>{
         let btn = document.getElementById('btnModalPrincipal');
         btn.click();
       },500);
-    // }
+    }
   }
   
   constructViwer(){
@@ -88,6 +90,8 @@ export class VirtualStoreComponent implements OnInit, OnDestroy {
         caption : 'Museo Interactivo',
         defaultLong: this.configInit.longitude[this.estratoSelected],
         defaultZoomLvl : 4,
+        autorotateDelay: 1000,
+        autorotateIdle: true,
         plugins: [
           [ MarkersPlugin, 
             {
@@ -104,6 +108,11 @@ export class VirtualStoreComponent implements OnInit, OnDestroy {
   }
 
   getProductModal(marker : any){
+    clearInterval(this.stoAutoRotate);
+    this.viewer.setOptions({
+      autorotateIdle: false,
+      autorotateDelay: 0,
+    });
     $('#alertProductAdd').hide();
     $('#alertProductExist').hide();
     $('#alertProductExcedeLimit').hide();
@@ -167,10 +176,7 @@ export class VirtualStoreComponent implements OnInit, OnDestroy {
   ngSubmitForm(){
     $('#modalVirtualStore').modal('hide');
     $('.modal-backdrop.fade.show').remove();
-    this.estratoSelected = "1"; // Quitar en prod
-    if(window.location.hostname == 'localhost'){
-      this.cantidadDolaresInicial = 40000; // Quitar en prod
-    }
+    this.cantidadDolaresInicial = (this.estratoSelected == "1") ? 300000 : (this.estratoSelected == "2") ? 70000 : 12000; // precios iniciales dependiendo del estrato
     this.constructViwer();
   }
 
@@ -180,7 +186,6 @@ export class VirtualStoreComponent implements OnInit, OnDestroy {
         $('.btnFirst').removeClass('btnSelected');
         e.currentTarget.setAttribute('class', 'btnPlataform btnFirst btnSelected');
         this.estratoSelected = e.currentTarget.getAttribute('data-value');
-        this.cantidadDolaresInicial = (this.estratoSelected == "1") ? 300000 : (this.estratoSelected == "2") ? 70000 : 12000; // precios iniciales dependiendo del estrato
         $('.firstQuestion').fadeOut(()=>{
           $('.secondsQuestion').fadeIn(1000);
         });

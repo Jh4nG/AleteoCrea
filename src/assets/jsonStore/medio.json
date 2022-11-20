@@ -1,0 +1,170 @@
+[
+    {
+        "id": "ARMA_EsMedio",
+        "nameProduct" : "AK 47 Láser 1.0",
+        "folder" : "AK 47 - LASER 1.0",
+        "images" : [
+            "ARMA_EsMedio1.jpg",
+            "ARMA_EsMedio2.jpg",
+            "ARMA_EsMedio3.jpg"
+        ],
+        "priceInt" : 6000,
+        "price" : "6.000 dólares",
+        "caracteristica" : "Marca: DA-VIR (Demolición y armamento) <br> Modelo: AK 47 Láser 1.0",
+        "especificaciones" : "Color: Blanco, azul, verde, negro, rojo, militar. <br> Cantidad: 1 <br> Tipo: De doble mano <br> Año: 2036",
+        "soundProduct" : "AK 47 Láser 1.0 _mezcla.mp3",
+        "latitude": 0.23,
+        "longitude": 5.065,
+        "image": "../../assets/img/store/Estratos/PuntoAzul.gif",
+        "width": 32,
+        "height": 32,
+        "anchor": "bottom center"
+    },
+    {
+        "id": "impresora_EsMedio",
+        "nameProduct" : "NANO ART 3000 - VIR",
+        "folder" : "NANO ART 3000 - VIR",
+        "images" : [
+            "impresora_EsMedio1.jpg",
+            "impresora_EsMedio2.jpg",
+            "impresora_EsMedio3.jpg"
+        ],
+        "priceInt" : 35000,
+        "price" : "35.000 dólares",
+        "caracteristica" : "Marca: Dinamic-tecno art <br> Modelo: ---",
+        "especificaciones" : "Color: Blanco <br> Cantidad: 1 <br> Tipo: Físico - sensorial <br> Tamaño: 20 Cm de alto por 50 de ancho y 40 cm de largo. <br> Año: 2035",
+        "soundProduct" : "Nano-art 3000 – VIR _mezcla.mp3",
+        "latitude": 0.19,
+        "longitude": 5.85,
+        "image": "../../assets/img/store/Estratos/PuntoAzul.gif",
+        "width": 32,
+        "height": 32,
+        "anchor": "bottom center"
+    },
+    {
+        "id": "celular_EsMedio",
+        "nameProduct" : "HOLOGRAM VIR",
+        "folder" : "HOLOGRAM VIR",
+        "images" : [
+            "celular_EsMedio1.jpg",
+            "celular_EsMedio2.jpg",
+            "celular_EsMedio3.jpg"
+        ],
+        "priceInt" : 15000,
+        "price" : "15.000 dólares",
+        "caracteristica" : "Marca: Hologram-VIR <br> Modelo: XR",
+        "especificaciones" : "Color: Transparente <br> Cantidad: 1 <br> Tipo: Cualquier piel  <br> Tamaño: Pedir de acuerdo con la anchura del brazo: S, M, L, XL <br> (No se realizan cambios después de compenetración neuronal) <br> Año: 2035",
+        "soundProduct" : "Hologram VIR XR _mezcla.mp3",
+        "latitude": 0.23,
+        "longitude": 6.64,
+        "image": "../../assets/img/store/Estratos/PuntoAzul.gif",
+        "width": 32,
+        "height": 32,
+        "anchor": "bottom center"
+    },
+    {
+        "id": "Medic_EsMedio",
+        "nameProduct" : "MEDIC VIR",
+        "folder" : "MEDIC VIR",
+        "images" : [
+            "Medic_EsMedio1.jpg",
+            "Medic_EsMedio2.jpg",
+            "Medic_EsMedio3.jpg"
+        ],
+        "priceInt" : 2000,
+        "price" : "2.000 dólares",
+        "caracteristica" : "Marca: Farma-VIR <br> Tipo: Medic-VIR de uso legal",
+        "especificaciones" : "Color: Según especificación <br> Cantidad: Bolsa de cuatro productos con 10 tabletas cada uno. <br> Tipo: Medicina <br> Año: 2034",
+        "soundProduct" : "MEDIC – VIR _mezcla.mp3",
+        "latitude": 0.21,
+        "longitude": 7.44,
+        "image": "../../assets/img/store/Estratos/PuntoAzul.gif",
+        "width": 32,
+        "height": 32,
+        "anchor": "bottom center"
+    },
+    {
+        "id": "sonohero_EsMedio",
+        "nameProduct" : "SONO HERO VIR",
+        "folder" : "SONO HERO VIR",
+        "images" : [
+            "sonohero_EsMedio1.jpg",
+            "sonohero_EsMedio2.jpg",
+            "sonohero_EsMedio3.jpg"
+        ],
+        "priceInt" : 20000,
+        "price" : "20.000 dólares",
+        "caracteristica" : "Marca: Dinamic-tecno art <br> Modelo: 4.1.",
+        "especificaciones" : "Color: Blanco - Negro <br> Cantidad: 1 <br> Tipo: Holográfico y sensible <br> Año: 2033",
+        "soundProduct" : "Sono Hero VIR- El instrumento del futur _mezcla.mp3",
+        "latitude": 0.25,
+        "longitude": 1.98,
+        "image": "../../assets/img/store/Estratos/PuntoAzul.gif",
+        "width": 32,
+        "height": 32,
+        "anchor": "bottom center"
+    },
+    {
+        "id": "Audiofonos_EsMedio",
+        "nameProduct" : "MEMORI - VIR",
+        "folder" : "MEMORI - VIR",
+        "images" : [
+            "Audiofonos_EsMedio1.jpg",
+            "Audiofonos_EsMedio2.jpg",
+            "Audiofonos_EsMedio3.jpg"
+        ],
+        "priceInt" : 8000,
+        "price" : "8.000 dólares",
+        "caracteristica" : "Marca: Dinamic-tecno <br> Modelo: MM",
+        "especificaciones" : "Color: Blanco <br> Cantidad: 1 <br> Año: 2034",
+        "soundProduct" : "Memori – Vir_mezcla.mp3",
+        "latitude": 0.2,
+        "longitude": 2.7,
+        "image": "../../assets/img/store/Estratos/PuntoAzul.gif",
+        "width": 32,
+        "height": 32,
+        "anchor": "bottom center"
+    },
+    {
+        "id": "CHIP_EsMedio1",
+        "nameProduct" : "CHIP IDENTIFICADOR DV",
+        "folder" : "CHIP IDENTIFICADOR DV",
+        "images" : [
+            "CHIP_EsMedio1.jpg",
+            "CHIP_EsMedio2.jpg",
+            "CHIP_EsMedio3.jpg"
+        ],
+        "priceInt" : 600,
+        "price" : "<strike> 1.000 dólares </strike> (rebaja del 40%) <br> 600 dólares.",
+        "caracteristica" : "Marca: Dinamic- tecno social <br> Modelo: Noise reduction",
+        "especificaciones" : "Color: semitransparente <br> Cantidad: 1 <br> Tipo: Pieles claras <br> Año: 2033",
+        "soundProduct" : "CHIP IDENTIFICADOR _mezcla.mp3",
+        "latitude": 0.19,
+        "longitude": 3.49,
+        "image": "../../assets/img/store/Estratos/PuntoAzul.gif",
+        "width": 32,
+        "height": 32,
+        "anchor": "bottom center"
+    },
+    {
+        "id": "Emocionotronic_EsMedio",
+        "nameProduct" : "EMOCIONATRONIC 2.0",
+        "folder" : "EMOCIONATRONIC 2.0",
+        "images" : [
+            "Emocionotronic_EsMedio1.jpg",
+            "Emocionotronic_EsMedio2.jpg",
+            "Emocionotronic_EsMedio3.jpg"
+        ],
+        "priceInt" : 15000,
+        "price" : "15.000 dólares",
+        "caracteristica" : "Marca: Dinamic-tecno <br> Modelo: 2.0",
+        "especificaciones" : "Color: Blanco <br> Cantidad: 1 <br> Tipo: Genérico <br> Año: 2034",
+        "soundProduct" : "EMOCIONOTRONIC 2.0 _mezcla.mp3",
+        "latitude": 0.19,
+        "longitude": 4.28,
+        "image": "../../assets/img/store/Estratos/PuntoAzul.gif",
+        "width": 32,
+        "height": 32,
+        "anchor": "bottom center"
+    }
+]
