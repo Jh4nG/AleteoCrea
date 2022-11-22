@@ -30,7 +30,7 @@ export class ThreeComponent implements OnInit, OnDestroy {
 
   @Output() sendObjectSelected: EventEmitter<any> = new EventEmitter<any>();
 
-  treeImg = '../../assets/img/Tree/GUACARÍ CON ICONOS b 11_11_2022.gltf';
+  treeImg = '../../assets/img/Tree/scene.gltf';
   public mmi;
   public routeSub: any;
 
@@ -83,46 +83,62 @@ export class ThreeComponent implements OnInit, OnDestroy {
       tree.position.set(0, -1, 0);
       tree.visible = true;
       scene.add(tree);
+            
+      tree.getObjectByName('Nido1').visible = false;
+      tree.getObjectByName('Nido2').visible = false;
+      tree.getObjectByName('Nido3').visible = false;
+      tree.getObjectByName('Nido4').visible = false;
+      
 
-      this.mmi.addHandler('Icono1', 'click',(event) => {
+      this.mmi.addHandler('Nido', 'click', (event) => {
+
+        this.sendObjectSelected.emit('Nido');
+      
+        tree.getObjectByName('Nido1').visible = true;
+        tree.getObjectByName('Nido2').visible = true;
+        tree.getObjectByName('Nido3').visible = true;
+        tree.getObjectByName('Nido4').visible = true;
+      });
+
+      this.mmi.addHandler('Icono1', 'click', (event) => {
         this.sendObjectSelected.emit('Icono1');
       });
 
-      this.mmi.addHandler('Icono2', 'click',(event) => {
+      this.mmi.addHandler('Icono2', 'click', (event) => {
         this.sendObjectSelected.emit('Icono2');
       });
 
-      this.mmi.addHandler('Icono3', 'click',(event) => {
+      this.mmi.addHandler('Icono3', 'click', (event) => {
         this.sendObjectSelected.emit('Icono3');
       });
 
-      this.mmi.addHandler('Icono4', 'click',(event) => {
+      this.mmi.addHandler('Icono4', 'click', (event) => {
         this.sendObjectSelected.emit('Icono4');
       });
 
-      this.mmi.addHandler('Icono5', 'click',(event) => {
+      this.mmi.addHandler('Icono5', 'click', (event) => {
         this.sendObjectSelected.emit('Icono5');
       });
-      
-      this.mmi.addHandler('Icono6', 'click',(event) => {
+
+      this.mmi.addHandler('Icono6', 'click', (event) => {
         this.sendObjectSelected.emit('Icono6');
       });
 
-      this.mmi.addHandler('Icono7', 'click',(event) => {
+      this.mmi.addHandler('Icono7', 'click', (event) => {
         this.sendObjectSelected.emit('Icono7');
       });
 
-      this.mmi.addHandler('Icono8', 'click',(event) => {
+      this.mmi.addHandler('Icono8', 'click', (event) => {
         this.sendObjectSelected.emit('Icono8');
       });
 
-      this.mmi.addHandler('Icono9', 'click',(event) => {
+      this.mmi.addHandler('Icono9', 'click', (event) => {
         this.sendObjectSelected.emit('Icono9');
       });
       this.render();
     });
 
-    
+
     const group = new THREE.Group();
 
 

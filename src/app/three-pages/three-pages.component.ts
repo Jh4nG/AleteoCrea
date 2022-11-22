@@ -24,15 +24,6 @@ export class ThreePagesComponent implements OnInit, OnDestroy {
 
   @ViewChild('nav') slider: NgImageSliderComponent;
 
-  // public imageObject: Array<object> = [
-  //   {
-  //     image: 'assets/img/Tree/MovimientCallejero/icono3/Mariposas_gIF.gif',
-  //     thumbImage: 'assets/img/Tree/MovimientCallejero/icono3/Mariposas_gIF.gif',
-  //     alt: 'alt of image',
-  //     title: 'title of image'
-  //   }
-  // ];
-
   constructor(private spinner: NgxSpinnerService, private audioService: AudioObserverService) {
 
   }
@@ -49,6 +40,7 @@ export class ThreePagesComponent implements OnInit, OnDestroy {
   }
 
   actionClickObject(object: string) {
+    let video;
     this.acctionSelected = object;
     switch (this.acctionSelected) {
       case 'Icono1':
@@ -58,31 +50,45 @@ export class ThreePagesComponent implements OnInit, OnDestroy {
         $('#openModalThreeIcono2').modal('show');
         break;
       case 'Icono3':
-
         $('#openModalThreeIcono3').modal('show');
         break;
       case 'Icono4':
+        video = document.getElementById('icono4') as HTMLVideoElement;
+        video.play();
         this.silenceAudio();
         $('#openModalThreeIcono4').modal('show');
         break;
       case 'Icono5':
+        video = document.getElementById('icono5') as HTMLVideoElement;
+        video.play();
         this.silenceAudio();
         $('#openModalThreeIcono5').modal('show');
         break;
       case 'Icono6':
+        video = document.getElementById('icono6') as HTMLVideoElement;
+        video.play();
         this.silenceAudio();
         $('#openModalThreeIcono6').modal('show');
         break;
       case 'Icono7':
+        video = document.getElementById('icono7') as HTMLVideoElement;
+        video.play();
         this.silenceAudio();
         $('#openModalThreeIcono7').modal('show');
         break;
       case 'Icono8':
+        video = document.getElementById('icono8') as HTMLVideoElement;
+        video.play();
         $('#openModalThreeIcono8').modal('show');
         break;
       case 'Icono9':
+        video = document.getElementById('icono9') as HTMLVideoElement;
+        video.play();
         this.silenceAudio();
         $('#openModalThreeIcono9').modal('show');
+        break;
+      case 'Nido':
+        $('#openModalIconoNido').modal('show');
         break;
       default:
         break;

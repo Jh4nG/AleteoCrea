@@ -1,7 +1,7 @@
 <app-three (sendObjectSelected)="actionClickObject($event)"></app-three>
 
 <div class="texto-curatorial">
-  <button (click)="openTextModal()"> 
+  <button (click)="openTextModal()">
     <!-- <i class="bi bi-file-earmark-richtext-fill"></i>  -->
     <img src="../../assets/img/TEXTO CURATORIAL - ARTES.png" width="100%">
   </button>
@@ -19,7 +19,21 @@
             <img class=" animate__animated animate__fadeInLeft"
               src="../../assets/img/Tree/MovimientCallejero/icono1/PLUMAS2.jpg" width="100%" alt="">
           </div>
-          <div class="offset-6 col-6 image-zoom">
+          <div class="col-6 center-content" >
+            <div>
+              <p>En Honor a los caídos</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6 center-content">
+            <div>
+              <p>2029</p>
+              <br>
+              <p>Grafitti Holográfico</p>
+            </div>
+          </div>
+          <div class=" col-6 image-zoom">
             <img class=" animate__animated animate__fadeInRight"
               src="../../assets/img/Tree/MovimientCallejero/icono1/PLUMAS5.jpg" width="100%" alt="">
           </div>
@@ -37,6 +51,21 @@
     <div class="row">
       <div class="col-12">
         <div class="row">
+          <div class="row">
+            <div class="col-6 center-content">
+              <div class="animate__animated animate__fadeInRight">
+                  <h3>
+                    La danza de las nano
+                  </h3>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="animate__animated animate__fadeInLeft">
+                <p>2035</p>
+                <p>Intervención en el espacio con Nanopartículas.</p>
+              </div>
+            </div>
+          </div>
           <div class="col-4">
             <img src="../../assets/img/Tree/MovimientCallejero/icono2/insectos-06.png" alt="" width="100%">
           </div>
@@ -55,6 +84,19 @@
   <ng-template #title></ng-template>
   <ng-template #header>
     <div class="row">
+      <div class="col-6 center-content">
+        <div>
+          <h3>Proyección superliminal</h3>
+        </div>
+      </div>
+      <div class="col-6 ">
+        <div>
+          <p>2038</p>
+          <p>Mapping Holográfico</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
       <div class="col-12">
         <div class="image-zoom">
           <!-- <ng-image-slider #nav [images]="imageObject" [infinite]="false" [autoSlide]="1"
@@ -68,42 +110,65 @@
   <ng-template #footer></ng-template>
 </app-modal-component>
 
-<app-modal-component idTarget="openModalThreeIcono4" (closeEvent)="activeAudio('icono4')" [visibleM]="false" bgModal=" ModalVirtual bgNoBorder hideClose "
-  [visibleCard]="true" tamanio="lg">
+<app-modal-component idTarget="openModalThreeIcono4" (closeEvent)="activeAudio('icono4')" [visibleM]="false"
+  bgModal=" ModalVirtual bgNoBorder hideClose " [visibleCard]="true" tamanio="xl">
   <ng-template #title></ng-template>
   <ng-template #header>
     <div class="row">
-      <div class="col-12">
-        <video id="icono4" src="../../assets/img/Tree/MovimientCallejero/icono4/La tecnocotidianidad.mp4" width="100%" controls
-          loop></video>
+      <div class="col-9">
+        <video id="icono4" src="../../assets/img/Tree/MovimientCallejero/icono4/La tecnocotidianidad.mp4" width="100%"
+          controls loop></video>
+      </div>
+      <div class="col-3 center-content">
+        <div class="animate__animated animate__fadeInRight">
+          <h3>La tecnocotidianidad</h3>
+          <p>2033</p>
+          <p>Video experimental</p>
+        </div>
       </div>
     </div>
   </ng-template>
   <ng-template #footer></ng-template>
 </app-modal-component>
 
-<app-modal-component idTarget="openModalThreeIcono5" (closeEvent)="activeAudio('icono5')" [visibleM]="false" bgModal=" ModalVirtual bgNoBorder hideClose "
-  [visibleCard]="true" tamanio="lg">
+<app-modal-component idTarget="openModalThreeIcono5" (closeEvent)="activeAudio('icono5')" [visibleM]="false"
+  bgModal=" ModalVirtual bgNoBorder hideClose " [visibleCard]="true" tamanio="xl">
   <ng-template #title></ng-template>
   <ng-template #header>
     <div class="row">
-      <div class="col-12">
-        <video id="icono5" src="../../assets/img/Tree/MovimientCallejero/icono5/Wilmer Mayolo Sinestesia.mp4" width="100%" controls
-           loop></video>
+      <div class="col-9">
+        <video id="icono5" src="../../assets/img/Tree/MovimientCallejero/icono5/Wilmer Mayolo Sinestesia.mp4"
+          width="100%" controls ></video>
+      </div>
+      <div class="col-3 center-content">
+        <div class="animate__animated animate__fadeInRight">
+          <h3>Sinestesia</h3>
+          <p>2035</p>
+          <br>
+          <p>Pintura sinestésica evocadora (Microtransmisor Audiovisual reproductivo)</p>
+        </div>
       </div>
     </div>
   </ng-template>
   <ng-template #footer></ng-template>
 </app-modal-component>
 
-<app-modal-component idTarget="openModalThreeIcono6" (closeEvent)="activeAudio('icono6')" [visibleM]="false" bgModal=" ModalVirtual bgNoBorder hideClose "
-  [visibleCard]="true" tamanio="lg">
+<app-modal-component idTarget="openModalThreeIcono6" (closeEvent)="activeAudio('icono6')" [visibleM]="false"
+  bgModal=" ModalVirtual bgNoBorder hideClose " [visibleCard]="true" tamanio="xl">
   <ng-template #title></ng-template>
   <ng-template #header>
     <div class="row">
-      <div class="col-12">
-        <video id="icono6" src="../../assets/img/Tree/MovimientCallejero/icono6/La desaparición de Colombia.mp4" width="100%"
-          controls  loop></video>
+      <div class="col-9">
+        <video id="icono6" src="../../assets/img/Tree/MovimientCallejero/icono6/La desaparición de Colombia.mp4"
+          width="100%" controls loop></video>
+      </div>
+      <div class="col-3 center-content">
+        <div class="animate__animated animate__fadeInRight">
+          <h4> La desaparición de Colombia </h4>
+          <p>2029</p>
+          <br>
+          <p> graffiti digital </p>
+        </div>
       </div>
     </div>
   </ng-template>
@@ -111,31 +176,46 @@
 </app-modal-component>
 
 <app-modal-component idTarget="openModalThreeIcono7" (closeEvent)="activeAudio('icono7')" [visibleM]="false"
-  bgModal=" ModalVirtual bgNoBorder hideClose " [visibleCard]="true" tamanio="lg">
+  bgModal=" ModalVirtual bgNoBorder hideClose " [visibleCard]="true" tamanio="xl">
   <ng-template #title></ng-template>
   <ng-template #header>
     <div class="row">
-      <div class="col-12">
-       
-        <video id="icono7" src="../../assets/img/Tree/MovimientCallejero/icono7/Significado en piel.mp4" width="100%" controls  loop></video>
+      <div class="col-9">
+
+        <video id="icono7" src="../../assets/img/Tree/MovimientCallejero/icono7/Significado en piel.mp4" width="100%"
+          controls loop></video>
+      </div>
+      <div class="col-3 center-content">
+        <div class="animate__animated animate__fadeInRight">
+          <h4> Significado en piel </h4>
+          <p>2032</p>
+          <br>
+          <p> Tinta Electro Pictórica corporal </p>
+        </div>
       </div>
     </div>
   </ng-template>
   <ng-template #footer></ng-template>
 </app-modal-component>
 
-<app-modal-component idTarget="openModalThreeIcono8" [visibleM]="false"
-  bgModal="ModalVirtual bgNoBorder hideClose" [visibleCard]="true" tamanio="lg">
+<app-modal-component idTarget="openModalThreeIcono8" [visibleM]="false" bgModal="ModalVirtual bgNoBorder hideClose"
+  [visibleCard]="true" tamanio="xl">
   <ng-template #title></ng-template>
   <ng-template #header>
     <div class="row">
       <div class="col-12">
         <div class="row">
-          <div class="col-4">
-            <img src="../../assets/img/Tree/MovimientCallejero/icono8/insectos-11.png" alt="" width="100%">
+          <div class="col-9">
+            <video id="icono8" src="../../assets/img/Tree/MovimientCallejero/icono8/Partículas binarias.mp4"
+          width="100%" controls loop></video>
           </div>
-          <div class="col-8">
-            <img src="../../assets/img/Tree/MovimientCallejero/icono8/insectos_nombres-10.png" alt="" width="100%">
+          <div class="col-3 center-content">
+            <div class="animate__animated animate__fadeInRight">
+              <h4> Partículas binarias </h4>
+              <p>2034</p>
+              <br>
+              <p> Aerografía técnico-binaria </p>
+            </div>
           </div>
         </div>
       </div>
@@ -145,12 +225,40 @@
 </app-modal-component>
 
 <app-modal-component idTarget="openModalThreeIcono9" (closeEvent)="activeAudio('icono9')" [visibleM]="false"
-  bgModal=" ModalVirtual bgNoBorder hideClose " [visibleCard]="true" tamanio="lg">
+  bgModal=" ModalVirtual bgNoBorder hideClose " [visibleCard]="true" tamanio="xl">
   <ng-template #title></ng-template>
   <ng-template #header>
     <div class="row">
-      <div class="col-12">
-        <video id="icono9" src="../../assets/img/Tree/MovimientCallejero/icono9/2025 Miriam Bustamante Video.mp4" width="100%" controls loop></video>
+      <div class="col-9">
+        <video id="icono9" src="../../assets/img/Tree/MovimientCallejero/icono9/2025 Miriam Bustamante Video.mp4"
+          width="100%" controls loop></video>
+      </div>
+      <div class="col-3 center-content">
+        <div class="animate__animated animate__fadeInRight">
+          
+        </div>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template #footer></ng-template>
+</app-modal-component>
+
+<app-modal-component idTarget="openModalIconoNido" [visibleM]="false" bgModal=" ModalVirtual bgNoBorder hideClose "
+  [visibleCard]="true" tamanio="lg">
+  <ng-template #title></ng-template>
+  <ng-template #header>
+    <div class="row">
+      <div class="col-9 image-zoom">
+        <img src="../../assets/img/Tree/MovimientCallejero/nido/Nido.png" alt="" width="100%">
+      </div>
+      <div class="col-3 " style="display: flex; align-items:center;">
+        <div class="animate__animated animate__fadeInDown">
+          <h5>Migrando al origen</h5>
+
+          <p class="mt-3">2037</p>
+
+          <p>LandArt - ReHacer Andino</p>
+        </div>
       </div>
     </div>
   </ng-template>
