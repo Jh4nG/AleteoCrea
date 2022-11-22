@@ -4,6 +4,7 @@ import { MarkersPlugin } from 'photo-sphere-viewer/dist/plugins/markers';
 import { HttpClient } from '@angular/common/http';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AudioObserverService } from './../services/audioObserver/audio-observer.service';
+import { PodcastService } from '../services/podcast.service';
 declare var $;
 
 @Component({
@@ -42,7 +43,8 @@ export class VirtualStoreComponent implements OnInit, OnDestroy {
 
   constructor(private http: HttpClient,
     private spinner: NgxSpinnerService,
-    public audioService : AudioObserverService) { }
+    public audioService : AudioObserverService,
+    public service : PodcastService) { }
   
   ngOnDestroy(): void {
     window.location.reload();
@@ -57,6 +59,16 @@ export class VirtualStoreComponent implements OnInit, OnDestroy {
         let btn = document.getElementById('btnModalPrincipal');
         btn.click();
       },500);
+      this.service.getIPAddress().subscribe((res:any)=>{  
+        let ipAddress = res.ip;
+        this.service.setVisitador(ipAddress,'Tienda del futuro').subscribe(resp =>{
+          if(resp.status == 200){
+            console.log(`Éxito: ${resp.msg}`);
+          }else{
+            console.log(`Error: ${resp.msg}`);
+          }
+        });
+      });
     }
   }
   

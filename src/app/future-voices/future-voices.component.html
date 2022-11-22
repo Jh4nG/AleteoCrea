@@ -97,26 +97,34 @@
       <div>TRATAMIENTO DE DATOS</div>
     </ng-template>
     <ng-template #content>
-      <div>
+      <div class="text-principal">
 
-        Para continuar con el proceso de "Grabar tu voz del futuro" es necesario que des tu consentimiento aceptando las políticas y tratamientos de datos de la grabación. 
-        <br>
-        <ol>
-            <li>
-                Estas piezas pueden ser escuchadas por cualquier usuario de Aleteo que ingrese a la plataforma.
-            </li>
-            <li>
-                No usar lenguaje soez, racista o agresivo que no tenga un sentido estético o que prenda ofender.
-            </li>
-            <li>
-                La Chimenea Cultural no se responsabiliza por las voces dejadas en este espacio y tiene el derecho de eliminarla si incumplen el punto número 2. 
-            </li>
-        </ol>
-        <p>
-            Queremos un futuro diferente.
+        Aquí podrás dejar tu mensaje sobre el cómo ves el futuro... depende de ti.
+        <br><br>
+        <button class="btn btn-aleteo-blue bShadowBlue" type="button" (click)="openCollapse()">
+            Ver tratamiento de datos
+        </button>
+        <div class="collapse" id="collapseTratamientoDatos">
+            <br><br>
+            Para continuar con el proceso de "Grabar tu voz del futuro" es necesario que des tu consentimiento aceptando las políticas y tratamientos de datos de la grabación. 
             <br>
-            <b>¡¡¡Esperamos tu mensaje de voz con ansias!!!</b>
-        </p>
+            <ol>
+                <li>
+                    Estas piezas pueden ser escuchadas por cualquier usuario de Aleteo que ingrese a la plataforma.
+                </li>
+                <li>
+                    No usar lenguaje soez, racista o agresivo que no tenga un sentido estético o que prenda ofender.
+                </li>
+                <li>
+                    La Chimenea Cultural no se responsabiliza por las voces dejadas en este espacio y tiene el derecho de eliminarla si incumplen el punto número 2. 
+                </li>
+            </ol>
+            <p>
+                Queremos un futuro diferente.
+                <br>
+                <b>¡¡¡Esperamos tu mensaje de voz con ansias!!!</b>
+            </p>
+        </div>
       </div>
     </ng-template>
     <ng-template #footer>

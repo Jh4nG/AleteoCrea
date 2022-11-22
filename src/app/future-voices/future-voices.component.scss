@@ -572,3 +572,12 @@ button.recordingStart span {
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(20, 20, 20); 
 }
+
+.text-principal {
+	padding-left: 46px;
+	padding-right: 46px;
+	padding-bottom: 46px;
+	overflow: scroll;
+	max-height: 300px;
+	overflow-x: hidden;
+}
