@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit, AfterContentInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { PodcastService } from '../services/podcast.service';
 import { AudioObserverService } from './../services/audioObserver/audio-observer.service';
 declare var $;
 @Component({
@@ -12,7 +13,8 @@ export class AdditionalContentsComponent implements OnInit, OnDestroy, AfterCont
   videoActualSrc : any = "";
   spinerMariposa = "MariposaSpinner";
   constructor(private spinner: NgxSpinnerService,
-    public audioService : AudioObserverService) { }
+    public audioService : AudioObserverService,
+    public service : PodcastService) { }
 
   ngOnDestroy(): void {
     window.location.reload();
@@ -26,6 +28,18 @@ export class AdditionalContentsComponent implements OnInit, OnDestroy, AfterCont
   }
 
   ngOnInit(): void {
+    if(!(window.location.hostname == 'localhost')){
+      this.service.getIPAddress().subscribe((res:any)=>{  
+        let ipAddress = res.ip;
+        this.service.setVisitador(ipAddress,'Contenidos Adicionales').subscribe(resp =>{
+          if(resp.status == 200){
+            console.log(`Éxito: ${resp.msg}`);
+          }else{
+            console.log(`Error: ${resp.msg}`);
+          }
+        });
+      });
+    }
   }
 
   openViewContent(content){

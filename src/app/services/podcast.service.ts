@@ -39,5 +39,18 @@ export class PodcastService {
     return this.http.post(this.API, data);
   }
 
+  public getIPAddress()  
+  {  
+    return this.http.get("http://api.ipify.org/?format=json");  
+  }
 
+  public setVisitador(ipAddress : any, page : string) : Observable <any> {
+    let data = {
+      "controlador": "Visita",
+      "metodo": "insertVisita",
+      "ip": ipAddress,
+      "page" : page
+    }
+    return this.http.post(this.API, data);    
+  }
 }

@@ -90,6 +90,10 @@ export class FutureVoicesComponent implements OnInit, OnDestroy {
   fragmentosDeAudio : any;
   base64String : any;
 
+  openCollapseS = false;
+  aceptData = false;
+  recognition : any;
+
   constructor(public service : PodcastService,
     public audioService : AudioObserverService) { }
 
@@ -103,6 +107,18 @@ export class FutureVoicesComponent implements OnInit, OnDestroy {
       this.step();
     });
     this.getVoiceUsers();
+    if(!(window.location.hostname == 'localhost')){
+      this.service.getIPAddress().subscribe((res:any)=>{  
+        let ipAddress = res.ip;
+        this.service.setVisitador(ipAddress,'Voces del futuro').subscribe(resp =>{
+          if(resp.status == 200){
+            console.log(`Éxito: ${resp.msg}`);
+          }else{
+            console.log(`Error: ${resp.msg}`);
+          }
+        });
+      });
+    }
   }
 
   convetirFecha(fecha){
@@ -192,8 +208,14 @@ export class FutureVoicesComponent implements OnInit, OnDestroy {
   }
 
   openModal(){
-    $('#modalTratamientoDatos').modal('show');
-    this.showSideBarVoice(false);
+    if(this.aceptData){
+      this.showSideBarVoice(false);
+      this.startRecording(true);
+    }else{
+      $('#modalTratamientoDatos').modal('show');
+      this.showSideBarVoice(false);
+      this.aceptData = true;
+    }
   }
 
   startRecording(type){
@@ -226,18 +248,18 @@ export class FutureVoicesComponent implements OnInit, OnDestroy {
             this.fragmentosDeAudio.push(evento.data);
           });
           
-          let recognition = new webkitSpeechRecognition();
-          recognition.lang = "es-CO";
-          recognition.continuous = true;
-          recognition.interimResults = true;
-          recognition.start();
-          recognition.addEventListener('result', (e) => {
+          this.recognition = new webkitSpeechRecognition();
+          this.recognition.lang = "es-CO";
+          this.recognition.continuous = true;
+          this.recognition.interimResults = true;
+          this.recognition.start();
+          this.recognition.addEventListener('result', (e) => {
             this.man = false;
             if(e.results[0].isFinal){
               this.man = true;
-              recognition.abort();
+              this.recognition.abort();
               setTimeout(()=>{
-                recognition.start();
+                this.recognition.start();
               },500);
             }
           });
@@ -255,8 +277,7 @@ export class FutureVoicesComponent implements OnInit, OnDestroy {
             this.timeRecording = `${(minutes < 10) ? '0'+minutes : minutes}:${(seconds<10) ? '0'+seconds : seconds}`;
             setTimeout(()=>{
               this.man = true;
-              recognition.abort();
-              recognition.stop();
+              this.recognition.stop();
             },3000);
             $('#modalConfirmVoice').modal('show');
           });
@@ -301,6 +322,7 @@ export class FutureVoicesComponent implements OnInit, OnDestroy {
               $('#txtConfirmAudio').html(txt);
               $('#modalConfirm').modal('show');
               this.getVoiceUsers();
+              this.recognition.stop();
             }
           );
         });
@@ -442,5 +464,14 @@ export class FutureVoicesComponent implements OnInit, OnDestroy {
     if(volumen == 0) iconoVolumen.className = this.icono['volumenSilenciado'];
     else if(volumen <= 50) iconoVolumen.className = this.icono['volumenBajo'];
     else iconoVolumen.className = this.icono['volumenAlto'];
+  }
+
+  openCollapse(){
+    if(this.openCollapseS){
+      $('#collapseTratamientoDatos').fadeOut();      
+    }else{
+      $('#collapseTratamientoDatos').fadeIn();
+    }
+    this.openCollapseS = !this.openCollapseS;
   }
 }
