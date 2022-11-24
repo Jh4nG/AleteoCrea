@@ -18,6 +18,7 @@ import { FutureVoicesComponent } from './future-voices/future-voices.component';
 import { ParticlesComponent } from './components/particles/particles.component';
 import { ThreeComponent } from './components/three/three.component';
 import { NgImageSliderModule } from 'ng-image-slider';
+import { StartPageComponent } from './components/start-page/start-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +31,8 @@ import { NgImageSliderModule } from 'ng-image-slider';
     ReproductorComponentComponent,
     FutureVoicesComponent,
     ParticlesComponent,
-    ThreeComponent
+    ThreeComponent,
+    StartPageComponent
   ],
   imports: [
     BrowserModule,

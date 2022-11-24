@@ -1,3 +1,10 @@
+<div class="row content-glish" *ngIf="!statusStart">
+    <div class="col-12">
+        <div class="styles-start">
+            <app-start-page (eventEmpezar)="statusStart = $event"></app-start-page>
+        </div>
+    </div>
+</div>
 <div class="col-12">
     <div class="img-agua  col-12">
         <div class="container">

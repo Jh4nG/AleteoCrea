@@ -11,6 +11,8 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class AleteoHomeComponent implements OnInit, OnDestroy, AfterViewInit {
 
+  public statusStart: boolean = false;
+
   constructor(private router: Router, private spinner: NgxSpinnerService) {
   }
   
