@@ -1,80 +1,24 @@
-
-@keyframes wiggle {
-    0% {
-        -webkit-transform: skewX(24deg);
-    }
-    10% {
-        -webkit-transform: skewX(-8deg);
-    }
-    20% {
-        -webkit-transform: skewX(55deg);
-    }
-    30% {
-        -webkit-transform: skewX(-90deg);
-    }
-    40% {
-        -webkit-transform: skewX(29deg);
-    }
-    50% {
-        -webkit-transform: skewX(-90deg);
-    }
-    60% {
-        -webkit-transform: skewX(3deg);
-    }
-    70% {
-        -webkit-transform: skewX(-2deg);
-    }
-    80% {
-        -webkit-transform: skewX(1deg);
-    }
-    90% {
-        -webkit-transform: skewX(10deg);
-    }
-    100% {
-        -webkit-transform: skewX(0deg);
-    }
-}
-
-.content-glisch {
-    width: 100%;
-    background: #111;
-    color: #fff;
-    display: flex;
-    align-items: center !important;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.hover-text {
-    display: flex;
-}
-
-.hover-text:hover {
-    animation: wiggle 0.4s;
-}
-
 h1 {
-    position: relative;
-    font-weight: normal;
-    text-align: center;
-    cursor: pointer;
-    color: rgba(255, 255, 255, 0.95);
-    text-shadow: 1px 1px rgba(246, 0, 153, 0.8), -1px -1px rgba(15, 210, 255, 0.8), -1px 0px rgba(255, 210, 0, 1);
+    width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0 auto;
+    border-right: 0.15em solid #18bdec;
+    color: #fff;
+    animation: typing 4s steps(38) 1s 1 normal both, blink 1s steps(1) infinite;
 }
-
-h1:hover {
-    animation: wiggle 0.2s 2;
-    /*transition:all ease-out 0.1s;*/
-    text-shadow: 30px 13px rgba(246, 0, 153, 0.8), -38px -4px rgba(15, 210, 255, 0.8), -2px -4px rgba(255, 210, 0, 1);
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 80%;
+    }
 }
-
-h1:hover:after {
-    content: ":̪̺̠̺͗ͨ̋ͩ͗:̛͇̱̥̥̙̎͆̑ͮ̐͢:̷̲ͮ̃́̅ͦ̔͐̆:̴͈͖̮̪̗̈́̆̀:̨̙̗̺̞̥͗̐ͫ:̗̰̜̟̮̦̉̂";
-    z-index: -100;
-    position: absolute;
-    left: 1em;
-    top: -1em;
-    transform: rotate(41deg);
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
 }
 
 // Button css
@@ -93,84 +37,81 @@ button {
     border-radius: 20px;
     cursor: pointer;
     font-weight: bold;
-   }
-   
-   button:hover {
+}
+
+button:hover {
     box-shadow: 0 0 10px #ae00ff, 0 0 25px #001eff, 0 0 50px #ae00ff;
     transition-delay: 0.6s;
-   }
-   
-   button span {
+}
+
+button span {
     position: absolute;
-   }
-   
-   button span:nth-child(1) {
+}
+
+button span:nth-child(1) {
     top: 0;
     left: -100%;
     width: 100%;
     height: 2px;
     background: linear-gradient(90deg, transparent, #ae00ff);
-   }
-   
-   button:hover span:nth-child(1) {
+}
+
+button:hover span:nth-child(1) {
     left: 100%;
     transition: 0.7s;
-   }
-   
-   button span:nth-child(3) {
+}
+
+button span:nth-child(3) {
     bottom: 0;
     right: -100%;
     width: 100%;
     height: 2px;
     background: linear-gradient(90deg, transparent, #001eff);
-   }
-   
-   button:hover span:nth-child(3) {
+}
+
+button:hover span:nth-child(3) {
     right: 100%;
     transition: 0.7s;
     transition-delay: 0.35s;
-   }
-   
-   button span:nth-child(2) {
+}
+
+button span:nth-child(2) {
     top: -100%;
     right: 0;
     width: 2px;
     height: 100%;
     background: linear-gradient(180deg, transparent, #ae00ff);
-   }
-   
-   button:hover span:nth-child(2) {
+}
+
+button:hover span:nth-child(2) {
     top: 100%;
     transition: 0.7s;
     transition-delay: 0.17s;
-   }
-   
-   button span:nth-child(4) {
+}
+
+button span:nth-child(4) {
     bottom: -100%;
     left: 0;
     width: 2px;
     height: 100%;
     background: linear-gradient(360deg, transparent, #001eff);
-   }
-   
-   button:hover span:nth-child(4) {
+}
+
+button:hover span:nth-child(4) {
     bottom: 100%;
     transition: 0.7s;
     transition-delay: 0.52s;
-   }
-   
-   button:active {
+}
+
+button:active {
     background: #ae00af;
     background: linear-gradient(to top right, #ae00af, #001eff);
     color: #bfbfbf;
     box-shadow: 0 0 8px #ae00ff, 0 0 8px #001eff, 0 0 8px #ae00ff;
     transition: 0.1s;
-   }
-   
-   button:active span:nth-child(1) 
-   span:nth-child(2) 
-   span:nth-child(2) 
-   span:nth-child(2) {
+}
+
+button:active span:nth-child(1) span:nth-child(2) span:nth-child(2) span:nth-child(2) {
     transition: none;
     transition-delay: none;
-   }
+}

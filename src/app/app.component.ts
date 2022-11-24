@@ -12,6 +12,8 @@ declare var $;
 })
 export class AppComponent implements OnInit, AfterContentInit {
 
+  public statusStart: boolean = true;
+
   public flat_open_side: boolean = false;
   public flag = 0;
   public controlPage: string;
@@ -70,12 +72,15 @@ export class AppComponent implements OnInit, AfterContentInit {
       if (url instanceof NavigationStart) {
         if (url.url == '/home') {
           let statusAleteo = localStorage.getItem('AleteoMuseoInteractivo');
-          if(statusAleteo == null){
-            localStorage.setItem('AleteoMuseoInteractivo', 'Primer Ingreso plataforma');
-          }
-          this.videoHelp1 = "(Inicio) Escena 1 Cor.mp4";
-          this.spinner.show('spinnerInicio');
           let time = (window.location.hostname == 'localhost') ? 4500 : 4500;
+          this.spinner.show('spinnerInicio');
+          if(statusAleteo == null){
+            setTimeout(() => {
+              this.statusStart = false;
+            }, time);
+            localStorage.setItem('AleteoMuseoInteractivo', 'Primer Ingreso plataforma');
+            this.videoHelp1 = "(Inicio) Escena 1 Cor.mp4";
+          } 
           setTimeout(() => {
             this.spinner.hide('spinnerInicio');
             if(statusAleteo == null){

@@ -117,7 +117,6 @@ export class AleteoHomeComponent implements OnInit, OnDestroy, AfterViewInit {
     
   }
   routePages(page: string): void {
-    
     this.router.navigateByUrl(`/${page}`);
   }
 

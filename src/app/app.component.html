@@ -1,3 +1,11 @@
+<div class="row content-glish" *ngIf="!statusStart">
+  <div class="col-12">
+      <div class="styles-start">
+          <app-start-page (eventEmpezar)="statusStart = $event"></app-start-page>
+      </div>
+  </div>
+</div>
+
 <div class="display-menu" *ngIf="!this.flat_open_side">
   <button type="button" class="btn btn-dark" (click)="showSideBar(true)">
     <i class="bi bi-chevron-double-right"></i>

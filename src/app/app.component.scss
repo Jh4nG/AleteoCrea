@@ -52,8 +52,8 @@
 }
 
 .btnFirtsHelp {
-	background-image: url('../assets/img/help.png');
-    background-size: cover;
+	background-image: url("../assets/img/help.png");
+	background-size: cover;
 	display: none;
 	width: 35px;
 	height: 35px;
@@ -61,7 +61,7 @@
 	// display: none;
 	position: fixed;
 	bottom: 27%;
-    left: 88%;
+	left: 88%;
 	z-index: 999;
 	border-radius: 50px;
 	border: 1px solid white;
@@ -70,8 +70,8 @@
 }
 
 .btnSecondHelp {
-	background-image: url('../assets/img/add.png');
-    background-size: cover;
+	background-image: url("../assets/img/add.png");
+	background-size: cover;
 	display: none;
 	width: 35px;
 	height: 35px;
@@ -79,14 +79,13 @@
 	// display: none;
 	position: fixed;
 	bottom: 15%;
-    left: 88%; 
+	left: 88%;
 	z-index: 999;
 	border-radius: 50px;
 	border: 1px solid white;
 	border-style: none solid solid none;
 	cursor: pointer;
 }
-
 
 .imgBia {
 	width: 100%;
@@ -99,7 +98,7 @@
 	background: #000;
 	position: fixed;
 	top: 6%;
-    left: 50%;
+	left: 50%;
 	z-index: 999;
 	text-align: center;
 	overflow: hidden;
@@ -123,7 +122,7 @@
 // }
 
 /** Mariposa */
-.share>img {
+.share > img {
 	width: 85%;
 	margin-bottom: 3px;
 }
@@ -199,44 +198,44 @@
 	background: #000;
 }
 
-.divAudioIcon{
+.divAudioIcon {
 	left: 40%;
 	border: 1px solid white;
 	border-style: none solid solid none;
 }
 
-.audioIcon{
+.audioIcon {
 	background-image: url("../assets/img/OndaAudio.gif");
 	background-size: cover;
 }
 
-.audioIconStop{
+.audioIconStop {
 	background-image: url("../assets/img/OndaAudioStop.jpg");
 	background-size: cover;
 }
 
 .one {
-    left: 43%;
-	background-image: url('../assets/img/iconos_podcast.gif');
-    background-size: 100%;
+	left: 43%;
+	background-image: url("../assets/img/iconos_podcast.gif");
+	background-size: 100%;
 }
 
 .two {
-    left: 46%;
-	background-image: url('../assets/img/iconos_tienda.gif');
-    background-size: 100%;
+	left: 46%;
+	background-image: url("../assets/img/iconos_tienda.gif");
+	background-size: 100%;
 }
 
 .three {
-    left: 54%;
-	background-image: url('../assets/img/iconos_arbol.gif');
-    background-size: 100%;
+	left: 54%;
+	background-image: url("../assets/img/iconos_arbol.gif");
+	background-size: 100%;
 }
 
 .four {
-    left: 57%;
-	background-image: url('../assets/img/iconos_contenidoAd.gif');
-    background-size: 100%;
+	left: 57%;
+	background-image: url("../assets/img/iconos_contenidoAd.gif");
+	background-size: 100%;
 }
 
 a:hover {
@@ -355,7 +354,6 @@ main {
 	transition: all 0.5s ease 0s;
 	-webkit-transition: all 0.5s ease 0s;
 
-
 	&--close {
 		-webkit-transform: translate3d(0px, 0px, 0px);
 		transform: translate3d(0px, 0px, 0px);
@@ -367,11 +365,12 @@ main {
 	}
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link{
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
 	background-color: #2f2bd6;
 }
 
-.nav-link:hover{
+.nav-link:hover {
 	background-color: #2f2bd6;
 }
 
@@ -393,7 +392,7 @@ main {
 	background-color: black !important;
 }
 
-.sonido-botton{
+.sonido-botton {
 	z-index: 999;
 }
 
@@ -401,7 +400,6 @@ main {
 	width: 150px;
 	height: 50px;
 }
-
 
 .btnVocesF {
 	display: block;
@@ -429,7 +427,7 @@ main {
 }
 
 /** Mariposa */
-.btnVocesF>img {
+.btnVocesF > img {
 	width: 85%;
 	margin-bottom: 10px;
 }
@@ -437,15 +435,15 @@ main {
 /* Propiedades para audio */
 .loader {
 	left: 2%;
-    top: 2%;
+	top: 2%;
 	// transform: translate(-50%, -50%);
-    height: 35px !important;
+	height: 35px !important;
 	position: absolute;
 }
 
 .bar {
 	width: 5px;
-    height: 35px;
+	height: 35px;
 	display: inline-block;
 	// background: #ada3a3;
 	transform-origin: bottom center;
@@ -456,7 +454,7 @@ main {
 
 .barStop {
 	width: 5px;
-    height: 5px;
+	height: 5px;
 	display: inline-block;
 	background: #ada3a3;
 	transform-origin: bottom center;
@@ -513,12 +511,12 @@ main {
 	}
 }
 
-.bgA{
+.bgA {
 	text-decoration: none;
 	color: white;
 }
 
-.bgA:hover{
+.bgA:hover {
 	color: #ada3a3;
 }
 
@@ -533,19 +531,39 @@ main {
 
 ::-webkit-scrollbar {
 	width: 10px;
-  }
-  
-  ::-webkit-scrollbar-track {
-	box-shadow: inset 0 0 5px rgb(133, 131, 131); 
+}
+
+::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 5px rgb(133, 131, 131);
 	border-radius: 10px;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-	background: #4543e8; 
+}
+
+::-webkit-scrollbar-thumb {
+	background: #4543e8;
 	border-radius: 10px;
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-	background: #2f2bd6; 
-  }
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #2f2bd6;
+}
+
+.styles-start {
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	position: fixed;
+	z-index: 1;
+	justify-content: center;
+}
+
+.content-glish {
+	width: 100%;
+	background-color: #111;
+	height: 100vh;
+	justify-content: center;
+	align-content: center;
+	z-index: 99999 !important;
+	position: fixed;
+	margin: auto;
+}
