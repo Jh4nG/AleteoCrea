@@ -5,11 +5,11 @@
 .card {
     width: 75%;
     height: 170px;
-    background-color: #eee;
+    background-color: #000;
     text-align: center;
-    border: 10px solid #eee;
+    border: 10px solid #2e2b2b;
     border-radius: 20px;
-    box-shadow: inset 5px 5px 10px #bbb, inset -5px -5px 10px #fff;
+    box-shadow: inset 5px 5px 10px #171515, inset -5px -5px 10px #5a00b2;
     transition: 0.5s;
   }
   
@@ -51,11 +51,11 @@
   .content {
     cursor: pointer;
     color: #999;
-    background-color: #eee;
+    background-color: #000;
     padding: 10px;
     margin: 5px 20px;
     border-radius: 8px;
-    box-shadow: 8px 8px 10px #ddd, -8px -8px 10px #fff;
+    box-shadow: 8px 8px 10px #000, -8px -8px 10px #5a00b2;
     transform: translateY(-80px) scale(0);
     transition: all 0.5s;
   }

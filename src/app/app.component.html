@@ -1,7 +1,7 @@
 <div class="row content-glish" *ngIf="!statusStart">
   <div class="col-12">
       <div class="styles-start">
-          <app-start-page (eventEmpezar)="statusStart = $event"></app-start-page>
+          <app-start-page (eventEmpezar)="startVideoHelp($event)"></app-start-page>
       </div>
   </div>
 </div>
@@ -86,7 +86,7 @@
 
 <!-- Flotante BIA-->
 <div id="divimgBia" href="#" class="bia-flotante" (click)="openViewHelp()">
-  <img id="imgBia" class="imgBia" data-bs-toggle="tooltip" data-bs-placement="top"
+  <img id="imgBia" class="imgBia" data-bs-toggle="tooltip" data-bs-placement="top" shown.bs.tooltip="true"
     title="¿Necesitas Ayuda?" />
 </div>
 

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-
+declare  var $;
 @Component({
   selector: 'app-start-page',
   templateUrl: './start-page.component.html',
@@ -15,7 +15,9 @@ export class StartPageComponent implements OnInit {
   }
 
   emitEvent(): void  {
-    this.eventEmpezar.emit(true);
+    $('#divStartPage').fadeOut(()=>{
+      this.eventEmpezar.emit(true);
+    });
   }
 
 }
