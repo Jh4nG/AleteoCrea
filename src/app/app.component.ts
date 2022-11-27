@@ -67,12 +67,6 @@ export class AppComponent implements OnInit, AfterContentInit {
           } 
           setTimeout(() => {
             this.spinner.hide('spinnerInicio');
-            if(statusAleteo == null){
-              this.openVideoHelp(1,false); // Abre el primer Vídeo de Ayuda
-              document.getElementById('videoHelp').addEventListener('ended',()=>{
-                $('#modalVideoHelp').modal('hide');
-              });
-            }
           }, time);
         }else{
           this.spinner.show('spinnerMariposa');
@@ -86,7 +80,7 @@ export class AppComponent implements OnInit, AfterContentInit {
 
   ngOnInit(): void {
     Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-      .forEach(tooltipNode => new Tooltip(tooltipNode))
+      .forEach(tooltipNode => new Tooltip(tooltipNode));
     try {
       this.route.events.subscribe({
         next: (res) => {
@@ -154,6 +148,14 @@ export class AppComponent implements OnInit, AfterContentInit {
             }
             let btnAudio = document.getElementById('btnStartAudio') as HTMLAudioElement;
             btnAudio.click();
+            if(res.url != '/contents'){
+              setTimeout(()=>{
+                this.showHelpTooltip();
+              },2000);
+              setInterval(()=>{
+                this.showHelpTooltip();
+              },35000);
+            }
           }
         }
       });
@@ -161,6 +163,13 @@ export class AppComponent implements OnInit, AfterContentInit {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  showHelpTooltip(){ // muestra el mensaje de ayuda cada 35 segundo (cuenta los 5 segundos activos)
+    $('#imgBia').tooltip({placement: 'bottom',trigger: 'manual'}).tooltip('show');
+    setTimeout(()=>{
+      $('#imgBia').tooltip({placement: 'bottom',trigger: 'manual'}).tooltip('hide');
+    },5000);
   }
 
   shareFunction() {
@@ -355,5 +364,16 @@ export class AppComponent implements OnInit, AfterContentInit {
         }
       }
     }
+  }
+
+  startVideoHelp($event){
+    this.statusStart = $event;
+    // let video = document.getElementById("videoHelp") as HTMLVideoElement;
+    // video.play();
+    this.openVideoHelp(1,false); // Abre el primer Vídeo de Ayuda
+    document.getElementById('videoHelp').addEventListener('ended',()=>{
+      $('#modalVideoHelp').modal('hide');
+      this.callAudioPlatform(true); // Activar audio plataforma
+    });
   }
 }
