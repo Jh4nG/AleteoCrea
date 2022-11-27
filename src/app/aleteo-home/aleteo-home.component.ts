@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
+import { Tooltip } from 'node_modules/bootstrap/dist/js/bootstrap.esm.min.js'
 declare var $; 
 
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -21,6 +22,9 @@ export class AleteoHomeComponent implements OnInit, OnDestroy, AfterViewInit {
   }
   
   ngOnInit(): void {
+
+    Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+      .forEach(tooltipNode => new Tooltip(tooltipNode, {boundary: document.body}));
     
     // this.spinner.show();
     // setTimeout(() => {

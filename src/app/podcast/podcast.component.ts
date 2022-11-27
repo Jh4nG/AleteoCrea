@@ -4,6 +4,7 @@ import { PodcastService } from '../services/podcast.service';
 import { GetModel } from '../models/getModel';
 import { Tooltip } from 'node_modules/bootstrap/dist/js/bootstrap.esm.min.js'
 import { AudioObserverService } from '../services/audioObserver/audio-observer.service';
+import { HelpObserverService } from '../services/helpObserver/help-observer.service';
 
 @Component({
   selector: 'app-podcast',
@@ -24,9 +25,14 @@ export class PodcastComponent implements OnInit, OnDestroy {
 
   public closeModal: boolean = false;
 
-  constructor(private podcastService: PodcastService, 
-    private audioService: AudioObserverService) {
+  public changeItem: any;
+
+  constructor(private podcastService: PodcastService,
+    private audioService: AudioObserverService,
+    private helpService: HelpObserverService) {
     this.getPodcastPrincipal();
+
+    
 
   }
 
@@ -35,6 +41,14 @@ export class PodcastComponent implements OnInit, OnDestroy {
       .forEach(tooltipNode => new Tooltip(tooltipNode))
 
     this.elementAudio = document.getElementById('podcastAudios') as HTMLAudioElement;
+    this.elementAudio.pause();
+
+    this.helpService.getStatusHelp().subscribe({
+      next: (resp) => {
+               
+        this.elementAudio.pause();
+      }
+    });
 
   }
 
@@ -56,8 +70,8 @@ export class PodcastComponent implements OnInit, OnDestroy {
 
   eventReproducirPodcast(podcast: number): void {
     this.silenceAudio();
-    if (podcast == this.lastPodcast) {
-      
+
+    if (podcast == this.lastPodcast) {     
       if (this.elementAudio.paused) {
         let element;
         let img;
@@ -68,65 +82,57 @@ export class PodcastComponent implements OnInit, OnDestroy {
             img.classList.add('img-change-size');
 
             this.elementAudio.src = '../../assets/audios/podcast/Cap 1 - Archivo de BIa 235.mp3';
-            this.elementAudio.play();
             break;
           case 2:
             element = document.querySelector('.podcast-2');
             img = element.lastChild.lastChild as HTMLElement;
             img.classList.add('img-change-size');
             this.elementAudio.src = '../../assets/audios/podcast/Cap 2 - Archivo de BIA 531.mp3';
-            this.elementAudio.play();
             break;
           case 3:
             element = document.querySelector('.podcast-3');
             img = element.lastChild.lastChild as HTMLElement;
             img.classList.add('img-change-size');
             this.elementAudio.src = '../../assets/audios/podcast/Cap 3 - Archivo de BIA 134.mp3';
-            this.elementAudio.play();
             break;
           case 4:
             element = document.querySelector('.podcast-4');
             img = element.lastChild.lastChild as HTMLElement;
             img.classList.add('img-change-size');
             this.elementAudio.src = '../../assets/audios/podcast/Cap 4 - Archivo de BIA 112.mp3';
-            this.elementAudio.play();
             break;
           case 5:
             element = document.querySelector('.podcast-5');
             img = element.lastChild.lastChild as HTMLElement;
             img.classList.add('img-change-size');
             this.elementAudio.src = '../../assets/audios/podcast/Cap 5 - Archivo de BIA 1041.mp3';
-            this.elementAudio.play();
             break;
           case 6:
             element = document.querySelector('.podcast-6');
             img = element.lastChild.lastChild as HTMLElement;
             img.classList.add('img-change-size');
             this.elementAudio.src = '../../assets/audios/podcast/Cap 6 - Archivo de BIA 998.mp3';
-            this.elementAudio.play();
             break;
           case 7:
             element = document.querySelector('.podcast-7');
             img = element.lastChild.lastChild as HTMLElement;
             img.classList.add('img-change-size');
             this.elementAudio.src = '../../assets/audios/podcast/Cap 7 - Archivo de BIA 475.mp3';
-            this.elementAudio.play();
             break;
           case 8:
             element = document.querySelector('.podcast-8');
             img = element.lastChild.lastChild as HTMLElement;
             img.classList.add('img-change-size');
             this.elementAudio.src = '../../assets/audios/podcast/Cap 8 - Archivo BIA 385.mp3';
-            this.elementAudio.play();
             break;
           case 9:
             element = document.querySelector('.podcast-9');
             img = element.lastChild.lastChild as HTMLElement;
             img.classList.add('img-change-size');
             this.elementAudio.src = '../../assets/audios/podcast/Cap 9 - Presente el devenir.mp3';
-            this.elementAudio.play();
             break;
         }
+        this.elementAudio.play();      
       } else {
         this.elementAudio.pause();
       }
@@ -140,71 +146,64 @@ export class PodcastComponent implements OnInit, OnDestroy {
           img = element.lastChild.lastChild as HTMLElement;
           img.classList.add('img-change-size');
           this.elementAudio.src = '../../assets/audios/podcast/Cap 1 - Archivo de BIa 235.mp3';
-          this.elementAudio.play();
           break;
         case 2:
           element = document.querySelector('.podcast-2');
           img = element.lastChild.lastChild as HTMLElement;
           img.classList.add('img-change-size');
           this.elementAudio.src = '../../assets/audios/podcast/Cap 2 - Archivo de BIA 531.mp3';
-          this.elementAudio.play();
           break;
         case 3:
           element = document.querySelector('.podcast-3');
           img = element.lastChild.lastChild as HTMLElement;
           img.classList.add('img-change-size');
           this.elementAudio.src = '../../assets/audios/podcast/Cap 3 - Archivo de BIA 134.mp3';
-          this.elementAudio.play();
           break;
         case 4:
           element = document.querySelector('.podcast-4');
           img = element.lastChild.lastChild as HTMLElement;
           img.classList.add('img-change-size');
           this.elementAudio.src = '../../assets/audios/podcast/Cap 4 - Archivo de BIA 112.mp3';
-          this.elementAudio.play();
           break;
         case 5:
           element = document.querySelector('.podcast-5');
           img = element.lastChild.lastChild as HTMLElement;
           img.classList.add('img-change-size');
           this.elementAudio.src = '../../assets/audios/podcast/Cap 5 - Archivo de BIA 1041.mp3';
-          this.elementAudio.play();
           break;
         case 6:
           element = document.querySelector('.podcast-6');
           img = element.lastChild.lastChild as HTMLElement;
           img.classList.add('img-change-size');
           this.elementAudio.src = '../../assets/audios/podcast/Cap 6 - Archivo de BIA 998.mp3';
-          this.elementAudio.play();
           break;
         case 7:
           element = document.querySelector('.podcast-7');
           img = element.lastChild.lastChild as HTMLElement;
           img.classList.add('img-change-size');
           this.elementAudio.src = '../../assets/audios/podcast/Cap 7 - Archivo de BIA 475.mp3';
-          this.elementAudio.play();
           break;
         case 8:
           element = document.querySelector('.podcast-8');
           img = element.lastChild.lastChild as HTMLElement;
           img.classList.add('img-change-size');
           this.elementAudio.src = '../../assets/audios/podcast/Cap 8 - Archivo BIA 385.mp3';
-          this.elementAudio.play();
           break;
         case 9:
           element = document.querySelector('.podcast-9');
           img = element.lastChild.lastChild as HTMLElement;
           img.classList.add('img-change-size');
           this.elementAudio.src = '../../assets/audios/podcast/Cap 9 - Presente el devenir.mp3';
-          this.elementAudio.play();
           break;
       }
+      this.elementAudio.play();
       this.lastPodcast = podcast;
     }
 
   }
 
   getListOfMusic(band: string): void {
+    this.elementAudio.pause();
     let list = this.podcastPrincipal.filter((item) => {
       return item.name_podcast == band
     });
@@ -221,6 +220,7 @@ export class PodcastComponent implements OnInit, OnDestroy {
 
   silenceAudio() {
     this.audioService.sendChangeMusicPlatform(false);
+    this.elementAudio.pause();
   }
 
   activeAudio() {
