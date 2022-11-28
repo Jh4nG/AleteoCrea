@@ -24,6 +24,7 @@ export class AppComponent implements OnInit, AfterContentInit {
   public viewHelp = true;
   public videoHelp1 = "";
   public videoHelp2 = "";
+  public textBia;
   @ViewChild('audioGeneralPage') audio!: ElementRef<HTMLAudioElement>;
   private mousemove = new EventEmitter<MouseEvent>();
 
@@ -70,7 +71,8 @@ export class AppComponent implements OnInit, AfterContentInit {
   ngAfterContentInit() {
     this.route.events.subscribe((url: any) => {
       if (url instanceof NavigationStart) {
-        if (url.url == '/home') {
+        this.textBia = url.url;
+        if (url.url == '/home' || url.url == '/') {
           let statusAleteo = localStorage.getItem('AleteoMuseoInteractivo');
           let time = (window.location.hostname == 'localhost') ? 4500 : 4500;
           this.spinner.show('spinnerInicio');
@@ -84,6 +86,7 @@ export class AppComponent implements OnInit, AfterContentInit {
           setTimeout(() => {
             this.spinner.hide('spinnerInicio');
           }, time);
+          // this.textBia = "¿En qué puedo ayudarlo?";
         }else{
           this.spinner.show('spinnerMariposa');
           setTimeout(() => {
@@ -110,6 +113,7 @@ export class AppComponent implements OnInit, AfterContentInit {
                   this.videoHelp1 = "(Inicio) Escena 1 Cor.mp4";
                   this.videoHelp2 = "(Inicio) Escena 2 cor.mp4";
                   imgBia.src = "./assets/img/BIAs/BIA01.gif";
+                  // this.textBia = "¿En qué puedo ayudarlo?";
                 }, 1000);
                 break;
               case '/tree-page':
@@ -118,6 +122,7 @@ export class AppComponent implements OnInit, AfterContentInit {
                   this.videoHelp1 = "(Artes)Escena 5 cor.mp4";
                   this.videoHelp2 = "(Artes) Escena 6 cor.mp4";
                   imgBia.src = "./assets/img/BIAs/(Artes) Gif 3.gif";
+                  // this.textBia = "Me encuentro a su servicio";
                 }, 1000);
                 break;
               case '/podcast':
@@ -126,6 +131,7 @@ export class AppComponent implements OnInit, AfterContentInit {
                   this.videoHelp1 = "(Podcast) Escena 3 cor.mp4";
                   this.videoHelp2 = "(Podcast) Escena 4.mp4";
                   imgBia.src = "./assets/img/BIAs/(Podcast) Gif 2.gif";
+                  // this.textBia = "Escúcheme, le seré útil…";
                 }, 1000);
                 break;
               case '/virtual-store':
@@ -134,6 +140,7 @@ export class AppComponent implements OnInit, AfterContentInit {
                   this.videoHelp1 = "(Tienda) Escena 7 cor.mp4";
                   this.videoHelp2 = "(Tienda) Escena 8 cor.mp4";
                   imgBia.src = "./assets/img/BIAs/(Tienda) GIF 4.gif";
+                  // this.textBia = "Estoy a disposición de la ignorancia";
                 }, 1000);
                 break;
               case '/contents':
@@ -150,6 +157,7 @@ export class AppComponent implements OnInit, AfterContentInit {
                   this.videoHelp1 = "(Voces) Escena 9 cor.mp4";
                   this.videoHelp2 = "(Voces) Escena 10 cor.mp4";
                   imgBia.src = "./assets/img/BIAs/BIA01.gif";
+                  // this.textBia = "Mi voz podrá guiarlo";
                 }, 1000);
                 break;
               default:
@@ -158,6 +166,7 @@ export class AppComponent implements OnInit, AfterContentInit {
                   this.videoHelp1 = "(Inicio) Escena 1.mp4";
                   this.videoHelp2 = "(Inicio) Escena 2 cor.mp4";
                   imgBia.src = "./assets/img/BIAs/BIA01.gif";
+                  this.textBia = "¿En qué puedo ayudarlo?";
                   // divimgBia.style.display = 'none';
                 }, 1000);
                 break;
