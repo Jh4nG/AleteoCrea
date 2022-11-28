@@ -3,6 +3,8 @@ import * as THREE from 'three';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { NgImageSliderComponent } from 'ng-image-slider';
 import { AudioObserverService } from '../services/audioObserver/audio-observer.service';
+import { Tooltip } from 'node_modules/bootstrap/dist/js/bootstrap.esm.min.js'
+import { PodcastService } from '../services/podcast.service';
 
 declare var $;
 
@@ -24,11 +26,32 @@ export class ThreePagesComponent implements OnInit, OnDestroy {
 
   @ViewChild('nav') slider: NgImageSliderComponent;
 
-  constructor(private spinner: NgxSpinnerService, private audioService: AudioObserverService) {
+  constructor(private spinner: NgxSpinnerService, private audioService: AudioObserverService,
+    public service : PodcastService) {
 
   }
 
   ngOnInit(): void {
+    Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+      .forEach(tooltipNode => new Tooltip(tooltipNode));
+    setTimeout(()=>{
+      $('.videoMuestra').fadeIn();
+      setTimeout(()=>{
+        $('.videoMuestra').fadeOut();
+      },5000);
+    },2000);
+    if(!(window.location.hostname == 'localhost')){
+      this.service.getIPAddress().subscribe((res:any)=>{  
+        let ipAddress = res.ip;
+        this.service.setVisitador(ipAddress,'Árbol').subscribe(resp =>{
+          if(resp.status == 200){
+            console.log(`Éxito: ${resp.msg}`);
+          }else{
+            console.log(`Error: ${resp.msg}`);
+          }
+        });
+      });
+    }
   }
 
   ngOnDestroy(): void {

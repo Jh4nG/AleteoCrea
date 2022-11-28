@@ -18,11 +18,7 @@
         "image": "../../assets/img/store/Estratos/PuntoVerde.gif",
         "width": 32,
         "height": 32,
-        "anchor": "bottom center",
-        "tooltip"  : {
-            "content"  : "Ver producto",
-            "position" : "top"
-        }
+        "anchor": "bottom center"
     },
     {
         "id": "impresora_EsAlto",

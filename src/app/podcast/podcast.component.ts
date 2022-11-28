@@ -49,7 +49,18 @@ export class PodcastComponent implements OnInit, OnDestroy {
         this.elementAudio.pause();
       }
     });
-
+    if(!(window.location.hostname == 'localhost')){
+      this.podcastService.getIPAddress().subscribe((res:any)=>{  
+        let ipAddress = res.ip;
+        this.podcastService.setVisitador(ipAddress,'Podcast').subscribe(resp =>{
+          if(resp.status == 200){
+            console.log(`Éxito: ${resp.msg}`);
+          }else{
+            console.log(`Error: ${resp.msg}`);
+          }
+        });
+      });
+    }
   }
 
   ngOnDestroy(): void {

@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit, AfterContentInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { PodcastService } from '../services/podcast.service';
 import { AudioObserverService } from './../services/audioObserver/audio-observer.service';
+import { Tooltip } from 'node_modules/bootstrap/dist/js/bootstrap.esm.min.js'
 declare var $;
 @Component({
   selector: 'app-additional-contents',
@@ -28,6 +29,8 @@ export class AdditionalContentsComponent implements OnInit, OnDestroy, AfterCont
   }
 
   ngOnInit(): void {
+    Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+      .forEach(tooltipNode => new Tooltip(tooltipNode));
     if(!(window.location.hostname == 'localhost')){
       this.service.getIPAddress().subscribe((res:any)=>{  
         let ipAddress = res.ip;

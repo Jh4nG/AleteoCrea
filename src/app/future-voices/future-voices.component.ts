@@ -102,6 +102,8 @@ export class FutureVoicesComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+      .forEach(tooltipNode => new Tooltip(tooltipNode));
     this.init();
     this.intervalParticle = setInterval(()=>{
       this.step();

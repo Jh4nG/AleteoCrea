@@ -80,7 +80,7 @@ export class ThreeComponent implements OnInit, OnDestroy {
       let tree = gltf.scene;
       tree.rotation.set(0, 0, 0);
       tree.scale.set(0.1, 0.1, 0.1);
-      tree.position.set(0, -1, 0);
+      tree.position.set(0, -.85, 0);
       tree.visible = true;
       scene.add(tree);
             

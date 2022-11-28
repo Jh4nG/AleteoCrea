@@ -4,6 +4,7 @@ import { Tooltip } from 'node_modules/bootstrap/dist/js/bootstrap.esm.min.js'
 declare var $; 
 
 import { NgxSpinnerService } from 'ngx-spinner';
+import { PodcastService } from '../services/podcast.service';
 
 @Component({
   selector: 'app-aleteo-home',
@@ -14,7 +15,8 @@ export class AleteoHomeComponent implements OnInit, OnDestroy, AfterViewInit {
 
   public statusStart: boolean = false;
 
-  constructor(private router: Router, private spinner: NgxSpinnerService) {
+  constructor(private router: Router, private spinner: NgxSpinnerService,
+    public service : PodcastService) {
   }
   
   ngOnDestroy(): void {
@@ -37,7 +39,18 @@ export class AleteoHomeComponent implements OnInit, OnDestroy, AfterViewInit {
       perturbance: 0.01,
       // imageUrl : '../../assets/img/agua.jpg'
     });
-    
+    if(!(window.location.hostname == 'localhost')){
+      this.service.getIPAddress().subscribe((res:any)=>{  
+        let ipAddress = res.ip;
+        this.service.setVisitador(ipAddress,'Inicio').subscribe(resp =>{
+          if(resp.status == 200){
+            console.log(`Éxito: ${resp.msg}`);
+          }else{
+            console.log(`Error: ${resp.msg}`);
+          }
+        });
+      });
+    }
     
   }
   

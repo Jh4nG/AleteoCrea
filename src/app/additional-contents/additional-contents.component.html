@@ -2,7 +2,7 @@
 <ngx-spinner width="50%" [name]="spinerMariposa" template = "<img src='assets/img/Cargando_Gif.gif'/>"></ngx-spinner>
 <!-- Spinner END -->
 
-<video class="video"  autoplay="true" muted="true" loop="true" src="../../assets/img/contentsAdd/Museo Interactivo.mp4">
+<video class="video"  autoplay="true" muted="true" loop="true" src="../../assets/img/contentsAdd/Grafico azul gris.mp4">
 </video>
 <div class="container">
     <div class="col-md-12 row">
@@ -57,16 +57,9 @@
 </div>
 
 <app-modal-component (closeEvent)="eventCloseModalContentAdd()" idTarget="modalContentAdd" tamanio="xl" bgModal="bgDarkModal ModalVirtual bgNoBorder hideClose">
-    <ng-template #header>
-        <div>
-            <h1 id="nameVideo"></h1>
-        </div>
-    </ng-template>
     <ng-template #content>
         <div class="col-12" align="center">
             <video id="videoContentAdd" class="bgColorVideo" controls></video>
         </div>
-    </ng-template>
-    <ng-template #footer>
     </ng-template>
 </app-modal-component>

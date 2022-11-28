@@ -82,8 +82,6 @@ export class AppComponent implements OnInit, AfterContentInit {
   }
 
   ngOnInit(): void {
-    Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-      .forEach(tooltipNode => new Tooltip(tooltipNode));
     try {
       this.route.events.subscribe({
         next: (res) => {
@@ -92,6 +90,7 @@ export class AppComponent implements OnInit, AfterContentInit {
             let divimgBia = document.getElementById('divimgBia') as HTMLElement;
             switch (res.url) {
               case '/home':
+              case '/':
                 setTimeout(() => {
                   this.audio.nativeElement.src = "./assets/audios/plataforma/1. Plataforma principal.mp3";
                   this.videoHelp1 = "(Inicio) Escena 1 Cor.mp4";
@@ -175,9 +174,9 @@ export class AppComponent implements OnInit, AfterContentInit {
   }
 
   showHelpTooltip(){ // muestra el mensaje de ayuda cada 35 segundo (cuenta los 5 segundos activos)
-    $('#imgBia').tooltip({placement: 'bottom',trigger: 'manual'}).tooltip('show');
+    $('#imgBia').tooltip({placement: 'left',trigger: 'manual'}).tooltip('show');
     setTimeout(()=>{
-      $('#imgBia').tooltip({placement: 'bottom',trigger: 'manual'}).tooltip('hide');
+      $('#imgBia').tooltip({placement: 'left',trigger: 'manual'}).tooltip('hide');
     },5000);
   }
 

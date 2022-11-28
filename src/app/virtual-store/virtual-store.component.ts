@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AudioObserverService } from './../services/audioObserver/audio-observer.service';
 import { PodcastService } from '../services/podcast.service';
+import { Tooltip } from 'node_modules/bootstrap/dist/js/bootstrap.esm.min.js'
 declare var $;
 
 @Component({
@@ -51,8 +52,10 @@ export class VirtualStoreComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+      .forEach(tooltipNode => new Tooltip(tooltipNode))
     if(window.location.hostname == 'localhost'){
-      this.estratoSelected = "3"; // Quitar en prod
+      this.estratoSelected = "1"; // Quitar en prod
       this.ngSubmitForm();
     }else{
       setTimeout(()=>{
