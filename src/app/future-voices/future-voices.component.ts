@@ -288,6 +288,7 @@ export class FutureVoicesComponent implements OnInit, OnDestroy {
       .catch(error => {
           // Aquí maneja el error, tal vez no dieron permiso
           console.log(error);
+          $('#modalErrorGrabar').modal('show');
       });
     }else{ // para grabación
       if (!this.mediaRecorder) alert("No se está grabando");
@@ -357,7 +358,7 @@ export class FutureVoicesComponent implements OnInit, OnDestroy {
           this.dataVoiceFuture = resp.data;
           this.setValueAudio(0);
         }else{
-          console.log('No se a podido cargar voces del futuro');
+          // console.log('No se a podido cargar voces del futuro');
         }
       }
     );

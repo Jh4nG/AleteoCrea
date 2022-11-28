@@ -138,7 +138,6 @@ export class AleteoHomeComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   pointerEvent(ala: number): void {
-    console.log(ala);
-    
+    // console.log(ala);
   }
 }

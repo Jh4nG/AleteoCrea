@@ -71,7 +71,7 @@ export class ReproductorComponentComponent implements OnInit, AfterViewInit, OnC
   eventPlay(): void {
     let audio = this.audioReproducto.nativeElement;
     let btnN = this.btn.nativeElement;
-    console.log(audio.paused);
+    // console.log(audio.paused);
 
     if (audio.paused) {
       btnN.classList.add('btn-pause');
@@ -149,7 +149,7 @@ export class ReproductorComponentComponent implements OnInit, AfterViewInit, OnC
 
   filterPrincipalSong() {
     let song = this.listPodCast?.filter((item) => {
-      console.log(this.listPodCast);
+      // console.log(this.listPodCast);
 
       return item.principal == 1;
     });
@@ -178,7 +178,7 @@ export class ReproductorComponentComponent implements OnInit, AfterViewInit, OnC
       }
 
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   }
 

@@ -31,7 +31,7 @@
                                             <div class="item_song">
                                                 <span>
                                                     <a (click)="clickItem(i)">
-                                                        <i id="{{i}}" class="item-selected bi bi-play-circle" [ngStyle]="{'display': song.principal == 1? 'inline': 'none'}"></i>   {{'  '  + i + 1 + '. ' + song.name_cancion}}
+                                                        <i id="{{i}}" class="item-selected bi bi-play-circle" [ngStyle]="{'display': song.principal == 1? 'inline': 'none'}"></i>   {{song.name_cancion}}
                                                     </a>
                                                 </span>
                                             </div>

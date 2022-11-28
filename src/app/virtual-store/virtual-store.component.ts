@@ -162,7 +162,7 @@ export class VirtualStoreComponent implements OnInit, OnDestroy {
     document.getElementById('soundProduct').addEventListener('ended',()=>{
       $('#btnSoundProduct i').addClass('fa-play');
       $('#btnSoundProduct i').removeClass('fa-pause');
-      console.log('finaliza');
+      // console.log('finaliza');
     });
     $('#modalProduct').modal('show');
   }
