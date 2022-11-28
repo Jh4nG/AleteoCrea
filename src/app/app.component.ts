@@ -3,6 +3,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { Tooltip } from 'node_modules/bootstrap/dist/js/bootstrap.esm.min.js'
 import { NavigationStart, Router } from '@angular/router';
 import { AudioObserverService } from './services/audioObserver/audio-observer.service';
+import { HelpObserverService } from './services/helpObserver/help-observer.service';
 declare var $;
 
 @Component({
@@ -39,26 +40,9 @@ export class AppComponent implements OnInit, AfterContentInit {
 
   constructor(private spinner: NgxSpinnerService,
     public route: Router,
-    public audioService : AudioObserverService) {
+    public audioService : AudioObserverService,
+    private helpObserverService: HelpObserverService) {
 
-    window.addEventListener('load', (event) => {
-      // this.route.events.subscribe((url: any) => {
-      //   if (url instanceof NavigationStart) {
-      //     if (url.url == '/home') {
-      //       this.spinner.show('spinnerInicio');
-      //       let time = (window.location.hostname == 'localhost') ? 100 : 8500;
-      //       setTimeout(() => {
-      //         this.spinner.hide('spinnerInicio');
-      //       }, time);
-      //     }else{
-      //       this.spinner.show('spinnerMariposa');
-      //       setTimeout(() => {
-      //         this.spinner.hide('spinnerMariposa');
-      //       }, 2000);
-      //     }
-      //   }
-      // });
-    });
     this.audioService.getChangeMusicPlatform().subscribe(
       {
         next : (resp) => {
@@ -344,6 +328,7 @@ export class AppComponent implements OnInit, AfterContentInit {
   }
 
   openVideoHelp(type: number, process : boolean = true) {
+    
     let video = document.getElementById("videoHelp") as HTMLVideoElement;
     video.src = "";
     if (type == 1) { // Ayuda uno
@@ -361,6 +346,7 @@ export class AppComponent implements OnInit, AfterContentInit {
     }
     this.callAudioPlatform(false); // Silenciar audio plataforma
     this.controlVideo = true;
+    this.helpObserverService.sendOpenHelp(true);
     $('#modalVideoHelp').modal('show');
     if(process){
       this.openViewHelp();
