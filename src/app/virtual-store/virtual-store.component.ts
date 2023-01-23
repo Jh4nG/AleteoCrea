@@ -101,7 +101,7 @@ export class VirtualStoreComponent implements OnInit, OnDestroy {
         container: document.querySelector('#viewer') as HTMLCanvasElement,
         panorama: panorama,
         loadingImg: '../assets/img/Cargando_Gif.gif',
-        navbar: 'caption description',
+        navbar: 'caption',
         defaultLong: this.configInit.longitude[this.estratoSelected],
         defaultZoomLvl : 4,
         autorotateDelay: 1000,

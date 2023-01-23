@@ -121,6 +121,12 @@ export class FutureVoicesComponent implements OnInit, OnDestroy {
         });
       });
     }
+    setTimeout(()=>{
+      this.showVoiceTooltip();
+    },8000);
+    setInterval(()=>{
+      this.showVoiceTooltip();
+    },65000);
   }
 
   convetirFecha(fecha){
@@ -476,5 +482,12 @@ export class FutureVoicesComponent implements OnInit, OnDestroy {
       $('#collapseTratamientoDatos').fadeIn();
     }
     this.openCollapseS = !this.openCollapseS;
+  }
+
+  showVoiceTooltip(){ // muestra el mensaje de ayuda cada 35 segundo (cuenta los 5 segundos activos)
+    $('#btnVoiceFuture').tooltip({placement: 'right',trigger: 'manual',size:'12px'}).tooltip('show');
+    setTimeout(()=>{
+      $('#btnVoiceFuture').tooltip({placement: 'right',trigger: 'manual'}).tooltip('hide');
+    },5000);
   }
 }
