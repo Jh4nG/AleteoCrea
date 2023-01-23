@@ -53,4 +53,15 @@ export class PodcastService {
     }
     return this.http.post(this.API, data);    
   }
+
+  public finishBuy(items : Array<any> = [], name : String = "", email : String = ""){
+    let data = {
+      "controlador": "Tienda",
+      "metodo": "buyProducts",
+      "usuario" : name,
+      "emails" : email,
+      "items" : items
+    }
+    return this.http.post(this.API, data);
+  }
 }

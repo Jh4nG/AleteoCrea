@@ -102,7 +102,6 @@ export class VirtualStoreComponent implements OnInit, OnDestroy {
         panorama: panorama,
         loadingImg: '../assets/img/Cargando_Gif.gif',
         navbar: 'caption description',
-        caption : 'Museo Interactivo',
         defaultLong: this.configInit.longitude[this.estratoSelected],
         defaultZoomLvl : 4,
         autorotateDelay: 1000,
@@ -287,6 +286,45 @@ export class VirtualStoreComponent implements OnInit, OnDestroy {
       this.open_side_car = true;
     } else {
       this.open_side_car = false;
+    }
+  }
+
+  openDataBuy(){
+    $('[name="inpNameUser"]').val('');
+    $('[name="inpEmailUser"]').val('');
+    this.showSideBarCar(false);
+    $('#alertBuyFinish').hide();
+    $('#modalConfirmBuy').modal('show');
+  }
+
+  finishBuy(){
+    let user = $('[name="inpNameUser"]')[0].value;
+    let email = $('[name="inpEmailUser"]')[0].value;
+    if(user != '' && email != '' && email.indexOf('@')>0){ // Se consume servicio
+      let items = this.productsAddToCar;
+      $('#modalConfirmBuy').modal('hide');
+      this.service.finishBuy(items,user,email).subscribe((resp:any)=>{
+        if(resp.status == 200){
+          $('#alertProductFinishCorrect').removeClass('animate__fadeOutUp').fadeIn().addClass('animate__animated animate__fadeInRight');
+          this.stoAdd = setTimeout(() => {
+            $('#alertProductFinishCorrect').addClass('animate__animated animate__fadeOutUp').fadeOut();
+          }, 3000);
+          this.productsAddToCar = [];
+          this.cantidadDolaresGastados = 0;
+          this.cantidadProductAddCar = 0;
+        }else{
+          $('#alertProductFinishError').removeClass('animate__fadeOutUp').fadeIn().addClass('animate__animated animate__fadeInRight');
+          this.stoAdd = setTimeout(() => {
+            $('#alertProductFinishError').addClass('animate__animated animate__fadeOutUp').fadeOut();
+          }, 3000);
+        }
+      });
+      
+    }else{
+      $('#alertBuyFinish').fadeIn();
+      setTimeout(() => {
+        $('#alertBuyFinish').fadeOut();
+      },3000);
     }
   }
 }

@@ -1,3 +1,9 @@
+.divBg{
+  background-image: url('../../assets/img/contentsAdd/fondo.gif');
+  background-size: cover;
+  height: 100vh;
+}
+
 .marginEmpty{
     margin-top: 10%;
 }
@@ -94,4 +100,50 @@
     width: 100%;
     // height: 100%;
     z-index: -1;
+  }
+
+  .content-fixed {
+    display: flex;
+    position: fixed;
+    top: 85%;
+    z-index: 1000;
+  }
+  
+  .content-glisch {
+    width: 100%;
+    background: transparent;
+    padding: 30px;
+    color: #fff;
+    display: flex;
+    align-items: center !important;
+    justify-content: flex-start;
+    overflow: hidden;
+  
+    h1 {
+      font-family: 'Reboot';
+      font-size: 0.6rem;
+      position: relative;
+      font-weight: normal;
+      text-align: center;
+      cursor: pointer;
+      color: rgb(160, 157, 157);
+      text-shadow: 1px 1px rgba(190,30,214, 0.8), -1px -1px rgba(35,72,202, 0.8), -1px 0px rgba(121,239,215, 1);
+      text-align: initial;
+      line-height: normal;
+    }
+    
+    h1:hover {
+      animation: wiggle 0.2s 2;
+      /*transition:all ease-out 0.1s;*/
+      text-shadow: 30px 13px rgba(190,30,214, 0.8), -38px -4px rgba(35,72,202, 0.8), -2px -4px rgba(121,239,215, 1);
+    }
+    
+    h1:hover:after {
+      content: ":̪̺̠̺͗ͨ̋ͩ͗:̛͇̱̥̥̙̎͆̑ͮ̐͢:̷̲ͮ̃́̅ͦ̔͐̆:̴͈͖̮̪̗̈́̆̀:̨̙̗̺̞̥͗̐ͫ:̗̰̜̟̮̦̉̂";
+      z-index: -100;
+      position: absolute;
+      left: 1em;
+      top: -1em;
+      transform: rotate(41deg);
+    }
   }

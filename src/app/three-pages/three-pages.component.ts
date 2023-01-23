@@ -38,6 +38,7 @@ export class ThreePagesComponent implements OnInit, OnDestroy {
       $('.videoMuestra').fadeIn();
       setTimeout(()=>{
         $('.videoMuestra').fadeOut();
+        $('.content-fixed').fadeIn();
       },5000);
     },2000);
     if(!(window.location.hostname == 'localhost')){

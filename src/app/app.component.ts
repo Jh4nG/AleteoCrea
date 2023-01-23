@@ -174,7 +174,7 @@ export class AppComponent implements OnInit, AfterContentInit {
   }
 
   showHelpTooltip(){ // muestra el mensaje de ayuda cada 35 segundo (cuenta los 5 segundos activos)
-    $('#imgBia').tooltip({placement: 'left',trigger: 'manual'}).tooltip('show');
+    $('#imgBia').tooltip({placement: 'left',trigger: 'manual',size:'12px'}).tooltip('show');
     setTimeout(()=>{
       $('#imgBia').tooltip({placement: 'left',trigger: 'manual'}).tooltip('hide');
     },5000);

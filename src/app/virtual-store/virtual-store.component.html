@@ -43,6 +43,11 @@
                 </div>
                 <hr>
             </div>
+            <div class="col-md-12" *ngIf="productsAddToCar.length>0" align="center">
+                <div class="col-md-6">
+                    <button class="btnPlataform" (click)="openDataBuy()">Finalizar compra</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -161,4 +166,64 @@
     Excede el presupuesto.
 </div>
 
+<div id="alertProductFinishCorrect" class="alertFixed alert alert-aleteo-success-2">
+    Compra realizada correctamente.
+</div>
+<div id="alertProductFinishError" class="alertFixed alert alert-aleteo-danger">
+    Error en compra realizada. Intente nuevamente!
+</div>
+
 <a id="btnModalPrincipal" data-bs-toggle="modal" data-bs-target="#modalVirtualStore" href="#" aria-current="page" style="display: none;"></a>
+
+<!-- Datos para comprar -->
+<app-modal-component idTarget="modalConfirmBuy" tamanio="lg" bgModal="bgDarkModal ModalBlue bgNoBorder">
+    <ng-template #header>
+      <div>FINALIZAR COMPRA</div>
+    </ng-template>
+    <ng-template #content>
+      <div>
+        Por favor ingrese la siguiente información para enviarle sus productos futuristas digitalizados.
+        <br>
+        <br>
+        <div class="row col-md-12">
+            <div class="col-md-6 form-group">
+                <label>Nombre Usuario:</label>
+                <br>
+                <input class="form-control" name="inpNameUser" placeholder="Pedro García">
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Correo Electrónico:</label>
+                <br>
+                <input class="form-control" type="email" name="inpEmailUser" placeholder="pedro@xxmail.com,garcia@xxmail.com,...">
+            </div>
+        </div>
+        <div id="alertBuyFinish" class="col-md-12">
+            <br>
+            <br>
+            <div class="alert alert-aleteo-warning">
+                Todos los datos son requeridos. <br>El email debe ser un correo válido.
+            </div>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template #footer>
+        <div class="col-12">
+            <div class="row col-md-12">
+                <div class="col-6" align="right">
+                    <button class="btnPlataform" (click)="this.finishBuy()">Finalizar</button>
+                </div>
+                <div class="col-6">
+                    <button class="btnPlataform" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</app-modal-component>
+
+<div class="row content-fixed">
+    <div class="col-12">
+        <div class="content-glisch">
+            <h1>Tienda del futuro</h1>
+        </div>
+    </div>
+</div>
