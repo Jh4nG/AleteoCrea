@@ -131,7 +131,8 @@ export class AppComponent implements OnInit, AfterContentInit {
                   this.audio.nativeElement.src = "./assets/audios/plataforma/6. Contenidos adicionales.mp3";
                   this.videoHelp1 = "";
                   this.videoHelp2 = "";
-                  divimgBia.style.display = 'none';
+                  imgBia.src = "./assets/img/BIAs/BIA01.gif";
+                  // divimgBia.style.display = 'none';
                 }, 1000);
                 break;
               case '/future-voices':
@@ -149,7 +150,7 @@ export class AppComponent implements OnInit, AfterContentInit {
                   this.videoHelp1 = "(Inicio) Escena 1.mp4";
                   this.videoHelp2 = "(Inicio) Escena 2 cor.mp4";
                   imgBia.src = "./assets/img/BIAs/BIA01.gif";
-                  this.textBia = "¿En qué puedo ayudarlo?";
+                  // this.textBia = "¿En qué puedo ayudarlo?";
                   // divimgBia.style.display = 'none';
                 }, 1000);
                 break;
@@ -316,6 +317,10 @@ export class AppComponent implements OnInit, AfterContentInit {
   }
 
   openViewHelp() {
+    if(this.textBia == '/contents'){
+      window.open("http://aleteotransmedia.com/");
+      return;
+    }
     if (this.viewHelp) {
       $('.btnFirtsHelp').fadeIn(1000);
       $('.btnSecondHelp').fadeIn(1000);

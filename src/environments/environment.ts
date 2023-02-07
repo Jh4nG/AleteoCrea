@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  api : "http://localhost/swAleteoCrea/index"
-  // api : "https://museointeractivoaleteo.com/api/index"
+  // api : "http://localhost/swAleteoCrea/index"
+  api : "https://museointeractivoaleteo.com/api/index"
 };
 
 /*
