@@ -13,7 +13,6 @@
 
     <div id="divViewGrabaciones" class="btnViewGrabaciones">
         <button id="btnVoiceFuture" class="btn btn-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Ecos del presente" (click)="showSideBarVoice(true)">
-            <!-- <span class="fa fa-music"></span> -->
             <span class="fa fa-list"></span>
         </button>
     </div>
@@ -37,8 +36,6 @@
             </div>
             <div class="col-7">
                 <span class="fs-4">Ecos del presente</span>
-                <!-- <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                </a> -->
             </div>
             <div class="col-2" style="cursor:pointer;">
                 <a (click)="showSideBarVoice(false)"><i class="fa fa-close"></i></a>
@@ -63,19 +60,12 @@
 
                     </div>
                 </div>
-                <!-- <a data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="#" class="nav-link active" aria-current="page">
-                    <svg class="bi me-2" width="16" height="16">
-                    <use xlink:href="#home" />
-                    </svg>
-                    Sobre Aleteo
-                </a> -->
             </div>
         </div>
     </div>
     <div class="reproductor">    
         <div class="reproduccion">
           <div class="reproduccion__progreso" align="center">
-            <!-- <input type="range" value="0" min="0" max="0" step="0.01"> -->
             <audio id="audioVoiceActual" style="display: none;"></audio>
             <time>{{this.timeTranscurridoActualString}}/{{this.timeActual}}</time>
           </div>
@@ -95,9 +85,6 @@
         </div>
     </div>
 </div>
-<!-- <div class="containerGlobal">
-    <iframe src="http://localhost/30-000-particles/dist/" class="containerIframe"></iframe>
-</div> -->
 
 <app-modal-component idTarget="modalTratamientoDatos" tamanio="lg" bgModal="bgDarkModal ModalBlue bgNoBorder">
     <ng-template #header>
@@ -204,6 +191,8 @@
     </ng-template>
     <ng-template #content>
         No se ha podido grabar porque no ha dado permisos al navegador para hacerlo. Por favor habilite los permisos para grabar e intente nuevamente dejar su voz para el futuro.
+        <br><br>
+        Si el error persiste, por favor intente dejar su voz abriendo esta misma sección en los navegadores Google Chrome o Microsoft Edge.
     </ng-template>
     <ng-template #footer>
     </ng-template>

@@ -180,13 +180,6 @@ button.btnSelected {
   color: white;
 }
 
-// .nav-link.nav-voice-future:hover{
-//   color: #d82b2b;
-// }
-// .nav-link.nav-voice-future.active{
-//   color: white;
-// }
-
 .fix-nav {
 	position: fixed;
 	width: 50%;
@@ -214,7 +207,6 @@ button.btnSelected {
 
 .color-menu {
 	background-color: rgba(0, 0, 0, 1);
-  // background-image: url('../../assets/img/FondoRojo.png');
   background-size: cover;
 }
 
@@ -272,7 +264,6 @@ button.btnSelected {
   
   h1:hover {
     animation: wiggle 0.2s 2;
-    /*transition:all ease-out 0.1s;*/
     text-shadow: 30px 13px rgba(190,30,214, 0.8), -38px -4px rgba(35,72,202, 0.8), -2px -4px rgba(121,239,215, 1);
   }
   

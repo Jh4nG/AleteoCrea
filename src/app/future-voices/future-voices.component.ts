@@ -52,8 +52,6 @@ export class FutureVoicesComponent implements OnInit, OnDestroy {
   };
   ROWS = (screen.width > 1280) ? 170 : 150; // height
   COLS = 320; // width
-  // ROWS = 0.20833333333333334 * screen.height;
-  // COLS = 0.25 * screen.width;
   NUM_PARTICLES = ( ( this.ROWS ) * ( this.COLS ) );
   THICKNESS = Math.pow( 80, 2 ); // radio del circulo
   SPACING = (screen.width > 1280) ? 6 : 4; // espacios entre circulos
@@ -143,12 +141,8 @@ export class FutureVoicesComponent implements OnInit, OnDestroy {
     
     this.canvas.width = this.container.offsetWidth ;
     this.canvas.height = this.container.offsetHeight - 7;
-    // this.canvas.setAttribute('style','width:100%;height:100vh');
     this.w = this.COLS * this.SPACING + this.MARGIN * 2; 
     this.h =  this.ROWS * this.SPACING + this.MARGIN * 2;
-
-    // this.container.style.marginLeft = Math.round(this.w * -0.5) + 'px';
-    // this.container.style.marginTop = Math.round(this.h * -0.5) + 'px';
   
     for (var i = 0; i < this.NUM_PARTICLES; i++) {
   
@@ -158,9 +152,7 @@ export class FutureVoicesComponent implements OnInit, OnDestroy {
   
       this.list[i] = this.p;
     }
-    if (typeof Stats === 'function') {
-      // document.body.appendChild((this.stats = new Stats()).domElement);
-    }
+    if (typeof Stats === 'function') {}
   
     this.container.appendChild(this.canvas);
   }

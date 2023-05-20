@@ -46,7 +46,6 @@ export class ReproductorComponentComponent implements OnInit, AfterViewInit, OnC
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['listPodCast']?.currentValue) {
-
       this.filterPrincipalSong();
     }
 
@@ -57,7 +56,6 @@ export class ReproductorComponentComponent implements OnInit, AfterViewInit, OnC
 
     }
   }
-
 
   ngOnInit(): void {
     this.modalClose = true;
@@ -71,12 +69,9 @@ export class ReproductorComponentComponent implements OnInit, AfterViewInit, OnC
   eventPlay(): void {
     let audio = this.audioReproducto.nativeElement;
     let btnN = this.btn.nativeElement;
-    // console.log(audio.paused);
-
     if (audio.paused) {
       btnN.classList.add('btn-pause');
       btnN.classList.remove('btn-play');
-      //this.ctx.resume();
       audio.play();
       this.onPlay();
     } else {
@@ -149,8 +144,6 @@ export class ReproductorComponentComponent implements OnInit, AfterViewInit, OnC
 
   filterPrincipalSong() {
     let song = this.listPodCast?.filter((item) => {
-      // console.log(this.listPodCast);
-
       return item.principal == 1;
     });
     this.nameBand = song[0].name_podcast;
@@ -178,7 +171,6 @@ export class ReproductorComponentComponent implements OnInit, AfterViewInit, OnC
       }
 
     } catch (error) {
-      // console.log(error);
     }
   }
 

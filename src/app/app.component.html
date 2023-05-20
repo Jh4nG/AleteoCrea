@@ -65,21 +65,11 @@
   <div class="dropdown">
     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1"
       data-bs-toggle="dropdown" aria-expanded="false">
-      <!-- <img
-        src="https://github.com/mdo.png"
-        alt=""
-        width="32"
-        height="32"
-        class="rounded-circle me-2"
-      /> -->
       <strong>Redes Sociales</strong>
     </a>
     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
       <li><a class="dropdown-item" target="_blank" href="https://www.facebook.com/aleteotransmedia"><i class="fa fa-facebook"></i> Facebook</a></li>
       <li><a class="dropdown-item" target="_blank" href="https://www.instagram.com/aleteo_transmedia/"><i class="fa fa-instagram"></i> Instagram</a></li>
-      <!-- <li><a class="dropdown-item" href="#">Profile</a></li>
-      <li><hr class="dropdown-divider" /></li>
-      <li><a class="dropdown-item" href="#">Sign out</a></li> -->
     </ul>
   </div>
 </div>
@@ -102,9 +92,8 @@
 <!-- Flotante BIA END -->
 
 <!-- Flotante Redes -->
-<div class="share" id="share" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Inicio" [routerLink]="['/home']"> <!-- (click)="shareFunction()" --> 
-  <img src="./assets/img/btnFlotanteM.png">
-  <!-- <img src="./assets/img/btnFlotanteA.png"> -->
+<div class="share" id="share" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Inicio" [routerLink]="['/home']">
+  <img src="./assets/img/btnFlotanteM.png" />
 </div>
 
 <div class="divAudioIcon audioIcon audioIconStop" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Reproducir/Pausar Audio" (click)="playPauseAudio()"></div>
@@ -122,8 +111,7 @@
 
 <!-- Boton Flotante Voces del futuro -->
 <div class="btnVocesF" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Voces del Futuro" [routerLink]="['/future-voices']">
-  <img src="./assets/img/VocesFuturoSpectrum.gif">
-  <!-- <img src="./assets/img/btnFlotanteA.png"> -->
+  <img src="./assets/img/VocesFuturoSpectrum.gif" />
 </div>
 <!-- Boton Flotante Voces del futuro -->
 
@@ -144,7 +132,7 @@
       <div class="animate__animated animate__bounceInLeft">
         <h5><b>El proyecto</b></h5>
         <p>
-          Aleteo – Transmedia es un proyecto de nuevos medios de ciencia ficción que se mueve desde diversos campos creativos y de comunicación para contar una historia del futuro de Colombia y el mundo. 
+          Aleteo - Transmedia es un proyecto de nuevos medios de ciencia ficción que se mueve desde diversos campos creativos y de comunicación para contar una historia del futuro de Colombia y el mundo. 
         </p>
       </div>
       <div class="animate__animated animate__bounceInRight">
@@ -208,7 +196,7 @@
   <ng-template #content>
     <div class="col-md-12 row text-principal">
       <div class="animate__animated animate__rollIn">
-        El proyecto Aleteo – Transmedia es desarrollado por un equipo de artistas de Colombia que han dedicado su tiempo y experiencia a que se haga realidad. 
+        El proyecto Aleteo - Transmedia es desarrollado por un equipo de artistas de Colombia que han dedicado su tiempo y experiencia a que se haga realidad. 
         <br>      <br>
       </div>
       
@@ -253,7 +241,6 @@
 
         <br>
         <div class="animate__animated animate__rollIn">
-
           <h5>Artistas plásticos:</h5>
           Michelle Rodríguez
           <br>
@@ -313,7 +300,7 @@
           Paola Rey
           <br>
           Leonel Fonseca
-          <br>      <br>
+          <br><br>
         </div>
       </div>
       <div class="col-md-12">
@@ -325,28 +312,28 @@
         <h5>Casa productora:</h5> 
         <div class="col-md-12">
           <div align="center">
-            <img src="../assets/img/home/Logo Chimenea.png" width="60%">
+            <img src="../assets/img/home/Logo Chimenea.png" width="60%" />
           </div>
         </div>
         <h5>Aliados:</h5> 
         <div class="col-md-4">
           <br>
           <div align="center">
-            <img src="../assets/img/home/Ressonar films logo final blanco-01.png" width="80%">
+            <img src="../assets/img/home/Ressonar films logo final blanco-01.png" width="80%" />
           </div>
           <!-- Ressonar Films -->
         </div>
         <div class="col-md-4">
           <br>
           <div align="center">
-            <img src="../assets/img/home/Artboard 1.png" width="80%">
+            <img src="../assets/img/home/Artboard 1.png" width="80%" />
           </div>
           <!-- Tres Olas Producciones -->
         </div>
         <div class="col-md-4">
           <br>
           <div align="center">
-            <img src="../assets/img/home/logo1.png" width="80%">
+            <img src="../assets/img/home/logo1.png" width="80%" />
           </div>
           <!-- Comunicarte -->
         </div>
@@ -359,15 +346,13 @@
           <br>
           Ministerio de Cultura.
           <br>
-          <img src="../assets/img/home/PATA-DE-LOGOS-WEB-FONDO-OSCURO.png" width="100%">
+          <img src="../assets/img/home/PATA-DE-LOGOS-WEB-FONDO-OSCURO.png" width="100%" />
         </div>
       </div>
     </div>
   </ng-template>
   <ng-template #footer></ng-template>
 </app-modal-component>
-
-
 
 <app-modal-component idTarget="ContactenosModal" tamanio="lg" bgModal="bgDarkModal ModalBlue bgNoBorder">
   <ng-template #header>
@@ -412,3 +397,20 @@
 <ngx-spinner name="spinnerInicio" bdColor="rgba(0, 0, 0, 1)" template="<img src='assets/img/mariposa.gif' width='100%' />">
 </ngx-spinner>
 <!-- Spinner END -->
+
+<!-- Advertencia para ver contenidos -->
+<app-modal-component idTarget="ModalDeviceLeft" tamanio="md" bgModal="bgDarkModal ModalBlue bgNoBorder">
+  <ng-template #header>
+    <div><h1>Información</h1></div>
+  </ng-template>
+  <ng-template #content>
+    <div class="col-md-12 row" align="center">
+      <div align="center">
+        <img src="./../assets/img/giphy_devide_left.gif" style="width:150px">
+      </div>
+      <br>
+      Para cargar correctamente los contenidos de este espacio, por favor cambie la orientación del disposivo (módo horizontal).
+    </div>
+</ng-template>
+<ng-template #footer></ng-template>
+</app-modal-component>

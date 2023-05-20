@@ -31,9 +31,6 @@ export class PodcastComponent implements OnInit, OnDestroy {
     private audioService: AudioObserverService,
     private helpService: HelpObserverService) {
     this.getPodcastPrincipal();
-
-    
-
   }
 
   ngOnInit(): void {

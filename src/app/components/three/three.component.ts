@@ -50,13 +50,7 @@ export class ThreeComponent implements OnInit, OnDestroy {
     renderer.outputEncoding = THREE.sRGBEncoding;
     document.body.appendChild(renderer.domElement);
     scene = new THREE.Scene();
-    //scene.background = new THREE.Color('white')
-
-    // scene.background_image = new THREE.Color('url(../../assets/img/FondoAzul.png)');
-
     camera = new THREE.PerspectiveCamera(25, window.innerWidth / window.innerHeight, 1, 500);
-    // cercanía, 
-
     camera.position.set(4, 0.5, 3); // posición para mostrar objeto de entrada
 
     const controls = new OrbitControls(camera, renderer.domElement);
@@ -64,15 +58,6 @@ export class ThreeComponent implements OnInit, OnDestroy {
     controls.minDistance = 3; // Maximo que se puede acercar
     controls.maxDistance = 6; // Maximo que se puede alejar
     controls.enablePan = false;
-
-    //const light = new THREE.HemisphereLight(0xffffff, 0xffffff, 1);
-    //light.position.set(- 1.25, 1, 1.25);
-    // scene.add(light);
-
-    // const helper = new THREE.CameraHelper( light.shadow.camera );
-    // scene.add( helper );
-
-
     // Se agregar la imagen del arbol
     const loader = new GLTFLoader();
     this.mmi = new MouseMeshInteraction(scene, camera);

@@ -1,20 +1,12 @@
 .btn-flotante {
 	font-size: 16px;
-	/* Cambiar el tamaño de la tipografia */
 	text-transform: uppercase;
-	/* Texto en mayusculas */
 	font-weight: bold;
-	/* Fuente en negrita o bold */
 	color: #ffffff;
-	/* Color del texto */
 	border-radius: 5px;
-	/* Borde del boton */
 	letter-spacing: 2px;
-	/* Espacio entre letras */
 	background-color: #e91e63;
-	/* Color de fondo */
 	padding: 18px 30px;
-	/* Relleno del boton */
 	position: fixed;
 	bottom: 40px;
 	right: 40px;
@@ -25,7 +17,6 @@
 
 .btn-flotante:hover {
 	background-color: #2c2fa5;
-	/* Color de fondo al pasar el cursor */
 	box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
 	transform: translateY(-7px);
 }
@@ -58,7 +49,6 @@
 	width: 35px;
 	height: 35px;
 	background-color: black;
-	// display: none;
 	position: fixed;
 	bottom: 27%;
 	left: 88%;
@@ -76,7 +66,6 @@
 	width: 35px;
 	height: 35px;
 	background-color: black;
-	// display: none;
 	position: fixed;
 	bottom: 15%;
 	left: 88%;
@@ -114,13 +103,6 @@
 	border: 1px solid white;
 	border-style: none solid solid none;
 }
-
-/** Aleteo */
-// .share > img{
-// 	width: 100%;
-//     margin-bottom: 11px;
-// }
-
 /** Mariposa */
 .share > img {
 	width: 85%;
@@ -436,7 +418,6 @@ main {
 .loader {
 	left: 2%;
 	top: 2%;
-	// transform: translate(-50%, -50%);
 	height: 35px !important;
 	position: absolute;
 }
@@ -445,7 +426,6 @@ main {
 	width: 5px;
 	height: 35px;
 	display: inline-block;
-	// background: #ada3a3;
 	transform-origin: bottom center;
 	border-top-right-radius: 20px;
 	border-top-left-radius: 20px;
@@ -460,7 +440,6 @@ main {
 	transform-origin: bottom center;
 	border-top-right-radius: 20px;
 	border-top-left-radius: 20px;
-	// animation: loader8913 1.2s linear infinite;
 }
 
 .bar1 {

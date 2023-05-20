@@ -1,7 +1,6 @@
 .img-agua {
   width: 100%;
   height: 110vh;
-  // height: 100%;
   background-color: black;
   background-size: cover;
 }
@@ -9,9 +8,6 @@
   position: absolute;
   z-index: 100;
 }
-// .content-padding {
-//     padding: 10%;
-// }
 .imgMariposa {
   background: url("../../assets/img/home/HOLOGRAMA-V12FINAL.gif");
   background-repeat: no-repeat;
@@ -188,7 +184,6 @@
   
   h1:hover {
     animation: wiggle 0.2s 2;
-    /*transition:all ease-out 0.1s;*/
     text-shadow: 30px 13px rgba(190,30,214, 0.8), -38px -4px rgba(35,72,202, 0.8), -2px -4px rgba(121,239,215, 1);
   }
   

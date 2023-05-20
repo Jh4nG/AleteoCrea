@@ -68,79 +68,6 @@ export class ParticlesComponent implements OnInit {
   playNextTrackButton = $('#play-next');
   currIndex = -1;
   constructor() { }
-
-  /* or the classic JavaScript object */
-  // particlesOptions = {
-  //   background: {
-  //     color: "#000"
-  //   },
-  //   fpsLimit: 120,
-  //   interactivity: {
-  //     events: {
-  //       // onClick: {
-  //       //   enable: true,
-  //       //   mode: ClickMode.push
-  //       // },
-  //       onHover: {
-  //         enable: true,
-  //         mode: HoverMode.repulse
-  //       },
-  //       resize: true
-  //     },
-  //     modes: {
-  //       push: {
-  //         // quantity: 4
-  //       },
-  //       repulse: {
-  //         distance: 200,
-  //         // duration: 0.4
-  //       }
-  //     }
-  //   },
-  //   particles: {
-  //     color: {
-  //       value: "#ffffff"
-  //     },
-  //     links: {
-  //       color: "#ffffff",
-  //       distance: 150,
-  //       enable: true,
-  //       opacity: 0.5,
-  //       width: 1
-  //     },
-  //     collisions: {
-  //       enable: false
-  //     },
-  //     move: {
-  //       direction: MoveDirection.none,
-  //       enable: true,
-  //       outModes: {
-  //         default: OutMode.out
-  //       },
-  //       random: false,
-  //       speed: 4,
-  //       straight: false
-  //     },
-  //     number: {
-  //       density: {
-  //         enable: true,
-  //         area: 800
-  //       },
-  //       value: 50
-  //     },
-  //     opacity: {
-  //       value: 0.5
-  //     },
-  //     shape: {
-  //       type: "circle"
-  //     },
-  //     size: {
-  //       value: { min: 1, max: 5 },
-  //     }
-  //   },
-  //   detectRetina: false
-  // };
-
   /** Mariposa en SVG */
   particlesOptions = {
     fpsLimit: 120,
@@ -453,9 +380,6 @@ export class ParticlesComponent implements OnInit {
       scale: screen.width > 1536? 1.3: 0.9,
       type: 'inline',
       url:"./assets/img/podcast/mariposa_lowpoly_soldado_Mesa_de_trabajo_1_copia_3.svg",
-      // url: 'https://particles.js.org/images/mariposa.svg',
-      // url: '../assets/img/podcast/smalldeer.svg',
-      // position: '50% 50%',
     },
   };
 
@@ -464,23 +388,10 @@ export class ParticlesComponent implements OnInit {
   }
 
   async particlesInit(engine: Engine): Promise<void> {
-    // console.log(engine);
-
-    // Starting from 1.19.0 you can add custom presets or shape here, using the current tsParticles instance (main)
-    // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
-    // starting from v2 you can add only the features you need reducing the bundle size
-
     await loadFull(engine);
-
-    // setTimeout(()=>{
-    //   loadFull(engine);
-    // },1000)
   }
 
   ngOnInit(): void {
-
-    // console.log(screen.width);
-    
     this.audio = new Audio();
     this.selectTrack(0);
     this.audio.loop = false;
@@ -501,9 +412,7 @@ export class ParticlesComponent implements OnInit {
   }
 
   playPause() {
-    // setTimeout(function () {
     if (this.audio.paused) {
-      // debugger
       $('#player-track').addClass('active');
       $('#album-art').addClass('active');
       this.checkBuffering();
@@ -517,7 +426,6 @@ export class ParticlesComponent implements OnInit {
       this.i.attr('class', 'fas fa-play');
       this.audio.pause();
     }
-    // }, 300);
   }
 
   showHover(event) {
@@ -673,5 +581,4 @@ export class ParticlesComponent implements OnInit {
       else ++this.currIndex;
     }
   }
-
 }
