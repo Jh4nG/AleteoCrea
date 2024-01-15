@@ -48,7 +48,6 @@ export class ThreeComponent implements OnInit, OnDestroy {
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.localClippingEnabled = true;
     renderer.outputEncoding = THREE.sRGBEncoding;
-    document.body.appendChild(renderer.domElement);
     scene = new THREE.Scene();
     camera = new THREE.PerspectiveCamera(25, window.innerWidth / window.innerHeight, 1, 500);
     camera.position.set(4, 0.5, 3); // posición para mostrar objeto de entrada
@@ -125,19 +124,6 @@ export class ThreeComponent implements OnInit, OnDestroy {
 
 
     const group = new THREE.Group();
-
-
-    window.addEventListener('resize', this.onWindowResize);
-    window.requestAnimationFrame(() => this.render());
-
-  }
-
-
-  onWindowResize() {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    this.render();
   }
 
   render(): void {
